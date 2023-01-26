@@ -105,7 +105,10 @@ public:
 			this->currBuffPagePtr++;
 		}
 	}
-
+    // long diskToBuffer(long pageNum, bool isPinned, bool isAnony);
+    // bool writeBuffer(long pageNum, vector<char> pageData); //return True == succeed
+    // vector<char> readBuffer(long pageNum);
+    // bool pinThisPage(long pageNum);
 
 
 }
