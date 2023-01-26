@@ -6,71 +6,99 @@ using namespace std;
 class Page_Buffer_Item
 {
 private:
-	long pageNum;
-	int listNum; //type undefined
-	bool isPinned;
-	bool isDirty;
-	bool isAnony;
-	int refCnt;
 	size_t pageSize;
+	long pageNum = -1;
+	// int listNum; //type undefined // clock algo don't need listNum?
+	bool isPinned = false;
+	bool isDirty = false;
+	bool isAnony = false;
+	// 應該放在 Page_Map_Item? 
+	// 如果資料 evict, 上面那些資料不需要存到disk，
+	// 但有幾個handle指向這個page 需要被記著
+	// int refCnt = 0; 
+	// second change bit, default as unset(false)
+	bool acedBit = false;
 	vector<char> pageData;
 
-	bool acedBit = false; // second change bit, default as unset(false)
+	 
 	
 
 public:
+	// void setPageNum(long pageNum) { this->pageNum = pageNum; }
+	// long getPageNum() { return this->pageNum; }
+	void setPinned() { this->isPinned = true; }
+	void unsetPinned() { this->isPinned = false; }
+	bool getIsPinned() { return this->isPinned; }
+	void setAcedBit() { this->acedBit = true; }
+	void unsetAcedBit() { this->acedBit = false; }
+	bool getAcedBit() { return this->acedBit; }
+	bool getIsDirty() { return this->isDirty; }
+
+
+	Page_Buffer_Item()
+	{
+		this->pageSize = 64;
+		pageData.reserve(this->pageSize);
+	}
 	Page_Buffer_Item(size_t pageSize)
 	{
 		this->pageSize = pageSize;
+		pageData.reserve(this->pageSize);
 	}
+	~Page_Buffer_Item();
+
+	void loadFromDisk(string tempFile,
+					  long pageNum,
+					  bool isPinned,
+					  bool isAnony) {
+		
+		// arguments that are passed
+		this->updateData(
+			pageNum, 
+			isPinned, 
+			false,   // isDirty; data just loaded, it won't be dirty
+			isAnony, // isAnony = false? or combine loadFromDisk and loadFromTempFile
+			true     // acedBit
+			)
+
+		// load data from disk
+		this->updatePagedata(
+			// data from disk
+		)
+		
+		
+		// set the reference to 0? 
+		// depend on whether there is handle on the disk
+		// refCnt = 0;
+	}
+	void loadFromTempFile(string tempFile,
+						  long pageNum,
+						  bool isPinned,
+						  bool isAnony);
+	void storeToDisk();
+
 
 	// If page found in buffer, updates the acedBit to true
     bool hitAndSet() {
-        acedBit = true;
+        this->acedBit = true;
+		return true;
     }
 
-	// If page not found in buffer
-    // 1. when arm point to a setted item, unset & move arm to next item
-    // 2. when arm point to an unsetted item, load data & set & move arm
-    // (if point to a pinned pages, just move not next item)
-    // return the pointer to item, where the arm currently points to
-    Page_Buffer_Item * faultAndLoad(Page_Buffer_Item *currentPagePtr, 
-							Page_Buffer_Item newPageItem) {
-		// currentPage is null
-		// reset to head
-		// 要放在 Page_Buffer_Itme 還是 Clock_LRU?
-		if (currentPagePtr == nullptr)
-		{
-
-		}
-
-		while (true) 
-		{
-			// find the page to evict (acedBit == false)
-			if (!(*currentPagePtr->acedBit))
-			{
-				// if dirty
-				if (isDirty)
-				{
-					// Anonymous & no handle 
-					// delete
-					
-					// Anonymous & with handle
-					// save to a temp file
-
-					// disk: update disk page
-
-					
-				}
-				// evict & replace with newPageItem
-				*currentPagePtr = newPageItem;
-
-				// return updated pointer
-				return (currentPagePtr+1);
-			}
-			acedBit = true;
-			currentPagePtr++;
-		}
+	// Update the metadata in page
+	void updateData(long pageNum,
+					bool isPinned,
+					bool isDirty,
+					bool isAnony,
+					bool acedBit) {
+		this->pageNum = pageNum;
+		this->isPinned = isPinned;
+		this->isDirty = isDirty;
+		this->isAnony = isAnony;
+		this->acedBit = acedBit;
+	}
+	// Update pageData
+	void updatePagedata(vector<char> newPageData) {
+		this->pageData = newPageData // depend on how pageData is defined
 	}
 
 }
