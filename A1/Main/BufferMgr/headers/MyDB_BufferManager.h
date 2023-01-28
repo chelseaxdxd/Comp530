@@ -58,6 +58,7 @@ public:
 	~MyDB_BufferManager();
 
 	// FEEL FREE TO ADD ADDITIONAL PUBLIC METHODS
+	friend Page_Buffer_Item *reloadBufferItem(MyDB_TablePtr whichTable, long pageNum, bool isPinned, bool isAnony);
 
 private:
 	// Clock_LRU pageBuffer;//將內容放進來了
@@ -67,11 +68,12 @@ private:
 	// non anonlymous hash map
 	map<pair<long, long>, Page_Map_Item> diskPageMap;
 
+	/*ClockBuffer*/
 	long numPages; // number of pages managed by the buffer manager is numPages
 
 	vector<Page_Buffer_Item> clockBuffer; // buffPagePoo -> clockBuffer
 
-	long curClockIdx; // clock arm currently points to // currBuffPageIdx -> curClockIdx
+	vector<Page_Buffer_Item>::iterator clockArm; // clock arm currently points to // currBuffPageIdx -> curClockIdx
 
 	// name updateData -> updateBufferItem
 	void updateBufferItem(*Page_Buffer_Item buffItemPtr, long pageNum, bool isPinned, bool isDirty, bool isAnony, bool acedBit);
@@ -86,7 +88,7 @@ private:
 	bool diskToBuffer(long ItemSlotIdx, MyDB_TablePtr whichTable, long pageNum);
 
 	//
-	long findItemSlot();
+	vector<Page_Buffer_Item>::iterator getBufferItemSpace();
 };
 
 #endif
