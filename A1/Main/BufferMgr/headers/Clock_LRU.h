@@ -3,6 +3,7 @@
 #define CLOCK_LRU_H
 
 #include <vector>
+#include <fstream>
 #include "Page_Buffer_Item.h"
 
 using namespace std;
@@ -15,7 +16,18 @@ private:
     vector<Page_Buffer_Item> buffPagePool;
     long currBuffPageIdx; // clock arm currently points to
 
-	// Update the metadata in page
+	// Update the metadata in ith pageItem
+	
+	void setPageNum(long pageNum) { this->pageNum = pageNum; }
+	long getPageNum() { return this->pageNum; }
+	void setPinned() { this->isPinned = true; }
+	void unsetPinned() { this->isPinned = false; }
+	bool getIsPinned() { return this->isPinned; }
+	void setAcedBit() { this->acedBit = true; }
+	void unsetAcedBit() { this->acedBit = false; }
+	bool getAcedBit() { return this->acedBit; }
+	bool getIsDirty() { return this->isDirty; }
+
 	void updateData(long pageNum,
 					bool isPinned,
 					bool isDirty,
@@ -32,45 +44,47 @@ private:
 		this->pageData = newPageData // depend on how pageData is defined
 	}
 
-	// !!! can be private, currently only Clock_LRU would use it
 	// when Clock_LRU needs to evict page, store the dirty data to disk
-	void bufferToDisk(long pageNum, ...);
+	void bufferToDisk(long ItemSlotIdx, 
+					  MyDB_TablePtr whichTable, 
+					  long pageNum, 
+					  bool isPinned, 
+					  bool isAnony);
 
-	// load data from dist to buffer
-	bool diskToBuffer(long pageNum, ...)
+	// load data from disk to buffer
+	bool diskToBuffer(long ItemSlotIdx, 
+					  MyDB_TablePtr whichTable, 
+					  long pageNum) {
+		ofstream myFile.open(
+			"./" + whichTable.getStorageLoc() + "/" + whichTable.getName()	
+		)
+	}
 
 	/* Clock Algorithm */
-    // 0. if point to a pinned pages, just move arm to next item
-    // 1. when arm point to a setted item, unset & move arm to next item
-    // 2. when arm point to an unsetted item, 
-	//    store dirty data to disk & set & move arm
-    // return the pointer to item, where the arm currently points to
-    long findBuffPageSlot(string tempFile,
-					    long pageNum,
-					    bool isPinned,
-					    bool isAnony,
-                        vector<char> newPageData) {
+    long findItemSlot()  {
 		// currentPage exceed the max_len of bufferPage
 		// reset pointer to 0
-		if (this->currBuffPageIdx == this->numPages) { this->currBuffPageIdx = 0}
+		if (this->currBuffPageIdx >= this->numPages) { this->currBuffPageIdx = 0}
 
+		Page_Buffer_Item * currBuffPage;
 		// clock arm movement
         while (true) 
 		{
-			Page_Buffer_Item * currBuffPage = buffPage[this->currBuffPageIdx];
+			currBuffPage = buffPagePool[this->currBuffPageIdx];
             
-            // if the page is pinned, skip this round  of the loop
-			if (currBuffPage.getIsPinned())
+			// if item slot(page) is pinned, just move arm to next item slot
+			if (currBuffPage.isPinned)
             {
                 this->currBuffPageIdx++;
                 continue;
             }
 			
-			// find the page to evict (acedBit == false)
-			if (!currBuffPage.getAcedBit())
+			// found the page to evict (acedBit == false)
+			// store dirty data to disk/tempFile/delete & set & move arm
+			if (!currBuffPage.acedBit)
 			{
 				// clean the data
-                if (currBuffPage.getIsDirty())
+                if (currBuffPage.isDirty)
 				{
 					// Anonymous & no handle 
 					// delete
@@ -81,22 +95,14 @@ private:
 					// disk: update disk page
 					
 				}
-				// evict & replace with newPageItem
-				currBuffPage.updateData(
-                    pageNum,
-					isPinned,
-					false,   // isDirty; data just loaded, it won't be dirty
-					isAnony,
-					true     // acedBit
-                    )
-                currBuffPage.updatePagedata(
-                    // data from disk
-                    )
+				currBuffPage.acedBit = true;
 
-				// return pointer and then move the pointer 
+				// return index of available item slot
+				// then increment the index; 
 				return this->currBuffPageIdx++;
 			}
-			currBuffPage.setAcedBit();
+			// when arm point to a setted item, unset & move arm to next item slot
+			currBuffPage.acedBit = false;
 			this->currBuffPageIdx++;
 		}
 	}
@@ -107,6 +113,8 @@ public:
         this->numPages = numPages;
         buffPagePool.assign(numPages, Page_Buffer_Item(pageSize));
         this->currBuffPageIdx = 0;
+
+
     }
     // when the page buffer is destroyed
     // - disk page: 
@@ -118,6 +126,7 @@ public:
     ~Clock_LRU () {
         
         // delete [] headPagePtr;
+
     }
 
     /* getter & setter */
@@ -127,19 +136,18 @@ public:
 	long getItemNum(long idx) { } // return pageNum in buffPagePool at poisiton idx
 
 
-    // (1) buffMgr wants page i, and finds it not in buffer (points to NULL)
+    // (1) buffMgr wants page i, and finds it's not in buffer (points to NULL)
 	// (2) buffMgr go to idx i at buffPagePool, and finds the pageNum is inconsistent to its records
-	// !!!! rename to loadBuffer???
 	long loadBuffer(MyDB_TablePtr whichTable, long pageNum, bool isPinned, bool isAnony) {
-		long newSlot = findBuffPageSlot(); // evict and return idx to laod data
+		// return idx of available slot to laod data
+		long newItemSlotIdx = findItemSlot(); 
 		// load data from disk to buffer
-
-		// return index of the page
-
-
+		bufferToDisk(newItemSlotIdx, whichTable, pageNum, isPinned, isAnony);
+		// return which slotIdx the page is loaded
+		return newItemSlotIdx;
 	}
 	
-	// buffMgr wants to update data in page i (points to page i)
+	// buffMgr wants to update data in buffer i (points to page i)
 	// update newPage, mark isDirty & acedBit to true, return True == succeed
     bool writeBuffer(long pageNum, vector<char> pageData); 
     
