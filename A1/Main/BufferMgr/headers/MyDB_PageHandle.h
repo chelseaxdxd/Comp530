@@ -12,9 +12,9 @@ typedef shared_ptr <MyDB_PageHandleBase> MyDB_PageHandle;
 class MyDB_PageHandleBase {
 
 	/* 新加的*/
-	int pageNum;
-	/* 指向buffer位子的pointer*/
-	buffertype* position;
+	//int pageNum;
+	/* 指向page位子的pointer*/
+	Page_Map_Item* position;
 
 public:
 
