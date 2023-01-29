@@ -16,7 +16,7 @@ class MyDB_PageHandleBase
 	// int pageNum;
 
 public:
-	/* 指向page位子的pointer*/
+	/* 指向page位子的pointer(先暫時用public)*/
 	Page_Map_Item *position;
 	// THESE METHODS MUST BE IMPLEMENTED WITHOUT CHANGING THE DEFINITION
 

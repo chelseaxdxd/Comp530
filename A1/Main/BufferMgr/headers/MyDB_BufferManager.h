@@ -10,7 +10,7 @@
 #include <utility> //pair
 
 using namespace std;
-struct Page_Map_Item
+struct Page
 {
 	long pageNum;
 	Page_Buffer_Item *bufferItemPtr = NULL;
@@ -61,14 +61,14 @@ public:
 	friend Page_Buffer_Item *reloadBufferItem(MyDB_TablePtr whichTable, long pageNum, bool isPinned, bool isAnony);
 
 private:
-		/* IO */
+	/* IO */
 	int fd_tempFile;
 
 	// anonymous hash map
-	map<pair<string, long>, Page_Map_Item> anonyPageMap; // pair<table_name, page_num>
+	map<pair<string, long>, Page> anonyPageMap; // pair<table_name, page_num>
 
 	// non anonlymous hash map
-	map<pair<string, long>, Page_Map_Item> diskPageMap;
+	map<pair<string, long>, Page> diskPageMap;
 
 	/*ClockBuffer*/
 	long numPages; // number of pages managed by the buffer manager is numPages

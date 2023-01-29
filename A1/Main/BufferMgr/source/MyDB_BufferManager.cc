@@ -49,25 +49,39 @@ MyDB_PageHandle MyDB_BufferManager ::getPinnedPage(MyDB_TablePtr whichTable, lon
 	// if it is the first time being called, create the table
 
 	// check DiskPageMap see if that table / page is in buffer
-	map<pair<string, long>, Page_Map_Item>::iterator it;
+	map<pair<string, long>, Page>::iterator it;
 	it = MyDB_BufferManager::diskPageMap.find({whichTable, i}); // make_pair(whichTable, i)
 
 	// page not exist, store into buffer
+
+	// key not in map
 	if (it == MyDB_BufferManager::diskPageMap.end())
 	{
 		// 還沒搬過來 loadbuffer function in clock_LRU
-		// 記得load完buffer要把更新的page存到map裡
+		reloadBufferItem(whichTable, i, true, false);
+		Page_Buffer_Item *tempBufferItemPtr; //
 
+		// 記得load完buffer要把更新的page存到map裡
+		MyDB_BufferManager::diskPageMap[make_pair(whichTable, i)] = Page(i, tempBufferItemPtr, refCnt++);
 		// 結束後得到正確page object
 		it = MyDB_BufferManager::diskPageMap.find({whichTable, i}); // make_pair(whichTable, i)
 	}
+	// key in map, but page points to null
+	else if (it->second.bufferItemPtr == nullptr)
+	{
+		// 還沒搬過來 loadbuffer function in clock_LRU
+		reloadBufferItem(whichTable, i, true, false);
+		Page_Buffer_Item *tempBufferItemPtr; //
+		MyDB_BufferManager::diskPageMap[make_pair(whichTable, i)].bufferItemPtr = tempBufferItemPtr;
+	}
+
 	// access buffer, if unpin then pin it, then make a handle
-	Page_Map_Item *tempPageItem = &(it->second);
-	tempPageItem->bufferItemPtr->isPinned = true;
+	Page *tempPagePtr = &(it->second);
+	// tempPagePtr->bufferItemPtr->isPinned = true;
 
 	// 有點不確定
 	MyDB_PageHandle tempHandle;
-	tempHandle->position = tempPageItem;
+	tempHandle->position = tempPagePtr;
 
 	return tempHandle;
 }
@@ -127,43 +141,44 @@ void MyDB_BufferManager ::updatePagedata(Page_Buffer_Item *buffItemPtr, vector<c
 }
 
 // when Clock_LRU needs to evict page, store the dirty data to disk
-void MyDB_BufferManager ::bufferToDisk(long ItemSlotIdx, MyDB_TablePtr whichTable, long pageNum, bool isPinned, bool isAnony);
-
-// load data from disk to buffer
-bool MyDB_BufferManager ::diskToBuffer(long ItemSlotIdx, MyDB_TablePtr whichTable, long pageNum)
+void MyDB_BufferManager ::bufferToDisk(MyDB_TablePtr whichTable, long pageNum, bool isPinned, bool isAnony)
 {
-	ofstream myFile.open(
-		"./" + whichTable.getStorageLoc() + "/" + whichTable.getName())
+	// set acedbit to True
+
+	// clockArm++
+
+	// update map, set map[pageNum].bufferItemPtr = nullptr
 }
 
-long MyDB_BufferManager ::findItemSlot()
-{
-	// currentPage exceed the max_len of bufferPage
-	// reset pointer to 0
-	if (clockArm > colckBuffer.end())
-	{
-		clockArm = clockBuffer.begin();
-	}
+// load data from disk to buffer
+bool MyDB_BufferManager ::diskToBuffer(long ItemSlotIdx, MyDB_TablePtr whichTable, long pageNum){
+	ofstream myFile.open(
+		"./" + whichTable.getStorageLoc() + "/" + whichTable.getName())}
 
-	Page_Buffer_Item *currBuffPage;
+vector<Page_Buffer_Item>::iterator MyDB_BufferManager ::clockarmGetSpace()
+{
 	// clock arm movement
 	while (true)
 	{
-		currBuffPage = buffPagePool[this->currBuffPageIdx];
-
-		// if item slot(page) is pinned, just move arm to next item slot
-		if (currBuffPage.isPinned)
+		// currentPage exceed the max_len of bufferPage
+		// reset pointer to 0
+		if (clockArm > colckBuffer.end())
 		{
-			this->currBuffPageIdx++;
+			clockArm = clockBuffer.begin();
+		}
+		// if item slot(page) is pinned, just move arm to next item slot
+		if ((*clockArm).isPinned)
+		{
+			clockArm++;
 			continue;
 		}
 
 		// found the page to evict (acedBit == false)
 		// store dirty data to disk/tempFile/delete & set & move arm
-		if (!currBuffPage.acedBit)
+		if (!(*clockArm).acedBit)
 		{
 			// clean the data
-			if (currBuffPage.isDirty)
+			if ((*clockArm).isDirty)
 			{
 				// Anonymous & no handle
 				// delete
@@ -173,28 +188,29 @@ long MyDB_BufferManager ::findItemSlot()
 
 				// disk: update disk page
 			}
-			currBuffPage.acedBit = true;
+			//(*clockArm).acedBit = true;
 
 			// return index of available item slot
 			// then increment the index;
-			return this->currBuffPageIdx++;
+			return clockArm++;
 		}
 		// when arm point to a setted item, unset & move arm to next item slot
-		currBuffPage.acedBit = false;
-		this->currBuffPageIdx++;
+		(*clockArm).acedBit = false;
+		clockArm++;
 	}
 }
 
 // (1) buffMgr wants page i, and finds it's not in buffer (points to NULL)
-// (2) buffMgr go to idx i at buffPagePool, and finds the pageNum is inconsistent to its records
-Page_Buffer_Item *reloadBufferItem(MyDB_TablePtr whichTable, long pageNum, bool isPinned, bool isAnony)
+// (2) first time load data to pageItem & map
+void reloadBufferItem(MyDB_TablePtr whichTable, long pageNum, bool isPinned, bool isAnony)
 {
 	// return idx of available slot to laod data
-	vector<Page_Buffer_Item>::iterator newItemSlotIdx = getBufferItemSpace();
+	clockarmGetSpace();
 	// load data from disk to buffer
-	MyDB_BufferManager::bufferToDisk(newItemSlotIdx, whichTable, pageNum, isPinned, isAnony);
+	MyDB_BufferManager::bufferToDisk(whichTable, pageNum, isPinned, isAnony);
+
 	// return which slotIdx the page is loaded
-	return newItemSlotIdx;
+	// return newItemSlotIdx;
 }
 
 /*
