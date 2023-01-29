@@ -3,6 +3,7 @@
 #define BUFFER_MGR_C
 
 #include "MyDB_BufferManager.h"
+#include <iostream>
 #include <string>
 #include <unistd.h>	   // for lseek    off_t lseek(int filedes, off_t offset, int whence);
 #include <sys/types.h> // for lseek    off_t lseek(int filedes, off_t offset, SEEK_SET);
@@ -108,10 +109,11 @@ MyDB_BufferManager ::MyDB_BufferManager(size_t pageSize, size_t numPages, string
 	// open a tempfile with name: tempFile for anonymous page
 	string tempFilePath = "./" + tempFile;
 	int fd_tempFile = creat(tempFilePath.c_str(), S_IRUSR | S_IWUSR | S_IRGRP | S_IROTH);
-	if (fd_tempFile < 0) {
-        cout << "Unable to create " << tempFile << endl;
-        exit(EXIT_FAILURE);
-    }
+	if (fd_tempFile < 0)
+	{
+		cout << "Unable to create " << tempFile << endl;
+		exit(EXIT_FAILURE);
+	}
 }
 
 // when the page buffer is destroyed

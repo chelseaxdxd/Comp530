@@ -17,7 +17,7 @@ class MyDB_PageHandleBase
 
 public:
 	/* 指向page位子的pointer(先暫時用public)*/
-	Page_Map_Item *position;
+	Page *position;
 	// THESE METHODS MUST BE IMPLEMENTED WITHOUT CHANGING THE DEFINITION
 
 	// access the raw bytes in this page... if the page is not currently
