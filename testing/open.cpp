@@ -63,7 +63,6 @@ int main()
 
     fd = open(path, O_RDWR | O_APPEND);
     write(fd, "TTT", 3);
-
     close(fd);
 
     

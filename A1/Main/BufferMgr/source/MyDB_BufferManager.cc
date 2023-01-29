@@ -105,8 +105,13 @@ MyDB_BufferManager ::MyDB_BufferManager(size_t pageSize, size_t numPages, string
 	clockBuffer.assign(numPages, Page_Buffer_Item(pageSize));
 	clockArm = clockBuffer.begin();
 
-	// open a tempfile with this name for anonymous page
-	fd_tempFile = open(tempFile.c_str(), O_RDWR | (O_APPEND | O_CREAT) | O_FSYNC);
+	// open a tempfile with name: tempFile for anonymous page
+	string tempFilePath = "./" + tempFile;
+	int fd_tempFile = creat(tempFilePath.c_str(), S_IRUSR | S_IWUSR | S_IRGRP | S_IROTH);
+	if (fd_tempFile < 0) {
+        cout << "Unable to create " << tempFile << endl;
+        exit(EXIT_FAILURE);
+    }
 }
 
 // when the page buffer is destroyed
