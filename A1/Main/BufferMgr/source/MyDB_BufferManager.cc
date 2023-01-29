@@ -6,14 +6,14 @@
 #include <string>
 #include <unistd.h>	   // for lseek    off_t lseek(int filedes, off_t offset, int whence);
 #include <sys/types.h> // for lseek    off_t lseek(int filedes, off_t offset, SEEK_SET);
-#include <fcntl.h> // for open, write, read
+#include <fcntl.h>	   // for open, write, read
 
 using namespace std;
 
 MyDB_PageHandle MyDB_BufferManager ::getPage(MyDB_TablePtr whichTable, long i)
 {
+	map<pair<string, long>, Page_Map_Item>::iterator it;
 	it = MyDB_BufferManager::diskPageMap.find({whichTable, i});
-
 	// page not exist, store into buffer and return handle
 	if (it == MyDB_BufferManager::diskPageMap.end())
 	{
@@ -43,15 +43,33 @@ MyDB_PageHandle MyDB_BufferManager ::getPinnedPage(MyDB_TablePtr whichTable, lon
 	string tablename = whichTable.getName();
 	string loc = whichTable.getStorageLoc();
 	// create repoitory if not exists
-	mkdir(("./"+loc).c_str(), S_IRWXU | S_IRWXG | S_IROTH | S_IXOTH);
+	mkdir(("./" + loc).c_str(), S_IRWXU | S_IRWXG | S_IROTH | S_IXOTH);
 
-	// check tablename file existance
-	
-	
-	// page not exist, store into buffer, if unpin then pin it and return handle
+	// check tablename file existance,
+	// if it is the first time being called, create the table
 
-	// page exist in buffer, if unpin then pin it and return the handle
-	return nullptr;
+	// check DiskPageMap see if that table / page is in buffer
+	map<pair<string, long>, Page_Map_Item>::iterator it;
+	it = MyDB_BufferManager::diskPageMap.find({whichTable, i}); // make_pair(whichTable, i)
+
+	// page not exist, store into buffer
+	if (it == MyDB_BufferManager::diskPageMap.end())
+	{
+		// 還沒搬過來 loadbuffer function in clock_LRU
+		// 記得load完buffer要把更新的page存到map裡
+
+		// 結束後得到正確page object
+		it = MyDB_BufferManager::diskPageMap.find({whichTable, i}); // make_pair(whichTable, i)
+	}
+	// access buffer, if unpin then pin it, then make a handle
+	Page_Map_Item *tempPageItem = &(it->second);
+	tempPageItem->bufferItemPtr->isPinned = true;
+
+	// 有點不確定
+	MyDB_PageHandle tempHandle;
+	tempHandle->position = tempPageItem;
+
+	return tempHandle;
 }
 
 MyDB_PageHandle MyDB_BufferManager ::getPinnedPage()
@@ -74,9 +92,7 @@ MyDB_BufferManager ::MyDB_BufferManager(size_t pageSize, size_t numPages, string
 	clockArm = clockBuffer.begin();
 
 	// open a tempfile with this name for anonymous page
-	fd_tempFile = open(tempFile.c_str(),  O_RDWR | (O_APPEND | O_CREAT) | O_FSYNC);
-
-
+	fd_tempFile = open(tempFile.c_str(), O_RDWR | (O_APPEND | O_CREAT) | O_FSYNC);
 }
 
 // when the page buffer is destroyed
@@ -90,7 +106,7 @@ MyDB_BufferManager ::~MyDB_BufferManager()
 {
 	// delete [] headPagePtr;
 
-	// 
+	//
 	close(fd_tempFile);
 }
 

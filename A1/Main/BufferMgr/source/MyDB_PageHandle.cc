@@ -5,18 +5,21 @@
 #include <memory>
 #include "MyDB_PageHandle.h"
 
-void *MyDB_PageHandleBase :: getBytes () {
+void *MyDB_PageHandleBase ::getBytes()
+{
 	return nullptr;
 }
 
-void MyDB_PageHandleBase :: wroteBytes () {
+void MyDB_PageHandleBase ::wroteBytes()
+{
 
-	// flag dirty in buffer 
+	// flag dirty in buffer
 	//(that when we want to pass the data back to disk we know that it is dirty)
 }
 
-MyDB_PageHandleBase :: ~MyDB_PageHandleBase () {
+MyDB_PageHandleBase ::~MyDB_PageHandleBase()
+{
+	// remember to decrease reference cnt
 }
 
 #endif
-

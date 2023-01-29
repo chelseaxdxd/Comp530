@@ -61,15 +61,14 @@ public:
 	friend Page_Buffer_Item *reloadBufferItem(MyDB_TablePtr whichTable, long pageNum, bool isPinned, bool isAnony);
 
 private:
-	
-	/* IO */
+		/* IO */
 	int fd_tempFile;
 
 	// anonymous hash map
-	map<pair<long, long>, Page_Map_Item> anonyPageMap; // pair<table_name, page_num>
+	map<pair<string, long>, Page_Map_Item> anonyPageMap; // pair<table_name, page_num>
 
 	// non anonlymous hash map
-	map<pair<long, long>, Page_Map_Item> diskPageMap;
+	map<pair<string, long>, Page_Map_Item> diskPageMap;
 
 	/*ClockBuffer*/
 	long numPages; // number of pages managed by the buffer manager is numPages

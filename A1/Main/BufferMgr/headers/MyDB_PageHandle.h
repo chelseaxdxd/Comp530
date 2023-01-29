@@ -14,10 +14,10 @@ class MyDB_PageHandleBase
 
 	/* 新加的*/
 	// int pageNum;
-	/* 指向page位子的pointer*/
-	Page_Map_Item *position;
 
 public:
+	/* 指向page位子的pointer*/
+	Page_Map_Item *position;
 	// THESE METHODS MUST BE IMPLEMENTED WITHOUT CHANGING THE DEFINITION
 
 	// access the raw bytes in this page... if the page is not currently
