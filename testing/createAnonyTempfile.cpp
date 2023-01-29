@@ -1,7 +1,7 @@
 #include <iostream>
 #include <unistd.h> // for get_current_dir_name
 #include <bits/stdc++.h> // for strcat 
-#include <fcntl.h> // for create, write, read
+#include <fcntl.h> // for open mode
 using namespace std;
 
 int main()
@@ -23,24 +23,25 @@ int main()
         cout << "Unable to open " << tempFile << endl;
         exit(EXIT_FAILURE);
     }
-    cout << fd_tempFile << endl;
+    // cout << fd_tempFile << endl;
 
 
-    write(fd_tempFile, "012", 3);
+    write(fd_tempFile, "0123456789ABCDEFGHIJKLMNOPQRSTUVWXYZ", 36);
     close(fd_tempFile);
 
-    fd_tempFile = open(tempFile.c_str(), O_RDWR | O_APPEND);
-    write(fd_tempFile, "34567", 5);
-    close(fd_tempFile);
+    // fd_tempFile = open(tempFile.c_str(), O_RDWR | O_APPEND);
+    // write(fd_tempFile, "ABCDEFGHIJ", 10);
+    // close(fd_tempFile);
 
-    fd_tempFile = open(tempFile.c_str(), O_RDWR);
-    lseek(fd_tempFile, 10, SEEK_CUR); // open idx 0 + 10 =  start from 11
-    write(fd_tempFile, "DDD", 3);
-    lseek(fd_tempFile, 15, SEEK_CUR); // last insert DDD end at 13 + 15 = start from 28
-    write(fd_tempFile, "GGG", 3);
-    lseek(fd_tempFile, 20, SEEK_SET);
-    write(fd_tempFile, "HHH", 3);
-    close(fd_tempFile);
+    // fd_tempFile = open(tempFile.c_str(), O_RDWR);
+    // lseek(fd_tempFile, 5, SEEK_CUR); 
+    // write(fd_tempFile, "AAAAA", 5);
+    // lseek(fd_tempFile, 5, SEEK_CUR); 
+    // write(fd_tempFile, "BBBBB", 5);
+    // lseek(fd_tempFile, 30, SEEK_SET);
+    // write(fd_tempFile, "CCCCC", 5);
+    // close(fd_tempFile);
+
 
 }
 
