@@ -61,7 +61,10 @@ public:
 	friend Page_Buffer_Item *reloadBufferItem(MyDB_TablePtr whichTable, long pageNum, bool isPinned, bool isAnony);
 
 private:
-	// Clock_LRU pageBuffer;//將內容放進來了
+	
+	/* IO */
+	int fd_tempFile;
+
 	// anonymous hash map
 	map<pair<long, long>, Page_Map_Item> anonyPageMap; // pair<table_name, page_num>
 
