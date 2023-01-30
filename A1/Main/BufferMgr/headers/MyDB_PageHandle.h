@@ -3,6 +3,7 @@
 #define PAGE_HANDLE_H
 
 #include <memory> // for shared_ptr
+#include "MyDB_BufferManager.h"
 
 // page handles are basically smart pointers
 using namespace std;

@@ -10,8 +10,10 @@
 #include <utility> //pair
 
 using namespace std;
-struct Page
+// struct Page
+class Page
 {
+public:
 	long pageNum;
 	Page_Buffer_Item *bufferItemPtr = NULL;
 	int refCnt = 0;
@@ -64,25 +66,22 @@ private:
 	/* IO */
 	int fd_tempFile;
 
+	/* Page Map */
 	// anonymous hash map
 	map<pair<string, long>, Page> anonyPageMap; // pair<table_name, page_num>
-	// anonymous file evict but still has handle
-	// need to store to tempfile
-	// the seq no for each page
+	// anonymous file evict but still has handle, need to store to tempfile
 	// 要想一下如果要刪掉時，空的地方怎麼辦
-	int anonySeq;
-
+	int anonySeq; // the seq no for each page
 	// non anonlymous hash map
 	map<pair<string, long>, Page> diskPageMap;
 	
 
-
 	/*ClockBuffer*/
 	long numPages; // number of pages managed by the buffer manager is numPages
-
 	vector<Page_Buffer_Item> clockBuffer; // buffPagePoo -> clockBuffer
-
 	vector<Page_Buffer_Item>::iterator clockArm; // clock arm currently points to // currBuffPageIdx -> curClockIdx
+
+
 
 	// name updateData -> updateBufferItem
 	void updateBufferItem(*Page_Buffer_Item buffItemPtr, long pageNum, bool isPinned, bool isDirty, bool isAnony, bool acedBit);

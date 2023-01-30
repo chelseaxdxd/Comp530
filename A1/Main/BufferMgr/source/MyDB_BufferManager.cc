@@ -2,7 +2,7 @@
 #ifndef BUFFER_MGR_C
 #define BUFFER_MGR_C
 
-#include "MyDB_BufferManager.h"
+// #include "Page_Map_Item.h"
 #include <iostream>
 #include <string>
 #include <unistd.h>	   // for lseek    off_t lseek(int filedes, off_t offset, int whence);
@@ -117,6 +117,7 @@ MyDB_PageHandle MyDB_BufferManager ::getPinnedPage()
 
 void MyDB_BufferManager ::unpin(MyDB_PageHandle unpinMe)
 {
+	unpinMe->position->bufferItemPtr->isPinned = true;
 }
 
 MyDB_BufferManager ::MyDB_BufferManager(size_t pageSize, size_t numPages, string tempFile)
@@ -136,7 +137,7 @@ MyDB_BufferManager ::MyDB_BufferManager(size_t pageSize, size_t numPages, string
 	}
 
 	// anonymous save page sequence number
-	anonyseq = 0;
+	anonySeq = 0;
 }
 
 // when the page buffer is destroyed
@@ -173,18 +174,29 @@ void MyDB_BufferManager ::updatePagedata(Page_Buffer_Item *buffItemPtr, vector<c
 // when Clock_LRU needs to evict page, store the dirty data to disk
 void MyDB_BufferManager ::bufferToDisk(MyDB_TablePtr whichTable, long pageNum, bool isPinned, bool isAnony)
 {
-	// set acedbit to True
-
 	// clockArm++
+
+	// set acedbit to false// 只是evict應該不用 set acedBit?
+
+	// storet back to disk
 
 	// update map, set map[pageNum].bufferItemPtr = nullptr
 }
 
 // load data from disk to buffer
-bool MyDB_BufferManager ::diskToBuffer(long ItemSlotIdx, MyDB_TablePtr whichTable, long pageNum){
+bool MyDB_BufferManager ::diskToBuffer(long ItemSlotIdx, MyDB_TablePtr whichTable, long pageNum)
+{
+	// 可能不用開檔，因為檔沒有關
 	ofstream myFile.open(
-		"./" + whichTable.getStorageLoc() + "/" + whichTable.getName())}
+		"./" + whichTable.getStorageLoc() + "/" + whichTable.getName())
+	
+	// isDirty == false
 
+	// load data
+	
+}
+
+// void MyDB_BufferManager ::clockarmGetSpace()
 vector<Page_Buffer_Item>::iterator MyDB_BufferManager ::clockarmGetSpace()
 {
 	// clock arm movement
@@ -217,16 +229,17 @@ vector<Page_Buffer_Item>::iterator MyDB_BufferManager ::clockarmGetSpace()
 				// save to a temp file
 
 				// disk: update disk page
+				MyDB_BufferManager ::bufferToDisk()
 			}
 			//(*clockArm).acedBit = true;
 
 			// return index of available item slot
 			// then increment the index;
-			return clockArm++;
+			// return clockArm++;
 		}
 		// when arm point to a setted item, unset & move arm to next item slot
 		(*clockArm).acedBit = false;
-		clockArm++;
+		// clockArm++; 
 	}
 }
 
@@ -238,8 +251,11 @@ void reloadBufferItem(MyDB_TablePtr whichTable, long pageNum, bool isPinned, boo
 	clockarmGetSpace();
 	// load data from disk to buffer
 	MyDB_BufferManager::bufferToDisk(whichTable, pageNum, isPinned, isAnony);
+	MyDB_BufferManager::diskToBuffer() // ?????
 
-	// return which slotIdx the page is loaded
+	// set acedBit to true
+
+	// return which slotIdx the page is loaded: use the clockArm
 	// return newItemSlotIdx;
 }
 
