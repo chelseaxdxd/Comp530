@@ -18,17 +18,45 @@ int main()
         exit(EXIT_FAILURE);
     }
     write(fd_tempFile, "0123456789ABCDEFGHIJKLMNOPQRSTUVWXYZ", 36);
-    // close(fd_tempFile);
+    close(fd_tempFile);
 
 
-    // fd_tempFile = open(tempFilePath.c_str(), O_RDWR);
-    // char buff[37];
-    char * buff;
+    fd_tempFile = open(tempFilePath.c_str(), O_RDWR | O_FSYNC);
+    char buff[10];
+    char * buff2;
     lseek(fd_tempFile, 0, SEEK_SET);
-    int read_bytes = read(fd_tempFile,buff,36);
-
+    int read_bytes = read(fd_tempFile,buff,10);
+    // buff[read_bytes] = '\0';
+    
     cout << "read_bytes: " << read_bytes << endl;
     cout << buff << endl;
+    cout << &buff << endl;
+
+    buff2 = buff;
+    cout << "buff2:" << buff2 << endl;
+    cout << &buff2 << endl;
+
+    // lseek
+    lseek(fd_tempFile, 10, SEEK_SET);
+    read_bytes = read(fd_tempFile,buff,10);
+    cout << "read_bytes: " << read_bytes << endl;
+    cout << buff << endl;
+    cout << &buff << endl;
+
+    buff2 = buff;
+    cout << "buff2:" << buff2 << endl;
+    cout << &buff2 << endl;
+    close(fd_tempFile);
+
+    //////
+    fd_tempFile = open(tempFilePath.c_str(), O_RDWR | O_FSYNC);
+    lseek(fd_tempFile, 20, SEEK_SET);
+    read_bytes = read(fd_tempFile,buff,10);
+    // buff[read_bytes] = '\0';
+    
+    cout << "read_bytes: " << read_bytes << endl;
+    cout << buff << endl;
+    cout << &buff << endl;
 
 
 
