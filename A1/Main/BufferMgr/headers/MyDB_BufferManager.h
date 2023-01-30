@@ -66,9 +66,16 @@ private:
 
 	// anonymous hash map
 	map<pair<string, long>, Page> anonyPageMap; // pair<table_name, page_num>
+	// anonymous file evict but still has handle
+	// need to store to tempfile
+	// the seq no for each page
+	// 要想一下如果要刪掉時，空的地方怎麼辦
+	int anonySeq;
 
 	// non anonlymous hash map
 	map<pair<string, long>, Page> diskPageMap;
+	
+
 
 	/*ClockBuffer*/
 	long numPages; // number of pages managed by the buffer manager is numPages
@@ -90,7 +97,7 @@ private:
 	bool diskToBuffer(long ItemSlotIdx, MyDB_TablePtr whichTable, long pageNum);
 
 	//
-	vector<Page_Buffer_Item>::iterator getBufferItemSpace();
+	vector<Page_Buffer_Item>::iterator clockarmGetSpace();
 };
 
 #endif

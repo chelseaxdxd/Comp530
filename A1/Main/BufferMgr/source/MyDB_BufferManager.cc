@@ -34,6 +34,7 @@ MyDB_PageHandle MyDB_BufferManager ::getPage()
 {
 	// find an unpin or pinned anonymous page in buffer, return handle
 
+
 	// an anonymous page not existin buffer, create an anonlymous(temp) page,return the handle
 	return nullptr;
 }
@@ -78,7 +79,7 @@ MyDB_PageHandle MyDB_BufferManager ::getPinnedPage(MyDB_TablePtr whichTable, lon
 
 	// access buffer, if unpin then pin it, then make a handle
 	Page *tempPagePtr = &(it->second);
-	// tempPagePtr->bufferItemPtr->isPinned = true;
+	tempPagePtr->bufferItemPtr->isPinned = true;
 
 	// 有點不確定
 	MyDB_PageHandle tempHandle;
@@ -89,10 +90,29 @@ MyDB_PageHandle MyDB_BufferManager ::getPinnedPage(MyDB_TablePtr whichTable, lon
 
 MyDB_PageHandle MyDB_BufferManager ::getPinnedPage()
 {
-	// find an anonymous pinned page in buffer, return handle
+	// find a PageBufferItemSpace, the clockArm points to the available bufferItem Space
+	clockarmGetSpace()
+	
+	// create page to anonyPageMap
+	// the disk(tempfile) is fd_tempfile, anonySeq keep the track of current anonymous page
+	// anonySeq 不一定會用到，除非evict 且有handle 時才會存進去
+	// 可以想想一下是不是evict 時才放這個 anonySeq
+	// 要怎麼回收anonySeq? 大部分可能都用不到？
+	map<pair<string, long>, Page>::iterator it;
+	MyDB_BufferManager::anonyPageMap[make_pair(fd_tempFile, anonySeq)] = Page(anonySeq, clockArm, refCnt++);
+	it = MyDB_BufferManager::anonyPageMap.find({fd_tempFile, anonySeq});
+	anonySeq++;
 
-	// an anonymous pinned page not existin buffer, create an anonlymous(temp) page, pin it, and return the handle
-	return nullptr;
+	// access buffer, if unpin then pin it, then make a handle
+	Page *tempPagePtr = &(it->second);
+	tempPagePtr->bufferItemPtr->isPinned = true;
+	
+	
+	// 有點不確定
+	MyDB_PageHandle tempHandle;
+	tempHandle->position = tempPagePtr;
+
+	return tempHandle;
 }
 
 void MyDB_BufferManager ::unpin(MyDB_PageHandle unpinMe)
@@ -108,12 +128,15 @@ MyDB_BufferManager ::MyDB_BufferManager(size_t pageSize, size_t numPages, string
 
 	// open a tempfile with name: tempFile for anonymous page
 	string tempFilePath = "./" + tempFile;
-	int fd_tempFile = creat(tempFilePath.c_str(), S_IRUSR | S_IWUSR | S_IRGRP | S_IROTH);
+	fd_tempFile = creat(tempFilePath.c_str(), S_IRUSR | S_IWUSR | S_IRGRP | S_IROTH);
 	if (fd_tempFile < 0)
 	{
 		cout << "Unable to create " << tempFile << endl;
 		exit(EXIT_FAILURE);
 	}
+
+	// anonymous save page sequence number
+	anonyseq = 0;
 }
 
 // when the page buffer is destroyed
