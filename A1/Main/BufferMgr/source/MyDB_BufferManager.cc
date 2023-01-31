@@ -256,18 +256,47 @@ void MyDB_BufferManager ::updatePagedata(Page_Buffer_Item *buffItemPtr, vector<c
 */
 
 // when Clock_LRU needs to evict page, store the dirty data to disk
-void MyDB_BufferManager ::bufferToDisk(MyDB_TablePtr whichTable, long pageNum, bool isPinned, bool isAnony)
+void MyDB_BufferManager ::bufferToDisk(Page_Buffer_Item *bufferItem, long pageNum, bool isPinned, bool isAnony)
 {
-	// set acedbit to True
+	// store data on dis loc/tablename
+	string loc = bufferitem->whichTable->getStorageLoc();
+	string tablename = bufferitem->whichTable->getName();
+	string diskFilePath = "./" + loc + "/" + tablename;
+	vector<char> data = bufferitem->PageData;
 
-	// clockArm++
+	// open disk
+	// fd_disk = open(diskFilePath.c_str(), O_CREAT | O_RDWR, 0666); //@@@O_CREAT到底是？？
+	fd_disk = open(diskFilePath.c_str(), O_RDWR | O_FSYNC, 0666);
+	if (fd_disk < 0)
+	{
+		cout << "bufferToDisk Unable to open " << diskFilePath << endl;
+		exit(1);
+	}
 
-	// update map, set map[pageNum].bufferItemPtr = nullptr
+	char *writeByte = &data[0];
+
+	// store back to disk
+	lseek(fd_disk, pageSize * (pageNum - 1), SEEK_SET);
+	int size = write(fd_disk, writeByte, pageSize);
+
+	close(fd_disk);
+
+	// update map to null
+	if (isAnony)
+	{
+		anonyPageMap[pageNum].bufferItemPtr = nullptr;
+	}
+	else
+	{
+		diskPageMap[make_pair(tablename, pageNum)] = nullptr;
+	}
 }
 
 // non anonymous: load data from table in disk to buffer
-Page_Buffer_Item *MyDB_BufferManager ::diskToBuffer(string loc, string tablename, long pageNum)
+Page_Buffer_Item *MyDB_BufferManager ::diskToBuffer(MyDB_TablePtr whichTable, long pageNum)
 {
+	string loc = whichTable->getStorageLoc();
+	string tablename = whichTable->getName();
 	string diskFilePath = "./" + loc + "/" + tablename;
 	// fd_disk = open(diskFilePath.c_str(), O_CREAT | O_RDWR, 0666);
 	fd_disk = open(diskFilePath.c_str(), O_RDWR | O_FSYNC, 0666);
@@ -349,7 +378,7 @@ vector<Page_Buffer_Item>::iterator MyDB_BufferManager ::clockarmGetSpace()
 Page_Buffer_Item *reloadFromDisk(MyDB_TablePtr whichTable, long pageNum)
 {
 	// load data from disk to buffer
-	return bufferToDisk(whichTable->getStorageLoc(), whichTable->getName(), pageNum);
+	return diskToBuffer(whichTable->getStorageLoc(), whichTable->getName(), pageNum);
 }
 // anonymous: load data from tempfile in disk to buffer
 Page_Buffer_Item *reloadTempFile(long slot)

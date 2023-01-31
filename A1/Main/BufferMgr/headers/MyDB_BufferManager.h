@@ -92,7 +92,7 @@ private:
 	void bufferToDisk(long ItemSlotIdx, MyDB_TablePtr whichTable, long pageNum, bool isPinned, bool isAnony);
 
 	// non anonymous: load data from table in disk to buffer
-	Page_Buffer_Item *diskToBuffer(string loc, string tablename, long pageNum);
+	Page_Buffer_Item *diskToBuffer(MyDB_TablePtr whichTable, long pageNum);
 
 	// anonymous: load data from tempfile in disk to buffer
 	Page_Buffer_Item *tempFileToBuffer(long slot);
