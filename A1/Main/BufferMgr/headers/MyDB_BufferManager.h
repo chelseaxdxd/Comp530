@@ -10,14 +10,7 @@
 #include <utility> //pair
 
 using namespace std;
-// struct Page
-class Page
-{
-public:
-	long pageNum;
-	Page_Buffer_Item *bufferItemPtr = NULL;
-	int refCnt = 0;
-};
+
 
 class MyDB_BufferManager
 {
@@ -65,6 +58,7 @@ public:
 private:
 	/* IO */
 	int fd_tempFile;
+	int fd_disk;
 
 	/* Page Map */
 	// anonymous hash map
@@ -78,16 +72,17 @@ private:
 
 	/*ClockBuffer*/
 	long numPages; // number of pages managed by the buffer manager is numPages
+	size_t pageSize;
 	vector<Page_Buffer_Item> clockBuffer; // buffPagePoo -> clockBuffer
 	vector<Page_Buffer_Item>::iterator clockArm; // clock arm currently points to // currBuffPageIdx -> curClockIdx
 
 
 
 	// name updateData -> updateBufferItem
-	void updateBufferItem(*Page_Buffer_Item buffItemPtr, long pageNum, bool isPinned, bool isDirty, bool isAnony, bool acedBit);
+	void updateBufferItem(Page_Buffer_Item * buffItemPtr, long pageNum, bool isPinned, bool isDirty, bool isAnony, bool acedBit);
 
 	// Update pageData
-	void updatePagedata(*Page_Buffer_Item buffItemPtr, vector<char> newPageData);
+	void updatePagedata(Page_Buffer_Item * buffItemPtr, vector<char> newPageData);
 
 	// when Clock_LRU needs to evict page, store the dirty data to disk
 	void bufferToDisk(long ItemSlotIdx, MyDB_TablePtr whichTable, long pageNum, bool isPinned, bool isAnony);

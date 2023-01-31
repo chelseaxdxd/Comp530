@@ -4,11 +4,19 @@
 
 #include <memory> // for shared_ptr
 #include "MyDB_BufferManager.h"
+#include "Page_Buffer_Item.h"
 
 // page handles are basically smart pointers
 using namespace std;
 class MyDB_PageHandleBase;
 typedef shared_ptr<MyDB_PageHandleBase> MyDB_PageHandle;
+
+struct Page
+{
+	long pageNum;
+	Page_Buffer_Item *bufferItemPtr = NULL;
+	int refCnt;
+};
 
 class MyDB_PageHandleBase
 {

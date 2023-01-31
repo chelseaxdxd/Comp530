@@ -15,7 +15,7 @@ void MyDB_PageHandleBase ::wroteBytes()
 {
 
 	// flag dirty in buffer
-	(*(MyDB_PageHandleBase::position->bufferItemPtr)).isDirty = true;
+	(*(MyDB_PageHandlecBase::position->bufferItemPtr)).isDirty = true;
 	//(that when we want to pass the data back to disk we know that it is dirty)
 }
 

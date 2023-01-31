@@ -2,6 +2,7 @@
 #define PAGE_BUFFER_ITEM_H
 
 #include <vector>
+#include "MyDB_Table.h"
 using namespace std;
 
 class Page_Buffer_Item
