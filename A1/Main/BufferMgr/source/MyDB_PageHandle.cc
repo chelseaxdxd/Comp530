@@ -52,12 +52,12 @@ MyDB_PageHandleBase ::~MyDB_PageHandleBase()
 Page_Buffer_Item *MyDB_PageHandleBase ::reloadFromDisk(string tablePath, long pageNum)
 {
 	// load data from disk to buffer
-	return diskToBuffer(tablePath, pageNum);
+	return position->bm->diskToBuffer(tablePath, pageNum);
 }
 // anonymous: load data from tempfile in disk to buffer
 Page_Buffer_Item *MyDB_PageHandleBase ::reloadTempFile(long slot)
 {
-	return tempFileToBuffer(slot);
+	return position->bm->tempFileToBuffer(slot);
 }
 
 #endif

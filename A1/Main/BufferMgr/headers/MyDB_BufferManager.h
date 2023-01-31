@@ -61,7 +61,8 @@ private:
 	/*ClockBuffer*/
 
 	// number of pages managed by the buffer manager
-	size_t pageSize long numPages;
+	size_t pageSize;
+	long numPages;
 
 	vector<Page_Buffer_Item> clockBuffer;
 
