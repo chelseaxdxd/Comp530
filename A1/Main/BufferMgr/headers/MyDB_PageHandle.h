@@ -11,6 +11,8 @@ typedef shared_ptr<MyDB_PageHandleBase> MyDB_PageHandle;
 
 struct Page
 {
+	bool isAnony;
+	string tablePath = "";
 	long pageNum;
 	Page_Buffer_Item *bufferItemPtr = nullptr;
 	int refCnt;
@@ -35,6 +37,8 @@ public:
 	// will never be written to disk.
 	void wroteBytes();
 
+	Page_Buffer_Item *reloadFromDisk(string tablePath, long pageNum);
+	Page_Buffer_Item *reloadTempFile(long slot);
 	// There are no more references to the handle when this is called...
 	// this should decrmeent a reference count to the number of handles
 	// to the particular page that it references.  If the number of

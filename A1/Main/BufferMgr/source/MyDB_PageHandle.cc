@@ -12,7 +12,7 @@ void *MyDB_PageHandleBase ::getBytes()
 	{
 		// @@@reload from disk
 	}
-	char *pageDataPtr = &((*(position->bufferItemPtr)).pageData[0]);
+	char *pageDataPtr = &(position->bufferItemPtr->pageData[0]);
 	return pageDataPtr;
 }
 
@@ -20,7 +20,7 @@ void MyDB_PageHandleBase ::wroteBytes()
 {
 
 	// flag dirty in buffer
-	(*(position->bufferItemPtr)).isDirty = true;
+	position->bufferItemPtr->isDirty = true;
 	//(that when we want to pass the data back to disk we know that it is dirty)
 }
 
@@ -32,9 +32,23 @@ MyDB_PageHandleBase ::~MyDB_PageHandleBase()
 	// if no handle to this buffer than evict
 	if ((position)->refCnt == 0)
 	{
-		destructBufferItem(*position);
-		// @@@anony 要刪掉在map裡的該page，但不做也沒關係？可以做成map背call到的時候檢查有沒有空的就刪？但效率好像很差
+		position->bufferItemPtr->acedBit = false;
+		position->bufferItemPtr->isDirty = false;
+		// destructBufferItem(*position);
+		//  @@@anony 要刪掉在map裡的該page，但不做也沒關係？可以做成map背call到的時候檢查有沒有空的就刪？但效率好像很差
 	}
+}
+// (1) buffMgr wants page i, and finds it's not in buffer (points to NULL)
+// (2) first time load data to pageItem & map
+Page_Buffer_Item *MyDB_PageHandleBase ::reloadFromDisk(string tablePath, long pageNum)
+{
+	// load data from disk to buffer
+	return diskToBuffer(tablePath, pageNum);
+}
+// anonymous: load data from tempfile in disk to buffer
+Page_Buffer_Item *MyDB_PageHandleBase ::reloadTempFile(long slot)
+{
+	return tempFileToBuffer(slot);
 }
 
 #endif

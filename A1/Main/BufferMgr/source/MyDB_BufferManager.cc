@@ -17,6 +17,7 @@ MyDB_PageHandle MyDB_BufferManager ::getPage(MyDB_TablePtr whichTable, long i)
 	// get tablename and loc from my MyDB_TablePtr
 	string loc = whichTable->getStorageLoc();
 	string tablename = whichTable->getName();
+	string tablePath = ("./" + loc + "/" + tablename).c_str();
 
 	/* only do at first time, create repository and table if not exist*/
 	set<string>::iterator iterLoc = tableLocations.find(loc);
@@ -30,7 +31,6 @@ MyDB_PageHandle MyDB_BufferManager ::getPage(MyDB_TablePtr whichTable, long i)
 
 	if ((iterLoc == tableNames.end()))
 	{
-		string tablePath = ("./" + loc + "/" + tablename).c_str();
 		int fd_tablePath = open(tablePath.c_str(), O_CREAT | O_RDWR, 0666);
 		if (fd_tablePath < 0)
 		{
@@ -47,25 +47,25 @@ MyDB_PageHandle MyDB_BufferManager ::getPage(MyDB_TablePtr whichTable, long i)
 	3. in map: no need to change map
 	*/
 	map<pair<string, long>, Page>::iterator iterMap;
-	iterMap = diskPageMap.find(make_pair(whichTable, i));
+	iterMap = diskPageMap.find(make_pair(tablePath, i));
 
 	// 1. page not in map
 	if (iterMap == diskPageMap.end())
 	{
 		// get data from disk to buffer
-		Page_Buffer_Item *tempBufferItemPtr = diskToBuffer(loc, tablename, i);
+		Page_Buffer_Item *tempBufferItemPtr = diskToBuffer(tablePath, i);
 
 		// create a page pointing to buffer item and insert to map
-		diskPageMap[make_pair(whichTable, i)] = Page(i, tempBufferItemPtr, 0);
+		diskPageMap[make_pair(tablePath, i)] = Page(false, tablePath, i, tempBufferItemPtr, 0);
 
 		// get page obj
-		iterMap = diskPageMap.find(make_pair(whichTable, i)); // {whichTable, i}
+		iterMap = diskPageMap.find(make_pair(tablePath, i)); // {whichTable, i}
 	}
 	// 2. key in map, but page points to null
 	else if (iterMap->second.bufferItemPtr == nullptr)
 	{
 		// get data from disk to buffer
-		Page_Buffer_Item *tempBufferItemPtr = diskToBuffer(loc, tablename, i);
+		Page_Buffer_Item *tempBufferItemPtr = diskToBuffer(tablePath, i);
 		iterMap->second.bufferItemPtr = tempBufferItemPtr;
 	}
 
@@ -88,7 +88,7 @@ MyDB_PageHandle MyDB_BufferManager ::getPage()
 
 	clockarmGetSpace(); // we don't call diskToBuffer cuz we don't need to, but we still need a place to store clockArm
 
-	anonyPageMap[anonySeq] = Page(anonySeq, clockArm, 1);
+	anonyPageMap[anonySeq] = Page(true, "", anonySeq, clockArm, 1);
 
 	// make handle
 	Page *tempPagePtr = &(anonyPageMap[anonySeq]);
@@ -104,6 +104,7 @@ MyDB_PageHandle MyDB_BufferManager ::getPinnedPage(MyDB_TablePtr whichTable, lon
 	// get tablename and loc from my MyDB_TablePtr
 	string loc = whichTable->getStorageLoc();
 	string tablename = whichTable->getName();
+	string tablePath = ("./" + loc + "/" + tablename).c_str();
 
 	/* only do at first time, create repository and table if not exist*/
 	set<string>::iterator iterLoc = tableLocations.find(loc);
@@ -117,7 +118,6 @@ MyDB_PageHandle MyDB_BufferManager ::getPinnedPage(MyDB_TablePtr whichTable, lon
 
 	if ((iterLoc == tableNames.end()))
 	{
-		string tablePath = ("./" + loc + "/" + tablename).c_str();
 		int fd_tablePath = open(tablePath.c_str(), O_CREAT | O_RDWR | O_FSYNC, 0666);
 		if (fd_tablePath < 0)
 		{
@@ -134,25 +134,25 @@ MyDB_PageHandle MyDB_BufferManager ::getPinnedPage(MyDB_TablePtr whichTable, lon
 	3. in map: no need to change map
 	*/
 	map<pair<string, long>, Page>::iterator iterMap;
-	iterMap = diskPageMap.find(make_pair(whichTable, i));
+	iterMap = diskPageMap.find(make_pair(tablePath, i));
 
 	// 1. page not in map
 	if (iterMap == diskPageMap.end())
 	{
 		// get data from disk to buffer
-		Page_Buffer_Item *tempBufferItemPtr = diskToBuffer(loc, tablename, i);
+		Page_Buffer_Item *tempBufferItemPtr = diskToBuffer(tablePath, i);
 
 		// create a page pointing to buffer item and insert to map
-		diskPageMap[make_pair(whichTable, i)] = Page(i, tempBufferItemPtr, 0);
+		diskPageMap[make_pair(tablePath, i)] = Page(false, tablePath, i, tempBufferItemPtr, 0);
 
 		// get page obj
-		iterMap = diskPageMap.find(make_pair(whichTable, i)); // {whichTable, i}
+		iterMap = diskPageMap.find(make_pair(tablePath, i)); // {whichTable, i}
 	}
 	// 2. key in map, but page points to null
 	else if (iterMap->second.bufferItemPtr == nullptr)
 	{
 		// get data from disk to buffer
-		Page_Buffer_Item *tempBufferItemPtr = diskToBuffer(loc, tablename, i);
+		Page_Buffer_Item *tempBufferItemPtr = diskToBuffer(tablePath, i);
 		iterMap->second.bufferItemPtr = tempBufferItemPtr;
 	}
 
@@ -179,7 +179,7 @@ MyDB_PageHandle MyDB_BufferManager ::getPinnedPage()
 	*/
 	clockarmGetSpace(); // we don't call diskToBuffer cuz we don't need to, but we still need a place to store clockArm
 
-	anonyPageMap[anonySeq] = Page(anonySeq, clockArm, 1);
+	anonyPageMap[anonySeq] = Page(true, "", anonySeq, clockArm, 1);
 
 	// access buffer, if unpin then pin it
 	//@@@如果可pin值還夠的話
@@ -281,16 +281,13 @@ void MyDB_BufferManager ::bufferToDisk(Page_Buffer_Item *bufferItem)
 }
 
 // non anonymous: load data from table in disk to buffer
-Page_Buffer_Item *MyDB_BufferManager ::diskToBuffer(MyDB_TablePtr whichTable, long pageNum)
+Page_Buffer_Item *MyDB_BufferManager ::diskToBuffer(string tablePath, long pageNum)
 {
-	string loc = whichTable->getStorageLoc();
-	string tablename = whichTable->getName();
-	string diskFilePath = "./" + loc + "/" + tablename;
 	// fd_disk = open(diskFilePath.c_str(), O_CREAT | O_RDWR, 0666);
-	fd_disk = open(diskFilePath.c_str(), O_RDWR | O_FSYNC, 0666);
+	fd_disk = open(tablePath.c_str(), O_RDWR | O_FSYNC, 0666);
 	if (fd_disk < 0)
 	{
-		cout << "diskToBuffer Unable to open " << diskFilePath << endl;
+		cout << "diskToBuffer Unable to open " << tablePath << endl;
 		exit(1);
 	}
 
@@ -309,6 +306,29 @@ Page_Buffer_Item *MyDB_BufferManager ::diskToBuffer(MyDB_TablePtr whichTable, lo
 	buff[size] = '\0';
 	cout << buff << endl;
 	for (int i = 0; i < pageSize; i++)
+	{
+		cout << clockArm->pageData[i];
+	}
+
+	return clockArm;
+}
+Page_Buffer_Item *MyDB_BufferManager ::tempFileToBuffer(long slot)
+{
+	clockarmGetSpace();
+	char *readByte[pageSize];
+	lseek(fd_tempFile, pageSize * (pageNum - 1), SEEK_SET);
+	int size = read(fd_tempFile, readByte, pageSize);
+
+	clockArm->pageData.assign(readByte, readByte + pageSize);
+	close(fd_tempFile);
+
+	/* for debug */
+	cout << "size:" << size << " pageSize" << slot << endl;
+
+	char *buff = readByte;
+	buff[size] = '\0';
+	cout << buff << endl;
+	for (int i = 0; i < slot; i++)
 	{
 		cout << clockArm->pageData[i];
 	}
@@ -352,30 +372,9 @@ vector<Page_Buffer_Item>::iterator MyDB_BufferManager ::clockarmGetSpace()
 	}
 }
 
-// (1) buffMgr wants page i, and finds it's not in buffer (points to NULL)
-// (2) first time load data to pageItem & map
-Page_Buffer_Item *reloadFromDisk(MyDB_TablePtr whichTable, long pageNum)
-{
-	// load data from disk to buffer
-	return diskToBuffer(whichTable->getStorageLoc(), whichTable->getName(), pageNum);
-}
-// anonymous: load data from tempfile in disk to buffer
-Page_Buffer_Item *reloadTempFile(long slot)
-{
-	return nullptr;
-}
 
-void destructBufferItem(Page p)
-{
-	// isDirty
-	// @@@non anony
-	//  @@@if isDirty == true   call buffer to disk(friend function?)
-	// @@@delete buffer
 
-	// @@@anony
-	//  @@@delte that buffer
-	//  isDirty == false
-}
+
 
 /*
 // buffMgr wants to update data in buffer i (points to page i)

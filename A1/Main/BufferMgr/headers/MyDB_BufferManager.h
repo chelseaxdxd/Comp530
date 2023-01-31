@@ -51,9 +51,9 @@ public:
 	~MyDB_BufferManager();
 
 	// FEEL FREE TO ADD ADDITIONAL PUBLIC METHODS
-	friend Page_Buffer_Item *reloadFromDisk(MyDB_TablePtr whichTable, long pageNum);
-	friend Page_Buffer_Item *reloadTempFile(long slot);
-	friend void destructBufferItem(Page p);
+	friend Page_Buffer_Item *MyDB_PageHandleBase::reloadFromDisk(string tablePath, long pageNum);
+	friend Page_Buffer_Item *MyDB_PageHandleBase::reloadTempFile(long slot);
+	// friend void destructBufferItem(Page p);
 
 private:
 	/*可能需要*/
@@ -84,7 +84,7 @@ private:
 	void bufferToDisk(Page_Buffer_Item *bufferItem);
 
 	// non anonymous: load data from table in disk to buffer
-	Page_Buffer_Item *diskToBuffer(MyDB_TablePtr whichTable, long pageNum);
+	Page_Buffer_Item *diskToBuffer(string tablePath, long pageNum);
 
 	// anonymous: load data from tempfile in disk to buffer
 	Page_Buffer_Item *tempFileToBuffer(long slot);
