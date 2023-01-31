@@ -7,10 +7,19 @@
 
 void *MyDB_PageHandleBase ::getBytes()
 {
+	Page_Buffer_Item *tempItemPtr;
 	// check if data still in buffer
 	if (position->bufferItemPtr == nullptr)
 	{
-		// @@@reload from disk
+		if (position->isAnony)
+		{
+			tempItemPtr = reloadTempFile(position->pageNum);
+		}
+		else
+		{
+			tempItemPtr = reloadFromDisk(position->tablePath, position->pageNum);
+		}
+		position->bufferItemPtr = tempItemPtr;
 	}
 	char *pageDataPtr = &(position->bufferItemPtr->pageData[0]);
 	return pageDataPtr;

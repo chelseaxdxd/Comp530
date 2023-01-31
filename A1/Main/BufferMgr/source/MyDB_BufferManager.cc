@@ -225,9 +225,6 @@ MyDB_BufferManager ::MyDB_BufferManager(size_t pageSize, size_t numPages, string
 // |-- no handle: delete
 MyDB_BufferManager ::~MyDB_BufferManager()
 {
-	// delete [] headPagePtr;
-
-	//
 	close(fd_tempFile);
 }
 
@@ -371,10 +368,6 @@ vector<Page_Buffer_Item>::iterator MyDB_BufferManager ::clockarmGetSpace()
 		clockArm++;
 	}
 }
-
-
-
-
 
 /*
 // buffMgr wants to update data in buffer i (points to page i)
