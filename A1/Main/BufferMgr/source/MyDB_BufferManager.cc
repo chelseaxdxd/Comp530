@@ -8,79 +8,166 @@
 #include <unistd.h>	   // for lseek    off_t lseek(int filedes, off_t offset, int whence);
 #include <sys/types.h> // for lseek    off_t lseek(int filedes, off_t offset, SEEK_SET);
 #include <fcntl.h>	   // for open, write, read
+#include <sys/stat.h>  // creat function
 
 using namespace std;
 
 MyDB_PageHandle MyDB_BufferManager ::getPage(MyDB_TablePtr whichTable, long i)
 {
-	map<pair<string, long>, Page_Map_Item>::iterator it;
-	it = MyDB_BufferManager::diskPageMap.find({whichTable, i});
-	// page not exist, store into buffer and return handle
-	if (it == MyDB_BufferManager::diskPageMap.end())
+	// get tablename and loc from my MyDB_TablePtr
+	string loc = whichTable->getStorageLoc();
+	string tablename = whichTable->getName();
+
+	/* only do at first time, create repository and table if not exist*/
+	set<string>::iterator iterLoc = tableLocations.find(loc);
+	set<string>::iterator iterName = tableNames.find(tablename);
+
+	if ((iterLoc == tableLocations.end()))
 	{
-		// 還沒搬過來 loadbuffer function in clock_LRU
+		mkdir(("./" + loc).c_str(), S_IRWXU | S_IRWXG | S_IROTH | S_IXOTH);
+		tableLocations.insert(loc);
 	}
 
-	// page exist in buffer, return the handle
-	else
+	if ((iterLoc == tableNames.end()))
 	{
-		//
+		string tablePath = ("./" + loc + "/" + tablename).c_str();
+		int fd_tablePath = creat(tablePath.c_str(), O_RDWR);
+		if (fd_tablePath < 0)
+		{
+			cout << "Unable to create table with table Path:" << tablePath << endl;
+			exit(EXIT_FAILURE);
+		}
+		tableNames.insert(tablename);
 	}
 
-	return nullptr;
+	/*
+	check if {table, page} is in DiskPageMap
+	1. not in map: load for first time
+	2. in map but null: has other handles, load back to disk
+	3. in map: no need to change map
+	*/
+	map<pair<string, long>, Page>::iterator iterMap;
+	iterMap = diskPageMap.find(make_pair(whichTable, i));
+
+	// 1. page not in map
+	if (iterMap == diskPageMap.end())
+	{
+		// get data from disk to buffer
+		Page_Buffer_Item *tempBufferItemPtr = diskToBuffer(loc, tablename, i);
+
+		// create a page pointing to buffer item and insert to map
+		diskPageMap[make_pair(whichTable, i)] = Page(i, tempBufferItemPtr, 0);
+
+		// get page obj
+		iterMap = diskPageMap.find(make_pair(whichTable, i)); // {whichTable, i}
+	}
+	// 2. key in map, but page points to null
+	else if (iterMap->second.bufferItemPtr == nullptr)
+	{
+		// get data from disk to buffer
+		Page_Buffer_Item *tempBufferItemPtr = diskToBuffer(loc, tablename, i);
+		iterMap->second.bufferItemPtr = tempBufferItemPtr;
+	}
+
+	// refCnt increase by one
+	iterMap->second.refCnt++;
+
+	// make handle
+	Page *tempPagePtr = &(iterMap->second);
+	MyDB_PageHandle tempHandle;
+	tempHandle->position = tempPagePtr;
+
+	return tempHandle;
 }
 
 MyDB_PageHandle MyDB_BufferManager ::getPage()
 {
-	// find an unpin or pinned anonymous page in buffer, return handle
+	/*
+		get a space from tempfile
+		store that page to anonyPageMap
+	*/
+	// assign a slot number store in page for later store back to disk use
+	int slotNum = anonySeq;
+	anonySeq++;
 
-	// an anonymous page not existin buffer, create an anonlymous(temp) page,return the handle
-	return nullptr;
+	clockarmGetSpace(); // we don't call diskToBuffer cuz we don't need to, but we still need a place to store clockArm
+
+	anonyPageMap[anonySeq] = Page(anonySeq, clockArm, 1);
+
+	// make handle
+	Page *tempPagePtr = &(anonyPageMap[anonySeq]);
+	MyDB_PageHandle tempHandle;
+	tempHandle->position = tempPagePtr;
+
+	return tempHandle;
 }
 
 MyDB_PageHandle MyDB_BufferManager ::getPinnedPage(MyDB_TablePtr whichTable, long i)
 {
-	// .getName()
-	string tablename = whichTable.getName();
-	string loc = whichTable.getStorageLoc();
-	// create repoitory if not exists
-	mkdir(("./" + loc).c_str(), S_IRWXU | S_IRWXG | S_IROTH | S_IXOTH);
+	// get tablename and loc from my MyDB_TablePtr
+	string loc = whichTable->getStorageLoc();
+	string tablename = whichTable->getName();
 
-	// check tablename file existance,
-	// if it is the first time being called, create the table
+	/* only do at first time, create repository and table if not exist*/
+	set<string>::iterator iterLoc = tableLocations.find(loc);
+	set<string>::iterator iterName = tableNames.find(tablename);
 
-	// check DiskPageMap see if that table / page is in buffer
-	map<pair<string, long>, Page>::iterator it;
-	it = MyDB_BufferManager::diskPageMap.find({whichTable, i}); // make_pair(whichTable, i)
-
-	// page not exist, store into buffer
-
-	// key not in map
-	if (it == MyDB_BufferManager::diskPageMap.end())
+	if ((iterLoc == tableLocations.end()))
 	{
-		// 還沒搬過來 loadbuffer function in clock_LRU
-		reloadBufferItem(whichTable, i, true, false);
-		Page_Buffer_Item *tempBufferItemPtr; //
-
-		// 記得load完buffer要把更新的page存到map裡
-		MyDB_BufferManager::diskPageMap[make_pair(whichTable, i)] = Page(i, tempBufferItemPtr, refCnt++);
-		// 結束後得到正確page object
-		it = MyDB_BufferManager::diskPageMap.find({whichTable, i}); // make_pair(whichTable, i)
-	}
-	// key in map, but page points to null
-	else if (it->second.bufferItemPtr == nullptr)
-	{
-		// 還沒搬過來 loadbuffer function in clock_LRU
-		reloadBufferItem(whichTable, i, true, false);
-		Page_Buffer_Item *tempBufferItemPtr; //
-		MyDB_BufferManager::diskPageMap[make_pair(whichTable, i)].bufferItemPtr = tempBufferItemPtr;
+		mkdir(("./" + loc).c_str(), S_IRWXU | S_IRWXG | S_IROTH | S_IXOTH);
+		tableLocations.insert(loc);
 	}
 
-	// access buffer, if unpin then pin it, then make a handle
-	Page *tempPagePtr = &(it->second);
-	// tempPagePtr->bufferItemPtr->isPinned = true;
+	if ((iterLoc == tableNames.end()))
+	{
+		string tablePath = ("./" + loc + "/" + tablename).c_str();
+		int fd_tablePath = creat(tablePath.c_str(), O_RDWR);
+		if (fd_tablePath < 0)
+		{
+			cout << "Unable to create table with table Path:" << tablePath << endl;
+			exit(EXIT_FAILURE);
+		}
+		tableNames.insert(tablename);
+	}
 
-	// 有點不確定
+	/*
+	check if {table, page} is in DiskPageMap
+	1. not in map: load for first time
+	2. in map but null: has other handles, load back to disk
+	3. in map: no need to change map
+	*/
+	map<pair<string, long>, Page>::iterator iterMap;
+	iterMap = diskPageMap.find(make_pair(whichTable, i));
+
+	// 1. page not in map
+	if (iterMap == diskPageMap.end())
+	{
+		// get data from disk to buffer
+		Page_Buffer_Item *tempBufferItemPtr = diskToBuffer(loc, tablename, i);
+
+		// create a page pointing to buffer item and insert to map
+		diskPageMap[make_pair(whichTable, i)] = Page(i, tempBufferItemPtr, 0);
+
+		// get page obj
+		iterMap = diskPageMap.find(make_pair(whichTable, i)); // {whichTable, i}
+	}
+	// 2. key in map, but page points to null
+	else if (iterMap->second.bufferItemPtr == nullptr)
+	{
+		// get data from disk to buffer
+		Page_Buffer_Item *tempBufferItemPtr = diskToBuffer(loc, tablename, i);
+		iterMap->second.bufferItemPtr = tempBufferItemPtr;
+	}
+
+	// access buffer, if unpin then pin it
+	//@@@如果可pin值還夠的話
+	iterMap->second.bufferItemPtr->isPinned = true;
+
+	// refCnt increase by one
+	iterMap->second.refCnt++;
+
+	// make handle
+	Page *tempPagePtr = &(iterMap->second);
 	MyDB_PageHandle tempHandle;
 	tempHandle->position = tempPagePtr;
 
@@ -89,29 +176,48 @@ MyDB_PageHandle MyDB_BufferManager ::getPinnedPage(MyDB_TablePtr whichTable, lon
 
 MyDB_PageHandle MyDB_BufferManager ::getPinnedPage()
 {
-	// find an anonymous pinned page in buffer, return handle
+	/*
+	get a space from tempfile
+	store that page to anonyPageMap
+	*/
+	// assign a slot number store in page for later store back to disk use
+	int slotNum = anonySeq;
+	anonySeq++;
 
-	// an anonymous pinned page not existin buffer, create an anonlymous(temp) page, pin it, and return the handle
-	return nullptr;
+	clockarmGetSpace(); // we don't call diskToBuffer cuz we don't need to, but we still need a place to store clockArm
+
+	anonyPageMap[anonySeq] = Page(anonySeq, clockArm, 1);
+
+	// access buffer, if unpin then pin it
+	//@@@如果可pin值還夠的話
+	anonyPageMap[anonySeq].bufferItemPtr->isPinned = true;
+
+	// make handle
+	Page *tempPagePtr = &(anonyPageMap[anonySeq]);
+	MyDB_PageHandle tempHandle;
+	tempHandle->position = tempPagePtr;
+
+	return tempHandle;
 }
 
-void MyDB_BufferManager ::unpin(MyDB_PageHandle unpinMe)
+void MyDB_BufferManager ::unpin(MyDB_PageHandle ph)
 {
+	ph->position->bufferItemPtr->isPinned = false;
 }
 
 MyDB_BufferManager ::MyDB_BufferManager(size_t pageSize, size_t numPages, string tempFile)
 {
-	// declare buffer pool
+	// declare clockBuffer
 	this->numPages = numPages;
 	clockBuffer.assign(numPages, Page_Buffer_Item(pageSize));
 	clockArm = clockBuffer.begin();
 
 	// open a tempfile with name: tempFile for anonymous page
 	string tempFilePath = "./" + tempFile;
-	int fd_tempFile = creat(tempFilePath.c_str(), S_IRUSR | S_IWUSR | S_IRGRP | S_IROTH);
+	fd_tempFile = creat(tempFilePath.c_str(), O_RDWR);
 	if (fd_tempFile < 0)
 	{
-		cout << "Unable to create " << tempFile << endl;
+		cout << "Unable to create anonymous file" << tempFile << endl;
 		exit(EXIT_FAILURE);
 	}
 }
@@ -131,6 +237,7 @@ MyDB_BufferManager ::~MyDB_BufferManager()
 	close(fd_tempFile);
 }
 
+/*
 // Update item
 void MyDB_BufferManager ::updateBufferItem(Page_Buffer_Item *buffItemPtr, long pageNum, bool isPinned, bool isDirty, bool isAnony, bool acedBit)
 {
@@ -146,6 +253,7 @@ void MyDB_BufferManager ::updatePagedata(Page_Buffer_Item *buffItemPtr, vector<c
 {
 	buffItemPtr->pageData = newPageData // depend on how pageData is defined
 }
+*/
 
 // when Clock_LRU needs to evict page, store the dirty data to disk
 void MyDB_BufferManager ::bufferToDisk(MyDB_TablePtr whichTable, long pageNum, bool isPinned, bool isAnony)
@@ -157,10 +265,39 @@ void MyDB_BufferManager ::bufferToDisk(MyDB_TablePtr whichTable, long pageNum, b
 	// update map, set map[pageNum].bufferItemPtr = nullptr
 }
 
-// load data from disk to buffer
-bool MyDB_BufferManager ::diskToBuffer(long ItemSlotIdx, MyDB_TablePtr whichTable, long pageNum){
-	ofstream myFile.open(
-		"./" + whichTable.getStorageLoc() + "/" + whichTable.getName())}
+// non anonymous: load data from table in disk to buffer
+Page_Buffer_Item *MyDB_BufferManager ::diskToBuffer(string loc, string tablename, long pageNum)
+{
+	string diskFilePath = "./" + loc + "/" + tablename;
+	// fd_disk = open(diskFilePath.c_str(), O_CREAT | O_RDWR, 0666);
+	fd_disk = open(diskFilePath.c_str(), O_RDWR | O_FSYNC, 0666);
+	if (fd_disk < 0)
+	{
+		cout << "diskToBuffer Unable to open " << diskFilePath << endl;
+		exit(1);
+	}
+
+	clockarmGetSpace();
+	char *readByte[pageSize];
+	lseek(fd_disk, pageSize * (pageNum - 1), SEEK_SET);
+	int size = read(fd_disk, readByte, pageSize);
+
+	clockArm->pageData.assign(readByte, readByte + pageSize);
+	close(fd_disk);
+
+	/* for debug */
+	cout << "size:" << size << " pageSize" << pageSize << endl;
+
+	char *buff = readByte;
+	buff[size] = '\0';
+	cout << buff << endl;
+	for (int i = 0; i < pageSize; i++)
+	{
+		cout << clockArm->pageData[i];
+	}
+
+	return clockArm;
+}
 
 vector<Page_Buffer_Item>::iterator MyDB_BufferManager ::clockarmGetSpace()
 {
@@ -209,15 +346,25 @@ vector<Page_Buffer_Item>::iterator MyDB_BufferManager ::clockarmGetSpace()
 
 // (1) buffMgr wants page i, and finds it's not in buffer (points to NULL)
 // (2) first time load data to pageItem & map
-void reloadBufferItem(MyDB_TablePtr whichTable, long pageNum, bool isPinned, bool isAnony)
+Page_Buffer_Item *reloadFromDisk(MyDB_TablePtr whichTable, long pageNum)
 {
-	// return idx of available slot to laod data
-	clockarmGetSpace();
 	// load data from disk to buffer
-	MyDB_BufferManager::bufferToDisk(whichTable, pageNum, isPinned, isAnony);
+	return bufferToDisk(whichTable->getStorageLoc(), whichTable->getName(), pageNum);
+}
+// anonymous: load data from tempfile in disk to buffer
+Page_Buffer_Item *reloadTempFile(long slot)
+{
+	return nullptr;
+}
 
-	// return which slotIdx the page is loaded
-	// return newItemSlotIdx;
+void destructBufferItem(Page p)
+{
+	// @@@non anony
+	//  @@@buffer to disk(friend function?)
+	// @@@delete buffer
+
+	// @@@anony
+	//  @@@delte that buffer
 }
 
 /*

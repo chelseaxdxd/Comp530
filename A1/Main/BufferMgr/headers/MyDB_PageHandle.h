@@ -9,11 +9,15 @@ using namespace std;
 class MyDB_PageHandleBase;
 typedef shared_ptr<MyDB_PageHandleBase> MyDB_PageHandle;
 
+struct Page
+{
+	long pageNum;
+	Page_Buffer_Item *bufferItemPtr = nullptr;
+	int refCnt;
+};
+
 class MyDB_PageHandleBase
 {
-
-	/* 新加的*/
-	// int pageNum;
 
 public:
 	/* 指向page位子的pointer(先暫時用public)*/

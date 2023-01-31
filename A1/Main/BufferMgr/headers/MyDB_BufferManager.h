@@ -3,19 +3,12 @@
 
 #include "MyDB_PageHandle.h"
 #include "MyDB_Table.h"
-// #include "Page_Map_Item.h" //寫了struct
 #include "Page_Buffer_Item.h"
-// #include "Clock_LRU.h" //這部分放進buffer manager
 #include <map>	   // for hashmap
+#include <set>	   // store repository and table name
 #include <utility> //pair
 
 using namespace std;
-struct Page
-{
-	long pageNum;
-	Page_Buffer_Item *bufferItemPtr = NULL;
-	int refCnt = 0;
-};
 
 class MyDB_BufferManager
 {
@@ -44,7 +37,7 @@ public:
 	MyDB_PageHandle getPinnedPage();
 
 	// un-pins the specified page
-	void unpin(MyDB_PageHandle unpinMe);
+	void unpin(MyDB_PageHandle ph);
 
 	// creates an LRU buffer manager... params are as follows:
 	// 1) the size of each page is pageSize
@@ -58,39 +51,53 @@ public:
 	~MyDB_BufferManager();
 
 	// FEEL FREE TO ADD ADDITIONAL PUBLIC METHODS
-	friend Page_Buffer_Item *reloadBufferItem(MyDB_TablePtr whichTable, long pageNum, bool isPinned, bool isAnony);
+	friend Page_Buffer_Item *reloadFromDisk(MyDB_TablePtr whichTable, long pageNum);
+	friend Page_Buffer_Item *reloadTempFile(long slot);
+	friend void destructBufferItem(Page p);
 
 private:
+	/*可能需要*/
+
+	/*ClockBuffer*/
+
+	// number of pages managed by the buffer manager
+	size_t pageSize long numPages;
+
+	vector<Page_Buffer_Item> clockBuffer;
+
+	// point to current page buffer item
+	vector<Page_Buffer_Item>::iterator clockArm;
+
 	/* IO */
+	set<string> tableLocations;
+	set<string> tableNames; // 有需要時可以改成map存 table_fd
 	int fd_tempFile;
+	long anonySeq = 0;
 
 	// anonymous hash map
-	map<pair<string, long>, Page> anonyPageMap; // pair<table_name, page_num>
+	map<long, Page> anonyPageMap; // pair<table_name, page_num>
 
 	// non anonlymous hash map
 	map<pair<string, long>, Page> diskPageMap;
 
-	/*ClockBuffer*/
-	long numPages; // number of pages managed by the buffer manager is numPages
+	/*
+		// name updateData -> updateBufferItem
+		void updateBufferItem(*Page_Buffer_Item buffItemPtr, long pageNum, bool isPinned, bool isDirty, bool isAnony, bool acedBit);
 
-	vector<Page_Buffer_Item> clockBuffer; // buffPagePoo -> clockBuffer
-
-	vector<Page_Buffer_Item>::iterator clockArm; // clock arm currently points to // currBuffPageIdx -> curClockIdx
-
-	// name updateData -> updateBufferItem
-	void updateBufferItem(*Page_Buffer_Item buffItemPtr, long pageNum, bool isPinned, bool isDirty, bool isAnony, bool acedBit);
-
-	// Update pageData
-	void updatePagedata(*Page_Buffer_Item buffItemPtr, vector<char> newPageData);
+		// Update pageData
+		void updatePagedata(*Page_Buffer_Item buffItemPtr, vector<char> newPageData);
+	*/
 
 	// when Clock_LRU needs to evict page, store the dirty data to disk
 	void bufferToDisk(long ItemSlotIdx, MyDB_TablePtr whichTable, long pageNum, bool isPinned, bool isAnony);
 
-	// load data from disk to buffer
-	bool diskToBuffer(long ItemSlotIdx, MyDB_TablePtr whichTable, long pageNum);
+	// non anonymous: load data from table in disk to buffer
+	Page_Buffer_Item *diskToBuffer(string loc, string tablename, long pageNum);
 
-	//
-	vector<Page_Buffer_Item>::iterator getBufferItemSpace();
+	// anonymous: load data from tempfile in disk to buffer
+	Page_Buffer_Item *tempFileToBuffer(long slot);
+
+	void clockarmGetSpace();
 };
 
 #endif
