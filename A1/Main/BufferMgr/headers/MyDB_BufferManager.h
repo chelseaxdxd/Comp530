@@ -80,16 +80,8 @@ private:
 	// non anonlymous hash map
 	map<pair<string, long>, Page> diskPageMap;
 
-	/*
-		// name updateData -> updateBufferItem
-		void updateBufferItem(*Page_Buffer_Item buffItemPtr, long pageNum, bool isPinned, bool isDirty, bool isAnony, bool acedBit);
-
-		// Update pageData
-		void updatePagedata(*Page_Buffer_Item buffItemPtr, vector<char> newPageData);
-	*/
-
 	// when Clock_LRU needs to evict page, store the dirty data to disk
-	void bufferToDisk(long ItemSlotIdx, MyDB_TablePtr whichTable, long pageNum, bool isPinned, bool isAnony);
+	void bufferToDisk(Page_Buffer_Item *bufferItem);
 
 	// non anonymous: load data from table in disk to buffer
 	Page_Buffer_Item *diskToBuffer(MyDB_TablePtr whichTable, long pageNum);
