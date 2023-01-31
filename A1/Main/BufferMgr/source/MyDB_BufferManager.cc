@@ -35,7 +35,6 @@ MyDB_PageHandle MyDB_BufferManager ::getPage()
 {
 	// find an unpin or pinned anonymous page in buffer, return handle
 
-
 	// an anonymous page not existin buffer, create an anonlymous(temp) page,return the handle
 	return nullptr;
 }
@@ -94,7 +93,7 @@ MyDB_PageHandle MyDB_BufferManager ::getPinnedPage()
 {
 	// find a PageBufferItemSpace, the clockArm points to the available bufferItem Space
 	clockarmGetSpace();
-	
+
 	// create page to anonyPageMap
 	// the disk(tempfile) is fd_tempfile, anonySeq keep the track of current anonymous page
 	// anonySeq 不一定會用到，除非evict 且有handle 時才會存進去
@@ -108,8 +107,7 @@ MyDB_PageHandle MyDB_BufferManager ::getPinnedPage()
 	// access buffer, if unpin then pin it, then make a handle
 	Page *tempPagePtr = &(it->second);
 	tempPagePtr->bufferItemPtr->isPinned = true;
-	
-	
+
 	// 有點不確定
 	MyDB_PageHandle tempHandle;
 	tempHandle->position = tempPagePtr;
@@ -178,8 +176,7 @@ void MyDB_BufferManager ::updatePagedata(Page_Buffer_Item *buffItemPtr, vector<c
 // when Clock_LRU needs to evict page, store the dirty data to disk
 void MyDB_BufferManager ::bufferToDisk(MyDB_TablePtr whichTable, long pageNum, bool isPinned, bool isAnony)
 {
-	clockArm++; // ??
-	
+
 	map<pair<string, long>, Page_Map_Item>::iterator it;
 	it = MyDB_BufferManager::diskPageMap.find({whichTable, pageNum});
 
@@ -193,13 +190,12 @@ void MyDB_BufferManager ::bufferToDisk(MyDB_TablePtr whichTable, long pageNum, b
 	{
 		cout << "Unable to create " << diskFilePath << endl;
 		exit(1);
-	}	
-	char * writeByte;
-    writeByte = &v[0];
-	
+	}
+	char *writeByte;
+	writeByte = &v[0];
 
 	// storet back to disk
-	lseek(fd_disk, pageSize*(pageNum-1), SEEK_SET);
+	lseek(fd_disk, pageSize * (pageNum - 1), SEEK_SET);
 	int bytes = write(fd_disk, writeByte, pageSize);
 
 	// isDirty = false
@@ -207,7 +203,6 @@ void MyDB_BufferManager ::bufferToDisk(MyDB_TablePtr whichTable, long pageNum, b
 
 	// update map, set map[pageNum].bufferItemPtr = nullptr
 	// 應該不是在這裡做這個，是沒有handle 時才要
-
 }
 
 // load data from disk to buffer
@@ -217,29 +212,29 @@ bool MyDB_BufferManager ::diskToBuffer(MyDB_TablePtr whichTable, long pageNum, ,
 	// 要確認一下這個的使用情境決定要不要call clockarmGetSpace
 	MyDB_BufferManager ::clockarmGetSpace()
 
-	// 要分是 anonymous or non-anonymous
-	// find the table(disk)
-	string diskFilePath = "./" + whichTable.getStorageLoc() + "/" + whichTable.getName();
+		// 要分是 anonymous or non-anonymous
+		// find the table(disk)
+		string diskFilePath = "./" + whichTable.getStorageLoc() + "/" + whichTable.getName();
 	fd_disk = open(diskFilePath.c_str(), O_CREAT | O_RDWR, 0666);
 	if (fd_disk < 0)
 	{
 		cout << "Unable to create " << diskFilePath << endl;
 		exit(1);
-	}	
-	
+	}
+
 	// load data to where clockArm currently points to
-	char * readByte[pageSize];
-	lseek(fd_disk, pageSize*(pageNum-1), SEEK_SET);
+	char *readByte[pageSize];
+	lseek(fd_disk, pageSize * (pageNum - 1), SEEK_SET);
 	int bytes = read(fd_disk, readByte, pageSize);
-	for (int i = 0; i < pageSize; i++) {
-            cout << clockArm->pageData[i];
-    }
-	
+	for (int i = 0; i < pageSize; i++)
+	{
+		cout << clockArm->pageData[i];
+	}
+
 	// isDirty == false
 	clockArm->isDirty = false;
 
 	return true;
-	
 }
 
 // void MyDB_BufferManager ::clockarmGetSpace()
@@ -285,7 +280,7 @@ vector<Page_Buffer_Item>::iterator MyDB_BufferManager ::clockarmGetSpace()
 		}
 		// when arm point to a setted item, unset & move arm to next item slot
 		(*clockArm).acedBit = false;
-		// clockArm++; 
+		// clockArm++;
 	}
 }
 
@@ -293,10 +288,7 @@ vector<Page_Buffer_Item>::iterator MyDB_BufferManager ::clockarmGetSpace()
 // (2) first time load data to pageItem & map
 void reloadBufferItem(MyDB_TablePtr whichTable, long pageNum, bool isPinned, bool isAnony)
 {
-	// return idx of available slot to laod data
-	clockarmGetSpace(); // diskTobuffer()有做這裡就不用做
-	// load data from disk to buffer
-	MyDB_BufferManager::bufferToDisk(whichTable, pageNum, isPinned, isAnony);
+
 	MyDB_BufferManager::diskToBuffer() // ?????
 
 	// set acedBit to true
