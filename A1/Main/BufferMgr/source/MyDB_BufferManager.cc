@@ -56,8 +56,17 @@ MyDB_PageHandle MyDB_BufferManager ::getPage(MyDB_TablePtr whichTable, long i)
 		Page_Buffer_Item *tempBufferItemPtr = diskToBuffer(tablePath, i);
 
 		// create a page pointing to buffer item and insert to map
-		Page p = {false, tablePath, i, tempBufferItemPtr, 0};
-		diskPageMap[make_pair(tablePath, i)] = p;
+		// Page p = {false, tablePath, i, tempBufferItemPtr, 0};
+		// diskPageMap[make_pair(tablePath, i)] = p;
+		Page *p = new Page;
+		p->isAnony = false;
+		p->tablePath = tablePath;
+		p->pageNum = i;
+		p->bufferItemPtr = tempBufferItemPtr;
+		p->refCnt = 0;
+		// p = {false, tablePath, i, tempBufferItemPtr, 0};
+		diskPageMap[make_pair(tablePath, i)] = *p;
+
 
 		// get page obj
 		iterMap = diskPageMap.find(make_pair(tablePath, i)); // {whichTable, i}
@@ -90,8 +99,16 @@ MyDB_PageHandle MyDB_BufferManager ::getPage()
 
 	clockarmGetSpace(); // we don't call diskToBuffer cuz we don't need to, but we still need a place to store clockArm
 
-	Page p = {true, "", anonySeq, &(*clockArm), 1};
-	anonyPageMap[anonySeq] = p;
+	// Page p = {true, "", anonySeq, &(*clockArm), 1};
+	// anonyPageMap[anonySeq] = p;
+	Page *p = new Page;
+	p->isAnony = true;
+	p->tablePath = "";
+	p->pageNum = anonySeq;
+	p->bufferItemPtr = &(*clockArm);
+	p->refCnt = 1;
+	diskPageMap[make_pair(tablePath, i)] = *p;
+
 
 	// make handle
 	Page *tempPagePtr = &(anonyPageMap[anonySeq]);
@@ -188,8 +205,17 @@ MyDB_PageHandle MyDB_BufferManager ::getPinnedPage()
 	store that page to anonyPageMap
 	*/
 	clockarmGetSpace(); // we don't call diskToBuffer cuz we don't need to, but we still need a place to store clockArm
-	Page p = {true, "", anonySeq, &(*clockArm), 1};
-	anonyPageMap[anonySeq] = p;
+	// Page p = {true, "", anonySeq, &(*clockArm), 1};
+	// anonyPageMap[anonySeq] = p;
+
+	Page *p = new Page;
+	p->isAnony = true;
+	p->tablePath = "";
+	p->pageNum = anonySeq;
+	p->bufferItemPtr = &(*clockArm);
+	p->refCnt = 1;
+	diskPageMap[make_pair(tablePath, i)] = *p;
+
 
 	// access buffer, if unpin then pin it
 	//@@@如果可pin值還夠的話
