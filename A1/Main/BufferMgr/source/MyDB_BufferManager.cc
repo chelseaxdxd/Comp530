@@ -67,7 +67,6 @@ MyDB_PageHandle MyDB_BufferManager ::getPage(MyDB_TablePtr whichTable, long i)
 		// p = {false, tablePath, i, tempBufferItemPtr, 0};
 		diskPageMap[make_pair(tablePath, i)] = *p;
 
-
 		// get page obj
 		iterMap = diskPageMap.find(make_pair(tablePath, i)); // {whichTable, i}
 	}
@@ -84,10 +83,10 @@ MyDB_PageHandle MyDB_BufferManager ::getPage(MyDB_TablePtr whichTable, long i)
 
 	// make handle
 	Page *tempPagePtr = &(iterMap->second);
-	MyDB_PageHandle tempHandle;
-	tempHandle->position = tempPagePtr;
-	tempHandle->bm = this;
-	return tempHandle;
+	MyDB_PageHandleBase phb;
+	phb.bm = this;
+	phb.position = tempPagePtr;
+	return make_shared<MyDB_PageHandleBase>(phb);
 }
 
 MyDB_PageHandle MyDB_BufferManager ::getPage()
@@ -107,16 +106,16 @@ MyDB_PageHandle MyDB_BufferManager ::getPage()
 	p->pageNum = anonySeq;
 	p->bufferItemPtr = &(*clockArm);
 	p->refCnt = 1;
-	diskPageMap[make_pair(tablePath, i)] = *p;
-
+	anonyPageMap[anonySeq] = *p;
 
 	// make handle
+
 	Page *tempPagePtr = &(anonyPageMap[anonySeq]);
-	MyDB_PageHandle tempHandle;
-	tempHandle->position = tempPagePtr;
-	tempHandle->bm = this;
 	anonySeq++;
-	return tempHandle;
+	MyDB_PageHandleBase phb;
+	phb.bm = this;
+	phb.position = tempPagePtr;
+	return make_shared<MyDB_PageHandleBase>(phb);
 }
 
 MyDB_PageHandle MyDB_BufferManager ::getPinnedPage(MyDB_TablePtr whichTable, long i)
@@ -214,8 +213,7 @@ MyDB_PageHandle MyDB_BufferManager ::getPinnedPage()
 	p->pageNum = anonySeq;
 	p->bufferItemPtr = &(*clockArm);
 	p->refCnt = 1;
-	diskPageMap[make_pair(tablePath, i)] = *p;
-
+	anonyPageMap[anonySeq] = *p;
 
 	// access buffer, if unpin then pin it
 	//@@@如果可pin值還夠的話
@@ -223,11 +221,11 @@ MyDB_PageHandle MyDB_BufferManager ::getPinnedPage()
 
 	// make handle
 	Page *tempPagePtr = &(anonyPageMap[anonySeq]);
-	MyDB_PageHandle tempHandle;
-	tempHandle->position = tempPagePtr;
-	tempHandle->bm = this;
 	anonySeq++;
-	return tempHandle;
+	MyDB_PageHandleBase phb;
+	phb.bm = this;
+	phb.position = tempPagePtr;
+	return make_shared<MyDB_PageHandleBase>(phb);
 }
 
 void MyDB_BufferManager ::unpin(MyDB_PageHandle ph)
