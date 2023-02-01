@@ -3,6 +3,7 @@
 #define PAGE_HANDLE_C
 
 #include <memory>
+#include "MyDB_BufferManager.h"
 #include "MyDB_PageHandle.h"
 
 void *MyDB_PageHandleBase ::getBytes()

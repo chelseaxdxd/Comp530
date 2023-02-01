@@ -6,6 +6,7 @@
 #include "Page_Buffer_Item.h"
 
 class MyDB_BufferManager;
+class MyDB_PageHandleBase;
 
 // page handles are basically smart pointers
 using namespace std;
@@ -26,6 +27,8 @@ class MyDB_PageHandleBase
 public:
 	/* 指向page位子的pointer(先暫時用public)*/
 	Page *position;
+	MyDB_BufferManager *bm;
+
 	// THESE METHODS MUST BE IMPLEMENTED WITHOUT CHANGING THE DEFINITION
 
 	// access the raw bytes in this page... if the page is not currently

@@ -2,6 +2,7 @@
 #define PAGE_BUFFER_ITEM_H
 
 #include <vector>
+#include <string>
 using namespace std;
 
 class Page_Buffer_Item
@@ -28,7 +29,7 @@ public:
 		this->isAnony = false;
 		pageData.reserve(this->pageSize);
 	}
-	~Page_Buffer_Item();
+	~Page_Buffer_Item(){};
 };
 
 #endif

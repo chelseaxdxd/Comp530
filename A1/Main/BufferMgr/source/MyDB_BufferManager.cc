@@ -76,8 +76,8 @@ MyDB_PageHandle MyDB_BufferManager ::getPage(MyDB_TablePtr whichTable, long i)
 	// make handle
 	Page *tempPagePtr = &(iterMap->second);
 	MyDB_PageHandle tempHandle;
-	tempHandle->getBM(this);
 	tempHandle->position = tempPagePtr;
+	tempHandle->bm = this;
 	return tempHandle;
 }
 
@@ -97,7 +97,7 @@ MyDB_PageHandle MyDB_BufferManager ::getPage()
 	Page *tempPagePtr = &(anonyPageMap[anonySeq]);
 	MyDB_PageHandle tempHandle;
 	tempHandle->position = tempPagePtr;
-
+	tempHandle->bm = this;
 	anonySeq++;
 	return tempHandle;
 }
@@ -171,7 +171,7 @@ MyDB_PageHandle MyDB_BufferManager ::getPinnedPage(MyDB_TablePtr whichTable, lon
 	Page *tempPagePtr = &(iterMap->second);
 	MyDB_PageHandle tempHandle;
 	tempHandle->position = tempPagePtr;
-
+	tempHandle->bm = this;
 	return tempHandle;
 }
 
@@ -193,7 +193,7 @@ MyDB_PageHandle MyDB_BufferManager ::getPinnedPage()
 	Page *tempPagePtr = &(anonyPageMap[anonySeq]);
 	MyDB_PageHandle tempHandle;
 	tempHandle->position = tempPagePtr;
-
+	tempHandle->bm = this;
 	anonySeq++;
 	return tempHandle;
 }
@@ -254,7 +254,7 @@ void MyDB_BufferManager ::bufferToDisk(Page_Buffer_Item *bufferItem)
 		// store back to disk
 		lseek(fd_disk, pageSize * (bufferItem->pageNum - 1), SEEK_SET);
 		int size = write(fd_disk, writeByte, pageSize);
-
+		cout << size << endl;
 		close(fd_disk);
 	}
 	else
@@ -263,6 +263,7 @@ void MyDB_BufferManager ::bufferToDisk(Page_Buffer_Item *bufferItem)
 		char *writeByte = &data[0];
 		lseek(fd_tempFile, pageSize * (bufferItem->pageNum - 1), SEEK_SET);
 		int size = write(fd_tempFile, writeByte, pageSize);
+		cout << size << endl;
 	}
 
 	// clean and free to overwrite

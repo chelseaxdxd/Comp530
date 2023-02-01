@@ -1,14 +1,17 @@
 #ifndef BUFFER_MGR_H
 #define BUFFER_MGR_H
 
+#include "Page_Buffer_Item.h"
 #include "MyDB_PageHandle.h"
 #include "MyDB_Table.h"
-#include "Page_Buffer_Item.h"
 #include <map>	   // for hashmap
 #include <set>	   // store repository and table name
 #include <utility> //pair
+#include <string>
 
 using namespace std;
+
+class MyDB_BufferManager;
 
 class MyDB_BufferManager
 {
