@@ -56,6 +56,7 @@ public:
 	// FEEL FREE TO ADD ADDITIONAL PUBLIC METHODS
 	friend Page_Buffer_Item *MyDB_PageHandleBase::reloadFromDisk(string tablePath, long pageNum);
 	friend Page_Buffer_Item *MyDB_PageHandleBase::reloadTempFile(long slot);
+	friend MyDB_PageHandleBase::~MyDB_PageHandleBase();
 	// friend void destructBufferItem(Page p);
 
 	friend class MyDB_BufferManager;

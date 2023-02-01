@@ -15,7 +15,8 @@ void *MyDB_PageHandleBase ::getBytes()
 	// check if data still in buffer
 	if (position->bufferItemPtr == nullptr)
 	{
-		cout << "position->bufferItemPtr is nullptr" << endl;
+		cout << "##phcc\t\t"
+			 << "position->bufferItemPtr is nullptr" << endl;
 		if (position->isAnony)
 		{
 			tempItemPtr = reloadTempFile(position->pageNum);
@@ -26,9 +27,11 @@ void *MyDB_PageHandleBase ::getBytes()
 		}
 		position->bufferItemPtr = tempItemPtr;
 	}
-	cout << "position->bufferItemPtr->pageData   " << position->bufferItemPtr->pageData.capacity() << endl;
+	cout << "##phcc\t\t"
+		 << "position->bufferItemPtr->pageData   " << position->bufferItemPtr->pageData.capacity() << endl;
 	char *pageDataPtr = &(position->bufferItemPtr->pageData[0]);
-	cout << "end of getBytes" << endl;
+	cout << "##phcc\t\t"
+		 << "end of getBytes" << endl;
 	return pageDataPtr;
 }
 
@@ -44,14 +47,17 @@ MyDB_PageHandleBase ::~MyDB_PageHandleBase()
 {
 	// remember to decrease reference cnt
 	(position)->refCnt--;
+	cout << "##phcc\t\t" << (position)->refCnt << endl;
 
 	// if no handle to this buffer than evict
 	if ((position)->refCnt == 0)
 	{
+		cout << "##phcc\t\t"
+			 << "<refCnt = 0>" << endl;
 		position->bufferItemPtr->acedBit = false;
 		position->bufferItemPtr->isDirty = false;
-		// destructBufferItem(*position);
-		//  @@@anony 要刪掉在map裡的該page，但不做也沒關係？可以做成map背call到的時候檢查有沒有空的就刪？但效率好像很差
+		position->bufferItemPtr->isPinned = false;
+		bm->bufferToDisk(position->bufferItemPtr);
 	}
 }
 

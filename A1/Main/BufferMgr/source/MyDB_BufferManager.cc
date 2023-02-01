@@ -237,6 +237,7 @@ MyDB_BufferManager ::MyDB_BufferManager(size_t pageSize, size_t numPages, string
 {
 	// declare clockBuffer
 	this->numPages = numPages;
+	this->pageSize = pageSize;
 	clockBuffer.assign(numPages, Page_Buffer_Item(pageSize));
 	clockArm = clockBuffer.begin();
 
@@ -265,6 +266,8 @@ MyDB_BufferManager ::~MyDB_BufferManager()
 // when Clock_LRU needs to evict page, store the dirty data to disk
 void MyDB_BufferManager ::bufferToDisk(Page_Buffer_Item *bufferItem)
 {
+	cout << "##bmcc\t\t"
+		 << "****<bufferToDisk>****" << endl;
 	if (!bufferItem->isAnony)
 	{
 		// store data on dis loc/tablename
@@ -284,7 +287,8 @@ void MyDB_BufferManager ::bufferToDisk(Page_Buffer_Item *bufferItem)
 		// store back to disk
 		lseek(fd_disk, pageSize * (bufferItem->pageNum - 1), SEEK_SET);
 		int size = write(fd_disk, writeByte, pageSize);
-		cout << size << endl;
+		cout << "##bmcc\t\t"
+			 << "writesize=" << size << endl;
 		close(fd_disk);
 	}
 	else
@@ -313,6 +317,8 @@ void MyDB_BufferManager ::bufferToDisk(Page_Buffer_Item *bufferItem)
 // non anonymous: load data from table in disk to buffer
 Page_Buffer_Item *MyDB_BufferManager ::diskToBuffer(string tablePath, long pageNum)
 {
+	cout << "##bmcc\t\t"
+		 << "------<diskToBuffer>-------" << endl;
 	// fd_disk = open(diskFilePath.c_str(), O_CREAT | O_RDWR, 0666);
 	int fd_disk = open(tablePath.c_str(), O_RDWR | O_FSYNC, 0666);
 	if (fd_disk < 0)
@@ -349,6 +355,8 @@ Page_Buffer_Item *MyDB_BufferManager ::diskToBuffer(string tablePath, long pageN
 }
 Page_Buffer_Item *MyDB_BufferManager ::tempFileToBuffer(long slot)
 {
+	cout << "##bmcc\t\t"
+		 << "------<tempFileToBuffer>-------" << endl;
 	clockarmGetSpace();
 	char readByte[pageSize];
 	lseek(fd_tempFile, pageSize * (slot - 1), SEEK_SET);
