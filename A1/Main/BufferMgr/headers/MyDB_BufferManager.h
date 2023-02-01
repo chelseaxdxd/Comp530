@@ -55,6 +55,8 @@ public:
 	friend Page_Buffer_Item *MyDB_PageHandleBase::reloadTempFile(long slot);
 	// friend void destructBufferItem(Page p);
 
+	friend class MyDB_BufferManager;
+
 private:
 	/*可能需要*/
 

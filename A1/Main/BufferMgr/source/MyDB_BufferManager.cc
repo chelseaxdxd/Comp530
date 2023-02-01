@@ -56,7 +56,7 @@ MyDB_PageHandle MyDB_BufferManager ::getPage(MyDB_TablePtr whichTable, long i)
 		Page_Buffer_Item *tempBufferItemPtr = diskToBuffer(tablePath, i);
 
 		// create a page pointing to buffer item and insert to map
-		Page p = {false, tablePath, i, tempBufferItemPtr, 0, this};
+		Page p = {false, tablePath, i, tempBufferItemPtr, 0};
 		diskPageMap[make_pair(tablePath, i)] = p;
 
 		// get page obj
@@ -76,6 +76,7 @@ MyDB_PageHandle MyDB_BufferManager ::getPage(MyDB_TablePtr whichTable, long i)
 	// make handle
 	Page *tempPagePtr = &(iterMap->second);
 	MyDB_PageHandle tempHandle;
+	tempHandle->getBM(this);
 	tempHandle->position = tempPagePtr;
 	return tempHandle;
 }
@@ -89,7 +90,7 @@ MyDB_PageHandle MyDB_BufferManager ::getPage()
 
 	clockarmGetSpace(); // we don't call diskToBuffer cuz we don't need to, but we still need a place to store clockArm
 
-	Page p = {true, "", anonySeq, &(*clockArm), 1, this};
+	Page p = {true, "", anonySeq, &(*clockArm), 1};
 	anonyPageMap[anonySeq] = p;
 
 	// make handle
@@ -181,7 +182,7 @@ MyDB_PageHandle MyDB_BufferManager ::getPinnedPage()
 	store that page to anonyPageMap
 	*/
 	clockarmGetSpace(); // we don't call diskToBuffer cuz we don't need to, but we still need a place to store clockArm
-	Page p = {true, "", anonySeq, &(*clockArm), 1, this};
+	Page p = {true, "", anonySeq, &(*clockArm), 1};
 	anonyPageMap[anonySeq] = p;
 
 	// access buffer, if unpin then pin it

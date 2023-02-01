@@ -5,11 +5,10 @@
 #include <memory> // for shared_ptr
 #include "Page_Buffer_Item.h"
 
-extern class MyDB_BufferManager;
+class MyDB_BufferManager;
 
 // page handles are basically smart pointers
 using namespace std;
-class MyDB_PageHandleBase;
 typedef shared_ptr<MyDB_PageHandleBase> MyDB_PageHandle;
 
 struct Page
@@ -19,7 +18,6 @@ struct Page
 	long pageNum;
 	Page_Buffer_Item *bufferItemPtr;
 	int refCnt;
-	MyDB_BufferManager *bm;
 };
 
 class MyDB_PageHandleBase
@@ -48,6 +46,7 @@ public:
 	// to the particular page that it references.  If the number of
 	// references to a pinned page goes down to zero, then the page should
 	// become unpinned.
+
 	~MyDB_PageHandleBase();
 
 	// FEEL FREE TO ADD ADDITIONAL PUBLIC METHODS
