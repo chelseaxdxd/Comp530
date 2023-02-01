@@ -78,8 +78,9 @@ MyDB_PageHandle MyDB_BufferManager ::getPage(MyDB_TablePtr whichTable, long i)
 		iterMap->second.bufferItemPtr = tempBufferItemPtr;
 	}
 
+	iterMap->second.bufferItemPtr->isAnony = false;
 	// refCnt increase by one
-	iterMap->second.refCnt++;
+	iterMap->second.refCnt += 2;
 
 	// make handle
 	Page *tempPagePtr = &(iterMap->second);
@@ -105,8 +106,10 @@ MyDB_PageHandle MyDB_BufferManager ::getPage()
 	p->tablePath = "";
 	p->pageNum = anonySeq;
 	p->bufferItemPtr = &(*clockArm);
-	p->refCnt = 1;
+	p->refCnt = 2;
 	anonyPageMap[anonySeq] = *p;
+
+	anonyPageMap[anonySeq].bufferItemPtr->isAnony = true;
 
 	// make handle
 
@@ -185,9 +188,9 @@ MyDB_PageHandle MyDB_BufferManager ::getPinnedPage(MyDB_TablePtr whichTable, lon
 	// access buffer, if unpin then pin it
 	//@@@如果可pin值還夠的話
 	iterMap->second.bufferItemPtr->isPinned = true;
-
+	iterMap->second.bufferItemPtr->isAnony = false;
 	// refCnt increase by one
-	iterMap->second.refCnt++;
+	iterMap->second.refCnt += 2;
 
 	cout << "##bmcc\t\titerMap->second.refCnt: " << iterMap->second.refCnt << endl;
 
@@ -212,12 +215,13 @@ MyDB_PageHandle MyDB_BufferManager ::getPinnedPage()
 	p->tablePath = "";
 	p->pageNum = anonySeq;
 	p->bufferItemPtr = &(*clockArm);
-	p->refCnt = 1;
+	p->refCnt = 2;
 	anonyPageMap[anonySeq] = *p;
 
 	// access buffer, if unpin then pin it
 	//@@@如果可pin值還夠的話
 	anonyPageMap[anonySeq].bufferItemPtr->isPinned = true;
+	anonyPageMap[anonySeq].bufferItemPtr->isAnony = true;
 
 	// make handle
 	Page *tempPagePtr = &(anonyPageMap[anonySeq]);
@@ -293,6 +297,7 @@ void MyDB_BufferManager ::bufferToDisk(Page_Buffer_Item *bufferItem)
 	}
 	else
 	{
+		cout << "*****\n*****\nbufferToDisk\nanonymous\n*****\n*****\n";
 		vector<char> data = bufferItem->pageData;
 		char *writeByte = &data[0];
 		lseek(fd_tempFile, pageSize * (bufferItem->pageNum), SEEK_SET);
