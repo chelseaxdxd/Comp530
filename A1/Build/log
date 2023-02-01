@@ -1,0 +1,5764 @@
+allocating pinned page
+##bmcc		------<diskToBuffer>-------
+diskToBuffer
+size:64 pageSize: 64
+iterMap->second.refCnt: 1
+##phcc		0
+##phcc		<refCnt = 0>
+##bmcc		****<bufferToDisk>****
+##bmcc		writesize=64
+
+getBytes
+##phcc		position->bufferItemPtr is nullptr
+##bmcc		------<diskToBuffer>-------
+diskToBuffer
+size:64 pageSize: 64
+##phcc		position->bufferItemPtr->pageData   64
+##phcc		end of getBytes
+allocating pinned page
+##bmcc		------<diskToBuffer>-------
+diskToBuffer
+size:64 pageSize: 64
+iterMap->second.refCnt: 1
+##phcc		0
+##phcc		<refCnt = 0>
+##bmcc		****<bufferToDisk>****
+##bmcc		writesize=64
+
+getBytes
+##phcc		position->bufferItemPtr is nullptr
+##bmcc		------<diskToBuffer>-------
+diskToBuffer
+size:64 pageSize: 64
+##phcc		position->bufferItemPtr->pageData   64
+##phcc		end of getBytes
+allocating pinned page
+##bmcc		------<diskToBuffer>-------
+diskToBuffer
+size:64 pageSize: 64
+iterMap->second.refCnt: 1
+##phcc		0
+##phcc		<refCnt = 0>
+##bmcc		****<bufferToDisk>****
+##bmcc		writesize=64
+
+getBytes
+##phcc		position->bufferItemPtr is nullptr
+##bmcc		------<diskToBuffer>-------
+diskToBuffer
+size:64 pageSize: 64
+##phcc		position->bufferItemPtr->pageData   64
+##phcc		end of getBytes
+allocating pinned page
+##bmcc		------<diskToBuffer>-------
+diskToBuffer
+size:64 pageSize: 64
+iterMap->second.refCnt: 1
+##phcc		0
+##phcc		<refCnt = 0>
+##bmcc		****<bufferToDisk>****
+##bmcc		writesize=64
+
+getBytes
+##phcc		position->bufferItemPtr is nullptr
+##bmcc		------<diskToBuffer>-------
+diskToBuffer
+size:64 pageSize: 64
+##phcc		position->bufferItemPtr->pageData   64
+##phcc		end of getBytes
+allocating pinned page
+##bmcc		------<diskToBuffer>-------
+diskToBuffer
+size:64 pageSize: 64
+iterMap->second.refCnt: 1
+##phcc		0
+##phcc		<refCnt = 0>
+##bmcc		****<bufferToDisk>****
+##bmcc		writesize=64
+
+getBytes
+##phcc		position->bufferItemPtr is nullptr
+##bmcc		------<diskToBuffer>-------
+diskToBuffer
+size:64 pageSize: 64
+##phcc		position->bufferItemPtr->pageData   64
+##phcc		end of getBytes
+allocating pinned page
+##bmcc		------<diskToBuffer>-------
+diskToBuffer
+size:64 pageSize: 64
+iterMap->second.refCnt: 1
+##phcc		0
+##phcc		<refCnt = 0>
+##bmcc		****<bufferToDisk>****
+##bmcc		writesize=64
+
+getBytes
+##phcc		position->bufferItemPtr is nullptr
+##bmcc		------<diskToBuffer>-------
+diskToBuffer
+size:64 pageSize: 64
+##phcc		position->bufferItemPtr->pageData   64
+##phcc		end of getBytes
+allocating pinned page
+##bmcc		------<diskToBuffer>-------
+diskToBuffer
+size:64 pageSize: 64
+iterMap->second.refCnt: 1
+##phcc		0
+##phcc		<refCnt = 0>
+##bmcc		****<bufferToDisk>****
+##bmcc		writesize=64
+
+getBytes
+##phcc		position->bufferItemPtr is nullptr
+##bmcc		------<diskToBuffer>-------
+diskToBuffer
+size:64 pageSize: 64
+##phcc		position->bufferItemPtr->pageData   64
+##phcc		end of getBytes
+allocating pinned page
+##bmcc		------<diskToBuffer>-------
+diskToBuffer
+size:64 pageSize: 64
+iterMap->second.refCnt: 1
+##phcc		0
+##phcc		<refCnt = 0>
+##bmcc		****<bufferToDisk>****
+##bmcc		writesize=64
+
+getBytes
+##phcc		position->bufferItemPtr is nullptr
+##bmcc		------<diskToBuffer>-------
+diskToBuffer
+size:64 pageSize: 64
+##phcc		position->bufferItemPtr->pageData   64
+##phcc		end of getBytes
+allocating pinned page
+##bmcc		------<diskToBuffer>-------
+diskToBuffer
+size:64 pageSize: 64
+iterMap->second.refCnt: 1
+##phcc		0
+##phcc		<refCnt = 0>
+##bmcc		****<bufferToDisk>****
+##bmcc		writesize=64
+
+getBytes
+##phcc		position->bufferItemPtr is nullptr
+##bmcc		------<diskToBuffer>-------
+diskToBuffer
+size:64 pageSize: 64
+##phcc		position->bufferItemPtr->pageData   64
+##phcc		end of getBytes
+allocating pinned page
+##bmcc		------<diskToBuffer>-------
+diskToBuffer
+size:64 pageSize: 64
+iterMap->second.refCnt: 1
+##phcc		0
+##phcc		<refCnt = 0>
+##bmcc		****<bufferToDisk>****
+##bmcc		writesize=64
+
+getBytes
+##phcc		position->bufferItemPtr is nullptr
+##bmcc		------<diskToBuffer>-------
+diskToBuffer
+size:64 pageSize: 64
+##phcc		position->bufferItemPtr->pageData   64
+##phcc		end of getBytes
+##unit		<now forget the pages we created>
+##phcc		-1
+##phcc		-1
+##phcc		-1
+##phcc		-1
+##phcc		-1
+##phcc		-1
+##phcc		-1
+##phcc		-1
+##phcc		-1
+allocating pinned page
+iterMap->second.refCnt: 1
+##phcc		0
+##phcc		<refCnt = 0>
+##bmcc		****<bufferToDisk>****
+##bmcc		writesize=64
+
+getBytes
+##phcc		position->bufferItemPtr is nullptr
+##bmcc		------<diskToBuffer>-------
+diskToBuffer
+size:64 pageSize: 64
+##phcc		position->bufferItemPtr->pageData   64
+##phcc		end of getBytes
+allocating pinned page
+iterMap->second.refCnt: 0
+##phcc		-1
+
+getBytes
+##phcc		position->bufferItemPtr->pageData   64
+##phcc		end of getBytes
+allocating pinned page
+iterMap->second.refCnt: 0
+##phcc		-1
+
+getBytes
+##phcc		position->bufferItemPtr->pageData   64
+##phcc		end of getBytes
+allocating pinned page
+iterMap->second.refCnt: 0
+##phcc		-1
+
+getBytes
+##phcc		position->bufferItemPtr->pageData   64
+##phcc		end of getBytes
+allocating pinned page
+iterMap->second.refCnt: 0
+##phcc		-1
+
+getBytes
+##phcc		position->bufferItemPtr->pageData   64
+##phcc		end of getBytes
+allocating pinned page
+iterMap->second.refCnt: 0
+##phcc		-1
+
+getBytes
+##phcc		position->bufferItemPtr->pageData   64
+##phcc		end of getBytes
+allocating pinned page
+iterMap->second.refCnt: 0
+##phcc		-1
+
+getBytes
+##phcc		position->bufferItemPtr->pageData   64
+##phcc		end of getBytes
+allocating pinned page
+iterMap->second.refCnt: 0
+##phcc		-1
+
+getBytes
+##phcc		position->bufferItemPtr->pageData   64
+##phcc		end of getBytes
+allocating unpinned page
+##phcc		0
+##phcc		<refCnt = 0>
+##bmcc		****<bufferToDisk>****
+##bmcc		writesize=64
+
+getBytes
+##phcc		position->bufferItemPtr is nullptr
+##bmcc		------<diskToBuffer>-------
+diskToBuffer
+size:64 pageSize: 64
+##phcc		position->bufferItemPtr->pageData   64
+##phcc		end of getBytes
+allocating unpinned page
+##bmcc		------<diskToBuffer>-------
+diskToBuffer
+size:64 pageSize: 64
+##phcc		0
+##phcc		<refCnt = 0>
+##bmcc		****<bufferToDisk>****
+##bmcc		writesize=64
+
+getBytes
+##phcc		position->bufferItemPtr is nullptr
+##bmcc		------<diskToBuffer>-------
+diskToBuffer
+size:64 pageSize: 64
+##phcc		position->bufferItemPtr->pageData   64
+##phcc		end of getBytes
+##phcc		-1
+allocating unpinned page
+##bmcc		------<diskToBuffer>-------
+diskToBuffer
+size:64 pageSize: 64
+##phcc		0
+##phcc		<refCnt = 0>
+##bmcc		****<bufferToDisk>****
+##bmcc		writesize=64
+
+getBytes
+##phcc		position->bufferItemPtr is nullptr
+##bmcc		------<diskToBuffer>-------
+diskToBuffer
+size:64 pageSize: 64
+##phcc		position->bufferItemPtr->pageData   64
+##phcc		end of getBytes
+##phcc		-1
+allocating unpinned page
+##bmcc		------<diskToBuffer>-------
+diskToBuffer
+size:64 pageSize: 64
+##phcc		0
+##phcc		<refCnt = 0>
+##bmcc		****<bufferToDisk>****
+##bmcc		writesize=64
+
+getBytes
+##phcc		position->bufferItemPtr is nullptr
+##bmcc		------<diskToBuffer>-------
+diskToBuffer
+size:64 pageSize: 64
+##phcc		position->bufferItemPtr->pageData   64
+##phcc		end of getBytes
+##phcc		-1
+allocating unpinned page
+##bmcc		------<diskToBuffer>-------
+diskToBuffer
+size:64 pageSize: 64
+##phcc		0
+##phcc		<refCnt = 0>
+##bmcc		****<bufferToDisk>****
+##bmcc		writesize=64
+
+getBytes
+##phcc		position->bufferItemPtr is nullptr
+##bmcc		------<diskToBuffer>-------
+diskToBuffer
+size:64 pageSize: 64
+##phcc		position->bufferItemPtr->pageData   64
+##phcc		end of getBytes
+##phcc		-1
+allocating unpinned page
+##bmcc		------<diskToBuffer>-------
+##bmcc		****<bufferToDisk>****
+##bmcc		writesize=64
+diskToBuffer
+size:64 pageSize: 64
+##phcc		0
+##phcc		<refCnt = 0>
+##bmcc		****<bufferToDisk>****
+##bmcc		writesize=64
+
+getBytes
+##phcc		position->bufferItemPtr is nullptr
+##bmcc		------<diskToBuffer>-------
+diskToBuffer
+size:64 pageSize: 64
+##phcc		position->bufferItemPtr->pageData   64
+##phcc		end of getBytes
+##phcc		-1
+allocating unpinned page
+##bmcc		------<diskToBuffer>-------
+##bmcc		****<bufferToDisk>****
+##bmcc		writesize=64
+diskToBuffer
+size:64 pageSize: 64
+##phcc		0
+##phcc		<refCnt = 0>
+##bmcc		****<bufferToDisk>****
+##bmcc		writesize=64
+
+getBytes
+##phcc		position->bufferItemPtr is nullptr
+##bmcc		------<diskToBuffer>-------
+##bmcc		****<bufferToDisk>****
+##bmcc		writesize=64
+diskToBuffer
+size:64 pageSize: 64
+##phcc		position->bufferItemPtr->pageData   64
+##phcc		end of getBytes
+##phcc		-1
+allocating unpinned page
+##bmcc		------<diskToBuffer>-------
+diskToBuffer
+size:64 pageSize: 64
+##phcc		0
+##phcc		<refCnt = 0>
+##bmcc		****<bufferToDisk>****
+##bmcc		writesize=64
+
+getBytes
+##phcc		position->bufferItemPtr is nullptr
+##bmcc		------<diskToBuffer>-------
+##bmcc		****<bufferToDisk>****
+##bmcc		writesize=64
+diskToBuffer
+size:64 pageSize: 64
+##phcc		position->bufferItemPtr->pageData   64
+##phcc		end of getBytes
+##phcc		-1
+allocating unpinned page
+##bmcc		------<diskToBuffer>-------
+##bmcc		****<bufferToDisk>****
+##bmcc		writesize=64
+diskToBuffer
+size:64 pageSize: 64
+##phcc		0
+##phcc		<refCnt = 0>
+##bmcc		****<bufferToDisk>****
+##bmcc		writesize=64
+
+getBytes
+##phcc		position->bufferItemPtr is nullptr
+##bmcc		------<diskToBuffer>-------
+diskToBuffer
+size:64 pageSize: 64
+##phcc		position->bufferItemPtr->pageData   64
+##phcc		end of getBytes
+##phcc		-1
+allocating unpinned page
+##bmcc		------<diskToBuffer>-------
+diskToBuffer
+size:64 pageSize: 64
+##phcc		0
+##phcc		<refCnt = 0>
+##bmcc		****<bufferToDisk>****
+##bmcc		writesize=64
+
+getBytes
+##phcc		position->bufferItemPtr is nullptr
+##bmcc		------<diskToBuffer>-------
+##bmcc		****<bufferToDisk>****
+##bmcc		writesize=64
+diskToBuffer
+size:64 pageSize: 64
+##phcc		position->bufferItemPtr->pageData   64
+##phcc		end of getBytes
+##phcc		-1
+allocating unpinned page
+##bmcc		------<diskToBuffer>-------
+diskToBuffer
+size:64 pageSize: 64
+##phcc		0
+##phcc		<refCnt = 0>
+##bmcc		****<bufferToDisk>****
+##bmcc		writesize=64
+
+getBytes
+##phcc		position->bufferItemPtr is nullptr
+##bmcc		------<diskToBuffer>-------
+##bmcc		****<bufferToDisk>****
+##bmcc		writesize=64
+diskToBuffer
+size:64 pageSize: 64
+##phcc		position->bufferItemPtr->pageData   64
+##phcc		end of getBytes
+##phcc		-1
+allocating unpinned page
+##bmcc		------<diskToBuffer>-------
+diskToBuffer
+size:64 pageSize: 64
+##phcc		0
+##phcc		<refCnt = 0>
+##bmcc		****<bufferToDisk>****
+##bmcc		writesize=64
+
+getBytes
+##phcc		position->bufferItemPtr is nullptr
+##bmcc		------<diskToBuffer>-------
+##bmcc		****<bufferToDisk>****
+##bmcc		writesize=64
+diskToBuffer
+size:64 pageSize: 64
+##phcc		position->bufferItemPtr->pageData   64
+##phcc		end of getBytes
+##phcc		-1
+allocating unpinned page
+##bmcc		------<diskToBuffer>-------
+diskToBuffer
+size:64 pageSize: 64
+##phcc		0
+##phcc		<refCnt = 0>
+##bmcc		****<bufferToDisk>****
+##bmcc		writesize=64
+
+getBytes
+##phcc		position->bufferItemPtr is nullptr
+##bmcc		------<diskToBuffer>-------
+##bmcc		****<bufferToDisk>****
+##bmcc		writesize=64
+diskToBuffer
+size:64 pageSize: 64
+##phcc		position->bufferItemPtr->pageData   64
+##phcc		end of getBytes
+##phcc		-1
+allocating unpinned page
+##bmcc		------<diskToBuffer>-------
+diskToBuffer
+size:64 pageSize: 64
+##phcc		0
+##phcc		<refCnt = 0>
+##bmcc		****<bufferToDisk>****
+##bmcc		writesize=64
+
+getBytes
+##phcc		position->bufferItemPtr is nullptr
+##bmcc		------<diskToBuffer>-------
+##bmcc		****<bufferToDisk>****
+##bmcc		writesize=64
+diskToBuffer
+size:64 pageSize: 64
+##phcc		position->bufferItemPtr->pageData   64
+##phcc		end of getBytes
+##phcc		-1
+allocating unpinned page
+##bmcc		------<diskToBuffer>-------
+diskToBuffer
+size:64 pageSize: 64
+##phcc		0
+##phcc		<refCnt = 0>
+##bmcc		****<bufferToDisk>****
+##bmcc		writesize=64
+
+getBytes
+##phcc		position->bufferItemPtr is nullptr
+##bmcc		------<diskToBuffer>-------
+##bmcc		****<bufferToDisk>****
+##bmcc		writesize=64
+diskToBuffer
+size:64 pageSize: 64
+##phcc		position->bufferItemPtr->pageData   64
+##phcc		end of getBytes
+##phcc		-1
+allocating unpinned page
+##bmcc		------<diskToBuffer>-------
+diskToBuffer
+size:64 pageSize: 64
+##phcc		0
+##phcc		<refCnt = 0>
+##bmcc		****<bufferToDisk>****
+##bmcc		writesize=64
+
+getBytes
+##phcc		position->bufferItemPtr is nullptr
+##bmcc		------<diskToBuffer>-------
+##bmcc		****<bufferToDisk>****
+##bmcc		writesize=64
+diskToBuffer
+size:64 pageSize: 64
+##phcc		position->bufferItemPtr->pageData   64
+##phcc		end of getBytes
+##phcc		-1
+allocating unpinned page
+##bmcc		------<diskToBuffer>-------
+diskToBuffer
+size:64 pageSize: 64
+##phcc		0
+##phcc		<refCnt = 0>
+##bmcc		****<bufferToDisk>****
+##bmcc		writesize=64
+
+getBytes
+##phcc		position->bufferItemPtr is nullptr
+##bmcc		------<diskToBuffer>-------
+##bmcc		****<bufferToDisk>****
+##bmcc		writesize=64
+diskToBuffer
+size:64 pageSize: 64
+##phcc		position->bufferItemPtr->pageData   64
+##phcc		end of getBytes
+##phcc		-1
+allocating unpinned page
+##bmcc		------<diskToBuffer>-------
+diskToBuffer
+size:64 pageSize: 64
+##phcc		0
+##phcc		<refCnt = 0>
+##bmcc		****<bufferToDisk>****
+##bmcc		writesize=64
+
+getBytes
+##phcc		position->bufferItemPtr is nullptr
+##bmcc		------<diskToBuffer>-------
+##bmcc		****<bufferToDisk>****
+##bmcc		writesize=64
+diskToBuffer
+size:64 pageSize: 64
+##phcc		position->bufferItemPtr->pageData   64
+##phcc		end of getBytes
+##phcc		-1
+allocating unpinned page
+##bmcc		------<diskToBuffer>-------
+diskToBuffer
+size:64 pageSize: 64
+##phcc		0
+##phcc		<refCnt = 0>
+##bmcc		****<bufferToDisk>****
+##bmcc		writesize=64
+
+getBytes
+##phcc		position->bufferItemPtr is nullptr
+##bmcc		------<diskToBuffer>-------
+##bmcc		****<bufferToDisk>****
+##bmcc		writesize=64
+diskToBuffer
+size:64 pageSize: 64
+##phcc		position->bufferItemPtr->pageData   64
+##phcc		end of getBytes
+##phcc		-1
+allocating unpinned page
+##bmcc		------<diskToBuffer>-------
+diskToBuffer
+size:64 pageSize: 64
+##phcc		0
+##phcc		<refCnt = 0>
+##bmcc		****<bufferToDisk>****
+##bmcc		writesize=64
+
+getBytes
+##phcc		position->bufferItemPtr is nullptr
+##bmcc		------<diskToBuffer>-------
+##bmcc		****<bufferToDisk>****
+##bmcc		writesize=64
+diskToBuffer
+size:64 pageSize: 64
+##phcc		position->bufferItemPtr->pageData   64
+##phcc		end of getBytes
+##phcc		-1
+allocating unpinned page
+##bmcc		------<diskToBuffer>-------
+diskToBuffer
+size:64 pageSize: 64
+##phcc		0
+##phcc		<refCnt = 0>
+##bmcc		****<bufferToDisk>****
+##bmcc		writesize=64
+
+getBytes
+##phcc		position->bufferItemPtr is nullptr
+##bmcc		------<diskToBuffer>-------
+##bmcc		****<bufferToDisk>****
+##bmcc		writesize=64
+diskToBuffer
+size:64 pageSize: 64
+##phcc		position->bufferItemPtr->pageData   64
+##phcc		end of getBytes
+##phcc		-1
+allocating unpinned page
+##bmcc		------<diskToBuffer>-------
+diskToBuffer
+size:64 pageSize: 64
+##phcc		0
+##phcc		<refCnt = 0>
+##bmcc		****<bufferToDisk>****
+##bmcc		writesize=64
+
+getBytes
+##phcc		position->bufferItemPtr is nullptr
+##bmcc		------<diskToBuffer>-------
+##bmcc		****<bufferToDisk>****
+##bmcc		writesize=64
+diskToBuffer
+size:64 pageSize: 64
+##phcc		position->bufferItemPtr->pageData   64
+##phcc		end of getBytes
+##phcc		-1
+allocating unpinned page
+##bmcc		------<diskToBuffer>-------
+diskToBuffer
+size:64 pageSize: 64
+##phcc		0
+##phcc		<refCnt = 0>
+##bmcc		****<bufferToDisk>****
+##bmcc		writesize=64
+
+getBytes
+##phcc		position->bufferItemPtr is nullptr
+##bmcc		------<diskToBuffer>-------
+##bmcc		****<bufferToDisk>****
+##bmcc		writesize=64
+diskToBuffer
+size:64 pageSize: 64
+##phcc		position->bufferItemPtr->pageData   64
+##phcc		end of getBytes
+##phcc		-1
+allocating unpinned page
+##bmcc		------<diskToBuffer>-------
+diskToBuffer
+size:64 pageSize: 64
+##phcc		0
+##phcc		<refCnt = 0>
+##bmcc		****<bufferToDisk>****
+##bmcc		writesize=64
+
+getBytes
+##phcc		position->bufferItemPtr is nullptr
+##bmcc		------<diskToBuffer>-------
+##bmcc		****<bufferToDisk>****
+##bmcc		writesize=64
+diskToBuffer
+size:64 pageSize: 64
+##phcc		position->bufferItemPtr->pageData   64
+##phcc		end of getBytes
+##phcc		-1
+allocating unpinned page
+##bmcc		------<diskToBuffer>-------
+diskToBuffer
+size:64 pageSize: 64
+##phcc		0
+##phcc		<refCnt = 0>
+##bmcc		****<bufferToDisk>****
+##bmcc		writesize=64
+
+getBytes
+##phcc		position->bufferItemPtr is nullptr
+##bmcc		------<diskToBuffer>-------
+##bmcc		****<bufferToDisk>****
+##bmcc		writesize=64
+diskToBuffer
+size:64 pageSize: 64
+##phcc		position->bufferItemPtr->pageData   64
+##phcc		end of getBytes
+##phcc		-1
+allocating unpinned page
+##bmcc		------<diskToBuffer>-------
+diskToBuffer
+size:64 pageSize: 64
+##phcc		0
+##phcc		<refCnt = 0>
+##bmcc		****<bufferToDisk>****
+##bmcc		writesize=64
+
+getBytes
+##phcc		position->bufferItemPtr is nullptr
+##bmcc		------<diskToBuffer>-------
+##bmcc		****<bufferToDisk>****
+##bmcc		writesize=64
+diskToBuffer
+size:64 pageSize: 64
+##phcc		position->bufferItemPtr->pageData   64
+##phcc		end of getBytes
+##phcc		-1
+allocating unpinned page
+##bmcc		------<diskToBuffer>-------
+diskToBuffer
+size:64 pageSize: 64
+##phcc		0
+##phcc		<refCnt = 0>
+##bmcc		****<bufferToDisk>****
+##bmcc		writesize=64
+
+getBytes
+##phcc		position->bufferItemPtr is nullptr
+##bmcc		------<diskToBuffer>-------
+##bmcc		****<bufferToDisk>****
+##bmcc		writesize=64
+diskToBuffer
+size:64 pageSize: 64
+##phcc		position->bufferItemPtr->pageData   64
+##phcc		end of getBytes
+##phcc		-1
+allocating unpinned page
+##bmcc		------<diskToBuffer>-------
+diskToBuffer
+size:64 pageSize: 64
+##phcc		0
+##phcc		<refCnt = 0>
+##bmcc		****<bufferToDisk>****
+##bmcc		writesize=64
+
+getBytes
+##phcc		position->bufferItemPtr is nullptr
+##bmcc		------<diskToBuffer>-------
+##bmcc		****<bufferToDisk>****
+##bmcc		writesize=64
+diskToBuffer
+size:64 pageSize: 64
+##phcc		position->bufferItemPtr->pageData   64
+##phcc		end of getBytes
+##phcc		-1
+allocating unpinned page
+##bmcc		------<diskToBuffer>-------
+diskToBuffer
+size:64 pageSize: 64
+##phcc		0
+##phcc		<refCnt = 0>
+##bmcc		****<bufferToDisk>****
+##bmcc		writesize=64
+
+getBytes
+##phcc		position->bufferItemPtr is nullptr
+##bmcc		------<diskToBuffer>-------
+##bmcc		****<bufferToDisk>****
+##bmcc		writesize=64
+diskToBuffer
+size:64 pageSize: 64
+##phcc		position->bufferItemPtr->pageData   64
+##phcc		end of getBytes
+##phcc		-1
+allocating unpinned page
+##bmcc		------<diskToBuffer>-------
+diskToBuffer
+size:64 pageSize: 64
+##phcc		0
+##phcc		<refCnt = 0>
+##bmcc		****<bufferToDisk>****
+##bmcc		writesize=64
+
+getBytes
+##phcc		position->bufferItemPtr is nullptr
+##bmcc		------<diskToBuffer>-------
+##bmcc		****<bufferToDisk>****
+##bmcc		writesize=64
+diskToBuffer
+size:64 pageSize: 64
+##phcc		position->bufferItemPtr->pageData   64
+##phcc		end of getBytes
+##phcc		-1
+allocating unpinned page
+##bmcc		------<diskToBuffer>-------
+diskToBuffer
+size:64 pageSize: 64
+##phcc		0
+##phcc		<refCnt = 0>
+##bmcc		****<bufferToDisk>****
+##bmcc		writesize=64
+
+getBytes
+##phcc		position->bufferItemPtr is nullptr
+##bmcc		------<diskToBuffer>-------
+##bmcc		****<bufferToDisk>****
+##bmcc		writesize=64
+diskToBuffer
+size:64 pageSize: 64
+##phcc		position->bufferItemPtr->pageData   64
+##phcc		end of getBytes
+##phcc		-1
+allocating unpinned page
+##bmcc		------<diskToBuffer>-------
+diskToBuffer
+size:64 pageSize: 64
+##phcc		0
+##phcc		<refCnt = 0>
+##bmcc		****<bufferToDisk>****
+##bmcc		writesize=64
+
+getBytes
+##phcc		position->bufferItemPtr is nullptr
+##bmcc		------<diskToBuffer>-------
+##bmcc		****<bufferToDisk>****
+##bmcc		writesize=64
+diskToBuffer
+size:64 pageSize: 64
+##phcc		position->bufferItemPtr->pageData   64
+##phcc		end of getBytes
+##phcc		-1
+allocating unpinned page
+##bmcc		------<diskToBuffer>-------
+diskToBuffer
+size:64 pageSize: 64
+##phcc		0
+##phcc		<refCnt = 0>
+##bmcc		****<bufferToDisk>****
+##bmcc		writesize=64
+
+getBytes
+##phcc		position->bufferItemPtr is nullptr
+##bmcc		------<diskToBuffer>-------
+##bmcc		****<bufferToDisk>****
+##bmcc		writesize=64
+diskToBuffer
+size:64 pageSize: 64
+##phcc		position->bufferItemPtr->pageData   64
+##phcc		end of getBytes
+##phcc		-1
+allocating unpinned page
+##bmcc		------<diskToBuffer>-------
+diskToBuffer
+size:64 pageSize: 64
+##phcc		0
+##phcc		<refCnt = 0>
+##bmcc		****<bufferToDisk>****
+##bmcc		writesize=64
+
+getBytes
+##phcc		position->bufferItemPtr is nullptr
+##bmcc		------<diskToBuffer>-------
+##bmcc		****<bufferToDisk>****
+##bmcc		writesize=64
+diskToBuffer
+size:64 pageSize: 64
+##phcc		position->bufferItemPtr->pageData   64
+##phcc		end of getBytes
+##phcc		-1
+allocating unpinned page
+##bmcc		------<diskToBuffer>-------
+diskToBuffer
+size:64 pageSize: 64
+##phcc		0
+##phcc		<refCnt = 0>
+##bmcc		****<bufferToDisk>****
+##bmcc		writesize=64
+
+getBytes
+##phcc		position->bufferItemPtr is nullptr
+##bmcc		------<diskToBuffer>-------
+##bmcc		****<bufferToDisk>****
+##bmcc		writesize=64
+diskToBuffer
+size:64 pageSize: 64
+##phcc		position->bufferItemPtr->pageData   64
+##phcc		end of getBytes
+##phcc		-1
+allocating unpinned page
+##bmcc		------<diskToBuffer>-------
+diskToBuffer
+size:64 pageSize: 64
+##phcc		0
+##phcc		<refCnt = 0>
+##bmcc		****<bufferToDisk>****
+##bmcc		writesize=64
+
+getBytes
+##phcc		position->bufferItemPtr is nullptr
+##bmcc		------<diskToBuffer>-------
+##bmcc		****<bufferToDisk>****
+##bmcc		writesize=64
+diskToBuffer
+size:64 pageSize: 64
+##phcc		position->bufferItemPtr->pageData   64
+##phcc		end of getBytes
+##phcc		-1
+allocating unpinned page
+##bmcc		------<diskToBuffer>-------
+diskToBuffer
+size:64 pageSize: 64
+##phcc		0
+##phcc		<refCnt = 0>
+##bmcc		****<bufferToDisk>****
+##bmcc		writesize=64
+
+getBytes
+##phcc		position->bufferItemPtr is nullptr
+##bmcc		------<diskToBuffer>-------
+##bmcc		****<bufferToDisk>****
+##bmcc		writesize=64
+diskToBuffer
+size:64 pageSize: 64
+##phcc		position->bufferItemPtr->pageData   64
+##phcc		end of getBytes
+##phcc		-1
+allocating unpinned page
+##bmcc		------<diskToBuffer>-------
+diskToBuffer
+size:64 pageSize: 64
+##phcc		0
+##phcc		<refCnt = 0>
+##bmcc		****<bufferToDisk>****
+##bmcc		writesize=64
+
+getBytes
+##phcc		position->bufferItemPtr is nullptr
+##bmcc		------<diskToBuffer>-------
+##bmcc		****<bufferToDisk>****
+##bmcc		writesize=64
+diskToBuffer
+size:64 pageSize: 64
+##phcc		position->bufferItemPtr->pageData   64
+##phcc		end of getBytes
+##phcc		-1
+allocating unpinned page
+##bmcc		------<diskToBuffer>-------
+diskToBuffer
+size:64 pageSize: 64
+##phcc		0
+##phcc		<refCnt = 0>
+##bmcc		****<bufferToDisk>****
+##bmcc		writesize=64
+
+getBytes
+##phcc		position->bufferItemPtr is nullptr
+##bmcc		------<diskToBuffer>-------
+##bmcc		****<bufferToDisk>****
+##bmcc		writesize=64
+diskToBuffer
+size:64 pageSize: 64
+##phcc		position->bufferItemPtr->pageData   64
+##phcc		end of getBytes
+##phcc		-1
+allocating unpinned page
+##bmcc		------<diskToBuffer>-------
+diskToBuffer
+size:64 pageSize: 64
+##phcc		0
+##phcc		<refCnt = 0>
+##bmcc		****<bufferToDisk>****
+##bmcc		writesize=64
+
+getBytes
+##phcc		position->bufferItemPtr is nullptr
+##bmcc		------<diskToBuffer>-------
+##bmcc		****<bufferToDisk>****
+##bmcc		writesize=64
+diskToBuffer
+size:64 pageSize: 64
+##phcc		position->bufferItemPtr->pageData   64
+##phcc		end of getBytes
+##phcc		-1
+allocating unpinned page
+##bmcc		------<diskToBuffer>-------
+diskToBuffer
+size:64 pageSize: 64
+##phcc		0
+##phcc		<refCnt = 0>
+##bmcc		****<bufferToDisk>****
+##bmcc		writesize=64
+
+getBytes
+##phcc		position->bufferItemPtr is nullptr
+##bmcc		------<diskToBuffer>-------
+##bmcc		****<bufferToDisk>****
+##bmcc		writesize=64
+diskToBuffer
+size:64 pageSize: 64
+##phcc		position->bufferItemPtr->pageData   64
+##phcc		end of getBytes
+##phcc		-1
+allocating unpinned page
+##bmcc		------<diskToBuffer>-------
+diskToBuffer
+size:64 pageSize: 64
+##phcc		0
+##phcc		<refCnt = 0>
+##bmcc		****<bufferToDisk>****
+##bmcc		writesize=64
+
+getBytes
+##phcc		position->bufferItemPtr is nullptr
+##bmcc		------<diskToBuffer>-------
+##bmcc		****<bufferToDisk>****
+##bmcc		writesize=64
+diskToBuffer
+size:64 pageSize: 64
+##phcc		position->bufferItemPtr->pageData   64
+##phcc		end of getBytes
+##phcc		-1
+allocating unpinned page
+##bmcc		------<diskToBuffer>-------
+diskToBuffer
+size:64 pageSize: 64
+##phcc		0
+##phcc		<refCnt = 0>
+##bmcc		****<bufferToDisk>****
+##bmcc		writesize=64
+
+getBytes
+##phcc		position->bufferItemPtr is nullptr
+##bmcc		------<diskToBuffer>-------
+##bmcc		****<bufferToDisk>****
+##bmcc		writesize=64
+diskToBuffer
+size:64 pageSize: 64
+##phcc		position->bufferItemPtr->pageData   64
+##phcc		end of getBytes
+##phcc		-1
+allocating unpinned page
+##bmcc		------<diskToBuffer>-------
+diskToBuffer
+size:64 pageSize: 64
+##phcc		0
+##phcc		<refCnt = 0>
+##bmcc		****<bufferToDisk>****
+##bmcc		writesize=64
+
+getBytes
+##phcc		position->bufferItemPtr is nullptr
+##bmcc		------<diskToBuffer>-------
+##bmcc		****<bufferToDisk>****
+##bmcc		writesize=64
+diskToBuffer
+size:64 pageSize: 64
+##phcc		position->bufferItemPtr->pageData   64
+##phcc		end of getBytes
+##phcc		-1
+allocating unpinned page
+##bmcc		------<diskToBuffer>-------
+diskToBuffer
+size:64 pageSize: 64
+##phcc		0
+##phcc		<refCnt = 0>
+##bmcc		****<bufferToDisk>****
+##bmcc		writesize=64
+
+getBytes
+##phcc		position->bufferItemPtr is nullptr
+##bmcc		------<diskToBuffer>-------
+##bmcc		****<bufferToDisk>****
+##bmcc		writesize=64
+diskToBuffer
+size:64 pageSize: 64
+##phcc		position->bufferItemPtr->pageData   64
+##phcc		end of getBytes
+##phcc		-1
+allocating unpinned page
+##bmcc		------<diskToBuffer>-------
+diskToBuffer
+size:64 pageSize: 64
+##phcc		0
+##phcc		<refCnt = 0>
+##bmcc		****<bufferToDisk>****
+##bmcc		writesize=64
+
+getBytes
+##phcc		position->bufferItemPtr is nullptr
+##bmcc		------<diskToBuffer>-------
+##bmcc		****<bufferToDisk>****
+##bmcc		writesize=64
+diskToBuffer
+size:64 pageSize: 64
+##phcc		position->bufferItemPtr->pageData   64
+##phcc		end of getBytes
+##phcc		-1
+allocating unpinned page
+##bmcc		------<diskToBuffer>-------
+diskToBuffer
+size:64 pageSize: 64
+##phcc		0
+##phcc		<refCnt = 0>
+##bmcc		****<bufferToDisk>****
+##bmcc		writesize=64
+
+getBytes
+##phcc		position->bufferItemPtr is nullptr
+##bmcc		------<diskToBuffer>-------
+##bmcc		****<bufferToDisk>****
+##bmcc		writesize=64
+diskToBuffer
+size:64 pageSize: 64
+##phcc		position->bufferItemPtr->pageData   64
+##phcc		end of getBytes
+##phcc		-1
+allocating unpinned page
+##bmcc		------<diskToBuffer>-------
+diskToBuffer
+size:64 pageSize: 64
+##phcc		0
+##phcc		<refCnt = 0>
+##bmcc		****<bufferToDisk>****
+##bmcc		writesize=64
+
+getBytes
+##phcc		position->bufferItemPtr is nullptr
+##bmcc		------<diskToBuffer>-------
+##bmcc		****<bufferToDisk>****
+##bmcc		writesize=64
+diskToBuffer
+size:64 pageSize: 64
+##phcc		position->bufferItemPtr->pageData   64
+##phcc		end of getBytes
+##phcc		-1
+allocating unpinned page
+##bmcc		------<diskToBuffer>-------
+diskToBuffer
+size:64 pageSize: 64
+##phcc		0
+##phcc		<refCnt = 0>
+##bmcc		****<bufferToDisk>****
+##bmcc		writesize=64
+
+getBytes
+##phcc		position->bufferItemPtr is nullptr
+##bmcc		------<diskToBuffer>-------
+##bmcc		****<bufferToDisk>****
+##bmcc		writesize=64
+diskToBuffer
+size:64 pageSize: 64
+##phcc		position->bufferItemPtr->pageData   64
+##phcc		end of getBytes
+##phcc		-1
+allocating unpinned page
+##bmcc		------<diskToBuffer>-------
+diskToBuffer
+size:64 pageSize: 64
+##phcc		0
+##phcc		<refCnt = 0>
+##bmcc		****<bufferToDisk>****
+##bmcc		writesize=64
+
+getBytes
+##phcc		position->bufferItemPtr is nullptr
+##bmcc		------<diskToBuffer>-------
+##bmcc		****<bufferToDisk>****
+##bmcc		writesize=64
+diskToBuffer
+size:64 pageSize: 64
+##phcc		position->bufferItemPtr->pageData   64
+##phcc		end of getBytes
+##phcc		-1
+allocating unpinned page
+##bmcc		------<diskToBuffer>-------
+diskToBuffer
+size:64 pageSize: 64
+##phcc		0
+##phcc		<refCnt = 0>
+##bmcc		****<bufferToDisk>****
+##bmcc		writesize=64
+
+getBytes
+##phcc		position->bufferItemPtr is nullptr
+##bmcc		------<diskToBuffer>-------
+##bmcc		****<bufferToDisk>****
+##bmcc		writesize=64
+diskToBuffer
+size:64 pageSize: 64
+##phcc		position->bufferItemPtr->pageData   64
+##phcc		end of getBytes
+##phcc		-1
+allocating unpinned page
+##bmcc		------<diskToBuffer>-------
+diskToBuffer
+size:64 pageSize: 64
+##phcc		0
+##phcc		<refCnt = 0>
+##bmcc		****<bufferToDisk>****
+##bmcc		writesize=64
+
+getBytes
+##phcc		position->bufferItemPtr is nullptr
+##bmcc		------<diskToBuffer>-------
+##bmcc		****<bufferToDisk>****
+##bmcc		writesize=64
+diskToBuffer
+size:64 pageSize: 64
+##phcc		position->bufferItemPtr->pageData   64
+##phcc		end of getBytes
+##phcc		-1
+allocating unpinned page
+##bmcc		------<diskToBuffer>-------
+diskToBuffer
+size:64 pageSize: 64
+##phcc		0
+##phcc		<refCnt = 0>
+##bmcc		****<bufferToDisk>****
+##bmcc		writesize=64
+
+getBytes
+##phcc		position->bufferItemPtr is nullptr
+##bmcc		------<diskToBuffer>-------
+##bmcc		****<bufferToDisk>****
+##bmcc		writesize=64
+diskToBuffer
+size:64 pageSize: 64
+##phcc		position->bufferItemPtr->pageData   64
+##phcc		end of getBytes
+##phcc		-1
+allocating unpinned page
+##bmcc		------<diskToBuffer>-------
+diskToBuffer
+size:64 pageSize: 64
+##phcc		0
+##phcc		<refCnt = 0>
+##bmcc		****<bufferToDisk>****
+##bmcc		writesize=64
+
+getBytes
+##phcc		position->bufferItemPtr is nullptr
+##bmcc		------<diskToBuffer>-------
+##bmcc		****<bufferToDisk>****
+##bmcc		writesize=64
+diskToBuffer
+size:64 pageSize: 64
+##phcc		position->bufferItemPtr->pageData   64
+##phcc		end of getBytes
+##phcc		-1
+allocating unpinned page
+##bmcc		------<diskToBuffer>-------
+diskToBuffer
+size:64 pageSize: 64
+##phcc		0
+##phcc		<refCnt = 0>
+##bmcc		****<bufferToDisk>****
+##bmcc		writesize=64
+
+getBytes
+##phcc		position->bufferItemPtr is nullptr
+##bmcc		------<diskToBuffer>-------
+##bmcc		****<bufferToDisk>****
+##bmcc		writesize=64
+diskToBuffer
+size:64 pageSize: 64
+##phcc		position->bufferItemPtr->pageData   64
+##phcc		end of getBytes
+##phcc		-1
+allocating unpinned page
+##bmcc		------<diskToBuffer>-------
+diskToBuffer
+size:64 pageSize: 64
+##phcc		0
+##phcc		<refCnt = 0>
+##bmcc		****<bufferToDisk>****
+##bmcc		writesize=64
+
+getBytes
+##phcc		position->bufferItemPtr is nullptr
+##bmcc		------<diskToBuffer>-------
+##bmcc		****<bufferToDisk>****
+##bmcc		writesize=64
+diskToBuffer
+size:64 pageSize: 64
+##phcc		position->bufferItemPtr->pageData   64
+##phcc		end of getBytes
+##phcc		-1
+allocating unpinned page
+##bmcc		------<diskToBuffer>-------
+diskToBuffer
+size:64 pageSize: 64
+##phcc		0
+##phcc		<refCnt = 0>
+##bmcc		****<bufferToDisk>****
+##bmcc		writesize=64
+
+getBytes
+##phcc		position->bufferItemPtr is nullptr
+##bmcc		------<diskToBuffer>-------
+##bmcc		****<bufferToDisk>****
+##bmcc		writesize=64
+diskToBuffer
+size:64 pageSize: 64
+##phcc		position->bufferItemPtr->pageData   64
+##phcc		end of getBytes
+##phcc		-1
+allocating unpinned page
+##bmcc		------<diskToBuffer>-------
+diskToBuffer
+size:64 pageSize: 64
+##phcc		0
+##phcc		<refCnt = 0>
+##bmcc		****<bufferToDisk>****
+##bmcc		writesize=64
+
+getBytes
+##phcc		position->bufferItemPtr is nullptr
+##bmcc		------<diskToBuffer>-------
+##bmcc		****<bufferToDisk>****
+##bmcc		writesize=64
+diskToBuffer
+size:64 pageSize: 64
+##phcc		position->bufferItemPtr->pageData   64
+##phcc		end of getBytes
+##phcc		-1
+allocating unpinned page
+##bmcc		------<diskToBuffer>-------
+diskToBuffer
+size:64 pageSize: 64
+##phcc		0
+##phcc		<refCnt = 0>
+##bmcc		****<bufferToDisk>****
+##bmcc		writesize=64
+
+getBytes
+##phcc		position->bufferItemPtr is nullptr
+##bmcc		------<diskToBuffer>-------
+##bmcc		****<bufferToDisk>****
+##bmcc		writesize=64
+diskToBuffer
+size:64 pageSize: 64
+##phcc		position->bufferItemPtr->pageData   64
+##phcc		end of getBytes
+##phcc		-1
+allocating unpinned page
+##bmcc		------<diskToBuffer>-------
+diskToBuffer
+size:64 pageSize: 64
+##phcc		0
+##phcc		<refCnt = 0>
+##bmcc		****<bufferToDisk>****
+##bmcc		writesize=64
+
+getBytes
+##phcc		position->bufferItemPtr is nullptr
+##bmcc		------<diskToBuffer>-------
+##bmcc		****<bufferToDisk>****
+##bmcc		writesize=64
+diskToBuffer
+size:64 pageSize: 64
+##phcc		position->bufferItemPtr->pageData   64
+##phcc		end of getBytes
+##phcc		-1
+allocating unpinned page
+##bmcc		------<diskToBuffer>-------
+diskToBuffer
+size:64 pageSize: 64
+##phcc		0
+##phcc		<refCnt = 0>
+##bmcc		****<bufferToDisk>****
+##bmcc		writesize=64
+
+getBytes
+##phcc		position->bufferItemPtr is nullptr
+##bmcc		------<diskToBuffer>-------
+##bmcc		****<bufferToDisk>****
+##bmcc		writesize=64
+diskToBuffer
+size:64 pageSize: 64
+##phcc		position->bufferItemPtr->pageData   64
+##phcc		end of getBytes
+##phcc		-1
+allocating unpinned page
+##bmcc		------<diskToBuffer>-------
+diskToBuffer
+size:64 pageSize: 64
+##phcc		0
+##phcc		<refCnt = 0>
+##bmcc		****<bufferToDisk>****
+##bmcc		writesize=64
+
+getBytes
+##phcc		position->bufferItemPtr is nullptr
+##bmcc		------<diskToBuffer>-------
+##bmcc		****<bufferToDisk>****
+##bmcc		writesize=64
+diskToBuffer
+size:64 pageSize: 64
+##phcc		position->bufferItemPtr->pageData   64
+##phcc		end of getBytes
+##phcc		-1
+allocating unpinned page
+##bmcc		------<diskToBuffer>-------
+diskToBuffer
+size:64 pageSize: 64
+##phcc		0
+##phcc		<refCnt = 0>
+##bmcc		****<bufferToDisk>****
+##bmcc		writesize=64
+
+getBytes
+##phcc		position->bufferItemPtr is nullptr
+##bmcc		------<diskToBuffer>-------
+##bmcc		****<bufferToDisk>****
+##bmcc		writesize=64
+diskToBuffer
+size:64 pageSize: 64
+##phcc		position->bufferItemPtr->pageData   64
+##phcc		end of getBytes
+##phcc		-1
+allocating unpinned page
+##bmcc		------<diskToBuffer>-------
+diskToBuffer
+size:64 pageSize: 64
+##phcc		0
+##phcc		<refCnt = 0>
+##bmcc		****<bufferToDisk>****
+##bmcc		writesize=64
+
+getBytes
+##phcc		position->bufferItemPtr is nullptr
+##bmcc		------<diskToBuffer>-------
+##bmcc		****<bufferToDisk>****
+##bmcc		writesize=64
+diskToBuffer
+size:64 pageSize: 64
+##phcc		position->bufferItemPtr->pageData   64
+##phcc		end of getBytes
+##phcc		-1
+allocating unpinned page
+##bmcc		------<diskToBuffer>-------
+diskToBuffer
+size:64 pageSize: 64
+##phcc		0
+##phcc		<refCnt = 0>
+##bmcc		****<bufferToDisk>****
+##bmcc		writesize=64
+
+getBytes
+##phcc		position->bufferItemPtr is nullptr
+##bmcc		------<diskToBuffer>-------
+##bmcc		****<bufferToDisk>****
+##bmcc		writesize=64
+diskToBuffer
+size:64 pageSize: 64
+##phcc		position->bufferItemPtr->pageData   64
+##phcc		end of getBytes
+##phcc		-1
+allocating unpinned page
+##bmcc		------<diskToBuffer>-------
+diskToBuffer
+size:64 pageSize: 64
+##phcc		0
+##phcc		<refCnt = 0>
+##bmcc		****<bufferToDisk>****
+##bmcc		writesize=64
+
+getBytes
+##phcc		position->bufferItemPtr is nullptr
+##bmcc		------<diskToBuffer>-------
+##bmcc		****<bufferToDisk>****
+##bmcc		writesize=64
+diskToBuffer
+size:64 pageSize: 64
+##phcc		position->bufferItemPtr->pageData   64
+##phcc		end of getBytes
+##phcc		-1
+allocating unpinned page
+##bmcc		------<diskToBuffer>-------
+diskToBuffer
+size:64 pageSize: 64
+##phcc		0
+##phcc		<refCnt = 0>
+##bmcc		****<bufferToDisk>****
+##bmcc		writesize=64
+
+getBytes
+##phcc		position->bufferItemPtr is nullptr
+##bmcc		------<diskToBuffer>-------
+##bmcc		****<bufferToDisk>****
+##bmcc		writesize=64
+diskToBuffer
+size:64 pageSize: 64
+##phcc		position->bufferItemPtr->pageData   64
+##phcc		end of getBytes
+##phcc		-1
+allocating unpinned page
+##bmcc		------<diskToBuffer>-------
+diskToBuffer
+size:64 pageSize: 64
+##phcc		0
+##phcc		<refCnt = 0>
+##bmcc		****<bufferToDisk>****
+##bmcc		writesize=64
+
+getBytes
+##phcc		position->bufferItemPtr is nullptr
+##bmcc		------<diskToBuffer>-------
+##bmcc		****<bufferToDisk>****
+##bmcc		writesize=64
+diskToBuffer
+size:64 pageSize: 64
+##phcc		position->bufferItemPtr->pageData   64
+##phcc		end of getBytes
+##phcc		-1
+allocating unpinned page
+##bmcc		------<diskToBuffer>-------
+diskToBuffer
+size:64 pageSize: 64
+##phcc		0
+##phcc		<refCnt = 0>
+##bmcc		****<bufferToDisk>****
+##bmcc		writesize=64
+
+getBytes
+##phcc		position->bufferItemPtr is nullptr
+##bmcc		------<diskToBuffer>-------
+##bmcc		****<bufferToDisk>****
+##bmcc		writesize=64
+diskToBuffer
+size:64 pageSize: 64
+##phcc		position->bufferItemPtr->pageData   64
+##phcc		end of getBytes
+##phcc		-1
+allocating unpinned page
+##bmcc		------<diskToBuffer>-------
+diskToBuffer
+size:64 pageSize: 64
+##phcc		0
+##phcc		<refCnt = 0>
+##bmcc		****<bufferToDisk>****
+##bmcc		writesize=64
+
+getBytes
+##phcc		position->bufferItemPtr is nullptr
+##bmcc		------<diskToBuffer>-------
+##bmcc		****<bufferToDisk>****
+##bmcc		writesize=64
+diskToBuffer
+size:64 pageSize: 64
+##phcc		position->bufferItemPtr->pageData   64
+##phcc		end of getBytes
+##phcc		-1
+allocating unpinned page
+##bmcc		------<diskToBuffer>-------
+diskToBuffer
+size:64 pageSize: 64
+##phcc		0
+##phcc		<refCnt = 0>
+##bmcc		****<bufferToDisk>****
+##bmcc		writesize=64
+
+getBytes
+##phcc		position->bufferItemPtr is nullptr
+##bmcc		------<diskToBuffer>-------
+##bmcc		****<bufferToDisk>****
+##bmcc		writesize=64
+diskToBuffer
+size:64 pageSize: 64
+##phcc		position->bufferItemPtr->pageData   64
+##phcc		end of getBytes
+##phcc		-1
+allocating unpinned page
+##bmcc		------<diskToBuffer>-------
+diskToBuffer
+size:64 pageSize: 64
+##phcc		0
+##phcc		<refCnt = 0>
+##bmcc		****<bufferToDisk>****
+##bmcc		writesize=64
+
+getBytes
+##phcc		position->bufferItemPtr is nullptr
+##bmcc		------<diskToBuffer>-------
+##bmcc		****<bufferToDisk>****
+##bmcc		writesize=64
+diskToBuffer
+size:64 pageSize: 64
+##phcc		position->bufferItemPtr->pageData   64
+##phcc		end of getBytes
+##phcc		-1
+allocating unpinned page
+##bmcc		------<diskToBuffer>-------
+diskToBuffer
+size:64 pageSize: 64
+##phcc		0
+##phcc		<refCnt = 0>
+##bmcc		****<bufferToDisk>****
+##bmcc		writesize=64
+
+getBytes
+##phcc		position->bufferItemPtr is nullptr
+##bmcc		------<diskToBuffer>-------
+##bmcc		****<bufferToDisk>****
+##bmcc		writesize=64
+diskToBuffer
+size:64 pageSize: 64
+##phcc		position->bufferItemPtr->pageData   64
+##phcc		end of getBytes
+##phcc		-1
+allocating unpinned page
+##bmcc		------<diskToBuffer>-------
+diskToBuffer
+size:64 pageSize: 64
+##phcc		0
+##phcc		<refCnt = 0>
+##bmcc		****<bufferToDisk>****
+##bmcc		writesize=64
+
+getBytes
+##phcc		position->bufferItemPtr is nullptr
+##bmcc		------<diskToBuffer>-------
+##bmcc		****<bufferToDisk>****
+##bmcc		writesize=64
+diskToBuffer
+size:64 pageSize: 64
+##phcc		position->bufferItemPtr->pageData   64
+##phcc		end of getBytes
+##phcc		-1
+allocating unpinned page
+##bmcc		------<diskToBuffer>-------
+diskToBuffer
+size:64 pageSize: 64
+##phcc		0
+##phcc		<refCnt = 0>
+##bmcc		****<bufferToDisk>****
+##bmcc		writesize=64
+
+getBytes
+##phcc		position->bufferItemPtr is nullptr
+##bmcc		------<diskToBuffer>-------
+##bmcc		****<bufferToDisk>****
+##bmcc		writesize=64
+diskToBuffer
+size:64 pageSize: 64
+##phcc		position->bufferItemPtr->pageData   64
+##phcc		end of getBytes
+##phcc		-1
+allocating unpinned page
+##bmcc		------<diskToBuffer>-------
+diskToBuffer
+size:64 pageSize: 64
+##phcc		0
+##phcc		<refCnt = 0>
+##bmcc		****<bufferToDisk>****
+##bmcc		writesize=64
+
+getBytes
+##phcc		position->bufferItemPtr is nullptr
+##bmcc		------<diskToBuffer>-------
+##bmcc		****<bufferToDisk>****
+##bmcc		writesize=64
+diskToBuffer
+size:64 pageSize: 64
+##phcc		position->bufferItemPtr->pageData   64
+##phcc		end of getBytes
+##phcc		-1
+allocating unpinned page
+##bmcc		------<diskToBuffer>-------
+diskToBuffer
+size:64 pageSize: 64
+##phcc		0
+##phcc		<refCnt = 0>
+##bmcc		****<bufferToDisk>****
+##bmcc		writesize=64
+
+getBytes
+##phcc		position->bufferItemPtr is nullptr
+##bmcc		------<diskToBuffer>-------
+##bmcc		****<bufferToDisk>****
+##bmcc		writesize=64
+diskToBuffer
+size:64 pageSize: 64
+##phcc		position->bufferItemPtr->pageData   64
+##phcc		end of getBytes
+##phcc		-1
+allocating unpinned page
+##bmcc		------<diskToBuffer>-------
+diskToBuffer
+size:64 pageSize: 64
+##phcc		0
+##phcc		<refCnt = 0>
+##bmcc		****<bufferToDisk>****
+##bmcc		writesize=64
+
+getBytes
+##phcc		position->bufferItemPtr is nullptr
+##bmcc		------<diskToBuffer>-------
+##bmcc		****<bufferToDisk>****
+##bmcc		writesize=64
+diskToBuffer
+size:64 pageSize: 64
+##phcc		position->bufferItemPtr->pageData   64
+##phcc		end of getBytes
+##phcc		-1
+allocating unpinned page
+##bmcc		------<diskToBuffer>-------
+diskToBuffer
+size:64 pageSize: 64
+##phcc		0
+##phcc		<refCnt = 0>
+##bmcc		****<bufferToDisk>****
+##bmcc		writesize=64
+
+getBytes
+##phcc		position->bufferItemPtr is nullptr
+##bmcc		------<diskToBuffer>-------
+##bmcc		****<bufferToDisk>****
+##bmcc		writesize=64
+diskToBuffer
+size:64 pageSize: 64
+##phcc		position->bufferItemPtr->pageData   64
+##phcc		end of getBytes
+##phcc		-1
+allocating unpinned page
+##bmcc		------<diskToBuffer>-------
+diskToBuffer
+size:64 pageSize: 64
+##phcc		0
+##phcc		<refCnt = 0>
+##bmcc		****<bufferToDisk>****
+##bmcc		writesize=64
+
+getBytes
+##phcc		position->bufferItemPtr is nullptr
+##bmcc		------<diskToBuffer>-------
+##bmcc		****<bufferToDisk>****
+##bmcc		writesize=64
+diskToBuffer
+size:64 pageSize: 64
+##phcc		position->bufferItemPtr->pageData   64
+##phcc		end of getBytes
+##phcc		-1
+allocating unpinned page
+##bmcc		------<diskToBuffer>-------
+diskToBuffer
+size:64 pageSize: 64
+##phcc		0
+##phcc		<refCnt = 0>
+##bmcc		****<bufferToDisk>****
+##bmcc		writesize=64
+
+getBytes
+##phcc		position->bufferItemPtr is nullptr
+##bmcc		------<diskToBuffer>-------
+##bmcc		****<bufferToDisk>****
+##bmcc		writesize=64
+diskToBuffer
+size:64 pageSize: 64
+##phcc		position->bufferItemPtr->pageData   64
+##phcc		end of getBytes
+##phcc		-1
+allocating unpinned page
+##bmcc		------<diskToBuffer>-------
+diskToBuffer
+size:64 pageSize: 64
+##phcc		0
+##phcc		<refCnt = 0>
+##bmcc		****<bufferToDisk>****
+##bmcc		writesize=64
+
+getBytes
+##phcc		position->bufferItemPtr is nullptr
+##bmcc		------<diskToBuffer>-------
+##bmcc		****<bufferToDisk>****
+##bmcc		writesize=64
+diskToBuffer
+size:64 pageSize: 64
+##phcc		position->bufferItemPtr->pageData   64
+##phcc		end of getBytes
+##phcc		-1
+allocating unpinned page
+##bmcc		------<diskToBuffer>-------
+diskToBuffer
+size:64 pageSize: 64
+##phcc		0
+##phcc		<refCnt = 0>
+##bmcc		****<bufferToDisk>****
+##bmcc		writesize=64
+
+getBytes
+##phcc		position->bufferItemPtr is nullptr
+##bmcc		------<diskToBuffer>-------
+##bmcc		****<bufferToDisk>****
+##bmcc		writesize=64
+diskToBuffer
+size:64 pageSize: 64
+##phcc		position->bufferItemPtr->pageData   64
+##phcc		end of getBytes
+##phcc		-1
+allocating unpinned page
+##bmcc		------<diskToBuffer>-------
+diskToBuffer
+size:64 pageSize: 64
+##phcc		0
+##phcc		<refCnt = 0>
+##bmcc		****<bufferToDisk>****
+##bmcc		writesize=64
+
+getBytes
+##phcc		position->bufferItemPtr is nullptr
+##bmcc		------<diskToBuffer>-------
+##bmcc		****<bufferToDisk>****
+##bmcc		writesize=64
+diskToBuffer
+size:64 pageSize: 64
+##phcc		position->bufferItemPtr->pageData   64
+##phcc		end of getBytes
+##phcc		-1
+allocating unpinned page
+##bmcc		------<diskToBuffer>-------
+diskToBuffer
+size:64 pageSize: 64
+##phcc		0
+##phcc		<refCnt = 0>
+##bmcc		****<bufferToDisk>****
+##bmcc		writesize=64
+
+getBytes
+##phcc		position->bufferItemPtr is nullptr
+##bmcc		------<diskToBuffer>-------
+##bmcc		****<bufferToDisk>****
+##bmcc		writesize=64
+diskToBuffer
+size:64 pageSize: 64
+##phcc		position->bufferItemPtr->pageData   64
+##phcc		end of getBytes
+##phcc		-1
+allocating unpinned page
+##bmcc		------<diskToBuffer>-------
+diskToBuffer
+size:64 pageSize: 64
+##phcc		0
+##phcc		<refCnt = 0>
+##bmcc		****<bufferToDisk>****
+##bmcc		writesize=64
+
+getBytes
+##phcc		position->bufferItemPtr is nullptr
+##bmcc		------<diskToBuffer>-------
+##bmcc		****<bufferToDisk>****
+##bmcc		writesize=64
+diskToBuffer
+size:64 pageSize: 64
+##phcc		position->bufferItemPtr->pageData   64
+##phcc		end of getBytes
+##phcc		-1
+allocating unpinned page
+##bmcc		------<diskToBuffer>-------
+diskToBuffer
+size:64 pageSize: 64
+##phcc		0
+##phcc		<refCnt = 0>
+##bmcc		****<bufferToDisk>****
+##bmcc		writesize=64
+
+getBytes
+##phcc		position->bufferItemPtr is nullptr
+##bmcc		------<diskToBuffer>-------
+##bmcc		****<bufferToDisk>****
+##bmcc		writesize=64
+diskToBuffer
+size:64 pageSize: 64
+##phcc		position->bufferItemPtr->pageData   64
+##phcc		end of getBytes
+##phcc		-1
+allocating unpinned page
+##bmcc		------<diskToBuffer>-------
+diskToBuffer
+size:64 pageSize: 64
+##phcc		0
+##phcc		<refCnt = 0>
+##bmcc		****<bufferToDisk>****
+##bmcc		writesize=64
+
+getBytes
+##phcc		position->bufferItemPtr is nullptr
+##bmcc		------<diskToBuffer>-------
+##bmcc		****<bufferToDisk>****
+##bmcc		writesize=64
+diskToBuffer
+size:64 pageSize: 64
+##phcc		position->bufferItemPtr->pageData   64
+##phcc		end of getBytes
+##phcc		-1
+allocating unpinned page
+##bmcc		------<diskToBuffer>-------
+diskToBuffer
+size:64 pageSize: 64
+##phcc		0
+##phcc		<refCnt = 0>
+##bmcc		****<bufferToDisk>****
+##bmcc		writesize=64
+
+getBytes
+##phcc		position->bufferItemPtr is nullptr
+##bmcc		------<diskToBuffer>-------
+##bmcc		****<bufferToDisk>****
+##bmcc		writesize=64
+diskToBuffer
+size:64 pageSize: 64
+##phcc		position->bufferItemPtr->pageData   64
+##phcc		end of getBytes
+##phcc		-1
+allocating unpinned page
+##bmcc		------<diskToBuffer>-------
+diskToBuffer
+size:64 pageSize: 64
+##phcc		0
+##phcc		<refCnt = 0>
+##bmcc		****<bufferToDisk>****
+##bmcc		writesize=64
+
+getBytes
+##phcc		position->bufferItemPtr is nullptr
+##bmcc		------<diskToBuffer>-------
+##bmcc		****<bufferToDisk>****
+##bmcc		writesize=64
+diskToBuffer
+size:64 pageSize: 64
+##phcc		position->bufferItemPtr->pageData   64
+##phcc		end of getBytes
+##phcc		-1
+allocating unpinned page
+##bmcc		------<diskToBuffer>-------
+diskToBuffer
+size:64 pageSize: 64
+##phcc		0
+##phcc		<refCnt = 0>
+##bmcc		****<bufferToDisk>****
+##bmcc		writesize=64
+
+getBytes
+##phcc		position->bufferItemPtr is nullptr
+##bmcc		------<diskToBuffer>-------
+##bmcc		****<bufferToDisk>****
+##bmcc		writesize=64
+diskToBuffer
+size:64 pageSize: 64
+##phcc		position->bufferItemPtr->pageData   64
+##phcc		end of getBytes
+##phcc		-1
+##phcc		-1
+##phcc		-2
+##phcc		-2
+##phcc		-2
+##phcc		-2
+##phcc		-2
+##phcc		-2
+##phcc		-2
+allocating pinned page
+##phcc		0
+##phcc		<refCnt = 0>
+##bmcc		****<bufferToDisk>****
+##bmcc		writesize=64
+
+getBytes
+##phcc		position->bufferItemPtr->pageData   64
+##phcc		end of getBytes
+allocating pinned page
+##bmcc		****<bufferToDisk>****
+##bmcc		writesize=64
+##phcc		0
+##phcc		<refCnt = 0>
+##bmcc		****<bufferToDisk>****
+##bmcc		writesize=64
+##phcc		-1
+##phcc		-1
+allocating pinned page
+##phcc		0
+##phcc		<refCnt = 0>
+##bmcc		****<bufferToDisk>****
+##bmcc		writesize=64
+
+getBytes
+##phcc		position->bufferItemPtr->pageData   64
+##phcc		end of getBytes
+allocating pinned page
+##bmcc		****<bufferToDisk>****
+##bmcc		writesize=64
+##phcc		0
+##phcc		<refCnt = 0>
+##bmcc		****<bufferToDisk>****
+##bmcc		writesize=64
+##phcc		-1
+##phcc		-1
+allocating pinned page
+##phcc		0
+##phcc		<refCnt = 0>
+##bmcc		****<bufferToDisk>****
+##bmcc		writesize=64
+
+getBytes
+##phcc		position->bufferItemPtr->pageData   64
+##phcc		end of getBytes
+allocating pinned page
+##bmcc		****<bufferToDisk>****
+##bmcc		writesize=64
+##phcc		0
+##phcc		<refCnt = 0>
+##bmcc		****<bufferToDisk>****
+##bmcc		writesize=64
+##phcc		-1
+##phcc		-1
+allocating pinned page
+##bmcc		****<bufferToDisk>****
+##bmcc		writesize=64
+##phcc		0
+##phcc		<refCnt = 0>
+##bmcc		****<bufferToDisk>****
+##bmcc		writesize=64
+
+getBytes
+##phcc		position->bufferItemPtr->pageData   64
+##phcc		end of getBytes
+allocating pinned page
+##bmcc		****<bufferToDisk>****
+##bmcc		writesize=64
+##phcc		0
+##phcc		<refCnt = 0>
+##bmcc		****<bufferToDisk>****
+##bmcc		writesize=64
+##phcc		-1
+##phcc		-1
+allocating pinned page
+##bmcc		****<bufferToDisk>****
+##bmcc		writesize=64
+##phcc		0
+##phcc		<refCnt = 0>
+##bmcc		****<bufferToDisk>****
+##bmcc		writesize=64
+
+getBytes
+##phcc		position->bufferItemPtr->pageData   64
+##phcc		end of getBytes
+allocating pinned page
+##bmcc		****<bufferToDisk>****
+##bmcc		writesize=64
+##phcc		0
+##phcc		<refCnt = 0>
+##bmcc		****<bufferToDisk>****
+##bmcc		writesize=64
+##phcc		-1
+##phcc		-1
+allocating pinned page
+##bmcc		****<bufferToDisk>****
+##bmcc		writesize=64
+##phcc		0
+##phcc		<refCnt = 0>
+##bmcc		****<bufferToDisk>****
+##bmcc		writesize=64
+
+getBytes
+##phcc		position->bufferItemPtr->pageData   64
+##phcc		end of getBytes
+allocating pinned page
+##bmcc		****<bufferToDisk>****
+##bmcc		writesize=64
+##phcc		0
+##phcc		<refCnt = 0>
+##bmcc		****<bufferToDisk>****
+##bmcc		writesize=64
+##phcc		-1
+##phcc		-1
+allocating pinned page
+##bmcc		****<bufferToDisk>****
+##bmcc		writesize=64
+##phcc		0
+##phcc		<refCnt = 0>
+##bmcc		****<bufferToDisk>****
+##bmcc		writesize=64
+
+getBytes
+##phcc		position->bufferItemPtr->pageData   64
+##phcc		end of getBytes
+allocating pinned page
+##bmcc		****<bufferToDisk>****
+##bmcc		writesize=64
+##phcc		0
+##phcc		<refCnt = 0>
+##bmcc		****<bufferToDisk>****
+##bmcc		writesize=64
+##phcc		-1
+##phcc		-1
+allocating pinned page
+##bmcc		****<bufferToDisk>****
+##bmcc		writesize=64
+##phcc		0
+##phcc		<refCnt = 0>
+##bmcc		****<bufferToDisk>****
+##bmcc		writesize=64
+
+getBytes
+##phcc		position->bufferItemPtr->pageData   64
+##phcc		end of getBytes
+allocating pinned page
+##bmcc		****<bufferToDisk>****
+##bmcc		writesize=64
+##phcc		0
+##phcc		<refCnt = 0>
+##bmcc		****<bufferToDisk>****
+##bmcc		writesize=64
+##phcc		-1
+##phcc		-1
+allocating pinned page
+##bmcc		****<bufferToDisk>****
+##bmcc		writesize=64
+##phcc		0
+##phcc		<refCnt = 0>
+##bmcc		****<bufferToDisk>****
+##bmcc		writesize=64
+
+getBytes
+##phcc		position->bufferItemPtr->pageData   64
+##phcc		end of getBytes
+allocating pinned page
+##bmcc		****<bufferToDisk>****
+##bmcc		writesize=64
+##phcc		0
+##phcc		<refCnt = 0>
+##bmcc		****<bufferToDisk>****
+##bmcc		writesize=64
+##phcc		-1
+##phcc		-1
+allocating pinned page
+##bmcc		****<bufferToDisk>****
+##bmcc		writesize=64
+##phcc		0
+##phcc		<refCnt = 0>
+##bmcc		****<bufferToDisk>****
+##bmcc		writesize=64
+
+getBytes
+##phcc		position->bufferItemPtr->pageData   64
+##phcc		end of getBytes
+allocating pinned page
+##bmcc		****<bufferToDisk>****
+##bmcc		writesize=64
+##phcc		0
+##phcc		<refCnt = 0>
+##bmcc		****<bufferToDisk>****
+##bmcc		writesize=64
+##phcc		-1
+##phcc		-1
+allocating pinned page
+##bmcc		****<bufferToDisk>****
+##bmcc		writesize=64
+##phcc		0
+##phcc		<refCnt = 0>
+##bmcc		****<bufferToDisk>****
+##bmcc		writesize=64
+
+getBytes
+##phcc		position->bufferItemPtr->pageData   64
+##phcc		end of getBytes
+allocating pinned page
+##bmcc		****<bufferToDisk>****
+##bmcc		writesize=64
+##phcc		0
+##phcc		<refCnt = 0>
+##bmcc		****<bufferToDisk>****
+##bmcc		writesize=64
+##phcc		-1
+##phcc		-1
+allocating pinned page
+##bmcc		****<bufferToDisk>****
+##bmcc		writesize=64
+##phcc		0
+##phcc		<refCnt = 0>
+##bmcc		****<bufferToDisk>****
+##bmcc		writesize=64
+
+getBytes
+##phcc		position->bufferItemPtr->pageData   64
+##phcc		end of getBytes
+allocating pinned page
+##bmcc		****<bufferToDisk>****
+##bmcc		writesize=64
+##phcc		0
+##phcc		<refCnt = 0>
+##bmcc		****<bufferToDisk>****
+##bmcc		writesize=64
+##phcc		-1
+##phcc		-1
+allocating pinned page
+##bmcc		****<bufferToDisk>****
+##bmcc		writesize=64
+##phcc		0
+##phcc		<refCnt = 0>
+##bmcc		****<bufferToDisk>****
+##bmcc		writesize=64
+
+getBytes
+##phcc		position->bufferItemPtr->pageData   64
+##phcc		end of getBytes
+allocating pinned page
+##bmcc		****<bufferToDisk>****
+##bmcc		writesize=64
+##phcc		0
+##phcc		<refCnt = 0>
+##bmcc		****<bufferToDisk>****
+##bmcc		writesize=64
+##phcc		-1
+##phcc		-1
+allocating pinned page
+##bmcc		****<bufferToDisk>****
+##bmcc		writesize=64
+##phcc		0
+##phcc		<refCnt = 0>
+##bmcc		****<bufferToDisk>****
+##bmcc		writesize=64
+
+getBytes
+##phcc		position->bufferItemPtr->pageData   64
+##phcc		end of getBytes
+allocating pinned page
+##bmcc		****<bufferToDisk>****
+##bmcc		writesize=64
+##phcc		0
+##phcc		<refCnt = 0>
+##bmcc		****<bufferToDisk>****
+##bmcc		writesize=64
+##phcc		-1
+##phcc		-1
+allocating pinned page
+##bmcc		****<bufferToDisk>****
+##bmcc		writesize=64
+##phcc		0
+##phcc		<refCnt = 0>
+##bmcc		****<bufferToDisk>****
+##bmcc		writesize=64
+
+getBytes
+##phcc		position->bufferItemPtr->pageData   64
+##phcc		end of getBytes
+allocating pinned page
+##bmcc		****<bufferToDisk>****
+##bmcc		writesize=64
+##phcc		0
+##phcc		<refCnt = 0>
+##bmcc		****<bufferToDisk>****
+##bmcc		writesize=64
+##phcc		-1
+##phcc		-1
+allocating pinned page
+##bmcc		****<bufferToDisk>****
+##bmcc		writesize=64
+##phcc		0
+##phcc		<refCnt = 0>
+##bmcc		****<bufferToDisk>****
+##bmcc		writesize=64
+
+getBytes
+##phcc		position->bufferItemPtr->pageData   64
+##phcc		end of getBytes
+allocating pinned page
+##bmcc		****<bufferToDisk>****
+##bmcc		writesize=64
+##phcc		0
+##phcc		<refCnt = 0>
+##bmcc		****<bufferToDisk>****
+##bmcc		writesize=64
+##phcc		-1
+##phcc		-1
+allocating pinned page
+##bmcc		****<bufferToDisk>****
+##bmcc		writesize=64
+##phcc		0
+##phcc		<refCnt = 0>
+##bmcc		****<bufferToDisk>****
+##bmcc		writesize=64
+
+getBytes
+##phcc		position->bufferItemPtr->pageData   64
+##phcc		end of getBytes
+allocating pinned page
+##bmcc		****<bufferToDisk>****
+##bmcc		writesize=64
+##phcc		0
+##phcc		<refCnt = 0>
+##bmcc		****<bufferToDisk>****
+##bmcc		writesize=64
+##phcc		-1
+##phcc		-1
+allocating pinned page
+##bmcc		****<bufferToDisk>****
+##bmcc		writesize=64
+##phcc		0
+##phcc		<refCnt = 0>
+##bmcc		****<bufferToDisk>****
+##bmcc		writesize=64
+
+getBytes
+##phcc		position->bufferItemPtr->pageData   64
+##phcc		end of getBytes
+allocating pinned page
+##bmcc		****<bufferToDisk>****
+##bmcc		writesize=64
+##phcc		0
+##phcc		<refCnt = 0>
+##bmcc		****<bufferToDisk>****
+##bmcc		writesize=64
+##phcc		-1
+##phcc		-1
+allocating pinned page
+##bmcc		****<bufferToDisk>****
+##bmcc		writesize=64
+##phcc		0
+##phcc		<refCnt = 0>
+##bmcc		****<bufferToDisk>****
+##bmcc		writesize=64
+
+getBytes
+##phcc		position->bufferItemPtr->pageData   64
+##phcc		end of getBytes
+allocating pinned page
+##bmcc		****<bufferToDisk>****
+##bmcc		writesize=64
+##phcc		0
+##phcc		<refCnt = 0>
+##bmcc		****<bufferToDisk>****
+##bmcc		writesize=64
+##phcc		-1
+##phcc		-1
+allocating pinned page
+##bmcc		****<bufferToDisk>****
+##bmcc		writesize=64
+##phcc		0
+##phcc		<refCnt = 0>
+##bmcc		****<bufferToDisk>****
+##bmcc		writesize=64
+
+getBytes
+##phcc		position->bufferItemPtr->pageData   64
+##phcc		end of getBytes
+allocating pinned page
+##bmcc		****<bufferToDisk>****
+##bmcc		writesize=64
+##phcc		0
+##phcc		<refCnt = 0>
+##bmcc		****<bufferToDisk>****
+##bmcc		writesize=64
+##phcc		-1
+##phcc		-1
+allocating pinned page
+##bmcc		****<bufferToDisk>****
+##bmcc		writesize=64
+##phcc		0
+##phcc		<refCnt = 0>
+##bmcc		****<bufferToDisk>****
+##bmcc		writesize=64
+
+getBytes
+##phcc		position->bufferItemPtr->pageData   64
+##phcc		end of getBytes
+allocating pinned page
+##bmcc		****<bufferToDisk>****
+##bmcc		writesize=64
+##phcc		0
+##phcc		<refCnt = 0>
+##bmcc		****<bufferToDisk>****
+##bmcc		writesize=64
+##phcc		-1
+##phcc		-1
+allocating pinned page
+##bmcc		****<bufferToDisk>****
+##bmcc		writesize=64
+##phcc		0
+##phcc		<refCnt = 0>
+##bmcc		****<bufferToDisk>****
+##bmcc		writesize=64
+
+getBytes
+##phcc		position->bufferItemPtr->pageData   64
+##phcc		end of getBytes
+allocating pinned page
+##bmcc		****<bufferToDisk>****
+##bmcc		writesize=64
+##phcc		0
+##phcc		<refCnt = 0>
+##bmcc		****<bufferToDisk>****
+##bmcc		writesize=64
+##phcc		-1
+##phcc		-1
+allocating pinned page
+##bmcc		****<bufferToDisk>****
+##bmcc		writesize=64
+##phcc		0
+##phcc		<refCnt = 0>
+##bmcc		****<bufferToDisk>****
+##bmcc		writesize=64
+
+getBytes
+##phcc		position->bufferItemPtr->pageData   64
+##phcc		end of getBytes
+allocating pinned page
+##bmcc		****<bufferToDisk>****
+##bmcc		writesize=64
+##phcc		0
+##phcc		<refCnt = 0>
+##bmcc		****<bufferToDisk>****
+##bmcc		writesize=64
+##phcc		-1
+##phcc		-1
+allocating pinned page
+##bmcc		****<bufferToDisk>****
+##bmcc		writesize=64
+##phcc		0
+##phcc		<refCnt = 0>
+##bmcc		****<bufferToDisk>****
+##bmcc		writesize=64
+
+getBytes
+##phcc		position->bufferItemPtr->pageData   64
+##phcc		end of getBytes
+allocating pinned page
+##bmcc		****<bufferToDisk>****
+##bmcc		writesize=64
+##phcc		0
+##phcc		<refCnt = 0>
+##bmcc		****<bufferToDisk>****
+##bmcc		writesize=64
+##phcc		-1
+##phcc		-1
+allocating pinned page
+##bmcc		****<bufferToDisk>****
+##bmcc		writesize=64
+##phcc		0
+##phcc		<refCnt = 0>
+##bmcc		****<bufferToDisk>****
+##bmcc		writesize=64
+
+getBytes
+##phcc		position->bufferItemPtr->pageData   64
+##phcc		end of getBytes
+allocating pinned page
+##bmcc		****<bufferToDisk>****
+##bmcc		writesize=64
+##phcc		0
+##phcc		<refCnt = 0>
+##bmcc		****<bufferToDisk>****
+##bmcc		writesize=64
+##phcc		-1
+##phcc		-1
+allocating pinned page
+##bmcc		****<bufferToDisk>****
+##bmcc		writesize=64
+##phcc		0
+##phcc		<refCnt = 0>
+##bmcc		****<bufferToDisk>****
+##bmcc		writesize=64
+
+getBytes
+##phcc		position->bufferItemPtr->pageData   64
+##phcc		end of getBytes
+allocating pinned page
+##bmcc		****<bufferToDisk>****
+##bmcc		writesize=64
+##phcc		0
+##phcc		<refCnt = 0>
+##bmcc		****<bufferToDisk>****
+##bmcc		writesize=64
+##phcc		-1
+##phcc		-1
+allocating pinned page
+##bmcc		****<bufferToDisk>****
+##bmcc		writesize=64
+##phcc		0
+##phcc		<refCnt = 0>
+##bmcc		****<bufferToDisk>****
+##bmcc		writesize=64
+
+getBytes
+##phcc		position->bufferItemPtr->pageData   64
+##phcc		end of getBytes
+allocating pinned page
+##bmcc		****<bufferToDisk>****
+##bmcc		writesize=64
+##phcc		0
+##phcc		<refCnt = 0>
+##bmcc		****<bufferToDisk>****
+##bmcc		writesize=64
+##phcc		-1
+##phcc		-1
+allocating pinned page
+##bmcc		****<bufferToDisk>****
+##bmcc		writesize=64
+##phcc		0
+##phcc		<refCnt = 0>
+##bmcc		****<bufferToDisk>****
+##bmcc		writesize=64
+
+getBytes
+##phcc		position->bufferItemPtr->pageData   64
+##phcc		end of getBytes
+allocating pinned page
+##bmcc		****<bufferToDisk>****
+##bmcc		writesize=64
+##phcc		0
+##phcc		<refCnt = 0>
+##bmcc		****<bufferToDisk>****
+##bmcc		writesize=64
+##phcc		-1
+##phcc		-1
+allocating pinned page
+##bmcc		****<bufferToDisk>****
+##bmcc		writesize=64
+##phcc		0
+##phcc		<refCnt = 0>
+##bmcc		****<bufferToDisk>****
+##bmcc		writesize=64
+
+getBytes
+##phcc		position->bufferItemPtr->pageData   64
+##phcc		end of getBytes
+allocating pinned page
+##bmcc		****<bufferToDisk>****
+##bmcc		writesize=64
+##phcc		0
+##phcc		<refCnt = 0>
+##bmcc		****<bufferToDisk>****
+##bmcc		writesize=64
+##phcc		-1
+##phcc		-1
+allocating pinned page
+##bmcc		****<bufferToDisk>****
+##bmcc		writesize=64
+##phcc		0
+##phcc		<refCnt = 0>
+##bmcc		****<bufferToDisk>****
+##bmcc		writesize=64
+
+getBytes
+##phcc		position->bufferItemPtr->pageData   64
+##phcc		end of getBytes
+allocating pinned page
+##bmcc		****<bufferToDisk>****
+##bmcc		writesize=64
+##phcc		0
+##phcc		<refCnt = 0>
+##bmcc		****<bufferToDisk>****
+##bmcc		writesize=64
+##phcc		-1
+##phcc		-1
+allocating pinned page
+##bmcc		****<bufferToDisk>****
+##bmcc		writesize=64
+##phcc		0
+##phcc		<refCnt = 0>
+##bmcc		****<bufferToDisk>****
+##bmcc		writesize=64
+
+getBytes
+##phcc		position->bufferItemPtr->pageData   64
+##phcc		end of getBytes
+allocating pinned page
+##bmcc		****<bufferToDisk>****
+##bmcc		writesize=64
+##phcc		0
+##phcc		<refCnt = 0>
+##bmcc		****<bufferToDisk>****
+##bmcc		writesize=64
+##phcc		-1
+##phcc		-1
+allocating pinned page
+##bmcc		****<bufferToDisk>****
+##bmcc		writesize=64
+##phcc		0
+##phcc		<refCnt = 0>
+##bmcc		****<bufferToDisk>****
+##bmcc		writesize=64
+
+getBytes
+##phcc		position->bufferItemPtr->pageData   64
+##phcc		end of getBytes
+allocating pinned page
+##bmcc		****<bufferToDisk>****
+##bmcc		writesize=64
+##phcc		0
+##phcc		<refCnt = 0>
+##bmcc		****<bufferToDisk>****
+##bmcc		writesize=64
+##phcc		-1
+##phcc		-1
+allocating pinned page
+##bmcc		****<bufferToDisk>****
+##bmcc		writesize=64
+##phcc		0
+##phcc		<refCnt = 0>
+##bmcc		****<bufferToDisk>****
+##bmcc		writesize=64
+
+getBytes
+##phcc		position->bufferItemPtr->pageData   64
+##phcc		end of getBytes
+allocating pinned page
+##bmcc		****<bufferToDisk>****
+##bmcc		writesize=64
+##phcc		0
+##phcc		<refCnt = 0>
+##bmcc		****<bufferToDisk>****
+##bmcc		writesize=64
+##phcc		-1
+##phcc		-1
+allocating pinned page
+##bmcc		****<bufferToDisk>****
+##bmcc		writesize=64
+##phcc		0
+##phcc		<refCnt = 0>
+##bmcc		****<bufferToDisk>****
+##bmcc		writesize=64
+
+getBytes
+##phcc		position->bufferItemPtr->pageData   64
+##phcc		end of getBytes
+allocating pinned page
+##bmcc		****<bufferToDisk>****
+##bmcc		writesize=64
+##phcc		0
+##phcc		<refCnt = 0>
+##bmcc		****<bufferToDisk>****
+##bmcc		writesize=64
+##phcc		-1
+##phcc		-1
+allocating pinned page
+##bmcc		****<bufferToDisk>****
+##bmcc		writesize=64
+##phcc		0
+##phcc		<refCnt = 0>
+##bmcc		****<bufferToDisk>****
+##bmcc		writesize=64
+
+getBytes
+##phcc		position->bufferItemPtr->pageData   64
+##phcc		end of getBytes
+allocating pinned page
+##bmcc		****<bufferToDisk>****
+##bmcc		writesize=64
+##phcc		0
+##phcc		<refCnt = 0>
+##bmcc		****<bufferToDisk>****
+##bmcc		writesize=64
+##phcc		-1
+##phcc		-1
+allocating pinned page
+##bmcc		****<bufferToDisk>****
+##bmcc		writesize=64
+##phcc		0
+##phcc		<refCnt = 0>
+##bmcc		****<bufferToDisk>****
+##bmcc		writesize=64
+
+getBytes
+##phcc		position->bufferItemPtr->pageData   64
+##phcc		end of getBytes
+allocating pinned page
+##bmcc		****<bufferToDisk>****
+##bmcc		writesize=64
+##phcc		0
+##phcc		<refCnt = 0>
+##bmcc		****<bufferToDisk>****
+##bmcc		writesize=64
+##phcc		-1
+##phcc		-1
+allocating pinned page
+##bmcc		****<bufferToDisk>****
+##bmcc		writesize=64
+##phcc		0
+##phcc		<refCnt = 0>
+##bmcc		****<bufferToDisk>****
+##bmcc		writesize=64
+
+getBytes
+##phcc		position->bufferItemPtr->pageData   64
+##phcc		end of getBytes
+allocating pinned page
+##bmcc		****<bufferToDisk>****
+##bmcc		writesize=64
+##phcc		0
+##phcc		<refCnt = 0>
+##bmcc		****<bufferToDisk>****
+##bmcc		writesize=64
+##phcc		-1
+##phcc		-1
+allocating pinned page
+##bmcc		****<bufferToDisk>****
+##bmcc		writesize=64
+##phcc		0
+##phcc		<refCnt = 0>
+##bmcc		****<bufferToDisk>****
+##bmcc		writesize=64
+
+getBytes
+##phcc		position->bufferItemPtr->pageData   64
+##phcc		end of getBytes
+allocating pinned page
+##bmcc		****<bufferToDisk>****
+##bmcc		writesize=64
+##phcc		0
+##phcc		<refCnt = 0>
+##bmcc		****<bufferToDisk>****
+##bmcc		writesize=64
+##phcc		-1
+##phcc		-1
+allocating pinned page
+##bmcc		****<bufferToDisk>****
+##bmcc		writesize=64
+##phcc		0
+##phcc		<refCnt = 0>
+##bmcc		****<bufferToDisk>****
+##bmcc		writesize=64
+
+getBytes
+##phcc		position->bufferItemPtr->pageData   64
+##phcc		end of getBytes
+allocating pinned page
+##bmcc		****<bufferToDisk>****
+##bmcc		writesize=64
+##phcc		0
+##phcc		<refCnt = 0>
+##bmcc		****<bufferToDisk>****
+##bmcc		writesize=64
+##phcc		-1
+##phcc		-1
+allocating pinned page
+##bmcc		****<bufferToDisk>****
+##bmcc		writesize=64
+##phcc		0
+##phcc		<refCnt = 0>
+##bmcc		****<bufferToDisk>****
+##bmcc		writesize=64
+
+getBytes
+##phcc		position->bufferItemPtr->pageData   64
+##phcc		end of getBytes
+allocating pinned page
+##bmcc		****<bufferToDisk>****
+##bmcc		writesize=64
+##phcc		0
+##phcc		<refCnt = 0>
+##bmcc		****<bufferToDisk>****
+##bmcc		writesize=64
+##phcc		-1
+##phcc		-1
+allocating pinned page
+##bmcc		****<bufferToDisk>****
+##bmcc		writesize=64
+##phcc		0
+##phcc		<refCnt = 0>
+##bmcc		****<bufferToDisk>****
+##bmcc		writesize=64
+
+getBytes
+##phcc		position->bufferItemPtr->pageData   64
+##phcc		end of getBytes
+allocating pinned page
+##bmcc		****<bufferToDisk>****
+##bmcc		writesize=64
+##phcc		0
+##phcc		<refCnt = 0>
+##bmcc		****<bufferToDisk>****
+##bmcc		writesize=64
+##phcc		-1
+##phcc		-1
+allocating pinned page
+##bmcc		****<bufferToDisk>****
+##bmcc		writesize=64
+##phcc		0
+##phcc		<refCnt = 0>
+##bmcc		****<bufferToDisk>****
+##bmcc		writesize=64
+
+getBytes
+##phcc		position->bufferItemPtr->pageData   64
+##phcc		end of getBytes
+allocating pinned page
+##bmcc		****<bufferToDisk>****
+##bmcc		writesize=64
+##phcc		0
+##phcc		<refCnt = 0>
+##bmcc		****<bufferToDisk>****
+##bmcc		writesize=64
+##phcc		-1
+##phcc		-1
+allocating pinned page
+##bmcc		****<bufferToDisk>****
+##bmcc		writesize=64
+##phcc		0
+##phcc		<refCnt = 0>
+##bmcc		****<bufferToDisk>****
+##bmcc		writesize=64
+
+getBytes
+##phcc		position->bufferItemPtr->pageData   64
+##phcc		end of getBytes
+allocating pinned page
+##bmcc		****<bufferToDisk>****
+##bmcc		writesize=64
+##phcc		0
+##phcc		<refCnt = 0>
+##bmcc		****<bufferToDisk>****
+##bmcc		writesize=64
+##phcc		-1
+##phcc		-1
+allocating pinned page
+##bmcc		****<bufferToDisk>****
+##bmcc		writesize=64
+##phcc		0
+##phcc		<refCnt = 0>
+##bmcc		****<bufferToDisk>****
+##bmcc		writesize=64
+
+getBytes
+##phcc		position->bufferItemPtr->pageData   64
+##phcc		end of getBytes
+allocating pinned page
+##bmcc		****<bufferToDisk>****
+##bmcc		writesize=64
+##phcc		0
+##phcc		<refCnt = 0>
+##bmcc		****<bufferToDisk>****
+##bmcc		writesize=64
+##phcc		-1
+##phcc		-1
+allocating pinned page
+##bmcc		****<bufferToDisk>****
+##bmcc		writesize=64
+##phcc		0
+##phcc		<refCnt = 0>
+##bmcc		****<bufferToDisk>****
+##bmcc		writesize=64
+
+getBytes
+##phcc		position->bufferItemPtr->pageData   64
+##phcc		end of getBytes
+allocating pinned page
+##bmcc		****<bufferToDisk>****
+##bmcc		writesize=64
+##phcc		0
+##phcc		<refCnt = 0>
+##bmcc		****<bufferToDisk>****
+##bmcc		writesize=64
+##phcc		-1
+##phcc		-1
+allocating pinned page
+##bmcc		****<bufferToDisk>****
+##bmcc		writesize=64
+##phcc		0
+##phcc		<refCnt = 0>
+##bmcc		****<bufferToDisk>****
+##bmcc		writesize=64
+
+getBytes
+##phcc		position->bufferItemPtr->pageData   64
+##phcc		end of getBytes
+allocating pinned page
+##bmcc		****<bufferToDisk>****
+##bmcc		writesize=64
+##phcc		0
+##phcc		<refCnt = 0>
+##bmcc		****<bufferToDisk>****
+##bmcc		writesize=64
+##phcc		-1
+##phcc		-1
+allocating pinned page
+##bmcc		****<bufferToDisk>****
+##bmcc		writesize=64
+##phcc		0
+##phcc		<refCnt = 0>
+##bmcc		****<bufferToDisk>****
+##bmcc		writesize=64
+
+getBytes
+##phcc		position->bufferItemPtr->pageData   64
+##phcc		end of getBytes
+allocating pinned page
+##bmcc		****<bufferToDisk>****
+##bmcc		writesize=64
+##phcc		0
+##phcc		<refCnt = 0>
+##bmcc		****<bufferToDisk>****
+##bmcc		writesize=64
+##phcc		-1
+##phcc		-1
+allocating pinned page
+##bmcc		****<bufferToDisk>****
+##bmcc		writesize=64
+##phcc		0
+##phcc		<refCnt = 0>
+##bmcc		****<bufferToDisk>****
+##bmcc		writesize=64
+
+getBytes
+##phcc		position->bufferItemPtr->pageData   64
+##phcc		end of getBytes
+allocating pinned page
+##bmcc		****<bufferToDisk>****
+##bmcc		writesize=64
+##phcc		0
+##phcc		<refCnt = 0>
+##bmcc		****<bufferToDisk>****
+##bmcc		writesize=64
+##phcc		-1
+##phcc		-1
+allocating pinned page
+##bmcc		****<bufferToDisk>****
+##bmcc		writesize=64
+##phcc		0
+##phcc		<refCnt = 0>
+##bmcc		****<bufferToDisk>****
+##bmcc		writesize=64
+
+getBytes
+##phcc		position->bufferItemPtr->pageData   64
+##phcc		end of getBytes
+allocating pinned page
+##bmcc		****<bufferToDisk>****
+##bmcc		writesize=64
+##phcc		0
+##phcc		<refCnt = 0>
+##bmcc		****<bufferToDisk>****
+##bmcc		writesize=64
+##phcc		-1
+##phcc		-1
+allocating pinned page
+##bmcc		****<bufferToDisk>****
+##bmcc		writesize=64
+##phcc		0
+##phcc		<refCnt = 0>
+##bmcc		****<bufferToDisk>****
+##bmcc		writesize=64
+
+getBytes
+##phcc		position->bufferItemPtr->pageData   64
+##phcc		end of getBytes
+allocating pinned page
+##bmcc		****<bufferToDisk>****
+##bmcc		writesize=64
+##phcc		0
+##phcc		<refCnt = 0>
+##bmcc		****<bufferToDisk>****
+##bmcc		writesize=64
+##phcc		-1
+##phcc		-1
+allocating pinned page
+##bmcc		****<bufferToDisk>****
+##bmcc		writesize=64
+##phcc		0
+##phcc		<refCnt = 0>
+##bmcc		****<bufferToDisk>****
+##bmcc		writesize=64
+
+getBytes
+##phcc		position->bufferItemPtr->pageData   64
+##phcc		end of getBytes
+allocating pinned page
+##bmcc		****<bufferToDisk>****
+##bmcc		writesize=64
+##phcc		0
+##phcc		<refCnt = 0>
+##bmcc		****<bufferToDisk>****
+##bmcc		writesize=64
+##phcc		-1
+##phcc		-1
+allocating pinned page
+##bmcc		****<bufferToDisk>****
+##bmcc		writesize=64
+##phcc		0
+##phcc		<refCnt = 0>
+##bmcc		****<bufferToDisk>****
+##bmcc		writesize=64
+
+getBytes
+##phcc		position->bufferItemPtr->pageData   64
+##phcc		end of getBytes
+allocating pinned page
+##bmcc		****<bufferToDisk>****
+##bmcc		writesize=64
+##phcc		0
+##phcc		<refCnt = 0>
+##bmcc		****<bufferToDisk>****
+##bmcc		writesize=64
+##phcc		-1
+##phcc		-1
+allocating pinned page
+##bmcc		****<bufferToDisk>****
+##bmcc		writesize=64
+##phcc		0
+##phcc		<refCnt = 0>
+##bmcc		****<bufferToDisk>****
+##bmcc		writesize=64
+
+getBytes
+##phcc		position->bufferItemPtr->pageData   64
+##phcc		end of getBytes
+allocating pinned page
+##bmcc		****<bufferToDisk>****
+##bmcc		writesize=64
+##phcc		0
+##phcc		<refCnt = 0>
+##bmcc		****<bufferToDisk>****
+##bmcc		writesize=64
+##phcc		-1
+##phcc		-1
+allocating pinned page
+##bmcc		****<bufferToDisk>****
+##bmcc		writesize=64
+##phcc		0
+##phcc		<refCnt = 0>
+##bmcc		****<bufferToDisk>****
+##bmcc		writesize=64
+
+getBytes
+##phcc		position->bufferItemPtr->pageData   64
+##phcc		end of getBytes
+allocating pinned page
+##bmcc		****<bufferToDisk>****
+##bmcc		writesize=64
+##phcc		0
+##phcc		<refCnt = 0>
+##bmcc		****<bufferToDisk>****
+##bmcc		writesize=64
+##phcc		-1
+##phcc		-1
+allocating pinned page
+##bmcc		****<bufferToDisk>****
+##bmcc		writesize=64
+##phcc		0
+##phcc		<refCnt = 0>
+##bmcc		****<bufferToDisk>****
+##bmcc		writesize=64
+
+getBytes
+##phcc		position->bufferItemPtr->pageData   64
+##phcc		end of getBytes
+allocating pinned page
+##bmcc		****<bufferToDisk>****
+##bmcc		writesize=64
+##phcc		0
+##phcc		<refCnt = 0>
+##bmcc		****<bufferToDisk>****
+##bmcc		writesize=64
+##phcc		-1
+##phcc		-1
+allocating pinned page
+##bmcc		****<bufferToDisk>****
+##bmcc		writesize=64
+##phcc		0
+##phcc		<refCnt = 0>
+##bmcc		****<bufferToDisk>****
+##bmcc		writesize=64
+
+getBytes
+##phcc		position->bufferItemPtr->pageData   64
+##phcc		end of getBytes
+allocating pinned page
+##bmcc		****<bufferToDisk>****
+##bmcc		writesize=64
+##phcc		0
+##phcc		<refCnt = 0>
+##bmcc		****<bufferToDisk>****
+##bmcc		writesize=64
+##phcc		-1
+##phcc		-1
+allocating pinned page
+##bmcc		****<bufferToDisk>****
+##bmcc		writesize=64
+##phcc		0
+##phcc		<refCnt = 0>
+##bmcc		****<bufferToDisk>****
+##bmcc		writesize=64
+
+getBytes
+##phcc		position->bufferItemPtr->pageData   64
+##phcc		end of getBytes
+allocating pinned page
+##bmcc		****<bufferToDisk>****
+##bmcc		writesize=64
+##phcc		0
+##phcc		<refCnt = 0>
+##bmcc		****<bufferToDisk>****
+##bmcc		writesize=64
+##phcc		-1
+##phcc		-1
+allocating pinned page
+##bmcc		****<bufferToDisk>****
+##bmcc		writesize=64
+##phcc		0
+##phcc		<refCnt = 0>
+##bmcc		****<bufferToDisk>****
+##bmcc		writesize=64
+
+getBytes
+##phcc		position->bufferItemPtr->pageData   64
+##phcc		end of getBytes
+allocating pinned page
+##bmcc		****<bufferToDisk>****
+##bmcc		writesize=64
+##phcc		0
+##phcc		<refCnt = 0>
+##bmcc		****<bufferToDisk>****
+##bmcc		writesize=64
+##phcc		-1
+##phcc		-1
+allocating pinned page
+##bmcc		****<bufferToDisk>****
+##bmcc		writesize=64
+##phcc		0
+##phcc		<refCnt = 0>
+##bmcc		****<bufferToDisk>****
+##bmcc		writesize=64
+
+getBytes
+##phcc		position->bufferItemPtr->pageData   64
+##phcc		end of getBytes
+allocating pinned page
+##bmcc		****<bufferToDisk>****
+##bmcc		writesize=64
+##phcc		0
+##phcc		<refCnt = 0>
+##bmcc		****<bufferToDisk>****
+##bmcc		writesize=64
+##phcc		-1
+##phcc		-1
+allocating pinned page
+##bmcc		****<bufferToDisk>****
+##bmcc		writesize=64
+##phcc		0
+##phcc		<refCnt = 0>
+##bmcc		****<bufferToDisk>****
+##bmcc		writesize=64
+
+getBytes
+##phcc		position->bufferItemPtr->pageData   64
+##phcc		end of getBytes
+allocating pinned page
+##bmcc		****<bufferToDisk>****
+##bmcc		writesize=64
+##phcc		0
+##phcc		<refCnt = 0>
+##bmcc		****<bufferToDisk>****
+##bmcc		writesize=64
+##phcc		-1
+##phcc		-1
+allocating pinned page
+##bmcc		****<bufferToDisk>****
+##bmcc		writesize=64
+##phcc		0
+##phcc		<refCnt = 0>
+##bmcc		****<bufferToDisk>****
+##bmcc		writesize=64
+
+getBytes
+##phcc		position->bufferItemPtr->pageData   64
+##phcc		end of getBytes
+allocating pinned page
+##bmcc		****<bufferToDisk>****
+##bmcc		writesize=64
+##phcc		0
+##phcc		<refCnt = 0>
+##bmcc		****<bufferToDisk>****
+##bmcc		writesize=64
+##phcc		-1
+##phcc		-1
+allocating pinned page
+##bmcc		****<bufferToDisk>****
+##bmcc		writesize=64
+##phcc		0
+##phcc		<refCnt = 0>
+##bmcc		****<bufferToDisk>****
+##bmcc		writesize=64
+
+getBytes
+##phcc		position->bufferItemPtr->pageData   64
+##phcc		end of getBytes
+allocating pinned page
+##bmcc		****<bufferToDisk>****
+##bmcc		writesize=64
+##phcc		0
+##phcc		<refCnt = 0>
+##bmcc		****<bufferToDisk>****
+##bmcc		writesize=64
+##phcc		-1
+##phcc		-1
+allocating pinned page
+##bmcc		****<bufferToDisk>****
+##bmcc		writesize=64
+##phcc		0
+##phcc		<refCnt = 0>
+##bmcc		****<bufferToDisk>****
+##bmcc		writesize=64
+
+getBytes
+##phcc		position->bufferItemPtr->pageData   64
+##phcc		end of getBytes
+allocating pinned page
+##bmcc		****<bufferToDisk>****
+##bmcc		writesize=64
+##phcc		0
+##phcc		<refCnt = 0>
+##bmcc		****<bufferToDisk>****
+##bmcc		writesize=64
+##phcc		-1
+##phcc		-1
+allocating pinned page
+##bmcc		****<bufferToDisk>****
+##bmcc		writesize=64
+##phcc		0
+##phcc		<refCnt = 0>
+##bmcc		****<bufferToDisk>****
+##bmcc		writesize=64
+
+getBytes
+##phcc		position->bufferItemPtr->pageData   64
+##phcc		end of getBytes
+allocating pinned page
+##bmcc		****<bufferToDisk>****
+##bmcc		writesize=64
+##phcc		0
+##phcc		<refCnt = 0>
+##bmcc		****<bufferToDisk>****
+##bmcc		writesize=64
+##phcc		-1
+##phcc		-1
+allocating pinned page
+##bmcc		****<bufferToDisk>****
+##bmcc		writesize=64
+##phcc		0
+##phcc		<refCnt = 0>
+##bmcc		****<bufferToDisk>****
+##bmcc		writesize=64
+
+getBytes
+##phcc		position->bufferItemPtr->pageData   64
+##phcc		end of getBytes
+allocating pinned page
+##bmcc		****<bufferToDisk>****
+##bmcc		writesize=64
+##phcc		0
+##phcc		<refCnt = 0>
+##bmcc		****<bufferToDisk>****
+##bmcc		writesize=64
+##phcc		-1
+##phcc		-1
+allocating pinned page
+##bmcc		****<bufferToDisk>****
+##bmcc		writesize=64
+##phcc		0
+##phcc		<refCnt = 0>
+##bmcc		****<bufferToDisk>****
+##bmcc		writesize=64
+
+getBytes
+##phcc		position->bufferItemPtr->pageData   64
+##phcc		end of getBytes
+allocating pinned page
+##bmcc		****<bufferToDisk>****
+##bmcc		writesize=64
+##phcc		0
+##phcc		<refCnt = 0>
+##bmcc		****<bufferToDisk>****
+##bmcc		writesize=64
+##phcc		-1
+##phcc		-1
+allocating pinned page
+##bmcc		****<bufferToDisk>****
+##bmcc		writesize=64
+##phcc		0
+##phcc		<refCnt = 0>
+##bmcc		****<bufferToDisk>****
+##bmcc		writesize=64
+
+getBytes
+##phcc		position->bufferItemPtr->pageData   64
+##phcc		end of getBytes
+allocating pinned page
+##bmcc		****<bufferToDisk>****
+##bmcc		writesize=64
+##phcc		0
+##phcc		<refCnt = 0>
+##bmcc		****<bufferToDisk>****
+##bmcc		writesize=64
+##phcc		-1
+##phcc		-1
+allocating pinned page
+##bmcc		****<bufferToDisk>****
+##bmcc		writesize=64
+##phcc		0
+##phcc		<refCnt = 0>
+##bmcc		****<bufferToDisk>****
+##bmcc		writesize=64
+
+getBytes
+##phcc		position->bufferItemPtr->pageData   64
+##phcc		end of getBytes
+allocating pinned page
+##bmcc		****<bufferToDisk>****
+##bmcc		writesize=64
+##phcc		0
+##phcc		<refCnt = 0>
+##bmcc		****<bufferToDisk>****
+##bmcc		writesize=64
+##phcc		-1
+##phcc		-1
+allocating pinned page
+##bmcc		****<bufferToDisk>****
+##bmcc		writesize=64
+##phcc		0
+##phcc		<refCnt = 0>
+##bmcc		****<bufferToDisk>****
+##bmcc		writesize=64
+
+getBytes
+##phcc		position->bufferItemPtr->pageData   64
+##phcc		end of getBytes
+allocating pinned page
+##bmcc		****<bufferToDisk>****
+##bmcc		writesize=64
+##phcc		0
+##phcc		<refCnt = 0>
+##bmcc		****<bufferToDisk>****
+##bmcc		writesize=64
+##phcc		-1
+##phcc		-1
+allocating pinned page
+##bmcc		****<bufferToDisk>****
+##bmcc		writesize=64
+##phcc		0
+##phcc		<refCnt = 0>
+##bmcc		****<bufferToDisk>****
+##bmcc		writesize=64
+
+getBytes
+##phcc		position->bufferItemPtr->pageData   64
+##phcc		end of getBytes
+allocating pinned page
+##bmcc		****<bufferToDisk>****
+##bmcc		writesize=64
+##phcc		0
+##phcc		<refCnt = 0>
+##bmcc		****<bufferToDisk>****
+##bmcc		writesize=64
+##phcc		-1
+##phcc		-1
+allocating pinned page
+##bmcc		****<bufferToDisk>****
+##bmcc		writesize=64
+##phcc		0
+##phcc		<refCnt = 0>
+##bmcc		****<bufferToDisk>****
+##bmcc		writesize=64
+
+getBytes
+##phcc		position->bufferItemPtr->pageData   64
+##phcc		end of getBytes
+allocating pinned page
+##bmcc		****<bufferToDisk>****
+##bmcc		writesize=64
+##phcc		0
+##phcc		<refCnt = 0>
+##bmcc		****<bufferToDisk>****
+##bmcc		writesize=64
+##phcc		-1
+##phcc		-1
+allocating pinned page
+##bmcc		****<bufferToDisk>****
+##bmcc		writesize=64
+##phcc		0
+##phcc		<refCnt = 0>
+##bmcc		****<bufferToDisk>****
+##bmcc		writesize=64
+
+getBytes
+##phcc		position->bufferItemPtr->pageData   64
+##phcc		end of getBytes
+allocating pinned page
+##bmcc		****<bufferToDisk>****
+##bmcc		writesize=64
+##phcc		0
+##phcc		<refCnt = 0>
+##bmcc		****<bufferToDisk>****
+##bmcc		writesize=64
+##phcc		-1
+##phcc		-1
+allocating pinned page
+##bmcc		****<bufferToDisk>****
+##bmcc		writesize=64
+##phcc		0
+##phcc		<refCnt = 0>
+##bmcc		****<bufferToDisk>****
+##bmcc		writesize=64
+
+getBytes
+##phcc		position->bufferItemPtr->pageData   64
+##phcc		end of getBytes
+allocating pinned page
+##bmcc		****<bufferToDisk>****
+##bmcc		writesize=64
+##phcc		0
+##phcc		<refCnt = 0>
+##bmcc		****<bufferToDisk>****
+##bmcc		writesize=64
+##phcc		-1
+##phcc		-1
+allocating pinned page
+##bmcc		****<bufferToDisk>****
+##bmcc		writesize=64
+##phcc		0
+##phcc		<refCnt = 0>
+##bmcc		****<bufferToDisk>****
+##bmcc		writesize=64
+
+getBytes
+##phcc		position->bufferItemPtr->pageData   64
+##phcc		end of getBytes
+allocating pinned page
+##bmcc		****<bufferToDisk>****
+##bmcc		writesize=64
+##phcc		0
+##phcc		<refCnt = 0>
+##bmcc		****<bufferToDisk>****
+##bmcc		writesize=64
+##phcc		-1
+##phcc		-1
+allocating pinned page
+##bmcc		****<bufferToDisk>****
+##bmcc		writesize=64
+##phcc		0
+##phcc		<refCnt = 0>
+##bmcc		****<bufferToDisk>****
+##bmcc		writesize=64
+
+getBytes
+##phcc		position->bufferItemPtr->pageData   64
+##phcc		end of getBytes
+allocating pinned page
+##bmcc		****<bufferToDisk>****
+##bmcc		writesize=64
+##phcc		0
+##phcc		<refCnt = 0>
+##bmcc		****<bufferToDisk>****
+##bmcc		writesize=64
+##phcc		-1
+##phcc		-1
+allocating pinned page
+##bmcc		****<bufferToDisk>****
+##bmcc		writesize=64
+##phcc		0
+##phcc		<refCnt = 0>
+##bmcc		****<bufferToDisk>****
+##bmcc		writesize=64
+
+getBytes
+##phcc		position->bufferItemPtr->pageData   64
+##phcc		end of getBytes
+allocating pinned page
+##bmcc		****<bufferToDisk>****
+##bmcc		writesize=64
+##phcc		0
+##phcc		<refCnt = 0>
+##bmcc		****<bufferToDisk>****
+##bmcc		writesize=64
+##phcc		-1
+##phcc		-1
+allocating pinned page
+##bmcc		****<bufferToDisk>****
+##bmcc		writesize=64
+##phcc		0
+##phcc		<refCnt = 0>
+##bmcc		****<bufferToDisk>****
+##bmcc		writesize=64
+
+getBytes
+##phcc		position->bufferItemPtr->pageData   64
+##phcc		end of getBytes
+allocating pinned page
+##bmcc		****<bufferToDisk>****
+##bmcc		writesize=64
+##phcc		0
+##phcc		<refCnt = 0>
+##bmcc		****<bufferToDisk>****
+##bmcc		writesize=64
+##phcc		-1
+##phcc		-1
+allocating pinned page
+##bmcc		****<bufferToDisk>****
+##bmcc		writesize=64
+##phcc		0
+##phcc		<refCnt = 0>
+##bmcc		****<bufferToDisk>****
+##bmcc		writesize=64
+
+getBytes
+##phcc		position->bufferItemPtr->pageData   64
+##phcc		end of getBytes
+allocating pinned page
+##bmcc		****<bufferToDisk>****
+##bmcc		writesize=64
+##phcc		0
+##phcc		<refCnt = 0>
+##bmcc		****<bufferToDisk>****
+##bmcc		writesize=64
+##phcc		-1
+##phcc		-1
+allocating pinned page
+##bmcc		****<bufferToDisk>****
+##bmcc		writesize=64
+##phcc		0
+##phcc		<refCnt = 0>
+##bmcc		****<bufferToDisk>****
+##bmcc		writesize=64
+
+getBytes
+##phcc		position->bufferItemPtr->pageData   64
+##phcc		end of getBytes
+allocating pinned page
+##bmcc		****<bufferToDisk>****
+##bmcc		writesize=64
+##phcc		0
+##phcc		<refCnt = 0>
+##bmcc		****<bufferToDisk>****
+##bmcc		writesize=64
+##phcc		-1
+##phcc		-1
+allocating pinned page
+##bmcc		****<bufferToDisk>****
+##bmcc		writesize=64
+##phcc		0
+##phcc		<refCnt = 0>
+##bmcc		****<bufferToDisk>****
+##bmcc		writesize=64
+
+getBytes
+##phcc		position->bufferItemPtr->pageData   64
+##phcc		end of getBytes
+allocating pinned page
+##bmcc		****<bufferToDisk>****
+##bmcc		writesize=64
+##phcc		0
+##phcc		<refCnt = 0>
+##bmcc		****<bufferToDisk>****
+##bmcc		writesize=64
+##phcc		-1
+##phcc		-1
+allocating pinned page
+##bmcc		****<bufferToDisk>****
+##bmcc		writesize=64
+##phcc		0
+##phcc		<refCnt = 0>
+##bmcc		****<bufferToDisk>****
+##bmcc		writesize=64
+
+getBytes
+##phcc		position->bufferItemPtr->pageData   64
+##phcc		end of getBytes
+allocating pinned page
+##bmcc		****<bufferToDisk>****
+##bmcc		writesize=64
+##phcc		0
+##phcc		<refCnt = 0>
+##bmcc		****<bufferToDisk>****
+##bmcc		writesize=64
+##phcc		-1
+##phcc		-1
+allocating pinned page
+##bmcc		****<bufferToDisk>****
+##bmcc		writesize=64
+##phcc		0
+##phcc		<refCnt = 0>
+##bmcc		****<bufferToDisk>****
+##bmcc		writesize=64
+
+getBytes
+##phcc		position->bufferItemPtr->pageData   64
+##phcc		end of getBytes
+allocating pinned page
+##bmcc		****<bufferToDisk>****
+##bmcc		writesize=64
+##phcc		0
+##phcc		<refCnt = 0>
+##bmcc		****<bufferToDisk>****
+##bmcc		writesize=64
+##phcc		-1
+##phcc		-1
+allocating pinned page
+##bmcc		****<bufferToDisk>****
+##bmcc		writesize=64
+##phcc		0
+##phcc		<refCnt = 0>
+##bmcc		****<bufferToDisk>****
+##bmcc		writesize=64
+
+getBytes
+##phcc		position->bufferItemPtr->pageData   64
+##phcc		end of getBytes
+allocating pinned page
+##bmcc		****<bufferToDisk>****
+##bmcc		writesize=64
+##phcc		0
+##phcc		<refCnt = 0>
+##bmcc		****<bufferToDisk>****
+##bmcc		writesize=64
+##phcc		-1
+##phcc		-1
+allocating pinned page
+##bmcc		****<bufferToDisk>****
+##bmcc		writesize=64
+##phcc		0
+##phcc		<refCnt = 0>
+##bmcc		****<bufferToDisk>****
+##bmcc		writesize=64
+
+getBytes
+##phcc		position->bufferItemPtr->pageData   64
+##phcc		end of getBytes
+allocating pinned page
+##bmcc		****<bufferToDisk>****
+##bmcc		writesize=64
+##phcc		0
+##phcc		<refCnt = 0>
+##bmcc		****<bufferToDisk>****
+##bmcc		writesize=64
+##phcc		-1
+##phcc		-1
+allocating pinned page
+##bmcc		****<bufferToDisk>****
+##bmcc		writesize=64
+##phcc		0
+##phcc		<refCnt = 0>
+##bmcc		****<bufferToDisk>****
+##bmcc		writesize=64
+
+getBytes
+##phcc		position->bufferItemPtr->pageData   64
+##phcc		end of getBytes
+allocating pinned page
+##bmcc		****<bufferToDisk>****
+##bmcc		writesize=64
+##phcc		0
+##phcc		<refCnt = 0>
+##bmcc		****<bufferToDisk>****
+##bmcc		writesize=64
+##phcc		-1
+##phcc		-1
+allocating pinned page
+##bmcc		****<bufferToDisk>****
+##bmcc		writesize=64
+##phcc		0
+##phcc		<refCnt = 0>
+##bmcc		****<bufferToDisk>****
+##bmcc		writesize=64
+
+getBytes
+##phcc		position->bufferItemPtr->pageData   64
+##phcc		end of getBytes
+allocating pinned page
+##bmcc		****<bufferToDisk>****
+##bmcc		writesize=64
+##phcc		0
+##phcc		<refCnt = 0>
+##bmcc		****<bufferToDisk>****
+##bmcc		writesize=64
+##phcc		-1
+##phcc		-1
+allocating pinned page
+##bmcc		****<bufferToDisk>****
+##bmcc		writesize=64
+##phcc		0
+##phcc		<refCnt = 0>
+##bmcc		****<bufferToDisk>****
+##bmcc		writesize=64
+
+getBytes
+##phcc		position->bufferItemPtr->pageData   64
+##phcc		end of getBytes
+allocating pinned page
+##bmcc		****<bufferToDisk>****
+##bmcc		writesize=64
+##phcc		0
+##phcc		<refCnt = 0>
+##bmcc		****<bufferToDisk>****
+##bmcc		writesize=64
+##phcc		-1
+##phcc		-1
+allocating pinned page
+##bmcc		****<bufferToDisk>****
+##bmcc		writesize=64
+##phcc		0
+##phcc		<refCnt = 0>
+##bmcc		****<bufferToDisk>****
+##bmcc		writesize=64
+
+getBytes
+##phcc		position->bufferItemPtr->pageData   64
+##phcc		end of getBytes
+allocating pinned page
+##bmcc		****<bufferToDisk>****
+##bmcc		writesize=64
+##phcc		0
+##phcc		<refCnt = 0>
+##bmcc		****<bufferToDisk>****
+##bmcc		writesize=64
+##phcc		-1
+##phcc		-1
+allocating pinned page
+##bmcc		****<bufferToDisk>****
+##bmcc		writesize=64
+##phcc		0
+##phcc		<refCnt = 0>
+##bmcc		****<bufferToDisk>****
+##bmcc		writesize=64
+
+getBytes
+##phcc		position->bufferItemPtr->pageData   64
+##phcc		end of getBytes
+allocating pinned page
+##bmcc		****<bufferToDisk>****
+##bmcc		writesize=64
+##phcc		0
+##phcc		<refCnt = 0>
+##bmcc		****<bufferToDisk>****
+##bmcc		writesize=64
+##phcc		-1
+##phcc		-1
+allocating pinned page
+##bmcc		****<bufferToDisk>****
+##bmcc		writesize=64
+##phcc		0
+##phcc		<refCnt = 0>
+##bmcc		****<bufferToDisk>****
+##bmcc		writesize=64
+
+getBytes
+##phcc		position->bufferItemPtr->pageData   64
+##phcc		end of getBytes
+allocating pinned page
+##bmcc		****<bufferToDisk>****
+##bmcc		writesize=64
+##phcc		0
+##phcc		<refCnt = 0>
+##bmcc		****<bufferToDisk>****
+##bmcc		writesize=64
+##phcc		-1
+##phcc		-1
+allocating pinned page
+##bmcc		****<bufferToDisk>****
+##bmcc		writesize=64
+##phcc		0
+##phcc		<refCnt = 0>
+##bmcc		****<bufferToDisk>****
+##bmcc		writesize=64
+
+getBytes
+##phcc		position->bufferItemPtr->pageData   64
+##phcc		end of getBytes
+allocating pinned page
+##bmcc		****<bufferToDisk>****
+##bmcc		writesize=64
+##phcc		0
+##phcc		<refCnt = 0>
+##bmcc		****<bufferToDisk>****
+##bmcc		writesize=64
+##phcc		-1
+##phcc		-1
+allocating pinned page
+##bmcc		****<bufferToDisk>****
+##bmcc		writesize=64
+##phcc		0
+##phcc		<refCnt = 0>
+##bmcc		****<bufferToDisk>****
+##bmcc		writesize=64
+
+getBytes
+##phcc		position->bufferItemPtr->pageData   64
+##phcc		end of getBytes
+allocating pinned page
+##bmcc		****<bufferToDisk>****
+##bmcc		writesize=64
+##phcc		0
+##phcc		<refCnt = 0>
+##bmcc		****<bufferToDisk>****
+##bmcc		writesize=64
+##phcc		-1
+##phcc		-1
+allocating pinned page
+##bmcc		****<bufferToDisk>****
+##bmcc		writesize=64
+##phcc		0
+##phcc		<refCnt = 0>
+##bmcc		****<bufferToDisk>****
+##bmcc		writesize=64
+
+getBytes
+##phcc		position->bufferItemPtr->pageData   64
+##phcc		end of getBytes
+allocating pinned page
+##bmcc		****<bufferToDisk>****
+##bmcc		writesize=64
+##phcc		0
+##phcc		<refCnt = 0>
+##bmcc		****<bufferToDisk>****
+##bmcc		writesize=64
+##phcc		-1
+##phcc		-1
+allocating pinned page
+##bmcc		****<bufferToDisk>****
+##bmcc		writesize=64
+##phcc		0
+##phcc		<refCnt = 0>
+##bmcc		****<bufferToDisk>****
+##bmcc		writesize=64
+
+getBytes
+##phcc		position->bufferItemPtr->pageData   64
+##phcc		end of getBytes
+allocating pinned page
+##bmcc		****<bufferToDisk>****
+##bmcc		writesize=64
+##phcc		0
+##phcc		<refCnt = 0>
+##bmcc		****<bufferToDisk>****
+##bmcc		writesize=64
+##phcc		-1
+##phcc		-1
+allocating pinned page
+##bmcc		****<bufferToDisk>****
+##bmcc		writesize=64
+##phcc		0
+##phcc		<refCnt = 0>
+##bmcc		****<bufferToDisk>****
+##bmcc		writesize=64
+
+getBytes
+##phcc		position->bufferItemPtr->pageData   64
+##phcc		end of getBytes
+allocating pinned page
+##bmcc		****<bufferToDisk>****
+##bmcc		writesize=64
+##phcc		0
+##phcc		<refCnt = 0>
+##bmcc		****<bufferToDisk>****
+##bmcc		writesize=64
+##phcc		-1
+##phcc		-1
+allocating pinned page
+##bmcc		****<bufferToDisk>****
+##bmcc		writesize=64
+##phcc		0
+##phcc		<refCnt = 0>
+##bmcc		****<bufferToDisk>****
+##bmcc		writesize=64
+
+getBytes
+##phcc		position->bufferItemPtr->pageData   64
+##phcc		end of getBytes
+allocating pinned page
+##bmcc		****<bufferToDisk>****
+##bmcc		writesize=64
+##phcc		0
+##phcc		<refCnt = 0>
+##bmcc		****<bufferToDisk>****
+##bmcc		writesize=64
+##phcc		-1
+##phcc		-1
+allocating pinned page
+##bmcc		****<bufferToDisk>****
+##bmcc		writesize=64
+##phcc		0
+##phcc		<refCnt = 0>
+##bmcc		****<bufferToDisk>****
+##bmcc		writesize=64
+
+getBytes
+##phcc		position->bufferItemPtr->pageData   64
+##phcc		end of getBytes
+allocating pinned page
+##bmcc		****<bufferToDisk>****
+##bmcc		writesize=64
+##phcc		0
+##phcc		<refCnt = 0>
+##bmcc		****<bufferToDisk>****
+##bmcc		writesize=64
+##phcc		-1
+##phcc		-1
+allocating pinned page
+##bmcc		****<bufferToDisk>****
+##bmcc		writesize=64
+##phcc		0
+##phcc		<refCnt = 0>
+##bmcc		****<bufferToDisk>****
+##bmcc		writesize=64
+
+getBytes
+##phcc		position->bufferItemPtr->pageData   64
+##phcc		end of getBytes
+allocating pinned page
+##bmcc		****<bufferToDisk>****
+##bmcc		writesize=64
+##phcc		0
+##phcc		<refCnt = 0>
+##bmcc		****<bufferToDisk>****
+##bmcc		writesize=64
+##phcc		-1
+##phcc		-1
+allocating pinned page
+##bmcc		****<bufferToDisk>****
+##bmcc		writesize=64
+##phcc		0
+##phcc		<refCnt = 0>
+##bmcc		****<bufferToDisk>****
+##bmcc		writesize=64
+
+getBytes
+##phcc		position->bufferItemPtr->pageData   64
+##phcc		end of getBytes
+allocating pinned page
+##bmcc		****<bufferToDisk>****
+##bmcc		writesize=64
+##phcc		0
+##phcc		<refCnt = 0>
+##bmcc		****<bufferToDisk>****
+##bmcc		writesize=64
+##phcc		-1
+##phcc		-1
+allocating pinned page
+##bmcc		****<bufferToDisk>****
+##bmcc		writesize=64
+##phcc		0
+##phcc		<refCnt = 0>
+##bmcc		****<bufferToDisk>****
+##bmcc		writesize=64
+
+getBytes
+##phcc		position->bufferItemPtr->pageData   64
+##phcc		end of getBytes
+allocating pinned page
+##bmcc		****<bufferToDisk>****
+##bmcc		writesize=64
+##phcc		0
+##phcc		<refCnt = 0>
+##bmcc		****<bufferToDisk>****
+##bmcc		writesize=64
+##phcc		-1
+##phcc		-1
+##bmcc		------<diskToBuffer>-------
+diskToBuffer
+size:64 pageSize: 64
+##phcc		0
+##phcc		<refCnt = 0>
+##bmcc		****<bufferToDisk>****
+##bmcc		writesize=64
+
+getBytes
+##phcc		position->bufferItemPtr is nullptr
+##bmcc		------<diskToBuffer>-------
+diskToBuffer
+size:64 pageSize: 64
+##phcc		position->bufferItemPtr->pageData   64
+##phcc		end of getBytes
+0 answer !!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
+0 bytes !!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
+##phcc		-1
+##bmcc		------<diskToBuffer>-------
+diskToBuffer
+size:64 pageSize: 64
+##phcc		0
+##phcc		<refCnt = 0>
+##bmcc		****<bufferToDisk>****
+##bmcc		writesize=64
+
+getBytes
+##phcc		position->bufferItemPtr is nullptr
+##bmcc		------<diskToBuffer>-------
+diskToBuffer
+size:64 pageSize: 64
+##phcc		position->bufferItemPtr->pageData   64
+##phcc		end of getBytes
+1 answer """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+1 bytes !!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
+##phcc		-1
+##bmcc		------<diskToBuffer>-------
+diskToBuffer
+size:64 pageSize: 64
+##phcc		0
+##phcc		<refCnt = 0>
+##bmcc		****<bufferToDisk>****
+##bmcc		writesize=64
+
+getBytes
+##phcc		position->bufferItemPtr is nullptr
+##bmcc		------<diskToBuffer>-------
+diskToBuffer
+size:64 pageSize: 64
+##phcc		position->bufferItemPtr->pageData   64
+##phcc		end of getBytes
+2 answer ###############################################################
+2 bytes €ck)ó
+##phcc		-1
+##bmcc		------<diskToBuffer>-------
+diskToBuffer
+size:64 pageSize: 64
+##phcc		0
+##phcc		<refCnt = 0>
+##bmcc		****<bufferToDisk>****
+##bmcc		writesize=64
+
+getBytes
+##phcc		position->bufferItemPtr is nullptr
+##bmcc		------<diskToBuffer>-------
+diskToBuffer
+size:64 pageSize: 64
+##phcc		position->bufferItemPtr->pageData   64
+##phcc		end of getBytes
+3 answer $$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$
+3 bytes €ck)ó
+##phcc		-1
+##bmcc		------<diskToBuffer>-------
+diskToBuffer
+size:64 pageSize: 64
+##phcc		0
+##phcc		<refCnt = 0>
+##bmcc		****<bufferToDisk>****
+##bmcc		writesize=64
+
+getBytes
+##phcc		position->bufferItemPtr is nullptr
+##bmcc		------<diskToBuffer>-------
+diskToBuffer
+size:64 pageSize: 64
+##phcc		position->bufferItemPtr->pageData   64
+##phcc		end of getBytes
+4 answer %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+4 bytes €ck)ó
+##phcc		-1
+##bmcc		------<diskToBuffer>-------
+diskToBuffer
+size:64 pageSize: 64
+##phcc		0
+##phcc		<refCnt = 0>
+##bmcc		****<bufferToDisk>****
+##bmcc		writesize=64
+
+getBytes
+##phcc		position->bufferItemPtr is nullptr
+##bmcc		------<diskToBuffer>-------
+diskToBuffer
+size:64 pageSize: 64
+##phcc		position->bufferItemPtr->pageData   64
+##phcc		end of getBytes
+5 answer &&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&
+5 bytes €ck)ó
+##phcc		-1
+##bmcc		------<diskToBuffer>-------
+diskToBuffer
+size:64 pageSize: 64
+##phcc		0
+##phcc		<refCnt = 0>
+##bmcc		****<bufferToDisk>****
+##bmcc		writesize=64
+
+getBytes
+##phcc		position->bufferItemPtr is nullptr
+##bmcc		------<diskToBuffer>-------
+diskToBuffer
+size:64 pageSize: 64
+##phcc		position->bufferItemPtr->pageData   64
+##phcc		end of getBytes
+6 answer '''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''
+6 bytes €ck)ó
+##phcc		-1
+##bmcc		------<diskToBuffer>-------
+diskToBuffer
+size:64 pageSize: 64
+##phcc		0
+##phcc		<refCnt = 0>
+##bmcc		****<bufferToDisk>****
+##bmcc		writesize=64
+
+getBytes
+##phcc		position->bufferItemPtr is nullptr
+##bmcc		------<diskToBuffer>-------
+diskToBuffer
+size:64 pageSize: 64
+##phcc		position->bufferItemPtr->pageData   64
+##phcc		end of getBytes
+7 answer (((((((((((((((((((((((((((((((((((((((((((((((((((((((((((((((
+7 bytes €ck)ó
+##phcc		-1
+##bmcc		------<diskToBuffer>-------
+diskToBuffer
+size:64 pageSize: 64
+##phcc		0
+##phcc		<refCnt = 0>
+##bmcc		****<bufferToDisk>****
+##bmcc		writesize=64
+
+getBytes
+##phcc		position->bufferItemPtr is nullptr
+##bmcc		------<diskToBuffer>-------
+diskToBuffer
+size:64 pageSize: 64
+##phcc		position->bufferItemPtr->pageData   64
+##phcc		end of getBytes
+8 answer 888888888888888888888888888888888888888888888888888888888888888
+8 bytes 888888888888888888888888888888888888888888888888888888888888888
+##phcc		-1
+##bmcc		------<diskToBuffer>-------
+diskToBuffer
+size:64 pageSize: 64
+##phcc		0
+##phcc		<refCnt = 0>
+##bmcc		****<bufferToDisk>****
+##bmcc		writesize=64
+
+getBytes
+##phcc		position->bufferItemPtr is nullptr
+##bmcc		------<diskToBuffer>-------
+diskToBuffer
+size:64 pageSize: 64
+##phcc		position->bufferItemPtr->pageData   64
+##phcc		end of getBytes
+9 answer 999999999999999999999999999999999999999999999999999999999999999
+9 bytes 999999999999999999999999999999999999999999999999999999999999999
+##phcc		-1
+##bmcc		------<diskToBuffer>-------
+diskToBuffer
+size:64 pageSize: 64
+##phcc		0
+##phcc		<refCnt = 0>
+##bmcc		****<bufferToDisk>****
+##bmcc		writesize=64
+
+getBytes
+##phcc		position->bufferItemPtr is nullptr
+##bmcc		------<diskToBuffer>-------
+diskToBuffer
+size:64 pageSize: 64
+##phcc		position->bufferItemPtr->pageData   64
+##phcc		end of getBytes
+10 answer 000000000000000000000000000000000000000000000000000000000000000
+10 bytes 000000000000000000000000000000000000000000000000000000000000000
+##phcc		-1
+##bmcc		------<diskToBuffer>-------
+diskToBuffer
+size:64 pageSize: 64
+##phcc		0
+##phcc		<refCnt = 0>
+##bmcc		****<bufferToDisk>****
+##bmcc		writesize=64
+
+getBytes
+##phcc		position->bufferItemPtr is nullptr
+##bmcc		------<diskToBuffer>-------
+diskToBuffer
+size:64 pageSize: 64
+##phcc		position->bufferItemPtr->pageData   64
+##phcc		end of getBytes
+11 answer 111111111111111111111111111111111111111111111111111111111111111
+11 bytes 111111111111111111111111111111111111111111111111111111111111111
+##phcc		-1
+##bmcc		------<diskToBuffer>-------
+diskToBuffer
+size:64 pageSize: 64
+##phcc		0
+##phcc		<refCnt = 0>
+##bmcc		****<bufferToDisk>****
+##bmcc		writesize=64
+
+getBytes
+##phcc		position->bufferItemPtr is nullptr
+##bmcc		------<diskToBuffer>-------
+diskToBuffer
+size:64 pageSize: 64
+##phcc		position->bufferItemPtr->pageData   64
+##phcc		end of getBytes
+12 answer 222222222222222222222222222222222222222222222222222222222222222
+12 bytes 222222222222222222222222222222222222222222222222222222222222222
+##phcc		-1
+##bmcc		------<diskToBuffer>-------
+diskToBuffer
+size:64 pageSize: 64
+##phcc		0
+##phcc		<refCnt = 0>
+##bmcc		****<bufferToDisk>****
+##bmcc		writesize=64
+
+getBytes
+##phcc		position->bufferItemPtr is nullptr
+##bmcc		------<diskToBuffer>-------
+diskToBuffer
+size:64 pageSize: 64
+##phcc		position->bufferItemPtr->pageData   64
+##phcc		end of getBytes
+13 answer 333333333333333333333333333333333333333333333333333333333333333
+13 bytes 333333333333333333333333333333333333333333333333333333333333333
+##phcc		-1
+##bmcc		------<diskToBuffer>-------
+diskToBuffer
+size:64 pageSize: 64
+##phcc		0
+##phcc		<refCnt = 0>
+##bmcc		****<bufferToDisk>****
+##bmcc		writesize=64
+
+getBytes
+##phcc		position->bufferItemPtr is nullptr
+##bmcc		------<diskToBuffer>-------
+diskToBuffer
+size:64 pageSize: 64
+##phcc		position->bufferItemPtr->pageData   64
+##phcc		end of getBytes
+14 answer 444444444444444444444444444444444444444444444444444444444444444
+14 bytes 444444444444444444444444444444444444444444444444444444444444444
+##phcc		-1
+##bmcc		------<diskToBuffer>-------
+diskToBuffer
+size:64 pageSize: 64
+##phcc		0
+##phcc		<refCnt = 0>
+##bmcc		****<bufferToDisk>****
+##bmcc		writesize=64
+
+getBytes
+##phcc		position->bufferItemPtr is nullptr
+##bmcc		------<diskToBuffer>-------
+diskToBuffer
+size:64 pageSize: 64
+##phcc		position->bufferItemPtr->pageData   64
+##phcc		end of getBytes
+15 answer 555555555555555555555555555555555555555555555555555555555555555
+15 bytes 555555555555555555555555555555555555555555555555555555555555555
+##phcc		-1
+##bmcc		------<diskToBuffer>-------
+diskToBuffer
+size:64 pageSize: 64
+##phcc		0
+##phcc		<refCnt = 0>
+##bmcc		****<bufferToDisk>****
+##bmcc		writesize=64
+
+getBytes
+##phcc		position->bufferItemPtr is nullptr
+##bmcc		------<diskToBuffer>-------
+diskToBuffer
+size:64 pageSize: 64
+##phcc		position->bufferItemPtr->pageData   64
+##phcc		end of getBytes
+16 answer 666666666666666666666666666666666666666666666666666666666666666
+16 bytes 666666666666666666666666666666666666666666666666666666666666666
+##phcc		-1
+##bmcc		------<diskToBuffer>-------
+diskToBuffer
+size:64 pageSize: 64
+##phcc		0
+##phcc		<refCnt = 0>
+##bmcc		****<bufferToDisk>****
+##bmcc		writesize=64
+
+getBytes
+##phcc		position->bufferItemPtr is nullptr
+##bmcc		------<diskToBuffer>-------
+diskToBuffer
+size:64 pageSize: 64
+##phcc		position->bufferItemPtr->pageData   64
+##phcc		end of getBytes
+17 answer 777777777777777777777777777777777777777777777777777777777777777
+17 bytes 777777777777777777777777777777777777777777777777777777777777777
+##phcc		-1
+##bmcc		------<diskToBuffer>-------
+diskToBuffer
+size:64 pageSize: 64
+##phcc		0
+##phcc		<refCnt = 0>
+##bmcc		****<bufferToDisk>****
+##bmcc		writesize=64
+
+getBytes
+##phcc		position->bufferItemPtr is nullptr
+##bmcc		------<diskToBuffer>-------
+diskToBuffer
+size:64 pageSize: 64
+##phcc		position->bufferItemPtr->pageData   64
+##phcc		end of getBytes
+18 answer 888888888888888888888888888888888888888888888888888888888888888
+18 bytes 888888888888888888888888888888888888888888888888888888888888888
+##phcc		-1
+##bmcc		------<diskToBuffer>-------
+diskToBuffer
+size:64 pageSize: 64
+##phcc		0
+##phcc		<refCnt = 0>
+##bmcc		****<bufferToDisk>****
+##bmcc		writesize=64
+
+getBytes
+##phcc		position->bufferItemPtr is nullptr
+##bmcc		------<diskToBuffer>-------
+diskToBuffer
+size:64 pageSize: 64
+##phcc		position->bufferItemPtr->pageData   64
+##phcc		end of getBytes
+19 answer 999999999999999999999999999999999999999999999999999999999999999
+19 bytes 999999999999999999999999999999999999999999999999999999999999999
+##phcc		-1
+##bmcc		------<diskToBuffer>-------
+diskToBuffer
+size:64 pageSize: 64
+##phcc		0
+##phcc		<refCnt = 0>
+##bmcc		****<bufferToDisk>****
+##bmcc		writesize=64
+
+getBytes
+##phcc		position->bufferItemPtr is nullptr
+##bmcc		------<diskToBuffer>-------
+diskToBuffer
+size:64 pageSize: 64
+##phcc		position->bufferItemPtr->pageData   64
+##phcc		end of getBytes
+20 answer 000000000000000000000000000000000000000000000000000000000000000
+20 bytes 000000000000000000000000000000000000000000000000000000000000000
+##phcc		-1
+##bmcc		------<diskToBuffer>-------
+diskToBuffer
+size:64 pageSize: 64
+##phcc		0
+##phcc		<refCnt = 0>
+##bmcc		****<bufferToDisk>****
+##bmcc		writesize=64
+
+getBytes
+##phcc		position->bufferItemPtr is nullptr
+##bmcc		------<diskToBuffer>-------
+diskToBuffer
+size:64 pageSize: 64
+##phcc		position->bufferItemPtr->pageData   64
+##phcc		end of getBytes
+21 answer 111111111111111111111111111111111111111111111111111111111111111
+21 bytes 111111111111111111111111111111111111111111111111111111111111111
+##phcc		-1
+##bmcc		------<diskToBuffer>-------
+diskToBuffer
+size:64 pageSize: 64
+##phcc		0
+##phcc		<refCnt = 0>
+##bmcc		****<bufferToDisk>****
+##bmcc		writesize=64
+
+getBytes
+##phcc		position->bufferItemPtr is nullptr
+##bmcc		------<diskToBuffer>-------
+diskToBuffer
+size:64 pageSize: 64
+##phcc		position->bufferItemPtr->pageData   64
+##phcc		end of getBytes
+22 answer 222222222222222222222222222222222222222222222222222222222222222
+22 bytes 222222222222222222222222222222222222222222222222222222222222222
+##phcc		-1
+##bmcc		------<diskToBuffer>-------
+diskToBuffer
+size:64 pageSize: 64
+##phcc		0
+##phcc		<refCnt = 0>
+##bmcc		****<bufferToDisk>****
+##bmcc		writesize=64
+
+getBytes
+##phcc		position->bufferItemPtr is nullptr
+##bmcc		------<diskToBuffer>-------
+diskToBuffer
+size:64 pageSize: 64
+##phcc		position->bufferItemPtr->pageData   64
+##phcc		end of getBytes
+23 answer 333333333333333333333333333333333333333333333333333333333333333
+23 bytes 333333333333333333333333333333333333333333333333333333333333333
+##phcc		-1
+##bmcc		------<diskToBuffer>-------
+diskToBuffer
+size:64 pageSize: 64
+##phcc		0
+##phcc		<refCnt = 0>
+##bmcc		****<bufferToDisk>****
+##bmcc		writesize=64
+
+getBytes
+##phcc		position->bufferItemPtr is nullptr
+##bmcc		------<diskToBuffer>-------
+diskToBuffer
+size:64 pageSize: 64
+##phcc		position->bufferItemPtr->pageData   64
+##phcc		end of getBytes
+24 answer 444444444444444444444444444444444444444444444444444444444444444
+24 bytes 444444444444444444444444444444444444444444444444444444444444444
+##phcc		-1
+##bmcc		------<diskToBuffer>-------
+diskToBuffer
+size:64 pageSize: 64
+##phcc		0
+##phcc		<refCnt = 0>
+##bmcc		****<bufferToDisk>****
+##bmcc		writesize=64
+
+getBytes
+##phcc		position->bufferItemPtr is nullptr
+##bmcc		------<diskToBuffer>-------
+diskToBuffer
+size:64 pageSize: 64
+##phcc		position->bufferItemPtr->pageData   64
+##phcc		end of getBytes
+25 answer 555555555555555555555555555555555555555555555555555555555555555
+25 bytes 555555555555555555555555555555555555555555555555555555555555555
+##phcc		-1
+##bmcc		------<diskToBuffer>-------
+diskToBuffer
+size:64 pageSize: 64
+##phcc		0
+##phcc		<refCnt = 0>
+##bmcc		****<bufferToDisk>****
+##bmcc		writesize=64
+
+getBytes
+##phcc		position->bufferItemPtr is nullptr
+##bmcc		------<diskToBuffer>-------
+diskToBuffer
+size:64 pageSize: 64
+##phcc		position->bufferItemPtr->pageData   64
+##phcc		end of getBytes
+26 answer 666666666666666666666666666666666666666666666666666666666666666
+26 bytes 666666666666666666666666666666666666666666666666666666666666666
+##phcc		-1
+##bmcc		------<diskToBuffer>-------
+diskToBuffer
+size:64 pageSize: 64
+##phcc		0
+##phcc		<refCnt = 0>
+##bmcc		****<bufferToDisk>****
+##bmcc		writesize=64
+
+getBytes
+##phcc		position->bufferItemPtr is nullptr
+##bmcc		------<diskToBuffer>-------
+diskToBuffer
+size:64 pageSize: 64
+##phcc		position->bufferItemPtr->pageData   64
+##phcc		end of getBytes
+27 answer 777777777777777777777777777777777777777777777777777777777777777
+27 bytes 777777777777777777777777777777777777777777777777777777777777777
+##phcc		-1
+##bmcc		------<diskToBuffer>-------
+diskToBuffer
+size:64 pageSize: 64
+##phcc		0
+##phcc		<refCnt = 0>
+##bmcc		****<bufferToDisk>****
+##bmcc		writesize=64
+
+getBytes
+##phcc		position->bufferItemPtr is nullptr
+##bmcc		------<diskToBuffer>-------
+diskToBuffer
+size:64 pageSize: 64
+##phcc		position->bufferItemPtr->pageData   64
+##phcc		end of getBytes
+28 answer 888888888888888888888888888888888888888888888888888888888888888
+28 bytes 888888888888888888888888888888888888888888888888888888888888888
+##phcc		-1
+##bmcc		------<diskToBuffer>-------
+diskToBuffer
+size:64 pageSize: 64
+##phcc		0
+##phcc		<refCnt = 0>
+##bmcc		****<bufferToDisk>****
+##bmcc		writesize=64
+
+getBytes
+##phcc		position->bufferItemPtr is nullptr
+##bmcc		------<diskToBuffer>-------
+diskToBuffer
+size:64 pageSize: 64
+##phcc		position->bufferItemPtr->pageData   64
+##phcc		end of getBytes
+29 answer 999999999999999999999999999999999999999999999999999999999999999
+29 bytes 999999999999999999999999999999999999999999999999999999999999999
+##phcc		-1
+##bmcc		------<diskToBuffer>-------
+diskToBuffer
+size:64 pageSize: 64
+##phcc		0
+##phcc		<refCnt = 0>
+##bmcc		****<bufferToDisk>****
+##bmcc		writesize=64
+
+getBytes
+##phcc		position->bufferItemPtr is nullptr
+##bmcc		------<diskToBuffer>-------
+diskToBuffer
+size:64 pageSize: 64
+##phcc		position->bufferItemPtr->pageData   64
+##phcc		end of getBytes
+30 answer 000000000000000000000000000000000000000000000000000000000000000
+30 bytes 000000000000000000000000000000000000000000000000000000000000000
+##phcc		-1
+##bmcc		------<diskToBuffer>-------
+diskToBuffer
+size:64 pageSize: 64
+##phcc		0
+##phcc		<refCnt = 0>
+##bmcc		****<bufferToDisk>****
+##bmcc		writesize=64
+
+getBytes
+##phcc		position->bufferItemPtr is nullptr
+##bmcc		------<diskToBuffer>-------
+diskToBuffer
+size:64 pageSize: 64
+##phcc		position->bufferItemPtr->pageData   64
+##phcc		end of getBytes
+31 answer 111111111111111111111111111111111111111111111111111111111111111
+31 bytes 111111111111111111111111111111111111111111111111111111111111111
+##phcc		-1
+##bmcc		------<diskToBuffer>-------
+diskToBuffer
+size:64 pageSize: 64
+##phcc		0
+##phcc		<refCnt = 0>
+##bmcc		****<bufferToDisk>****
+##bmcc		writesize=64
+
+getBytes
+##phcc		position->bufferItemPtr is nullptr
+##bmcc		------<diskToBuffer>-------
+diskToBuffer
+size:64 pageSize: 64
+##phcc		position->bufferItemPtr->pageData   64
+##phcc		end of getBytes
+32 answer 222222222222222222222222222222222222222222222222222222222222222
+32 bytes 222222222222222222222222222222222222222222222222222222222222222
+##phcc		-1
+##bmcc		------<diskToBuffer>-------
+diskToBuffer
+size:64 pageSize: 64
+##phcc		0
+##phcc		<refCnt = 0>
+##bmcc		****<bufferToDisk>****
+##bmcc		writesize=64
+
+getBytes
+##phcc		position->bufferItemPtr is nullptr
+##bmcc		------<diskToBuffer>-------
+diskToBuffer
+size:64 pageSize: 64
+##phcc		position->bufferItemPtr->pageData   64
+##phcc		end of getBytes
+33 answer 333333333333333333333333333333333333333333333333333333333333333
+33 bytes 333333333333333333333333333333333333333333333333333333333333333
+##phcc		-1
+##bmcc		------<diskToBuffer>-------
+diskToBuffer
+size:64 pageSize: 64
+##phcc		0
+##phcc		<refCnt = 0>
+##bmcc		****<bufferToDisk>****
+##bmcc		writesize=64
+
+getBytes
+##phcc		position->bufferItemPtr is nullptr
+##bmcc		------<diskToBuffer>-------
+diskToBuffer
+size:64 pageSize: 64
+##phcc		position->bufferItemPtr->pageData   64
+##phcc		end of getBytes
+34 answer 444444444444444444444444444444444444444444444444444444444444444
+34 bytes 444444444444444444444444444444444444444444444444444444444444444
+##phcc		-1
+##bmcc		------<diskToBuffer>-------
+diskToBuffer
+size:64 pageSize: 64
+##phcc		0
+##phcc		<refCnt = 0>
+##bmcc		****<bufferToDisk>****
+##bmcc		writesize=64
+
+getBytes
+##phcc		position->bufferItemPtr is nullptr
+##bmcc		------<diskToBuffer>-------
+diskToBuffer
+size:64 pageSize: 64
+##phcc		position->bufferItemPtr->pageData   64
+##phcc		end of getBytes
+35 answer 555555555555555555555555555555555555555555555555555555555555555
+35 bytes 555555555555555555555555555555555555555555555555555555555555555
+##phcc		-1
+##bmcc		------<diskToBuffer>-------
+diskToBuffer
+size:64 pageSize: 64
+##phcc		0
+##phcc		<refCnt = 0>
+##bmcc		****<bufferToDisk>****
+##bmcc		writesize=64
+
+getBytes
+##phcc		position->bufferItemPtr is nullptr
+##bmcc		------<diskToBuffer>-------
+diskToBuffer
+size:64 pageSize: 64
+##phcc		position->bufferItemPtr->pageData   64
+##phcc		end of getBytes
+36 answer 666666666666666666666666666666666666666666666666666666666666666
+36 bytes 666666666666666666666666666666666666666666666666666666666666666
+##phcc		-1
+##bmcc		------<diskToBuffer>-------
+diskToBuffer
+size:64 pageSize: 64
+##phcc		0
+##phcc		<refCnt = 0>
+##bmcc		****<bufferToDisk>****
+##bmcc		writesize=64
+
+getBytes
+##phcc		position->bufferItemPtr is nullptr
+##bmcc		------<diskToBuffer>-------
+diskToBuffer
+size:64 pageSize: 64
+##phcc		position->bufferItemPtr->pageData   64
+##phcc		end of getBytes
+37 answer 777777777777777777777777777777777777777777777777777777777777777
+37 bytes 777777777777777777777777777777777777777777777777777777777777777
+##phcc		-1
+##bmcc		------<diskToBuffer>-------
+diskToBuffer
+size:64 pageSize: 64
+##phcc		0
+##phcc		<refCnt = 0>
+##bmcc		****<bufferToDisk>****
+##bmcc		writesize=64
+
+getBytes
+##phcc		position->bufferItemPtr is nullptr
+##bmcc		------<diskToBuffer>-------
+diskToBuffer
+size:64 pageSize: 64
+##phcc		position->bufferItemPtr->pageData   64
+##phcc		end of getBytes
+38 answer 888888888888888888888888888888888888888888888888888888888888888
+38 bytes 888888888888888888888888888888888888888888888888888888888888888
+##phcc		-1
+##bmcc		------<diskToBuffer>-------
+diskToBuffer
+size:64 pageSize: 64
+##phcc		0
+##phcc		<refCnt = 0>
+##bmcc		****<bufferToDisk>****
+##bmcc		writesize=64
+
+getBytes
+##phcc		position->bufferItemPtr is nullptr
+##bmcc		------<diskToBuffer>-------
+diskToBuffer
+size:64 pageSize: 64
+##phcc		position->bufferItemPtr->pageData   64
+##phcc		end of getBytes
+39 answer 999999999999999999999999999999999999999999999999999999999999999
+39 bytes 999999999999999999999999999999999999999999999999999999999999999
+##phcc		-1
+##bmcc		------<diskToBuffer>-------
+diskToBuffer
+size:64 pageSize: 64
+##phcc		0
+##phcc		<refCnt = 0>
+##bmcc		****<bufferToDisk>****
+##bmcc		writesize=64
+
+getBytes
+##phcc		position->bufferItemPtr is nullptr
+##bmcc		------<diskToBuffer>-------
+diskToBuffer
+size:64 pageSize: 64
+##phcc		position->bufferItemPtr->pageData   64
+##phcc		end of getBytes
+40 answer 000000000000000000000000000000000000000000000000000000000000000
+40 bytes 000000000000000000000000000000000000000000000000000000000000000
+##phcc		-1
+##bmcc		------<diskToBuffer>-------
+diskToBuffer
+size:64 pageSize: 64
+##phcc		0
+##phcc		<refCnt = 0>
+##bmcc		****<bufferToDisk>****
+##bmcc		writesize=64
+
+getBytes
+##phcc		position->bufferItemPtr is nullptr
+##bmcc		------<diskToBuffer>-------
+diskToBuffer
+size:64 pageSize: 64
+##phcc		position->bufferItemPtr->pageData   64
+##phcc		end of getBytes
+41 answer 111111111111111111111111111111111111111111111111111111111111111
+41 bytes 111111111111111111111111111111111111111111111111111111111111111
+##phcc		-1
+##bmcc		------<diskToBuffer>-------
+diskToBuffer
+size:64 pageSize: 64
+##phcc		0
+##phcc		<refCnt = 0>
+##bmcc		****<bufferToDisk>****
+##bmcc		writesize=64
+
+getBytes
+##phcc		position->bufferItemPtr is nullptr
+##bmcc		------<diskToBuffer>-------
+diskToBuffer
+size:64 pageSize: 64
+##phcc		position->bufferItemPtr->pageData   64
+##phcc		end of getBytes
+42 answer 222222222222222222222222222222222222222222222222222222222222222
+42 bytes 222222222222222222222222222222222222222222222222222222222222222
+##phcc		-1
+##bmcc		------<diskToBuffer>-------
+diskToBuffer
+size:64 pageSize: 64
+##phcc		0
+##phcc		<refCnt = 0>
+##bmcc		****<bufferToDisk>****
+##bmcc		writesize=64
+
+getBytes
+##phcc		position->bufferItemPtr is nullptr
+##bmcc		------<diskToBuffer>-------
+diskToBuffer
+size:64 pageSize: 64
+##phcc		position->bufferItemPtr->pageData   64
+##phcc		end of getBytes
+43 answer 333333333333333333333333333333333333333333333333333333333333333
+43 bytes 333333333333333333333333333333333333333333333333333333333333333
+##phcc		-1
+##bmcc		------<diskToBuffer>-------
+diskToBuffer
+size:64 pageSize: 64
+##phcc		0
+##phcc		<refCnt = 0>
+##bmcc		****<bufferToDisk>****
+##bmcc		writesize=64
+
+getBytes
+##phcc		position->bufferItemPtr is nullptr
+##bmcc		------<diskToBuffer>-------
+diskToBuffer
+size:64 pageSize: 64
+##phcc		position->bufferItemPtr->pageData   64
+##phcc		end of getBytes
+44 answer 444444444444444444444444444444444444444444444444444444444444444
+44 bytes 444444444444444444444444444444444444444444444444444444444444444
+##phcc		-1
+##bmcc		------<diskToBuffer>-------
+diskToBuffer
+size:64 pageSize: 64
+##phcc		0
+##phcc		<refCnt = 0>
+##bmcc		****<bufferToDisk>****
+##bmcc		writesize=64
+
+getBytes
+##phcc		position->bufferItemPtr is nullptr
+##bmcc		------<diskToBuffer>-------
+diskToBuffer
+size:64 pageSize: 64
+##phcc		position->bufferItemPtr->pageData   64
+##phcc		end of getBytes
+45 answer 555555555555555555555555555555555555555555555555555555555555555
+45 bytes 555555555555555555555555555555555555555555555555555555555555555
+##phcc		-1
+##bmcc		------<diskToBuffer>-------
+diskToBuffer
+size:64 pageSize: 64
+##phcc		0
+##phcc		<refCnt = 0>
+##bmcc		****<bufferToDisk>****
+##bmcc		writesize=64
+
+getBytes
+##phcc		position->bufferItemPtr is nullptr
+##bmcc		------<diskToBuffer>-------
+diskToBuffer
+size:64 pageSize: 64
+##phcc		position->bufferItemPtr->pageData   64
+##phcc		end of getBytes
+46 answer 666666666666666666666666666666666666666666666666666666666666666
+46 bytes 666666666666666666666666666666666666666666666666666666666666666
+##phcc		-1
+##bmcc		------<diskToBuffer>-------
+diskToBuffer
+size:64 pageSize: 64
+##phcc		0
+##phcc		<refCnt = 0>
+##bmcc		****<bufferToDisk>****
+##bmcc		writesize=64
+
+getBytes
+##phcc		position->bufferItemPtr is nullptr
+##bmcc		------<diskToBuffer>-------
+diskToBuffer
+size:64 pageSize: 64
+##phcc		position->bufferItemPtr->pageData   64
+##phcc		end of getBytes
+47 answer 777777777777777777777777777777777777777777777777777777777777777
+47 bytes 777777777777777777777777777777777777777777777777777777777777777
+##phcc		-1
+##bmcc		------<diskToBuffer>-------
+diskToBuffer
+size:64 pageSize: 64
+##phcc		0
+##phcc		<refCnt = 0>
+##bmcc		****<bufferToDisk>****
+##bmcc		writesize=64
+
+getBytes
+##phcc		position->bufferItemPtr is nullptr
+##bmcc		------<diskToBuffer>-------
+diskToBuffer
+size:64 pageSize: 64
+##phcc		position->bufferItemPtr->pageData   64
+##phcc		end of getBytes
+48 answer 888888888888888888888888888888888888888888888888888888888888888
+48 bytes 888888888888888888888888888888888888888888888888888888888888888
+##phcc		-1
+##bmcc		------<diskToBuffer>-------
+diskToBuffer
+size:64 pageSize: 64
+##phcc		0
+##phcc		<refCnt = 0>
+##bmcc		****<bufferToDisk>****
+##bmcc		writesize=64
+
+getBytes
+##phcc		position->bufferItemPtr is nullptr
+##bmcc		------<diskToBuffer>-------
+diskToBuffer
+size:64 pageSize: 64
+##phcc		position->bufferItemPtr->pageData   64
+##phcc		end of getBytes
+49 answer 999999999999999999999999999999999999999999999999999999999999999
+49 bytes 999999999999999999999999999999999999999999999999999999999999999
+##phcc		-1
+##bmcc		------<diskToBuffer>-------
+diskToBuffer
+size:64 pageSize: 64
+##phcc		0
+##phcc		<refCnt = 0>
+##bmcc		****<bufferToDisk>****
+##bmcc		writesize=64
+
+getBytes
+##phcc		position->bufferItemPtr is nullptr
+##bmcc		------<diskToBuffer>-------
+diskToBuffer
+size:64 pageSize: 64
+##phcc		position->bufferItemPtr->pageData   64
+##phcc		end of getBytes
+50 answer 000000000000000000000000000000000000000000000000000000000000000
+50 bytes 000000000000000000000000000000000000000000000000000000000000000
+##phcc		-1
+##bmcc		------<diskToBuffer>-------
+diskToBuffer
+size:64 pageSize: 64
+##phcc		0
+##phcc		<refCnt = 0>
+##bmcc		****<bufferToDisk>****
+##bmcc		writesize=64
+
+getBytes
+##phcc		position->bufferItemPtr is nullptr
+##bmcc		------<diskToBuffer>-------
+diskToBuffer
+size:64 pageSize: 64
+##phcc		position->bufferItemPtr->pageData   64
+##phcc		end of getBytes
+51 answer 111111111111111111111111111111111111111111111111111111111111111
+51 bytes 111111111111111111111111111111111111111111111111111111111111111
+##phcc		-1
+##bmcc		------<diskToBuffer>-------
+diskToBuffer
+size:64 pageSize: 64
+##phcc		0
+##phcc		<refCnt = 0>
+##bmcc		****<bufferToDisk>****
+##bmcc		writesize=64
+
+getBytes
+##phcc		position->bufferItemPtr is nullptr
+##bmcc		------<diskToBuffer>-------
+diskToBuffer
+size:64 pageSize: 64
+##phcc		position->bufferItemPtr->pageData   64
+##phcc		end of getBytes
+52 answer 222222222222222222222222222222222222222222222222222222222222222
+52 bytes 222222222222222222222222222222222222222222222222222222222222222
+##phcc		-1
+##bmcc		------<diskToBuffer>-------
+diskToBuffer
+size:64 pageSize: 64
+##phcc		0
+##phcc		<refCnt = 0>
+##bmcc		****<bufferToDisk>****
+##bmcc		writesize=64
+
+getBytes
+##phcc		position->bufferItemPtr is nullptr
+##bmcc		------<diskToBuffer>-------
+diskToBuffer
+size:64 pageSize: 64
+##phcc		position->bufferItemPtr->pageData   64
+##phcc		end of getBytes
+53 answer 333333333333333333333333333333333333333333333333333333333333333
+53 bytes 333333333333333333333333333333333333333333333333333333333333333
+##phcc		-1
+##bmcc		------<diskToBuffer>-------
+diskToBuffer
+size:64 pageSize: 64
+##phcc		0
+##phcc		<refCnt = 0>
+##bmcc		****<bufferToDisk>****
+##bmcc		writesize=64
+
+getBytes
+##phcc		position->bufferItemPtr is nullptr
+##bmcc		------<diskToBuffer>-------
+diskToBuffer
+size:64 pageSize: 64
+##phcc		position->bufferItemPtr->pageData   64
+##phcc		end of getBytes
+54 answer 444444444444444444444444444444444444444444444444444444444444444
+54 bytes 444444444444444444444444444444444444444444444444444444444444444
+##phcc		-1
+##bmcc		------<diskToBuffer>-------
+diskToBuffer
+size:64 pageSize: 64
+##phcc		0
+##phcc		<refCnt = 0>
+##bmcc		****<bufferToDisk>****
+##bmcc		writesize=64
+
+getBytes
+##phcc		position->bufferItemPtr is nullptr
+##bmcc		------<diskToBuffer>-------
+diskToBuffer
+size:64 pageSize: 64
+##phcc		position->bufferItemPtr->pageData   64
+##phcc		end of getBytes
+55 answer 555555555555555555555555555555555555555555555555555555555555555
+55 bytes 555555555555555555555555555555555555555555555555555555555555555
+##phcc		-1
+##bmcc		------<diskToBuffer>-------
+diskToBuffer
+size:64 pageSize: 64
+##phcc		0
+##phcc		<refCnt = 0>
+##bmcc		****<bufferToDisk>****
+##bmcc		writesize=64
+
+getBytes
+##phcc		position->bufferItemPtr is nullptr
+##bmcc		------<diskToBuffer>-------
+diskToBuffer
+size:64 pageSize: 64
+##phcc		position->bufferItemPtr->pageData   64
+##phcc		end of getBytes
+56 answer 666666666666666666666666666666666666666666666666666666666666666
+56 bytes 666666666666666666666666666666666666666666666666666666666666666
+##phcc		-1
+##bmcc		------<diskToBuffer>-------
+diskToBuffer
+size:64 pageSize: 64
+##phcc		0
+##phcc		<refCnt = 0>
+##bmcc		****<bufferToDisk>****
+##bmcc		writesize=64
+
+getBytes
+##phcc		position->bufferItemPtr is nullptr
+##bmcc		------<diskToBuffer>-------
+diskToBuffer
+size:64 pageSize: 64
+##phcc		position->bufferItemPtr->pageData   64
+##phcc		end of getBytes
+57 answer 777777777777777777777777777777777777777777777777777777777777777
+57 bytes 777777777777777777777777777777777777777777777777777777777777777
+##phcc		-1
+##bmcc		------<diskToBuffer>-------
+diskToBuffer
+size:64 pageSize: 64
+##phcc		0
+##phcc		<refCnt = 0>
+##bmcc		****<bufferToDisk>****
+##bmcc		writesize=64
+
+getBytes
+##phcc		position->bufferItemPtr is nullptr
+##bmcc		------<diskToBuffer>-------
+diskToBuffer
+size:64 pageSize: 64
+##phcc		position->bufferItemPtr->pageData   64
+##phcc		end of getBytes
+58 answer 888888888888888888888888888888888888888888888888888888888888888
+58 bytes 888888888888888888888888888888888888888888888888888888888888888
+##phcc		-1
+##bmcc		------<diskToBuffer>-------
+diskToBuffer
+size:64 pageSize: 64
+##phcc		0
+##phcc		<refCnt = 0>
+##bmcc		****<bufferToDisk>****
+##bmcc		writesize=64
+
+getBytes
+##phcc		position->bufferItemPtr is nullptr
+##bmcc		------<diskToBuffer>-------
+diskToBuffer
+size:64 pageSize: 64
+##phcc		position->bufferItemPtr->pageData   64
+##phcc		end of getBytes
+59 answer 999999999999999999999999999999999999999999999999999999999999999
+59 bytes 999999999999999999999999999999999999999999999999999999999999999
+##phcc		-1
+##bmcc		------<diskToBuffer>-------
+diskToBuffer
+size:64 pageSize: 64
+##phcc		0
+##phcc		<refCnt = 0>
+##bmcc		****<bufferToDisk>****
+##bmcc		writesize=64
+
+getBytes
+##phcc		position->bufferItemPtr is nullptr
+##bmcc		------<diskToBuffer>-------
+diskToBuffer
+size:64 pageSize: 64
+##phcc		position->bufferItemPtr->pageData   64
+##phcc		end of getBytes
+60 answer 000000000000000000000000000000000000000000000000000000000000000
+60 bytes 000000000000000000000000000000000000000000000000000000000000000
+##phcc		-1
+##bmcc		------<diskToBuffer>-------
+diskToBuffer
+size:64 pageSize: 64
+##phcc		0
+##phcc		<refCnt = 0>
+##bmcc		****<bufferToDisk>****
+##bmcc		writesize=64
+
+getBytes
+##phcc		position->bufferItemPtr is nullptr
+##bmcc		------<diskToBuffer>-------
+diskToBuffer
+size:64 pageSize: 64
+##phcc		position->bufferItemPtr->pageData   64
+##phcc		end of getBytes
+61 answer 111111111111111111111111111111111111111111111111111111111111111
+61 bytes 111111111111111111111111111111111111111111111111111111111111111
+##phcc		-1
+##bmcc		------<diskToBuffer>-------
+diskToBuffer
+size:64 pageSize: 64
+##phcc		0
+##phcc		<refCnt = 0>
+##bmcc		****<bufferToDisk>****
+##bmcc		writesize=64
+
+getBytes
+##phcc		position->bufferItemPtr is nullptr
+##bmcc		------<diskToBuffer>-------
+diskToBuffer
+size:64 pageSize: 64
+##phcc		position->bufferItemPtr->pageData   64
+##phcc		end of getBytes
+62 answer 222222222222222222222222222222222222222222222222222222222222222
+62 bytes 222222222222222222222222222222222222222222222222222222222222222
+##phcc		-1
+##bmcc		------<diskToBuffer>-------
+diskToBuffer
+size:64 pageSize: 64
+##phcc		0
+##phcc		<refCnt = 0>
+##bmcc		****<bufferToDisk>****
+##bmcc		writesize=64
+
+getBytes
+##phcc		position->bufferItemPtr is nullptr
+##bmcc		------<diskToBuffer>-------
+diskToBuffer
+size:64 pageSize: 64
+##phcc		position->bufferItemPtr->pageData   64
+##phcc		end of getBytes
+63 answer 333333333333333333333333333333333333333333333333333333333333333
+63 bytes 333333333333333333333333333333333333333333333333333333333333333
+##phcc		-1
+##bmcc		------<diskToBuffer>-------
+diskToBuffer
+size:64 pageSize: 64
+##phcc		0
+##phcc		<refCnt = 0>
+##bmcc		****<bufferToDisk>****
+##bmcc		writesize=64
+
+getBytes
+##phcc		position->bufferItemPtr is nullptr
+##bmcc		------<diskToBuffer>-------
+diskToBuffer
+size:64 pageSize: 64
+##phcc		position->bufferItemPtr->pageData   64
+##phcc		end of getBytes
+64 answer 444444444444444444444444444444444444444444444444444444444444444
+64 bytes 444444444444444444444444444444444444444444444444444444444444444
+##phcc		-1
+##bmcc		------<diskToBuffer>-------
+diskToBuffer
+size:64 pageSize: 64
+##phcc		0
+##phcc		<refCnt = 0>
+##bmcc		****<bufferToDisk>****
+##bmcc		writesize=64
+
+getBytes
+##phcc		position->bufferItemPtr is nullptr
+##bmcc		------<diskToBuffer>-------
+diskToBuffer
+size:64 pageSize: 64
+##phcc		position->bufferItemPtr->pageData   64
+##phcc		end of getBytes
+65 answer 555555555555555555555555555555555555555555555555555555555555555
+65 bytes 555555555555555555555555555555555555555555555555555555555555555
+##phcc		-1
+##bmcc		------<diskToBuffer>-------
+diskToBuffer
+size:64 pageSize: 64
+##phcc		0
+##phcc		<refCnt = 0>
+##bmcc		****<bufferToDisk>****
+##bmcc		writesize=64
+
+getBytes
+##phcc		position->bufferItemPtr is nullptr
+##bmcc		------<diskToBuffer>-------
+diskToBuffer
+size:64 pageSize: 64
+##phcc		position->bufferItemPtr->pageData   64
+##phcc		end of getBytes
+66 answer 666666666666666666666666666666666666666666666666666666666666666
+66 bytes 666666666666666666666666666666666666666666666666666666666666666
+##phcc		-1
+##bmcc		------<diskToBuffer>-------
+diskToBuffer
+size:64 pageSize: 64
+##phcc		0
+##phcc		<refCnt = 0>
+##bmcc		****<bufferToDisk>****
+##bmcc		writesize=64
+
+getBytes
+##phcc		position->bufferItemPtr is nullptr
+##bmcc		------<diskToBuffer>-------
+diskToBuffer
+size:64 pageSize: 64
+##phcc		position->bufferItemPtr->pageData   64
+##phcc		end of getBytes
+67 answer 777777777777777777777777777777777777777777777777777777777777777
+67 bytes 777777777777777777777777777777777777777777777777777777777777777
+##phcc		-1
+##bmcc		------<diskToBuffer>-------
+diskToBuffer
+size:64 pageSize: 64
+##phcc		0
+##phcc		<refCnt = 0>
+##bmcc		****<bufferToDisk>****
+##bmcc		writesize=64
+
+getBytes
+##phcc		position->bufferItemPtr is nullptr
+##bmcc		------<diskToBuffer>-------
+diskToBuffer
+size:64 pageSize: 64
+##phcc		position->bufferItemPtr->pageData   64
+##phcc		end of getBytes
+68 answer 888888888888888888888888888888888888888888888888888888888888888
+68 bytes 888888888888888888888888888888888888888888888888888888888888888
+##phcc		-1
+##bmcc		------<diskToBuffer>-------
+diskToBuffer
+size:64 pageSize: 64
+##phcc		0
+##phcc		<refCnt = 0>
+##bmcc		****<bufferToDisk>****
+##bmcc		writesize=64
+
+getBytes
+##phcc		position->bufferItemPtr is nullptr
+##bmcc		------<diskToBuffer>-------
+diskToBuffer
+size:64 pageSize: 64
+##phcc		position->bufferItemPtr->pageData   64
+##phcc		end of getBytes
+69 answer 999999999999999999999999999999999999999999999999999999999999999
+69 bytes 999999999999999999999999999999999999999999999999999999999999999
+##phcc		-1
+##bmcc		------<diskToBuffer>-------
+diskToBuffer
+size:64 pageSize: 64
+##phcc		0
+##phcc		<refCnt = 0>
+##bmcc		****<bufferToDisk>****
+##bmcc		writesize=64
+
+getBytes
+##phcc		position->bufferItemPtr is nullptr
+##bmcc		------<diskToBuffer>-------
+diskToBuffer
+size:64 pageSize: 64
+##phcc		position->bufferItemPtr->pageData   64
+##phcc		end of getBytes
+70 answer 000000000000000000000000000000000000000000000000000000000000000
+70 bytes 000000000000000000000000000000000000000000000000000000000000000
+##phcc		-1
+##bmcc		------<diskToBuffer>-------
+diskToBuffer
+size:64 pageSize: 64
+##phcc		0
+##phcc		<refCnt = 0>
+##bmcc		****<bufferToDisk>****
+##bmcc		writesize=64
+
+getBytes
+##phcc		position->bufferItemPtr is nullptr
+##bmcc		------<diskToBuffer>-------
+diskToBuffer
+size:64 pageSize: 64
+##phcc		position->bufferItemPtr->pageData   64
+##phcc		end of getBytes
+71 answer 111111111111111111111111111111111111111111111111111111111111111
+71 bytes 111111111111111111111111111111111111111111111111111111111111111
+##phcc		-1
+##bmcc		------<diskToBuffer>-------
+diskToBuffer
+size:64 pageSize: 64
+##phcc		0
+##phcc		<refCnt = 0>
+##bmcc		****<bufferToDisk>****
+##bmcc		writesize=64
+
+getBytes
+##phcc		position->bufferItemPtr is nullptr
+##bmcc		------<diskToBuffer>-------
+diskToBuffer
+size:64 pageSize: 64
+##phcc		position->bufferItemPtr->pageData   64
+##phcc		end of getBytes
+72 answer 222222222222222222222222222222222222222222222222222222222222222
+72 bytes 222222222222222222222222222222222222222222222222222222222222222
+##phcc		-1
+##bmcc		------<diskToBuffer>-------
+diskToBuffer
+size:64 pageSize: 64
+##phcc		0
+##phcc		<refCnt = 0>
+##bmcc		****<bufferToDisk>****
+##bmcc		writesize=64
+
+getBytes
+##phcc		position->bufferItemPtr is nullptr
+##bmcc		------<diskToBuffer>-------
+diskToBuffer
+size:64 pageSize: 64
+##phcc		position->bufferItemPtr->pageData   64
+##phcc		end of getBytes
+73 answer 333333333333333333333333333333333333333333333333333333333333333
+73 bytes 333333333333333333333333333333333333333333333333333333333333333
+##phcc		-1
+##bmcc		------<diskToBuffer>-------
+diskToBuffer
+size:64 pageSize: 64
+##phcc		0
+##phcc		<refCnt = 0>
+##bmcc		****<bufferToDisk>****
+##bmcc		writesize=64
+
+getBytes
+##phcc		position->bufferItemPtr is nullptr
+##bmcc		------<diskToBuffer>-------
+diskToBuffer
+size:64 pageSize: 64
+##phcc		position->bufferItemPtr->pageData   64
+##phcc		end of getBytes
+74 answer 444444444444444444444444444444444444444444444444444444444444444
+74 bytes 444444444444444444444444444444444444444444444444444444444444444
+##phcc		-1
+##bmcc		------<diskToBuffer>-------
+diskToBuffer
+size:64 pageSize: 64
+##phcc		0
+##phcc		<refCnt = 0>
+##bmcc		****<bufferToDisk>****
+##bmcc		writesize=64
+
+getBytes
+##phcc		position->bufferItemPtr is nullptr
+##bmcc		------<diskToBuffer>-------
+diskToBuffer
+size:64 pageSize: 64
+##phcc		position->bufferItemPtr->pageData   64
+##phcc		end of getBytes
+75 answer 555555555555555555555555555555555555555555555555555555555555555
+75 bytes 555555555555555555555555555555555555555555555555555555555555555
+##phcc		-1
+##bmcc		------<diskToBuffer>-------
+diskToBuffer
+size:64 pageSize: 64
+##phcc		0
+##phcc		<refCnt = 0>
+##bmcc		****<bufferToDisk>****
+##bmcc		writesize=64
+
+getBytes
+##phcc		position->bufferItemPtr is nullptr
+##bmcc		------<diskToBuffer>-------
+diskToBuffer
+size:64 pageSize: 64
+##phcc		position->bufferItemPtr->pageData   64
+##phcc		end of getBytes
+76 answer 666666666666666666666666666666666666666666666666666666666666666
+76 bytes 666666666666666666666666666666666666666666666666666666666666666
+##phcc		-1
+##bmcc		------<diskToBuffer>-------
+diskToBuffer
+size:64 pageSize: 64
+##phcc		0
+##phcc		<refCnt = 0>
+##bmcc		****<bufferToDisk>****
+##bmcc		writesize=64
+
+getBytes
+##phcc		position->bufferItemPtr is nullptr
+##bmcc		------<diskToBuffer>-------
+diskToBuffer
+size:64 pageSize: 64
+##phcc		position->bufferItemPtr->pageData   64
+##phcc		end of getBytes
+77 answer 777777777777777777777777777777777777777777777777777777777777777
+77 bytes 777777777777777777777777777777777777777777777777777777777777777
+##phcc		-1
+##bmcc		------<diskToBuffer>-------
+diskToBuffer
+size:64 pageSize: 64
+##phcc		0
+##phcc		<refCnt = 0>
+##bmcc		****<bufferToDisk>****
+##bmcc		writesize=64
+
+getBytes
+##phcc		position->bufferItemPtr is nullptr
+##bmcc		------<diskToBuffer>-------
+diskToBuffer
+size:64 pageSize: 64
+##phcc		position->bufferItemPtr->pageData   64
+##phcc		end of getBytes
+78 answer 888888888888888888888888888888888888888888888888888888888888888
+78 bytes 888888888888888888888888888888888888888888888888888888888888888
+##phcc		-1
+##bmcc		------<diskToBuffer>-------
+diskToBuffer
+size:64 pageSize: 64
+##phcc		0
+##phcc		<refCnt = 0>
+##bmcc		****<bufferToDisk>****
+##bmcc		writesize=64
+
+getBytes
+##phcc		position->bufferItemPtr is nullptr
+##bmcc		------<diskToBuffer>-------
+diskToBuffer
+size:64 pageSize: 64
+##phcc		position->bufferItemPtr->pageData   64
+##phcc		end of getBytes
+79 answer 999999999999999999999999999999999999999999999999999999999999999
+79 bytes 999999999999999999999999999999999999999999999999999999999999999
+##phcc		-1
+##bmcc		------<diskToBuffer>-------
+diskToBuffer
+size:64 pageSize: 64
+##phcc		0
+##phcc		<refCnt = 0>
+##bmcc		****<bufferToDisk>****
+##bmcc		writesize=64
+
+getBytes
+##phcc		position->bufferItemPtr is nullptr
+##bmcc		------<diskToBuffer>-------
+diskToBuffer
+size:64 pageSize: 64
+##phcc		position->bufferItemPtr->pageData   64
+##phcc		end of getBytes
+80 answer 000000000000000000000000000000000000000000000000000000000000000
+80 bytes 000000000000000000000000000000000000000000000000000000000000000
+##phcc		-1
+##bmcc		------<diskToBuffer>-------
+diskToBuffer
+size:64 pageSize: 64
+##phcc		0
+##phcc		<refCnt = 0>
+##bmcc		****<bufferToDisk>****
+##bmcc		writesize=64
+
+getBytes
+##phcc		position->bufferItemPtr is nullptr
+##bmcc		------<diskToBuffer>-------
+diskToBuffer
+size:64 pageSize: 64
+##phcc		position->bufferItemPtr->pageData   64
+##phcc		end of getBytes
+81 answer 111111111111111111111111111111111111111111111111111111111111111
+81 bytes 111111111111111111111111111111111111111111111111111111111111111
+##phcc		-1
+##bmcc		------<diskToBuffer>-------
+diskToBuffer
+size:64 pageSize: 64
+##phcc		0
+##phcc		<refCnt = 0>
+##bmcc		****<bufferToDisk>****
+##bmcc		writesize=64
+
+getBytes
+##phcc		position->bufferItemPtr is nullptr
+##bmcc		------<diskToBuffer>-------
+diskToBuffer
+size:64 pageSize: 64
+##phcc		position->bufferItemPtr->pageData   64
+##phcc		end of getBytes
+82 answer 222222222222222222222222222222222222222222222222222222222222222
+82 bytes 222222222222222222222222222222222222222222222222222222222222222
+##phcc		-1
+##bmcc		------<diskToBuffer>-------
+diskToBuffer
+size:64 pageSize: 64
+##phcc		0
+##phcc		<refCnt = 0>
+##bmcc		****<bufferToDisk>****
+##bmcc		writesize=64
+
+getBytes
+##phcc		position->bufferItemPtr is nullptr
+##bmcc		------<diskToBuffer>-------
+diskToBuffer
+size:64 pageSize: 64
+##phcc		position->bufferItemPtr->pageData   64
+##phcc		end of getBytes
+83 answer 333333333333333333333333333333333333333333333333333333333333333
+83 bytes 333333333333333333333333333333333333333333333333333333333333333
+##phcc		-1
+##bmcc		------<diskToBuffer>-------
+diskToBuffer
+size:64 pageSize: 64
+##phcc		0
+##phcc		<refCnt = 0>
+##bmcc		****<bufferToDisk>****
+##bmcc		writesize=64
+
+getBytes
+##phcc		position->bufferItemPtr is nullptr
+##bmcc		------<diskToBuffer>-------
+diskToBuffer
+size:64 pageSize: 64
+##phcc		position->bufferItemPtr->pageData   64
+##phcc		end of getBytes
+84 answer 444444444444444444444444444444444444444444444444444444444444444
+84 bytes 444444444444444444444444444444444444444444444444444444444444444
+##phcc		-1
+##bmcc		------<diskToBuffer>-------
+diskToBuffer
+size:64 pageSize: 64
+##phcc		0
+##phcc		<refCnt = 0>
+##bmcc		****<bufferToDisk>****
+##bmcc		writesize=64
+
+getBytes
+##phcc		position->bufferItemPtr is nullptr
+##bmcc		------<diskToBuffer>-------
+diskToBuffer
+size:64 pageSize: 64
+##phcc		position->bufferItemPtr->pageData   64
+##phcc		end of getBytes
+85 answer 555555555555555555555555555555555555555555555555555555555555555
+85 bytes 555555555555555555555555555555555555555555555555555555555555555
+##phcc		-1
+##bmcc		------<diskToBuffer>-------
+diskToBuffer
+size:64 pageSize: 64
+##phcc		0
+##phcc		<refCnt = 0>
+##bmcc		****<bufferToDisk>****
+##bmcc		writesize=64
+
+getBytes
+##phcc		position->bufferItemPtr is nullptr
+##bmcc		------<diskToBuffer>-------
+diskToBuffer
+size:64 pageSize: 64
+##phcc		position->bufferItemPtr->pageData   64
+##phcc		end of getBytes
+86 answer 666666666666666666666666666666666666666666666666666666666666666
+86 bytes 666666666666666666666666666666666666666666666666666666666666666
+##phcc		-1
+##bmcc		------<diskToBuffer>-------
+diskToBuffer
+size:64 pageSize: 64
+##phcc		0
+##phcc		<refCnt = 0>
+##bmcc		****<bufferToDisk>****
+##bmcc		writesize=64
+
+getBytes
+##phcc		position->bufferItemPtr is nullptr
+##bmcc		------<diskToBuffer>-------
+diskToBuffer
+size:64 pageSize: 64
+##phcc		position->bufferItemPtr->pageData   64
+##phcc		end of getBytes
+87 answer 777777777777777777777777777777777777777777777777777777777777777
+87 bytes 777777777777777777777777777777777777777777777777777777777777777
+##phcc		-1
+##bmcc		------<diskToBuffer>-------
+diskToBuffer
+size:64 pageSize: 64
+##phcc		0
+##phcc		<refCnt = 0>
+##bmcc		****<bufferToDisk>****
+##bmcc		writesize=64
+
+getBytes
+##phcc		position->bufferItemPtr is nullptr
+##bmcc		------<diskToBuffer>-------
+diskToBuffer
+size:64 pageSize: 64
+##phcc		position->bufferItemPtr->pageData   64
+##phcc		end of getBytes
+88 answer 888888888888888888888888888888888888888888888888888888888888888
+88 bytes 888888888888888888888888888888888888888888888888888888888888888
+##phcc		-1
+##bmcc		------<diskToBuffer>-------
+diskToBuffer
+size:64 pageSize: 64
+##phcc		0
+##phcc		<refCnt = 0>
+##bmcc		****<bufferToDisk>****
+##bmcc		writesize=64
+
+getBytes
+##phcc		position->bufferItemPtr is nullptr
+##bmcc		------<diskToBuffer>-------
+diskToBuffer
+size:64 pageSize: 64
+##phcc		position->bufferItemPtr->pageData   64
+##phcc		end of getBytes
+89 answer 999999999999999999999999999999999999999999999999999999999999999
+89 bytes 999999999999999999999999999999999999999999999999999999999999999
+##phcc		-1
+##bmcc		------<diskToBuffer>-------
+diskToBuffer
+size:64 pageSize: 64
+##phcc		0
+##phcc		<refCnt = 0>
+##bmcc		****<bufferToDisk>****
+##bmcc		writesize=64
+
+getBytes
+##phcc		position->bufferItemPtr is nullptr
+##bmcc		------<diskToBuffer>-------
+diskToBuffer
+size:64 pageSize: 64
+##phcc		position->bufferItemPtr->pageData   64
+##phcc		end of getBytes
+90 answer 000000000000000000000000000000000000000000000000000000000000000
+90 bytes 000000000000000000000000000000000000000000000000000000000000000
+##phcc		-1
+##bmcc		------<diskToBuffer>-------
+diskToBuffer
+size:64 pageSize: 64
+##phcc		0
+##phcc		<refCnt = 0>
+##bmcc		****<bufferToDisk>****
+##bmcc		writesize=64
+
+getBytes
+##phcc		position->bufferItemPtr is nullptr
+##bmcc		------<diskToBuffer>-------
+diskToBuffer
+size:64 pageSize: 64
+##phcc		position->bufferItemPtr->pageData   64
+##phcc		end of getBytes
+91 answer 111111111111111111111111111111111111111111111111111111111111111
+91 bytes 111111111111111111111111111111111111111111111111111111111111111
+##phcc		-1
+##bmcc		------<diskToBuffer>-------
+diskToBuffer
+size:64 pageSize: 64
+##phcc		0
+##phcc		<refCnt = 0>
+##bmcc		****<bufferToDisk>****
+##bmcc		writesize=64
+
+getBytes
+##phcc		position->bufferItemPtr is nullptr
+##bmcc		------<diskToBuffer>-------
+diskToBuffer
+size:64 pageSize: 64
+##phcc		position->bufferItemPtr->pageData   64
+##phcc		end of getBytes
+92 answer 222222222222222222222222222222222222222222222222222222222222222
+92 bytes 222222222222222222222222222222222222222222222222222222222222222
+##phcc		-1
+##bmcc		------<diskToBuffer>-------
+diskToBuffer
+size:64 pageSize: 64
+##phcc		0
+##phcc		<refCnt = 0>
+##bmcc		****<bufferToDisk>****
+##bmcc		writesize=64
+
+getBytes
+##phcc		position->bufferItemPtr is nullptr
+##bmcc		------<diskToBuffer>-------
+diskToBuffer
+size:64 pageSize: 64
+##phcc		position->bufferItemPtr->pageData   64
+##phcc		end of getBytes
+93 answer 333333333333333333333333333333333333333333333333333333333333333
+93 bytes 333333333333333333333333333333333333333333333333333333333333333
+##phcc		-1
+##bmcc		------<diskToBuffer>-------
+diskToBuffer
+size:64 pageSize: 64
+##phcc		0
+##phcc		<refCnt = 0>
+##bmcc		****<bufferToDisk>****
+##bmcc		writesize=64
+
+getBytes
+##phcc		position->bufferItemPtr is nullptr
+##bmcc		------<diskToBuffer>-------
+diskToBuffer
+size:64 pageSize: 64
+##phcc		position->bufferItemPtr->pageData   64
+##phcc		end of getBytes
+94 answer 444444444444444444444444444444444444444444444444444444444444444
+94 bytes 999999999999999999999999999999999999999999999999999999999999999
+##phcc		-1
+##bmcc		------<diskToBuffer>-------
+diskToBuffer
+size:64 pageSize: 64
+##phcc		0
+##phcc		<refCnt = 0>
+##bmcc		****<bufferToDisk>****
+##bmcc		writesize=64
+
+getBytes
+##phcc		position->bufferItemPtr is nullptr
+##bmcc		------<diskToBuffer>-------
+diskToBuffer
+size:64 pageSize: 64
+##phcc		position->bufferItemPtr->pageData   64
+##phcc		end of getBytes
+95 answer 555555555555555555555555555555555555555555555555555555555555555
+95 bytes 555555555555555555555555555555555555555555555555555555555555555
+##phcc		-1
+##bmcc		------<diskToBuffer>-------
+diskToBuffer
+size:64 pageSize: 64
+##phcc		0
+##phcc		<refCnt = 0>
+##bmcc		****<bufferToDisk>****
+##bmcc		writesize=64
+
+getBytes
+##phcc		position->bufferItemPtr is nullptr
+##bmcc		------<diskToBuffer>-------
+diskToBuffer
+size:64 pageSize: 64
+##phcc		position->bufferItemPtr->pageData   64
+##phcc		end of getBytes
+96 answer 666666666666666666666666666666666666666666666666666666666666666
+96 bytes 222222222222222222222222222222222222222222222222222222222222222
+##phcc		-1
+##bmcc		------<diskToBuffer>-------
+diskToBuffer
+size:64 pageSize: 64
+##phcc		0
+##phcc		<refCnt = 0>
+##bmcc		****<bufferToDisk>****
+##bmcc		writesize=64
+
+getBytes
+##phcc		position->bufferItemPtr is nullptr
+##bmcc		------<diskToBuffer>-------
+diskToBuffer
+size:64 pageSize: 64
+##phcc		position->bufferItemPtr->pageData   64
+##phcc		end of getBytes
+97 answer 777777777777777777777777777777777777777777777777777777777777777
+97 bytes 444444444444444444444444444444444444444444444444444444444444444
+##phcc		-1
+##bmcc		------<diskToBuffer>-------
+diskToBuffer
+size:64 pageSize: 64
+##phcc		0
+##phcc		<refCnt = 0>
+##bmcc		****<bufferToDisk>****
+##bmcc		writesize=64
+
+getBytes
+##phcc		position->bufferItemPtr is nullptr
+##bmcc		------<diskToBuffer>-------
+diskToBuffer
+size:64 pageSize: 64
+##phcc		position->bufferItemPtr->pageData   64
+##phcc		end of getBytes
+98 answer 888888888888888888888888888888888888888888888888888888888888888
+98 bytes 000000000000000000000000000000000000000000000000000000000000000
+##phcc		-1
+##bmcc		------<diskToBuffer>-------
+diskToBuffer
+size:64 pageSize: 64
+##phcc		0
+##phcc		<refCnt = 0>
+##bmcc		****<bufferToDisk>****
+##bmcc		writesize=64
+
+getBytes
+##phcc		position->bufferItemPtr is nullptr
+##bmcc		------<diskToBuffer>-------
+diskToBuffer
+size:64 pageSize: 64
+##phcc		position->bufferItemPtr->pageData   64
+##phcc		end of getBytes
+99 answer 999999999999999999999999999999999999999999999999999999999999999
+99 bytes 888888888888888888888888888888888888888888888888888888888888888
+##phcc		-1
+##phcc		-2
+##phcc		-3

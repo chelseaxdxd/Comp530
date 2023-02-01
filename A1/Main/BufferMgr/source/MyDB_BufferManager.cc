@@ -189,7 +189,7 @@ MyDB_PageHandle MyDB_BufferManager ::getPinnedPage(MyDB_TablePtr whichTable, lon
 	// refCnt increase by one
 	iterMap->second.refCnt++;
 
-	cout << "iterMap->second.refCnt: " << iterMap->second.refCnt << endl;
+	cout << "##bmcc\t\titerMap->second.refCnt: " << iterMap->second.refCnt << endl;
 
 	MyDB_PageHandleBase phb;
 	phb.bm = this;
@@ -285,7 +285,7 @@ void MyDB_BufferManager ::bufferToDisk(Page_Buffer_Item *bufferItem)
 		char *writeByte = &data[0];
 
 		// store back to disk
-		lseek(fd_disk, pageSize * (bufferItem->pageNum - 1), SEEK_SET);
+		lseek(fd_disk, pageSize * (bufferItem->pageNum), SEEK_SET);
 		int size = write(fd_disk, writeByte, pageSize);
 		cout << "##bmcc\t\t"
 			 << "writesize=" << size << endl;
@@ -295,7 +295,7 @@ void MyDB_BufferManager ::bufferToDisk(Page_Buffer_Item *bufferItem)
 	{
 		vector<char> data = bufferItem->pageData;
 		char *writeByte = &data[0];
-		lseek(fd_tempFile, pageSize * (bufferItem->pageNum - 1), SEEK_SET);
+		lseek(fd_tempFile, pageSize * (bufferItem->pageNum), SEEK_SET);
 		int size = write(fd_tempFile, writeByte, pageSize);
 		cout << size << endl;
 	}
@@ -329,7 +329,7 @@ Page_Buffer_Item *MyDB_BufferManager ::diskToBuffer(string tablePath, long pageN
 
 	clockarmGetSpace();
 	char readByte[pageSize];
-	lseek(fd_disk, pageSize * (pageNum - 1), SEEK_SET);
+	lseek(fd_disk, pageSize * pageNum, SEEK_SET);
 	int size = read(fd_disk, readByte, pageSize);
 
 	// assign buffer
@@ -359,7 +359,7 @@ Page_Buffer_Item *MyDB_BufferManager ::tempFileToBuffer(long slot)
 		 << "------<tempFileToBuffer>-------" << endl;
 	clockarmGetSpace();
 	char readByte[pageSize];
-	lseek(fd_tempFile, pageSize * (slot - 1), SEEK_SET);
+	lseek(fd_tempFile, pageSize * slot, SEEK_SET);
 	int size = read(fd_tempFile, readByte, pageSize);
 
 	clockArm->pageData.assign(readByte, readByte + pageSize);
@@ -406,6 +406,10 @@ void MyDB_BufferManager ::clockarmGetSpace()
 			// clean the data
 			if ((*clockArm).isDirty)
 			{
+				cout << "##bmcc\t\t"
+					 << "*****clockArmGetSpace***"
+					 << "cur char = " << clockArm->pageData[0] << endl
+					 << endl;
 				bufferToDisk(&(*clockArm));
 			}
 			return;

@@ -45,20 +45,33 @@ void MyDB_PageHandleBase ::wroteBytes()
 
 MyDB_PageHandleBase ::~MyDB_PageHandleBase()
 {
+
+	cout << "\n-------------------------------------------\n##phcc\t\t"
+		 << "in ~PageHandleBase\n"
+		 << endl;
+	cout << "tablePath" << this->position->tablePath << endl;
 	// remember to decrease reference cnt
 	(position)->refCnt--;
-	cout << "##phcc\t\t" << (position)->refCnt << endl;
+	cout << "\n##phcc\t\t"
+		 << "refcnt" << (position)->refCnt << endl;
+	cout << "##phcc\t\t"
+		 << "cur char = " << position->bufferItemPtr->pageData[0] << endl
+		 << endl;
 
 	// if no handle to this buffer than evict
 	if ((position)->refCnt == 0)
 	{
-		cout << "##phcc\t\t"
-			 << "<refCnt = 0>" << endl;
+		cout << "\n##phcc\t\t"
+			 << "!!!!!refCnt = 0!!!!!!" << endl;
 		position->bufferItemPtr->acedBit = false;
 		position->bufferItemPtr->isDirty = false;
 		position->bufferItemPtr->isPinned = false;
+		cout << "##phcc\t\t"
+			 << "cur char = " << position->bufferItemPtr->pageData[0] << endl
+			 << endl;
 		bm->bufferToDisk(position->bufferItemPtr);
 	}
+	cout << "-------------------------------------\n";
 }
 
 // (1) buffMgr wants page i, and finds it's not in buffer (points to NULL)
