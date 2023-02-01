@@ -146,8 +146,14 @@ MyDB_PageHandle MyDB_BufferManager ::getPinnedPage(MyDB_TablePtr whichTable, lon
 		Page_Buffer_Item *tempBufferItemPtr = diskToBuffer(tablePath, i);
 
 		// create a page pointing to buffer item and insert to map
-		Page p = {false, tablePath, i, tempBufferItemPtr, 0};
-		diskPageMap[make_pair(tablePath, i)] = p;
+		Page *p = new Page;
+		p->isAnony = false;
+		p->tablePath = tablePath;
+		p->pageNum = i;
+		p->bufferItemPtr = tempBufferItemPtr;
+		p->refCnt = 0;
+		// p = {false, tablePath, i, tempBufferItemPtr, 0};
+		diskPageMap[make_pair(tablePath, i)] = *p;
 
 		// get page obj
 		iterMap = diskPageMap.find(make_pair(tablePath, i)); // {whichTable, i}
@@ -167,12 +173,25 @@ MyDB_PageHandle MyDB_BufferManager ::getPinnedPage(MyDB_TablePtr whichTable, lon
 	// refCnt increase by one
 	iterMap->second.refCnt++;
 
+	cout << "iterMap->second.refCnt: " << iterMap->second.refCnt << endl;
+
 	// make handle
-	Page *tempPagePtr = &(iterMap->second);
-	MyDB_PageHandle tempHandle;
-	tempHandle->position = tempPagePtr;
-	tempHandle->bm = this;
-	return tempHandle;
+	// Page *tempPagePtr = &(iterMap->second);
+	cout << 1 << endl;
+	MyDB_PageHandleBase phb;
+	phb.bm = this;
+	phb.position = &(iterMap->second);
+	// auto tempHandle = make_shared<MyDB_PageHandleBase>;
+	cout << 2 << endl;
+	// cout << "typeof(tempPagePtr)   " << typeid(tempPagePtr).name() << endl;
+	// cout << "typeof(tempHandle)   " << typeid(tempHandle).name() << endl;
+	// cout << "typeof(tempHandle->position )   " << typeid(tempHandle->position).name() << endl;
+	// tempHandle
+	// tempHandle->position = &(iterMap->second);
+	cout << 3 << endl;
+	// tempHandle->bm = this;
+	// cout << "tempHandle->position->tablePath" << tempHandle->position->tablePath << endl;
+	return make_shared<MyDB_PageHandleBase>(phb);
 }
 
 MyDB_PageHandle MyDB_BufferManager ::getPinnedPage()
@@ -304,15 +323,16 @@ Page_Buffer_Item *MyDB_BufferManager ::diskToBuffer(string tablePath, long pageN
 	close(fd_disk);
 
 	/* for debug */
-	cout << "size:" << size << " pageSize" << pageSize << endl;
+	cout << "diskToBuffer" << endl;
+	cout << "size:" << size << " pageSize: " << pageSize << endl;
 
-	char *buff = readByte;
+	/*char *buff = readByte;
 	buff[size] = '\0';
 	cout << buff << endl;
 	for (int i = 0; i < pageSize; i++)
 	{
 		cout << clockArm->pageData[i];
-	}
+	}*/
 
 	return &(*clockArm);
 }
@@ -327,15 +347,16 @@ Page_Buffer_Item *MyDB_BufferManager ::tempFileToBuffer(long slot)
 	close(fd_tempFile);
 
 	/* for debug */
-	cout << "size:" << size << " pageSize" << slot << endl;
+	cout << "tempFileToBuffer" << endl;
+	cout << "size:" << size << " pageSize: " << slot << endl;
 
-	char *buff = readByte;
+	/*char *buff = readByte;
 	buff[size] = '\0';
 	cout << buff << endl;
 	for (int i = 0; i < slot; i++)
 	{
 		cout << clockArm->pageData[i];
-	}
+	}*/
 
 	return &(*clockArm);
 }

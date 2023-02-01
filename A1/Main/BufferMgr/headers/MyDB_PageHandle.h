@@ -25,9 +25,10 @@ class MyDB_PageHandleBase
 {
 
 public:
-	/* 指向page位子的pointer(先暫時用public)*/
+	/* 指向page位子的pointer*/
 	Page *position;
-	MyDB_BufferManager *bm;
+
+	MyDB_BufferManager *bm = nullptr;
 
 	// THESE METHODS MUST BE IMPLEMENTED WITHOUT CHANGING THE DEFINITION
 

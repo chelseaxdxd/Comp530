@@ -5,9 +5,12 @@
 #include <memory>
 #include "MyDB_BufferManager.h"
 #include "MyDB_PageHandle.h"
+#include <iostream>
+using namespace std;
 
 void *MyDB_PageHandleBase ::getBytes()
 {
+	cout << "\ngetBytes" << endl;
 	Page_Buffer_Item *tempItemPtr;
 	// check if data still in buffer
 	if (position->bufferItemPtr == nullptr)
@@ -23,6 +26,7 @@ void *MyDB_PageHandleBase ::getBytes()
 		position->bufferItemPtr = tempItemPtr;
 	}
 	char *pageDataPtr = &(position->bufferItemPtr->pageData[0]);
+	cout << "end of getBytes" << endl;
 	return pageDataPtr;
 }
 
