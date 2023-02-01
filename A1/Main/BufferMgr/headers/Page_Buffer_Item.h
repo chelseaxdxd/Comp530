@@ -27,7 +27,7 @@ public:
 		this->isPinned = false;
 		this->isDirty = false;
 		this->isAnony = false;
-		pageData.reserve(this->pageSize);
+		pageData.resize(this->pageSize);
 	}
 	~Page_Buffer_Item(){};
 };

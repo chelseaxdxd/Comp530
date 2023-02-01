@@ -15,6 +15,7 @@ void *MyDB_PageHandleBase ::getBytes()
 	// check if data still in buffer
 	if (position->bufferItemPtr == nullptr)
 	{
+		cout << "position->bufferItemPtr is nullptr" << endl;
 		if (position->isAnony)
 		{
 			tempItemPtr = reloadTempFile(position->pageNum);
@@ -25,6 +26,7 @@ void *MyDB_PageHandleBase ::getBytes()
 		}
 		position->bufferItemPtr = tempItemPtr;
 	}
+	cout << "position->bufferItemPtr->pageData   " << position->bufferItemPtr->pageData.capacity() << endl;
 	char *pageDataPtr = &(position->bufferItemPtr->pageData[0]);
 	cout << "end of getBytes" << endl;
 	return pageDataPtr;

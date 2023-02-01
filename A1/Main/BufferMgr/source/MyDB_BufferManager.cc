@@ -175,22 +175,9 @@ MyDB_PageHandle MyDB_BufferManager ::getPinnedPage(MyDB_TablePtr whichTable, lon
 
 	cout << "iterMap->second.refCnt: " << iterMap->second.refCnt << endl;
 
-	// make handle
-	// Page *tempPagePtr = &(iterMap->second);
-	cout << 1 << endl;
 	MyDB_PageHandleBase phb;
 	phb.bm = this;
 	phb.position = &(iterMap->second);
-	// auto tempHandle = make_shared<MyDB_PageHandleBase>;
-	cout << 2 << endl;
-	// cout << "typeof(tempPagePtr)   " << typeid(tempPagePtr).name() << endl;
-	// cout << "typeof(tempHandle)   " << typeid(tempHandle).name() << endl;
-	// cout << "typeof(tempHandle->position )   " << typeid(tempHandle->position).name() << endl;
-	// tempHandle
-	// tempHandle->position = &(iterMap->second);
-	cout << 3 << endl;
-	// tempHandle->bm = this;
-	// cout << "tempHandle->position->tablePath" << tempHandle->position->tablePath << endl;
 	return make_shared<MyDB_PageHandleBase>(phb);
 }
 
