@@ -69,7 +69,7 @@ MyDB_PageHandleBase ::~MyDB_PageHandleBase()
 		cout << "##phcc\t\t"
 			 << "cur char = " << position->bufferItemPtr->pageData[0] << endl
 			 << endl;
-		if (!(position->bufferItemPtr->isAnony))
+		if (!(position->bufferItemPtr->isAnony) && (position->bufferItemPtr->isDirty))
 		{
 			bm->bufferToDisk(position->bufferItemPtr);
 		}

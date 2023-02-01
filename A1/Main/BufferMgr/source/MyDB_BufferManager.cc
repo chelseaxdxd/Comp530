@@ -275,7 +275,7 @@ MyDB_BufferManager ::~MyDB_BufferManager()
 void MyDB_BufferManager ::bufferToDisk(Page_Buffer_Item *bufferItem)
 {
 	cout << "##bmcc\t\t"
-		 << "****<bufferToDisk>****" << endl;
+		 << "@@@****@@@<bufferToDisk>@@@****@@@" << endl;
 	if (!bufferItem->isAnony)
 	{
 		// store data on dis loc/tablename

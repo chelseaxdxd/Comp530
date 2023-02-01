@@ -50,7 +50,7 @@ void writeSymbols(char *bytes, size_t len, int i)
 
 int main(int argc, char *argv[])
 {
-	int start = 1;
+	int start = 8;
 	if (argc > 1 && atoi(argv[1]) <= 15)
 	{
 		start = atoi(argv[1]);
@@ -300,6 +300,7 @@ int main(int argc, char *argv[])
 			}
 			for (int i = 15; i < 17; i++)
 			{
+				cout << "@@@@" << i << endl;
 				pages[i] = myMgr.getPage(table1, i);
 			}
 			cout << "get bytes..." << flush;
@@ -325,6 +326,8 @@ int main(int argc, char *argv[])
 			 << flush;
 		QUNIT_IS_TRUE(true);
 	}
+	break;
+
 		FALLTHROUGH_INTENDED;
 	case 9:
 	{
