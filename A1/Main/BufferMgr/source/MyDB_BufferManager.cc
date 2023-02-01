@@ -79,6 +79,7 @@ MyDB_PageHandle MyDB_BufferManager ::getPage(MyDB_TablePtr whichTable, long i)
 	}
 
 	iterMap->second.bufferItemPtr->isAnony = false;
+	iterMap->second.bufferItemPtr->pageNum = i;
 	// refCnt increase by one
 	iterMap->second.refCnt += 2;
 
@@ -110,6 +111,7 @@ MyDB_PageHandle MyDB_BufferManager ::getPage()
 	anonyPageMap[anonySeq] = *p;
 
 	anonyPageMap[anonySeq].bufferItemPtr->isAnony = true;
+	anonyPageMap[anonySeq].bufferItemPtr->pageNum = anonySeq;
 
 	// make handle
 
@@ -189,6 +191,7 @@ MyDB_PageHandle MyDB_BufferManager ::getPinnedPage(MyDB_TablePtr whichTable, lon
 	//@@@如果可pin值還夠的話
 	iterMap->second.bufferItemPtr->isPinned = true;
 	iterMap->second.bufferItemPtr->isAnony = false;
+	iterMap->second.bufferItemPtr->pageNum = i;
 	// refCnt increase by one
 	iterMap->second.refCnt += 2;
 
@@ -222,6 +225,7 @@ MyDB_PageHandle MyDB_BufferManager ::getPinnedPage()
 	//@@@如果可pin值還夠的話
 	anonyPageMap[anonySeq].bufferItemPtr->isPinned = true;
 	anonyPageMap[anonySeq].bufferItemPtr->isAnony = true;
+	anonyPageMap[anonySeq].bufferItemPtr->pageNum = anonySeq;
 
 	// make handle
 	Page *tempPagePtr = &(anonyPageMap[anonySeq]);
