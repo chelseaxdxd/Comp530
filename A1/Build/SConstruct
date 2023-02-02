@@ -42,6 +42,6 @@ if ans=="1":
 if ans=="2":
 	print("\nOK, building buffer unit tests using clang++.")
 	common_env.Replace(CXX = "clang++")
-	common_env.Program ('bin/bufferUnitTest', ['../Main/BufferTest/source/BufferQUnit.cc', catalogSrc, bufferSrc])
+	common_env.Program ('bin/bufferUnitTest', ['../Main/BufferTest/source/BufferQUnit2.cc', catalogSrc, bufferSrc])
 
 

@@ -61,17 +61,32 @@ MyDB_PageHandleBase ::~MyDB_PageHandleBase()
 	// if no handle to this buffer than evict
 	if ((position)->refCnt == 0)
 	{
+		// cout << "\n##phcc\t\t"
+		// 	 << "!!!!!refCnt = 0!!!!!!" << endl;
+		// position->bufferItemPtr->acedBit = false;
+		
+		// position->bufferItemPtr->isPinned = false;
+		// cout << "##phcc\t\t"
+		// 	 << "cur char = " << position->bufferItemPtr->pageData[0] << endl
+		// 	 << endl;
+		// // if (!(position->bufferItemPtr->isAnony))
+		// if (!(position->bufferItemPtr->isAnony) && (position->bufferItemPtr->isDirty))
+		// {
+		// 	bm->bufferToDisk(position->bufferItemPtr);
+		// }
+
 		cout << "\n##phcc\t\t"
 			 << "!!!!!refCnt = 0!!!!!!" << endl;
+		bool dirty = position->bufferItemPtr->isDirty;
 		position->bufferItemPtr->acedBit = false;
 		position->bufferItemPtr->isDirty = false;
 		position->bufferItemPtr->isPinned = false;
 		cout << "##phcc\t\t"
-			 << "cur char = " << position->bufferItemPtr->pageData[0] << endl
-			 << endl;
-		if (!(position->bufferItemPtr->isAnony))
+			<< "cur char = " << position->bufferItemPtr->pageData[0] << endl
+			<< endl;
+		if (!(position->bufferItemPtr->isAnony) && (dirty))
 		{
-			bm->bufferToDisk(position->bufferItemPtr);
+		bm->bufferToDisk(position->bufferItemPtr);
 		}
 	}
 	cout << "-------------------------------------\n";
