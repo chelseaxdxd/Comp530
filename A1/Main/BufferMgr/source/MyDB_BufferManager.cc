@@ -58,14 +58,14 @@ MyDB_PageHandle MyDB_BufferManager ::getPage(MyDB_TablePtr whichTable, long i)
 		// create a page pointing to buffer item and insert to map
 		// Page p = {false, tablePath, i, tempBufferItemPtr, 0};
 		// diskPageMap[make_pair(tablePath, i)] = p;
-		Page *p = new Page;
-		p->isAnony = false;
-		p->tablePath = tablePath;
-		p->pageNum = i;
-		p->bufferItemPtr = tempBufferItemPtr;
-		p->refCnt = 0;
+		Page p;
+		p.isAnony = false;
+		p.tablePath = tablePath;
+		p.pageNum = i;
+		p.bufferItemPtr = tempBufferItemPtr;
+		p.refCnt = 0;
 		// p = {false, tablePath, i, tempBufferItemPtr, 0};
-		diskPageMap[make_pair(tablePath, i)] = *p;
+		diskPageMap[make_pair(tablePath, i)] = p;
 
 		// get page obj
 		iterMap = diskPageMap.find(make_pair(tablePath, i)); // {whichTable, i}
@@ -102,13 +102,13 @@ MyDB_PageHandle MyDB_BufferManager ::getPage()
 
 	// Page p = {true, "", anonySeq, &(*clockArm), 1};
 	// anonyPageMap[anonySeq] = p;
-	Page *p = new Page;
-	p->isAnony = true;
-	p->tablePath = "";
-	p->pageNum = anonySeq;
-	p->bufferItemPtr = &(*clockArm);
-	p->refCnt = 2;
-	anonyPageMap[anonySeq] = *p;
+	Page p;
+	p.isAnony = true;
+	p.tablePath = "";
+	p.pageNum = anonySeq;
+	p.bufferItemPtr = &(*clockArm);
+	p.refCnt = 2;
+	anonyPageMap[anonySeq] = p;
 
 	anonyPageMap[anonySeq].bufferItemPtr->isAnony = true;
 	anonyPageMap[anonySeq].bufferItemPtr->pageNum = anonySeq;
@@ -167,14 +167,14 @@ MyDB_PageHandle MyDB_BufferManager ::getPinnedPage(MyDB_TablePtr whichTable, lon
 		Page_Buffer_Item *tempBufferItemPtr = diskToBuffer(tablePath, i);
 
 		// create a page pointing to buffer item and insert to map
-		Page *p = new Page;
-		p->isAnony = false;
-		p->tablePath = tablePath;
-		p->pageNum = i;
-		p->bufferItemPtr = tempBufferItemPtr;
-		p->refCnt = 0;
+		Page p;
+		p.isAnony = false;
+		p.tablePath = tablePath;
+		p.pageNum = i;
+		p.bufferItemPtr = tempBufferItemPtr;
+		p.refCnt = 0;
 		// p = {false, tablePath, i, tempBufferItemPtr, 0};
-		diskPageMap[make_pair(tablePath, i)] = *p;
+		diskPageMap[make_pair(tablePath, i)] = p;
 
 		// get page obj
 		iterMap = diskPageMap.find(make_pair(tablePath, i)); // {whichTable, i}
@@ -195,7 +195,6 @@ MyDB_PageHandle MyDB_BufferManager ::getPinnedPage(MyDB_TablePtr whichTable, lon
 	// refCnt increase by one
 	iterMap->second.refCnt += 2;
 
-	cout << "##bmcc\t\titerMap->second.refCnt: " << iterMap->second.refCnt << endl;
 
 	MyDB_PageHandleBase phb;
 	phb.bm = this;
@@ -213,16 +212,15 @@ MyDB_PageHandle MyDB_BufferManager ::getPinnedPage()
 	// Page p = {true, "", anonySeq, &(*clockArm), 1};
 	// anonyPageMap[anonySeq] = p;
 
-	Page *p = new Page;
-	p->isAnony = true;
-	p->tablePath = "";
-	p->pageNum = anonySeq;
-	p->bufferItemPtr = &(*clockArm);
-	p->refCnt = 2;
-	anonyPageMap[anonySeq] = *p;
+	Page p;
+	p.isAnony = true;
+	p.tablePath = "";
+	p.pageNum = anonySeq;
+	p.bufferItemPtr = &(*clockArm);
+	p.refCnt = 2;
+	anonyPageMap[anonySeq] = p;
 
 	// access buffer, if unpin then pin it
-	//@@@如果可pin值還夠的話
 	anonyPageMap[anonySeq].bufferItemPtr->isPinned = true;
 	anonyPageMap[anonySeq].bufferItemPtr->isAnony = true;
 	anonyPageMap[anonySeq].bufferItemPtr->pageNum = anonySeq;
@@ -274,8 +272,6 @@ MyDB_BufferManager ::~MyDB_BufferManager()
 // when Clock_LRU needs to evict page, store the dirty data to disk
 void MyDB_BufferManager ::bufferToDisk(Page_Buffer_Item *bufferItem)
 {
-	cout << "##bmcc\t\t"
-		 << "@@@****@@@<bufferToDisk>@@@****@@@" << endl;
 	if (!bufferItem->isAnony)
 	{
 		// store data on dis loc/tablename
@@ -294,19 +290,16 @@ void MyDB_BufferManager ::bufferToDisk(Page_Buffer_Item *bufferItem)
 
 		// store back to disk
 		lseek(fd_disk, pageSize * (bufferItem->pageNum), SEEK_SET);
-		int size = write(fd_disk, writeByte, pageSize);
-		cout << "##bmcc\t\t"
-			 << "writesize=" << size << endl;
+		write(fd_disk, writeByte, pageSize);
 		close(fd_disk);
+		
 	}
 	else
 	{
-		cout << "*****\n*****\nbufferToDisk\nanonymous\n*****\n*****\n";
 		vector<char> data = bufferItem->pageData;
 		char *writeByte = &data[0];
 		lseek(fd_tempFile, pageSize * (bufferItem->pageNum), SEEK_SET);
-		int size = write(fd_tempFile, writeByte, pageSize);
-		cout << size << endl;
+		write(fd_tempFile, writeByte, pageSize);
 	}
 
 	// clean and free to overwrite
@@ -326,20 +319,17 @@ void MyDB_BufferManager ::bufferToDisk(Page_Buffer_Item *bufferItem)
 // non anonymous: load data from table in disk to buffer
 Page_Buffer_Item *MyDB_BufferManager ::diskToBuffer(string tablePath, long pageNum)
 {
-	cout << "##bmcc\t\t"
-		 << "------<diskToBuffer>-------" << endl;
 	// fd_disk = open(diskFilePath.c_str(), O_CREAT | O_RDWR, 0666);
 	int fd_disk = open(tablePath.c_str(), O_RDWR | O_FSYNC, 0666);
 	if (fd_disk < 0)
 	{
-		cout << "diskToBuffer Unable to open " << tablePath << endl;
 		exit(1);
 	}
 
 	clockarmGetSpace();
 	char readByte[pageSize];
 	lseek(fd_disk, pageSize * pageNum, SEEK_SET);
-	int size = read(fd_disk, readByte, pageSize);
+	read(fd_disk, readByte, pageSize);
 
 	// assign buffer
 	clockArm->tablePath = tablePath;
@@ -348,43 +338,18 @@ Page_Buffer_Item *MyDB_BufferManager ::diskToBuffer(string tablePath, long pageN
 	clockArm->pageData.assign(readByte, readByte + pageSize);
 	close(fd_disk);
 
-	/* for debug */
-	cout << "diskToBuffer" << endl;
-	cout << "size:" << size << " pageSize: " << pageSize << endl;
-
-	/*char *buff = readByte;
-	buff[size] = '\0';
-	cout << buff << endl;
-	for (int i = 0; i < pageSize; i++)
-	{
-		cout << clockArm->pageData[i];
-	}*/
-
 	return &(*clockArm);
 }
 Page_Buffer_Item *MyDB_BufferManager ::tempFileToBuffer(long slot)
 {
-	cout << "##bmcc\t\t"
-		 << "------<tempFileToBuffer>-------" << endl;
 	clockarmGetSpace();
 	char readByte[pageSize];
 	lseek(fd_tempFile, pageSize * slot, SEEK_SET);
-	int size = read(fd_tempFile, readByte, pageSize);
+	read(fd_tempFile, readByte, pageSize);
 
 	clockArm->pageData.assign(readByte, readByte + pageSize);
 	close(fd_tempFile);
 
-	/* for debug */
-	cout << "tempFileToBuffer" << endl;
-	cout << "size:" << size << " pageSize: " << slot << endl;
-
-	/*char *buff = readByte;
-	buff[size] = '\0';
-	cout << buff << endl;
-	for (int i = 0; i < slot; i++)
-	{
-		cout << clockArm->pageData[i];
-	}*/
 
 	return &(*clockArm);
 }
@@ -415,10 +380,6 @@ void MyDB_BufferManager ::clockarmGetSpace()
 			// clean the data
 			if ((*clockArm).isDirty)
 			{
-				cout << "##bmcc\t\t"
-					 << "*****clockArmGetSpace***"
-					 << "cur char = " << clockArm->pageData[0] << endl
-					 << endl;
 				bufferToDisk(&(*clockArm));
 			}
 			return;
