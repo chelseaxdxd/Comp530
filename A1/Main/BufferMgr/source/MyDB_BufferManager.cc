@@ -58,14 +58,14 @@ MyDB_PageHandle MyDB_BufferManager ::getPage(MyDB_TablePtr whichTable, long i)
 		// create a page pointing to buffer item and insert to map
 		// Page p = {false, tablePath, i, tempBufferItemPtr, 0};
 		// diskPageMap[make_pair(tablePath, i)] = p;
-		Page *p = new Page;
-		p->isAnony = false;
-		p->tablePath = tablePath;
-		p->pageNum = i;
-		p->bufferItemPtr = tempBufferItemPtr;
-		p->refCnt = 0;
+		Page p;
+		p.isAnony = false;
+		p.tablePath = tablePath;
+		p.pageNum = i;
+		p.bufferItemPtr = tempBufferItemPtr;
+		p.refCnt = 0;
 		// p = {false, tablePath, i, tempBufferItemPtr, 0};
-		diskPageMap[make_pair(tablePath, i)] = *p;
+		diskPageMap[make_pair(tablePath, i)] = p;
 
 		// get page obj
 		iterMap = diskPageMap.find(make_pair(tablePath, i)); // {whichTable, i}
@@ -101,13 +101,13 @@ MyDB_PageHandle MyDB_BufferManager ::getPage()
 
 	// Page p = {true, "", anonySeq, &(*clockArm), 1};
 	// anonyPageMap[anonySeq] = p;
-	Page *p = new Page;
-	p->isAnony = true;
-	p->tablePath = "";
-	p->pageNum = anonySeq;
-	p->bufferItemPtr = &(*clockArm);
-	p->refCnt = 2;
-	anonyPageMap[anonySeq] = *p;
+	Page p;
+	p.isAnony = true;
+	p.tablePath = "";
+	p.pageNum = anonySeq;
+	p.bufferItemPtr = &(*clockArm);
+	p.refCnt = 2;
+	anonyPageMap[anonySeq] = p;
 
 	anonyPageMap[anonySeq].bufferItemPtr->isAnony = true;
 
@@ -165,14 +165,14 @@ MyDB_PageHandle MyDB_BufferManager ::getPinnedPage(MyDB_TablePtr whichTable, lon
 		Page_Buffer_Item *tempBufferItemPtr = diskToBuffer(tablePath, i);
 
 		// create a page pointing to buffer item and insert to map
-		Page *p = new Page;
-		p->isAnony = false;
-		p->tablePath = tablePath;
-		p->pageNum = i;
-		p->bufferItemPtr = tempBufferItemPtr;
-		p->refCnt = 0;
+		Page p;
+		p.isAnony = false;
+		p.tablePath = tablePath;
+		p.pageNum = i;
+		p.bufferItemPtr = tempBufferItemPtr;
+		p.refCnt = 0;
 		// p = {false, tablePath, i, tempBufferItemPtr, 0};
-		diskPageMap[make_pair(tablePath, i)] = *p;
+		diskPageMap[make_pair(tablePath, i)] = p;
 
 		// get page obj
 		iterMap = diskPageMap.find(make_pair(tablePath, i)); // {whichTable, i}
@@ -209,13 +209,13 @@ MyDB_PageHandle MyDB_BufferManager ::getPinnedPage()
 	// Page p = {true, "", anonySeq, &(*clockArm), 1};
 	// anonyPageMap[anonySeq] = p;
 
-	Page *p = new Page;
-	p->isAnony = true;
-	p->tablePath = "";
-	p->pageNum = anonySeq;
-	p->bufferItemPtr = &(*clockArm);
-	p->refCnt = 2;
-	anonyPageMap[anonySeq] = *p;
+	Page p;
+	p.isAnony = true;
+	p.tablePath = "";
+	p.pageNum = anonySeq;
+	p.bufferItemPtr = &(*clockArm);
+	p.refCnt = 2;
+	anonyPageMap[anonySeq] = p;
 
 	// access buffer, if unpin then pin it
 	anonyPageMap[anonySeq].bufferItemPtr->isPinned = true;
@@ -286,17 +286,16 @@ void MyDB_BufferManager ::bufferToDisk(Page_Buffer_Item *bufferItem)
 
 		// store back to disk
 		lseek(fd_disk, pageSize * (bufferItem->pageNum), SEEK_SET);
-		int size = write(fd_disk, writeByte, pageSize);
+		write(fd_disk, writeByte, pageSize);
 		close(fd_disk);
-		cout << size << endl;
+		
 	}
 	else
 	{
 		vector<char> data = bufferItem->pageData;
 		char *writeByte = &data[0];
 		lseek(fd_tempFile, pageSize * (bufferItem->pageNum), SEEK_SET);
-		int size = write(fd_tempFile, writeByte, pageSize);
-		cout << size << endl;
+		write(fd_tempFile, writeByte, pageSize);
 	}
 
 	// clean and free to overwrite
@@ -326,7 +325,7 @@ Page_Buffer_Item *MyDB_BufferManager ::diskToBuffer(string tablePath, long pageN
 	clockarmGetSpace();
 	char readByte[pageSize];
 	lseek(fd_disk, pageSize * pageNum, SEEK_SET);
-	int size = read(fd_disk, readByte, pageSize);
+	read(fd_disk, readByte, pageSize);
 
 	// assign buffer
 	clockArm->tablePath = tablePath;
@@ -342,7 +341,7 @@ Page_Buffer_Item *MyDB_BufferManager ::tempFileToBuffer(long slot)
 	clockarmGetSpace();
 	char readByte[pageSize];
 	lseek(fd_tempFile, pageSize * slot, SEEK_SET);
-	int size = read(fd_tempFile, readByte, pageSize);
+	read(fd_tempFile, readByte, pageSize);
 
 	clockArm->pageData.assign(readByte, readByte + pageSize);
 	close(fd_tempFile);
