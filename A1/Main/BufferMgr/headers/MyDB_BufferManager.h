@@ -62,7 +62,6 @@ public:
 	friend class MyDB_BufferManager;
 
 private:
-	/*可能需要*/
 
 	/*ClockBuffer*/
 
@@ -77,7 +76,7 @@ private:
 
 	/* IO */
 	set<string> tableLocations;
-	set<string> tableNames; // 有需要時可以改成map存 table_fd
+	set<string> tableNames;
 	int fd_tempFile;
 	long anonySeq = 0;
 

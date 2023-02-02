@@ -10,13 +10,10 @@ using namespace std;
 
 void *MyDB_PageHandleBase ::getBytes()
 {
-	cout << "\ngetBytes" << endl;
 	Page_Buffer_Item *tempItemPtr;
 	// check if data still in buffer
 	if (position->bufferItemPtr == nullptr)
 	{
-		cout << "##phcc\t\t"
-			 << "position->bufferItemPtr is nullptr" << endl;
 		if (position->isAnony)
 		{
 			tempItemPtr = reloadTempFile(position->pageNum);
@@ -27,11 +24,8 @@ void *MyDB_PageHandleBase ::getBytes()
 		}
 		position->bufferItemPtr = tempItemPtr;
 	}
-	cout << "##phcc\t\t"
-		 << "position->bufferItemPtr->pageData   " << position->bufferItemPtr->pageData.capacity() << endl;
+
 	char *pageDataPtr = &(position->bufferItemPtr->pageData[0]);
-	cout << "##phcc\t\t"
-		 << "end of getBytes" << endl;
 	return pageDataPtr;
 }
 
@@ -46,50 +40,21 @@ void MyDB_PageHandleBase ::wroteBytes()
 MyDB_PageHandleBase ::~MyDB_PageHandleBase()
 {
 
-	cout << "\n-------------------------------------------\n##phcc\t\t"
-		 << "in ~PageHandleBase\n"
-		 << endl;
-	cout << "tablePath" << this->position->tablePath << endl;
 	// remember to decrease reference cnt
 	(position)->refCnt--;
-	cout << "\n##phcc\t\t"
-		 << "refcnt" << (position)->refCnt << endl;
-	cout << "##phcc\t\t"
-		 << "cur char = " << position->bufferItemPtr->pageData[0] << endl
-		 << endl;
 
 	// if no handle to this buffer than evict
 	if ((position)->refCnt == 0)
 	{
-		// cout << "\n##phcc\t\t"
-		// 	 << "!!!!!refCnt = 0!!!!!!" << endl;
-		// position->bufferItemPtr->acedBit = false;
-		
-		// position->bufferItemPtr->isPinned = false;
-		// cout << "##phcc\t\t"
-		// 	 << "cur char = " << position->bufferItemPtr->pageData[0] << endl
-		// 	 << endl;
-		// // if (!(position->bufferItemPtr->isAnony))
-		// if (!(position->bufferItemPtr->isAnony) && (position->bufferItemPtr->isDirty))
-		// {
-		// 	bm->bufferToDisk(position->bufferItemPtr);
-		// }
-
-		cout << "\n##phcc\t\t"
-			 << "!!!!!refCnt = 0!!!!!!" << endl;
 		bool dirty = position->bufferItemPtr->isDirty;
 		position->bufferItemPtr->acedBit = false;
 		position->bufferItemPtr->isDirty = false;
 		position->bufferItemPtr->isPinned = false;
-		cout << "##phcc\t\t"
-			<< "cur char = " << position->bufferItemPtr->pageData[0] << endl
-			<< endl;
 		if (!(position->bufferItemPtr->isAnony) && (dirty))
 		{
 		bm->bufferToDisk(position->bufferItemPtr);
 		}
 	}
-	cout << "-------------------------------------\n";
 }
 
 // (1) buffMgr wants page i, and finds it's not in buffer (points to NULL)

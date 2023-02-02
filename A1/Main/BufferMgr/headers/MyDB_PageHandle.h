@@ -25,7 +25,7 @@ class MyDB_PageHandleBase
 {
 
 public:
-	/* 指向page位子的pointer*/
+	/* point to page location*/
 	Page *position;
 
 	MyDB_BufferManager *bm = nullptr;
