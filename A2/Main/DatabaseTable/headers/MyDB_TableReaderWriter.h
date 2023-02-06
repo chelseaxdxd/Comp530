@@ -28,7 +28,7 @@ public:
 	MyDB_RecordPtr getEmptyRecord ();
 
 	// append a record to the table
-	void append (MyDB_RecordPtr appendMe);//virtual void append (MyDB_RecordPtr appendMe); ???
+	virtual void append (MyDB_RecordPtr appendMe);//origin is void append (MyDB_RecordPtr appendMe); ???
 
 	// return an itrator over this table... each time returnVal->next () is
 	// called, the resulting record will be placed into the record pointed to
@@ -42,10 +42,10 @@ public:
 	void writeIntoTextFile (string toMe);
 
 	// access the i^th page in this file
-	MyDB_PageReaderWriter operator [] (size_t i);//MyDB_PageReaderWriter &operator [] (size_t i);???
+	MyDB_PageReaderWriter &operator [] (size_t i);//origin is MyDB_PageReaderWriter operator [] (size_t i);???
 
 	// access the last page in the file
-	MyDB_PageReaderWriter last ();//MyDB_PageReaderWriter &last ();???
+	MyDB_PageReaderWriter &last ();//origin is MyDB_PageReaderWriter last ();???
 
 	// get the number of pages in the file
 	int getNumPages ();

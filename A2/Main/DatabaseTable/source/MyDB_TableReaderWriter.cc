@@ -2,6 +2,8 @@
 #ifndef TABLE_RW_C
 #define TABLE_RW_C
 
+#include <fstream>
+#include <queue>
 #include "MyDB_PageReaderWriter.h"
 #include "MyDB_TableRecIterator.h"
 #include "MyDB_TableReaderWriter.h"
@@ -9,6 +11,7 @@
 using namespace std;
 
 MyDB_TableReaderWriter :: MyDB_TableReaderWriter (MyDB_TablePtr forMeIn, MyDB_BufferManagerPtr myBufferIn) {
+	//cout<<endl<<1<<endl;
 	forMe = forMeIn;
 	myBuffer = myBufferIn;
 
@@ -22,14 +25,14 @@ MyDB_TableReaderWriter :: MyDB_TableReaderWriter (MyDB_TablePtr forMeIn, MyDB_Bu
 }
 
 MyDB_RecordPtr MyDB_TableReaderWriter :: getEmptyRecord () {
-
+	//cout<<endl<<2<<endl;
 	// use the schema to produce an empty record
 	return make_shared <MyDB_Record> (forMe->getSchema ());
 }
 
 
 void MyDB_TableReaderWriter :: append (MyDB_RecordPtr appendMe) {
-
+	//cout<<endl<<3<<endl;
 	// try to append the record on the current page...
 	if (!lastPage->append (appendMe)) {
 
@@ -42,11 +45,12 @@ void MyDB_TableReaderWriter :: append (MyDB_RecordPtr appendMe) {
 }
 
 MyDB_RecordIteratorPtr MyDB_TableReaderWriter :: getIterator (MyDB_RecordPtr iterateIntoMe) {
+	//cout<<endl<<4<<endl;
 	return make_shared <MyDB_TableRecIterator> (*this, forMe, iterateIntoMe);
 }
 
 void MyDB_TableReaderWriter :: loadFromTextFile (string fName) {
-
+	//cout<<endl<<5<<endl;
 	// empty out the database file
 	forMe->setLastPage (0);
 	lastPage = make_shared <MyDB_PageReaderWriter> (*this, forMe->lastPage ());
@@ -70,7 +74,7 @@ void MyDB_TableReaderWriter :: loadFromTextFile (string fName) {
 }
 
 void MyDB_TableReaderWriter :: writeIntoTextFile (string fName) {
-	
+	//cout<<endl<<6<<endl;
 	// open up the output file
 	ofstream output;
 	output.open (fName);
@@ -87,7 +91,7 @@ void MyDB_TableReaderWriter :: writeIntoTextFile (string fName) {
 }
 
 MyDB_PageReaderWriter &MyDB_TableReaderWriter :: operator [] (size_t i) {
-	
+	//cout<<endl<<7<<endl;
 	// see if we are going off of the end of the file... if so, then clear those pages
 	while (i > forMe->lastPage ()) {
 		forMe->setLastPage (forMe->lastPage () + 1);
@@ -101,16 +105,19 @@ MyDB_PageReaderWriter &MyDB_TableReaderWriter :: operator [] (size_t i) {
 }
 
 MyDB_PageReaderWriter &MyDB_TableReaderWriter :: last () {
+	//cout<<endl<<8<<endl;
 	arrayAccessBuffer = make_shared <MyDB_PageReaderWriter> (*this, forMe->lastPage ());
 	return *arrayAccessBuffer;
 }
 
 int MyDB_TableReaderWriter :: getNumPages () {
+	//cout<<endl<<9<<endl;
 	return forMe->lastPage () + 1;
 }
 
 
 MyDB_BufferManagerPtr MyDB_TableReaderWriter :: getBufferMgr () {
+	//cout<<endl<<10<<endl;
 	return myBuffer;
 }
 
@@ -120,6 +127,7 @@ MyDB_BufferManagerPtr MyDB_TableReaderWriter :: getBufferMgr () {
 */
 	
 MyDB_TablePtr MyDB_TableReaderWriter :: getTable () {
+	//cout<<endl<<11<<endl;
 	return forMe;
 }
 

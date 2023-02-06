@@ -5,7 +5,7 @@
 #include "MyDB_Record.h"
 #include "MyDB_RecordIterator.h"
 
-class MyDB_PageRecordIterator : public MyDB_RecordIterator
+class MyDB_PageRecIterator : public MyDB_RecordIterator
 {
 public:
     // put the contents of the next record in the file/page into the iterator record
@@ -17,12 +17,12 @@ public:
 
     // destructor and contructor
     MyDB_PageRecIterator(MyDB_PageHandle myPageIn, MyDB_RecordPtr myRecIn); // new
-    ~MyDB_PageRecordIterator();
+    ~MyDB_PageRecIterator();
 
 private:
     int bytesConsumed;
     MyDB_PageHandle myPage;
     MyDB_RecordPtr myRec;
-}
+};
 
 #endif

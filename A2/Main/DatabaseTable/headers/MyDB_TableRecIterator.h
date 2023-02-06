@@ -6,7 +6,7 @@
 #include "MyDB_TableReaderWriter.h"
 #include "MyDB_Table.h"
 
-class MyDB_TableRecordIterator : public MyDB_RecordIterator
+class MyDB_TableRecIterator : public MyDB_RecordIterator
 {
 public:
     // put the contents of the next record in the file/page into the iterator record
@@ -20,7 +20,7 @@ public:
 
     // destructor and contructor
     MyDB_TableRecIterator(MyDB_TableReaderWriter &myParent, MyDB_TablePtr myTableIn, MyDB_RecordPtr myRecIn);
-    ~MyDB_TableRecordIterator();
+    ~MyDB_TableRecIterator();
 
 private:
     MyDB_RecordIteratorPtr myIter;
@@ -29,6 +29,6 @@ private:
     MyDB_TableReaderWriter &myParent;
     MyDB_TablePtr myTable;
     MyDB_RecordPtr myRec;
-}
+};
 
 #endif
