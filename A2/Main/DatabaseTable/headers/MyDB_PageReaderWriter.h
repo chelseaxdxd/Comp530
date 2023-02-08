@@ -75,6 +75,10 @@ private:
 	
 	// this is our buffer manager
 	size_t pageSize;
+
+	// the bytes this page has used
+	size_t bytesUsed;
+
 };
 
 /*

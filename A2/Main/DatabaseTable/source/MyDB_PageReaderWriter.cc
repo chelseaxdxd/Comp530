@@ -5,7 +5,7 @@
 #include "MyDB_PageReaderWriter.h"
 #include "MyDB_PageRecIterator.h"
 
-#define PAGE_TYPE *((MyDB_PageType *)((char *)myPage->getBytes()))
+// #define PAGE_TYPE *((MyDB_PageType *)((char *)myPage->getBytes()))
 #define NUM_BYTES_USED *((size_t *)(((char *)myPage->getBytes()) + sizeof(size_t)))
 #define NUM_BYTES_LEFT (pageSize - NUM_BYTES_USED)
 
@@ -15,19 +15,23 @@ MyDB_PageReaderWriter ::MyDB_PageReaderWriter(MyDB_TableReaderWriter &parent, in
 	// get the actual page
 	myPage = parent.getBufferMgr()->getPage(parent.getTable(), whichPage);
 	pageSize = parent.getBufferMgr()->getPageSize();
-}
 
+	// 
+	bytesUsed = 0;
+}
 
 void MyDB_PageReaderWriter ::clear()
 {
 	NUM_BYTES_USED = 2 * sizeof(size_t);
-	PAGE_TYPE = MyDB_PageType ::RegularPage;
+	// bytesUsed = 2 * sizeof(size_t);
+	// PAGE_TYPE = MyDB_PageType ::RegularPage;
 	myPage->wroteBytes();
 }
 
 MyDB_PageType MyDB_PageReaderWriter ::getType()
 {
-	return PAGE_TYPE; // MyDB_PageType :: RegularPage;
+	// return PAGE_TYPE;
+	return MyDB_PageType ::RegularPage;
 }
 
 /*
@@ -47,27 +51,40 @@ MyDB_RecordIteratorPtr MyDB_PageReaderWriter ::getIterator(MyDB_RecordPtr iterat
 
 void MyDB_PageReaderWriter ::setType(MyDB_PageType toMe)
 {
-	PAGE_TYPE = toMe;
-	myPage->wroteBytes();
+	// PAGE_TYPE = toMe;
+	// myPage->wroteBytes();
 }
 
 bool MyDB_PageReaderWriter ::append(MyDB_RecordPtr appendMe)
 {
 	size_t recSize = appendMe->getBinarySize();
+	// size_t bytesUsed = *((size_t *)(((char *)myPage->getBytes()) + sizeof(size_t))); // ++
+
 	if (recSize > NUM_BYTES_LEFT)
+	// if (recSize > (pageSize - bytesUsed))
+	{
 		return false;
+	}
+	// cout << "### 1" << endl;
 
 	// write at the end
 	void *address = myPage->getBytes();
+	// cout << "### 2" << endl;
 	appendMe->toBinary(NUM_BYTES_USED + (char *)address);
+	// appendMe->toBinary(bytesUsed + (char *)address);
+	// cout << "### 3" << endl;
 	NUM_BYTES_USED += recSize;
+	// bytesUsed += recSize;
+	// cout << "### 4" << endl;
 	myPage->wroteBytes();
+	// cout << "### 5" << endl;
 	return true;
 }
 
 void *MyDB_PageReaderWriter ::appendAndReturnLocation(MyDB_RecordPtr appendMe)
 {
-	void *recLocation = NUM_BYTES_USED + (char *)myPage->getBytes();
+	// void *recLocation = NUM_BYTES_USED + (char *)myPage->getBytes();
+	void *recLocation = (char *)myPage->getBytes() + bytesUsed;
 	if (append(appendMe))
 		return recLocation;
 	else
