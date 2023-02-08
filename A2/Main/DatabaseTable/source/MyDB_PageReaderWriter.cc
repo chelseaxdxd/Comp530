@@ -16,8 +16,8 @@ MyDB_PageReaderWriter ::MyDB_PageReaderWriter(MyDB_TableReaderWriter &parent, in
 	myPage = parent.getBufferMgr()->getPage(parent.getTable(), whichPage);
 	pageSize = parent.getBufferMgr()->getPageSize();
 
-	// 
-	bytesUsed = 0;
+	//
+	bytesUsed = 2 * sizeof(size_t);
 }
 
 void MyDB_PageReaderWriter ::clear()
@@ -58,38 +58,34 @@ void MyDB_PageReaderWriter ::setType(MyDB_PageType toMe)
 bool MyDB_PageReaderWriter ::append(MyDB_RecordPtr appendMe)
 {
 	size_t recSize = appendMe->getBinarySize();
-	// size_t bytesUsed = *((size_t *)(((char *)myPage->getBytes()) + sizeof(size_t))); // ++
+	// size_t bytesUsed = *((size_t *)(((char *)myPage->getBytes()) + sizeof(size_t)));
 
 	if (recSize > NUM_BYTES_LEFT)
 	// if (recSize > (pageSize - bytesUsed))
 	{
 		return false;
 	}
-	// cout << "### 1" << endl;
 
 	// write at the end
 	void *address = myPage->getBytes();
-	// cout << "### 2" << endl;
 	appendMe->toBinary(NUM_BYTES_USED + (char *)address);
 	// appendMe->toBinary(bytesUsed + (char *)address);
-	// cout << "### 3" << endl;
 	NUM_BYTES_USED += recSize;
 	// bytesUsed += recSize;
-	// cout << "### 4" << endl;
 	myPage->wroteBytes();
-	// cout << "### 5" << endl;
 	return true;
 }
 
-void *MyDB_PageReaderWriter ::appendAndReturnLocation(MyDB_RecordPtr appendMe)
-{
-	// void *recLocation = NUM_BYTES_USED + (char *)myPage->getBytes();
-	void *recLocation = (char *)myPage->getBytes() + bytesUsed;
-	if (append(appendMe))
-		return recLocation;
-	else
-		return nullptr;
-}
+// 這個老師新建的func，應該還沒用到
+// void *MyDB_PageReaderWriter ::appendAndReturnLocation(MyDB_RecordPtr appendMe)
+// {
+// 	// void *recLocation = NUM_BYTES_USED + (char *)myPage->getBytes();
+// 	void *recLocation = (char *)myPage->getBytes() + bytesUsed;
+// 	if (append(appendMe))
+// 		return recLocation;
+// 	else
+// 		return nullptr;
+// }
 
 size_t MyDB_PageReaderWriter ::getPageSize()
 {

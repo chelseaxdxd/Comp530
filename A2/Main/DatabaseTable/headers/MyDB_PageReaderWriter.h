@@ -51,7 +51,7 @@ public:
 	// appends a record to this page... return a pointer to the location of where
 	// the record is written if there is enough space on the page; otherwise, return
 	// a nullptr
-	void *appendAndReturnLocation (MyDB_RecordPtr appendMe);
+	// void *appendAndReturnLocation (MyDB_RecordPtr appendMe);
 	
 
 	// gets the type of this page... this is just a value from an ennumeration
