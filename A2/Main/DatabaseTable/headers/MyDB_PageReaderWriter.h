@@ -8,7 +8,7 @@
 #include "MyDB_TableReaderWriter.h"
 
 class MyDB_PageReaderWriter;
-typedef shared_ptr <MyDB_PageReaderWriter> MyDB_PageReaderWriterPtr;
+typedef shared_ptr<MyDB_PageReaderWriter> MyDB_PageReaderWriterPtr;
 
 class MyDB_PageReaderWriter
 {
@@ -16,14 +16,6 @@ class MyDB_PageReaderWriter
 public:
 	// constructor for a page in the same file as the parent
 	MyDB_PageReaderWriter(MyDB_TableReaderWriter &parent, int whichPage);
-	/*
-		// constructor for a page that can be pinned, if esired
-		MyDB_PageReaderWriter(bool pinned, MyDB_TableReaderWriter &parent, int whichPage);
-
-		// constructor for an anonymous page
-		MyDB_PageReaderWriter(MyDB_BufferManager &parent);
-	*/
-	// ANY OTHER METHODS YOU WANT HERE
 
 	// empties out the contents of this page, so that it has no records in it
 	// the type of the page is set to MyDB_PageType :: RegularPage
@@ -47,12 +39,10 @@ public:
 	// there is not enough space on the page; otherwise, return true
 	bool append(MyDB_RecordPtr appendMe);
 
-	
 	// appends a record to this page... return a pointer to the location of where
 	// the record is written if there is enough space on the page; otherwise, return
 	// a nullptr
-	void *appendAndReturnLocation (MyDB_RecordPtr appendMe);
-	
+	void *appendAndReturnLocation(MyDB_RecordPtr appendMe);
 
 	// gets the type of this page... this is just a value from an ennumeration
 	// that is stored within the page
@@ -62,17 +52,17 @@ public:
 	void setType(MyDB_PageType toMe);
 
 	// returns the page size
-	size_t getPageSize ();
+	size_t getPageSize();
 
 	// returns the actual bytes
-	void *getBytes ();
+	void *getBytes();
 
 private:
 	// ANYTHING ELSE YOU WANT HERE
 
 	// this is the page that we are messing with
-	MyDB_PageHandle myPage;	
-	
+	MyDB_PageHandle myPage;
+
 	// this is our buffer manager
 	size_t pageSize;
 };

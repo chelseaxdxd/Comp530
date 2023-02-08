@@ -18,10 +18,7 @@ class MyDB_TableReaderWriter
 {
 
 public:
-	// ANYTHING ELSE YOU NEED HERE
-
-	// create a table reader/writer for the specified table, using the specified
-	// buffer manager
+	// create a table reader/writer for the specified table, using the specified buffer manager
 	MyDB_TableReaderWriter(MyDB_TablePtr tablePtr, MyDB_BufferManagerPtr bmPtr);
 
 	// gets an empty record from this table

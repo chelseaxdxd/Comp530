@@ -12,15 +12,17 @@ using namespace std;
 
 MyDB_TableReaderWriter ::MyDB_TableReaderWriter(MyDB_TablePtr tablePtrIn, MyDB_BufferManagerPtr bmPtrIn)
 {
-	// cout<<endl<<1<<endl;
 	tablePtr = tablePtrIn;
 	bmPtr = bmPtrIn;
 
-	if (tablePtr->lastPage() == -1)
+	//????幫他創一個新的page為last page嗎？
+	if (tablePtr->lastPage() == -1) // initial table的last是-1
 	{
-		tablePtr->setLastPage(0);
+		tablePtr->setLastPage(0); // 將last 改成0,也就是有一頁
+
+		// 創一個PageReaderWriter for 這個table 的這一頁, 因為是唯一的一頁所以也是last page
 		lastPage = make_shared<MyDB_PageReaderWriter>(*this, tablePtr->lastPage());
-		lastPage->clear();
+		//@@@@lastPage->clear();
 	}
 	else
 	{

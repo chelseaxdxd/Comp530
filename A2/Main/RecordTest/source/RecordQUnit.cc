@@ -2,9 +2,9 @@
 #ifndef RECORD_TEST_H
 #define RECORD_TEST_H
 
-#include "MyDB_AttType.h"  
+#include "MyDB_AttType.h"
 #include "MyDB_BufferManager.h"
-#include "MyDB_Catalog.h"  
+#include "MyDB_Catalog.h"
 #include "MyDB_Page.h"
 #include "MyDB_PageReaderWriter.h"
 #include "MyDB_Record.h"
@@ -18,28 +18,32 @@
 #include <unistd.h>
 #include <vector>
 
-#define FALLTHROUGH_INTENDED do {} while (0)
+#define FALLTHROUGH_INTENDED \
+	do                       \
+	{                        \
+	} while (0)
 
-void initialize() {
+void initialize()
+{
 	cout << "start initialization..." << flush;
 
 	// create a catalog
-	MyDB_CatalogPtr myCatalog = make_shared <MyDB_Catalog>("catFile");
+	MyDB_CatalogPtr myCatalog = make_shared<MyDB_Catalog>("catFile");
 
-	// now make a schema
-	MyDB_SchemaPtr mySchema = make_shared <MyDB_Schema>();
-	mySchema->appendAtt(make_pair("suppkey", make_shared <MyDB_IntAttType>()));
-	mySchema->appendAtt(make_pair("name", make_shared <MyDB_StringAttType>()));
-	mySchema->appendAtt(make_pair("address", make_shared <MyDB_StringAttType>()));
-	mySchema->appendAtt(make_pair("nationkey", make_shared <MyDB_IntAttType>()));
-	mySchema->appendAtt(make_pair("phone", make_shared <MyDB_StringAttType>()));
-	mySchema->appendAtt(make_pair("acctbal", make_shared <MyDB_DoubleAttType>()));
-	mySchema->appendAtt(make_pair("comment", make_shared <MyDB_StringAttType>()));
+	// now make a schema 先做一個table的schema
+	MyDB_SchemaPtr mySchema = make_shared<MyDB_Schema>();
+	mySchema->appendAtt(make_pair("suppkey", make_shared<MyDB_IntAttType>()));
+	mySchema->appendAtt(make_pair("name", make_shared<MyDB_StringAttType>()));
+	mySchema->appendAtt(make_pair("address", make_shared<MyDB_StringAttType>()));
+	mySchema->appendAtt(make_pair("nationkey", make_shared<MyDB_IntAttType>()));
+	mySchema->appendAtt(make_pair("phone", make_shared<MyDB_StringAttType>()));
+	mySchema->appendAtt(make_pair("acctbal", make_shared<MyDB_DoubleAttType>()));
+	mySchema->appendAtt(make_pair("comment", make_shared<MyDB_StringAttType>()));
 
 	// use the schema to create a table
-	MyDB_TablePtr myTable = make_shared <MyDB_Table>("supplier", "supplier.bin", mySchema);
-	MyDB_BufferManagerPtr myMgr = make_shared <MyDB_BufferManager>(1024, 16, "tempFile");
-	MyDB_TableReaderWriter supplierTable(myTable, myMgr);
+	MyDB_TablePtr myTable = make_shared<MyDB_Table>("supplier", "supplier.bin", mySchema); // table file name/location/what schema for the table
+	MyDB_BufferManagerPtr myMgr = make_shared<MyDB_BufferManager>(1024, 16, "tempFile");   // 1024一個page, buffer 16 個, anonymous file 在tempFile
+	MyDB_TableReaderWriter supplierTable(myTable, myMgr);								   // 創立一個TableReaderWriter
 
 	// load it from a text file
 	supplierTable.loadFromTextFile("supplier.tbl");
@@ -50,19 +54,23 @@ void initialize() {
 	cout << "finish initialization..." << flush;
 }
 
-int main(int argc, char *argv[]) {
+int main(int argc, char *argv[])
+{
 	int start = 1;
-	if (argc > 1 && argv[1][0] >= '0' && argv[1][0] <= '9') {
+	if (argc > 1 && argv[1][0] >= '0' && argv[1][0] <= '9')
+	{
 		start = argv[1][0] - '0';
 	}
-	cout << "start from test " << start << endl << flush;
+	cout << "start from test " << start << endl
+		 << flush;
 
 	QUnit::UnitTest qunit(cerr, QUnit::normal);
 
 	// dependency: the provided supplier.tbl
 	// dependency: matching precision for streaming out double numbers
 
-	switch (start) {
+	switch (start)
+	{
 	case 1:
 	{
 		// table hasNext
@@ -71,9 +79,9 @@ int main(int argc, char *argv[]) {
 		bool result = false;
 		{
 			cout << "create manager..." << flush;
-			MyDB_CatalogPtr myCatalog = make_shared <MyDB_Catalog>("catFile");
-			map <string, MyDB_TablePtr> allTables = MyDB_Table::getAllTables(myCatalog);
-			MyDB_BufferManagerPtr myMgr = make_shared <MyDB_BufferManager>(1024, 16, "tempFile");
+			MyDB_CatalogPtr myCatalog = make_shared<MyDB_Catalog>("catFile");
+			map<string, MyDB_TablePtr> allTables = MyDB_Table::getAllTables(myCatalog);
+			MyDB_BufferManagerPtr myMgr = make_shared<MyDB_BufferManager>(1024, 16, "tempFile");
 
 			cout << "create TableReaderWriter..." << flush;
 			MyDB_TableReaderWriter supplierTable(allTables["supplier"], myMgr);
@@ -87,11 +95,15 @@ int main(int argc, char *argv[]) {
 
 			cout << "shutdown manager..." << flush;
 		}
-		if (result) cout << "CORRECT" << endl << flush;
-		else cout << "***FAIL***" << endl << flush;
+		if (result)
+			cout << "CORRECT" << endl
+				 << flush;
+		else
+			cout << "***FAIL***" << endl
+				 << flush;
 		QUNIT_IS_TRUE(result);
 	}
-	FALLTHROUGH_INTENDED;
+		FALLTHROUGH_INTENDED;
 	case 2:
 	{
 		// page hasNext
@@ -100,9 +112,9 @@ int main(int argc, char *argv[]) {
 		bool result = false;
 		{
 			cout << "create manager..." << flush;
-			MyDB_CatalogPtr myCatalog = make_shared <MyDB_Catalog>("catFile");
-			map <string, MyDB_TablePtr> allTables = MyDB_Table::getAllTables(myCatalog);
-			MyDB_BufferManagerPtr myMgr = make_shared <MyDB_BufferManager>(1024, 16, "tempFile");
+			MyDB_CatalogPtr myCatalog = make_shared<MyDB_Catalog>("catFile");
+			map<string, MyDB_TablePtr> allTables = MyDB_Table::getAllTables(myCatalog);
+			MyDB_BufferManagerPtr myMgr = make_shared<MyDB_BufferManager>(1024, 16, "tempFile");
 
 			cout << "create TableReaderWriter..." << flush;
 			MyDB_TableReaderWriter supplierTable(allTables["supplier"], myMgr);
@@ -116,11 +128,15 @@ int main(int argc, char *argv[]) {
 
 			cout << "shutdown manager..." << flush;
 		}
-		if (result) cout << "CORRECT" << endl << flush;
-		else cout << "***FAIL***" << endl << flush;
+		if (result)
+			cout << "CORRECT" << endl
+				 << flush;
+		else
+			cout << "***FAIL***" << endl
+				 << flush;
 		QUNIT_IS_TRUE(result);
 	}
-	FALLTHROUGH_INTENDED;
+		FALLTHROUGH_INTENDED;
 	case 3:
 	{
 		// count records with table iterator
@@ -129,9 +145,9 @@ int main(int argc, char *argv[]) {
 		int counter = 0;
 		{
 			cout << "create manager..." << flush;
-			MyDB_CatalogPtr myCatalog = make_shared <MyDB_Catalog>("catFile");
-			map <string, MyDB_TablePtr> allTables = MyDB_Table::getAllTables(myCatalog);
-			MyDB_BufferManagerPtr myMgr = make_shared <MyDB_BufferManager>(1024, 16, "tempFile");
+			MyDB_CatalogPtr myCatalog = make_shared<MyDB_Catalog>("catFile");
+			map<string, MyDB_TablePtr> allTables = MyDB_Table::getAllTables(myCatalog);
+			MyDB_BufferManagerPtr myMgr = make_shared<MyDB_BufferManager>(1024, 16, "tempFile");
 
 			cout << "create TableReaderWriter..." << flush;
 			MyDB_TableReaderWriter supplierTable(allTables["supplier"], myMgr);
@@ -141,18 +157,23 @@ int main(int argc, char *argv[]) {
 			MyDB_RecordIteratorPtr myIter = supplierTable.getIterator(temp);
 
 			cout << "count..." << flush;
-			while (myIter->hasNext()) {
+			while (myIter->hasNext())
+			{
 				myIter->getNext();
 				counter++;
 			}
 
 			cout << "shutdown manager..." << flush;
 		}
-		if (counter == 10000) cout << "CORRECT" << endl << flush;
-		else cout << "***FAIL***" << endl << flush;
+		if (counter == 10000)
+			cout << "CORRECT" << endl
+				 << flush;
+		else
+			cout << "***FAIL***" << endl
+				 << flush;
 		QUNIT_IS_EQUAL(counter, 10000);
 	}
-	FALLTHROUGH_INTENDED;
+		FALLTHROUGH_INTENDED;
 	case 4:
 	{
 		// table append record
@@ -161,9 +182,9 @@ int main(int argc, char *argv[]) {
 		int counter = 0;
 		{
 			cout << "create manager..." << flush;
-			MyDB_CatalogPtr myCatalog = make_shared <MyDB_Catalog>("catFile");
-			map <string, MyDB_TablePtr> allTables = MyDB_Table::getAllTables(myCatalog);
-			MyDB_BufferManagerPtr myMgr = make_shared <MyDB_BufferManager>(1024, 16, "tempFile");
+			MyDB_CatalogPtr myCatalog = make_shared<MyDB_Catalog>("catFile");
+			map<string, MyDB_TablePtr> allTables = MyDB_Table::getAllTables(myCatalog);
+			MyDB_BufferManagerPtr myMgr = make_shared<MyDB_BufferManager>(1024, 16, "tempFile");
 
 			cout << "create TableReaderWriter..." << flush;
 			MyDB_TableReaderWriter supplierTable(allTables["supplier"], myMgr);
@@ -180,18 +201,23 @@ int main(int argc, char *argv[]) {
 			MyDB_RecordIteratorPtr myIter = supplierTable.getIterator(temp);
 
 			cout << "count..." << flush;
-			while (myIter->hasNext()) {
+			while (myIter->hasNext())
+			{
 				myIter->getNext();
 				counter++;
 			}
 
 			cout << "shutdown manager..." << flush;
 		}
-		if (counter == 10001) cout << "CORRECT" << endl << flush;
-		else cout << "***FAIL***" << endl << flush;
+		if (counter == 10001)
+			cout << "CORRECT" << endl
+				 << flush;
+		else
+			cout << "***FAIL***" << endl
+				 << flush;
 		QUNIT_IS_EQUAL(counter, 10001);
 	}
-	FALLTHROUGH_INTENDED;
+		FALLTHROUGH_INTENDED;
 	case 5:
 	{
 		// verify the 2nd record with table iterator
@@ -200,9 +226,9 @@ int main(int argc, char *argv[]) {
 		string result = "";
 		{
 			cout << "create manager..." << flush;
-			MyDB_CatalogPtr myCatalog = make_shared <MyDB_Catalog>("catFile");
-			map <string, MyDB_TablePtr> allTables = MyDB_Table::getAllTables(myCatalog);
-			MyDB_BufferManagerPtr myMgr = make_shared <MyDB_BufferManager>(1024, 16, "tempFile");
+			MyDB_CatalogPtr myCatalog = make_shared<MyDB_Catalog>("catFile");
+			map<string, MyDB_TablePtr> allTables = MyDB_Table::getAllTables(myCatalog);
+			MyDB_BufferManagerPtr myMgr = make_shared<MyDB_BufferManager>(1024, 16, "tempFile");
 
 			cout << "create TableReaderWriter..." << flush;
 			MyDB_TableReaderWriter supplierTable(allTables["supplier"], myMgr);
@@ -212,13 +238,15 @@ int main(int argc, char *argv[]) {
 			MyDB_RecordIteratorPtr myIter = supplierTable.getIterator(temp);
 
 			cout << "next 2nd record..." << flush;
-			if (myIter->hasNext()) {
+			if (myIter->hasNext())
+			{
 				myIter->getNext();
 			}
-			if (myIter->hasNext()) {
+			if (myIter->hasNext())
+			{
 				myIter->getNext();
 			}
-			
+
 			cout << "read record..." << flush;
 			stringstream ss;
 			ss << temp;
@@ -227,11 +255,15 @@ int main(int argc, char *argv[]) {
 			cout << "shutdown manager..." << flush;
 		}
 		const string answer = "2|Supplier#000000002|TRMhVHz3XiFuhapxucPo1|5|15-679-861-2259|4032.680000|furiously stealthy frays thrash alongside of the slyly express deposits. blithely regular req|";
-		if (result == answer) cout << "CORRECT" << endl << flush;
-		else cout << "***FAIL***" << endl << flush;
+		if (result == answer)
+			cout << "CORRECT" << endl
+				 << flush;
+		else
+			cout << "***FAIL***" << endl
+				 << flush;
 		QUNIT_IS_EQUAL(result, answer);
 	}
-	FALLTHROUGH_INTENDED;
+		FALLTHROUGH_INTENDED;
 	case 6:
 	{
 		// verify the 10000th record with page iterator
@@ -241,9 +273,9 @@ int main(int argc, char *argv[]) {
 		string result = "";
 		{
 			cout << "create manager..." << flush;
-			MyDB_CatalogPtr myCatalog = make_shared <MyDB_Catalog>("catFile");
-			map <string, MyDB_TablePtr> allTables = MyDB_Table::getAllTables(myCatalog);
-			MyDB_BufferManagerPtr myMgr = make_shared <MyDB_BufferManager>(1024, 16, "tempFile");
+			MyDB_CatalogPtr myCatalog = make_shared<MyDB_Catalog>("catFile");
+			map<string, MyDB_TablePtr> allTables = MyDB_Table::getAllTables(myCatalog);
+			MyDB_BufferManagerPtr myMgr = make_shared<MyDB_BufferManager>(1024, 16, "tempFile");
 
 			cout << "create TableReaderWriter..." << flush;
 			MyDB_TableReaderWriter supplierTable(allTables["supplier"], myMgr);
@@ -253,15 +285,19 @@ int main(int argc, char *argv[]) {
 			int counter = 0;
 			int page = 0;
 			bool flag = true;
-			while (flag) {
+			while (flag)
+			{
 				MyDB_RecordIteratorPtr myIter = supplierTable[page].getIterator(temp);
-				while (flag && myIter->hasNext()) {
+				while (flag && myIter->hasNext())
+				{
 					myIter->getNext();
 					counter++;
-					if (counter >= 10000) flag = false;
+					if (counter >= 10000)
+						flag = false;
 				}
 				page++;
-				if (page > 5000) flag = false;
+				if (page > 5000)
+					flag = false;
 			}
 			cout << "page " << page << "...counter " << counter << "..." << flush;
 
@@ -273,11 +309,15 @@ int main(int argc, char *argv[]) {
 			cout << "shutdown manager..." << flush;
 		}
 		const string answer = "10000|Supplier#000010000|R7kfmyzoIfXlrbnqNwUUW3phJctocp0J|19|29-578-432-2146|8968.420000|furiously final ideas believe furiously. furiously final ideas|";
-		if (result == answer) cout << "CORRECT" << endl << flush;
-		else cout << "***FAIL***" << endl << flush;
+		if (result == answer)
+			cout << "CORRECT" << endl
+				 << flush;
+		else
+			cout << "***FAIL***" << endl
+				 << flush;
 		QUNIT_IS_EQUAL(result, answer);
 	}
-	FALLTHROUGH_INTENDED;
+		FALLTHROUGH_INTENDED;
 	case 7:
 	{
 		// independent table iterators
@@ -286,9 +326,9 @@ int main(int argc, char *argv[]) {
 		int counter = 0;
 		{
 			cout << "create manager..." << flush;
-			MyDB_CatalogPtr myCatalog = make_shared <MyDB_Catalog>("catFile");
-			map <string, MyDB_TablePtr> allTables = MyDB_Table::getAllTables(myCatalog);
-			MyDB_BufferManagerPtr myMgr = make_shared <MyDB_BufferManager>(1024, 16, "tempFile");
+			MyDB_CatalogPtr myCatalog = make_shared<MyDB_Catalog>("catFile");
+			map<string, MyDB_TablePtr> allTables = MyDB_Table::getAllTables(myCatalog);
+			MyDB_BufferManagerPtr myMgr = make_shared<MyDB_BufferManager>(1024, 16, "tempFile");
 
 			cout << "create TableReaderWriter..." << flush;
 			MyDB_TableReaderWriter supplierTable(allTables["supplier"], myMgr);
@@ -299,16 +339,20 @@ int main(int argc, char *argv[]) {
 			MyDB_RecordIteratorPtr myIter2 = supplierTable.getIterator(temp);
 
 			cout << "count..." << flush;
-			while (myIter1->hasNext() || myIter2->hasNext()) {
-				if (myIter1->hasNext()) {
+			while (myIter1->hasNext() || myIter2->hasNext())
+			{
+				if (myIter1->hasNext())
+				{
 					myIter1->getNext();
 					counter++;
 				}
-				if (myIter1->hasNext()) {
+				if (myIter1->hasNext())
+				{
 					myIter1->getNext();
 					counter++;
 				}
-				if (myIter2->hasNext()) {
+				if (myIter2->hasNext())
+				{
 					myIter2->getNext();
 					counter++;
 				}
@@ -316,11 +360,15 @@ int main(int argc, char *argv[]) {
 
 			cout << "shutdown manager..." << flush;
 		}
-		if (counter == 20000) cout << "CORRECT" << endl << flush;
-		else cout << "***FAIL***" << endl << flush;
+		if (counter == 20000)
+			cout << "CORRECT" << endl
+				 << flush;
+		else
+			cout << "***FAIL***" << endl
+				 << flush;
 		QUNIT_IS_EQUAL(counter, 20000);
 	}
-	FALLTHROUGH_INTENDED;
+		FALLTHROUGH_INTENDED;
 	case 8:
 	{
 		// clear the 33rd page
@@ -329,9 +377,9 @@ int main(int argc, char *argv[]) {
 		int counter = 0;
 		{
 			cout << "create manager..." << flush;
-			MyDB_CatalogPtr myCatalog = make_shared <MyDB_Catalog>("catFile");
-			map <string, MyDB_TablePtr> allTables = MyDB_Table::getAllTables(myCatalog);
-			MyDB_BufferManagerPtr myMgr = make_shared <MyDB_BufferManager>(1024, 16, "tempFile");
+			MyDB_CatalogPtr myCatalog = make_shared<MyDB_Catalog>("catFile");
+			map<string, MyDB_TablePtr> allTables = MyDB_Table::getAllTables(myCatalog);
+			MyDB_BufferManagerPtr myMgr = make_shared<MyDB_BufferManager>(1024, 16, "tempFile");
 
 			cout << "create TableReaderWriter..." << flush;
 			MyDB_TableReaderWriter supplierTable(allTables["supplier"], myMgr);
@@ -341,7 +389,8 @@ int main(int argc, char *argv[]) {
 			MyDB_RecordIteratorPtr myIter1 = supplierTable[33].getIterator(temp);
 
 			cout << "count records in page 33..." << flush;
-			while (myIter1->hasNext()) {
+			while (myIter1->hasNext())
+			{
 				myIter1->getNext();
 				counter++;
 			}
@@ -353,18 +402,23 @@ int main(int argc, char *argv[]) {
 			MyDB_RecordIteratorPtr myIter2 = supplierTable.getIterator(temp);
 
 			cout << "count records in table..." << flush;
-			while (myIter2->hasNext()) {
+			while (myIter2->hasNext())
+			{
 				myIter2->getNext();
 				counter++;
 			}
 
 			cout << "shutdown manager..." << flush;
 		}
-		if (counter == 10000) cout << "CORRECT" << endl << flush;
-		else cout << "***FAIL***" << endl << flush;
+		if (counter == 10000)
+			cout << "CORRECT" << endl
+				 << flush;
+		else
+			cout << "***FAIL***" << endl
+				 << flush;
 		QUNIT_IS_EQUAL(counter, 10000);
 	}
-	FALLTHROUGH_INTENDED;
+		FALLTHROUGH_INTENDED;
 	case 9:
 	{
 		// replace the 55th page with the last page
@@ -373,9 +427,9 @@ int main(int argc, char *argv[]) {
 		int counter = 0;
 		{
 			cout << "create manager..." << flush;
-			MyDB_CatalogPtr myCatalog = make_shared <MyDB_Catalog>("catFile");
-			map <string, MyDB_TablePtr> allTables = MyDB_Table::getAllTables(myCatalog);
-			MyDB_BufferManagerPtr myMgr = make_shared <MyDB_BufferManager>(1024, 16, "tempFile");
+			MyDB_CatalogPtr myCatalog = make_shared<MyDB_Catalog>("catFile");
+			map<string, MyDB_TablePtr> allTables = MyDB_Table::getAllTables(myCatalog);
+			MyDB_BufferManagerPtr myMgr = make_shared<MyDB_BufferManager>(1024, 16, "tempFile");
 
 			cout << "create TableReaderWriter..." << flush;
 			MyDB_TableReaderWriter supplierTable(allTables["supplier"], myMgr);
@@ -386,7 +440,8 @@ int main(int argc, char *argv[]) {
 			MyDB_RecordIteratorPtr myIter2 = supplierTable.last().getIterator(temp);
 
 			cout << "count records in page 55..." << flush;
-			while (myIter1->hasNext()) {
+			while (myIter1->hasNext())
+			{
 				myIter1->getNext();
 				counter++;
 			}
@@ -395,7 +450,8 @@ int main(int argc, char *argv[]) {
 			supplierTable[55].clear();
 
 			cout << "count records in the last page and copy to page 55..." << flush;
-			while (myIter2->hasNext()) {
+			while (myIter2->hasNext())
+			{
 				myIter2->getNext();
 				supplierTable[55].append(temp);
 				counter--;
@@ -405,18 +461,23 @@ int main(int argc, char *argv[]) {
 			MyDB_RecordIteratorPtr myIter3 = supplierTable.getIterator(temp);
 
 			cout << "count records in table..." << flush;
-			while (myIter3->hasNext()) {
+			while (myIter3->hasNext())
+			{
 				myIter3->getNext();
 				counter++;
 			}
 
 			cout << "shutdown manager..." << flush;
 		}
-		if (counter == 10000) cout << "CORRECT" << endl << flush;
-		else cout << "***FAIL***" << endl << flush;
+		if (counter == 10000)
+			cout << "CORRECT" << endl
+				 << flush;
+		else
+			cout << "***FAIL***" << endl
+				 << flush;
 		QUNIT_IS_EQUAL(counter, 10000);
 	}
-	FALLTHROUGH_INTENDED;
+		FALLTHROUGH_INTENDED;
 	case 0:
 	{
 		// table hasNext with all pages cleared
@@ -425,9 +486,9 @@ int main(int argc, char *argv[]) {
 		bool result = false;
 		{
 			cout << "create manager..." << flush;
-			MyDB_CatalogPtr myCatalog = make_shared <MyDB_Catalog>("catFile");
-			map <string, MyDB_TablePtr> allTables = MyDB_Table::getAllTables(myCatalog);
-			MyDB_BufferManagerPtr myMgr = make_shared <MyDB_BufferManager>(1024, 16, "tempFile");
+			MyDB_CatalogPtr myCatalog = make_shared<MyDB_Catalog>("catFile");
+			map<string, MyDB_TablePtr> allTables = MyDB_Table::getAllTables(myCatalog);
+			MyDB_BufferManagerPtr myMgr = make_shared<MyDB_BufferManager>(1024, 16, "tempFile");
 
 			cout << "create TableReaderWriter..." << flush;
 			MyDB_TableReaderWriter supplierTable(allTables["supplier"], myMgr);
@@ -437,16 +498,20 @@ int main(int argc, char *argv[]) {
 			int counter = 0;
 			int page = 0;
 			bool flag = true;
-			while (flag) {
+			while (flag)
+			{
 				MyDB_RecordIteratorPtr myIter = supplierTable[page].getIterator(temp);
-				while (flag && myIter->hasNext()) {
+				while (flag && myIter->hasNext())
+				{
 					myIter->getNext();
 					counter++;
-					if (counter >= 10000) flag = false;
+					if (counter >= 10000)
+						flag = false;
 				}
 				supplierTable[page].clear();
 				page++;
-				if (page > 10000) flag = false;
+				if (page > 10000)
+					flag = false;
 			}
 			cout << "page " << page << "...counter " << counter << "..." << flush;
 
@@ -458,11 +523,15 @@ int main(int argc, char *argv[]) {
 
 			cout << "shutdown manager..." << flush;
 		}
-		if (result == false) cout << "CORRECT" << endl << flush;
-		else cout << "***FAIL***" << endl << flush;
+		if (result == false)
+			cout << "CORRECT" << endl
+				 << flush;
+		else
+			cout << "***FAIL***" << endl
+				 << flush;
 		QUNIT_IS_FALSE(result);
 	}
-	FALLTHROUGH_INTENDED;
+		FALLTHROUGH_INTENDED;
 	default:
 		break;
 	}
