@@ -11,17 +11,20 @@
 
 MyDB_PageReaderWriter ::MyDB_PageReaderWriter(MyDB_TableReaderWriter &parent, int whichPage)
 {
-
 	// get the actual page
 	myPage = parent.getBufferMgr()->getPage(parent.getTable(), whichPage);
 	pageSize = parent.getBufferMgr()->getPageSize();
 }
 
-
 void MyDB_PageReaderWriter ::clear()
 {
-	NUM_BYTES_USED = 2 * sizeof(size_t);
+	// we only overwrite it so we do not need to clean it up, we only need to reset NUM_BYTES_USED
+	NUM_BYTES_USED = 2 * sizeof(size_t); //????
+
+	// reset pagetype
 	PAGE_TYPE = MyDB_PageType ::RegularPage;
+
+	// since we clear out this page, we need to wrote back to disk
 	myPage->wroteBytes();
 }
 
