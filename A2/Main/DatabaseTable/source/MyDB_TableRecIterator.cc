@@ -24,7 +24,7 @@ bool MyDB_TableRecIterator::hasNext()
 }
 
 // destructor and contructor
-MyDB_TableRecIterator ::MyDB_TableRecIterator(MyDB_TableReaderWriter tableReaderWriterPtrIn, MyDB_TablePtr tablePtrIn,
+MyDB_TableRecIterator ::MyDB_TableRecIterator(MyDB_TableReaderWriter *tableReaderWriterPtrIn, MyDB_TablePtr tablePtrIn,
 											  MyDB_RecordPtr recPtrIn)
 {
 	tableReaderWriterPtr = tableReaderWriterPtrIn;

@@ -56,7 +56,7 @@ void MyDB_PageReaderWriter ::setType(MyDB_PageType toMe)
 bool MyDB_PageReaderWriter ::append(MyDB_RecordPtr appendMe)
 {
 	size_t numBytesUsed = *((size_t *)(((char *)myPage->getBytes()) + sizeof(size_t)));
-	size_t numBytesLeft = (pageSize - numBytesUsed)
+	size_t numBytesLeft = (pageSize - numBytesUsed);
 
 	size_t recSize = appendMe->getBinarySize();
 	if (recSize > numBytesLeft)

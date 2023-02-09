@@ -23,7 +23,7 @@ MyDB_TableReaderWriter ::MyDB_TableReaderWriter(MyDB_TablePtr tablePtrIn, MyDB_B
 		lastPage = make_shared<MyDB_PageReaderWriter>(*this, tablePtr->lastPage());
 		//@@@@lastPage->clear();
 	}
-	else//reassigning last page
+	else // reassigning last page
 	{
 		lastPage = make_shared<MyDB_PageReaderWriter>(*this, tablePtr->lastPage());
 	}
@@ -54,7 +54,7 @@ void MyDB_TableReaderWriter ::append(MyDB_RecordPtr appendMe)
 MyDB_RecordIteratorPtr MyDB_TableReaderWriter ::getIterator(MyDB_RecordPtr iterateIntoMe)
 {
 	// cout<<endl<<4<<endl;
-	return make_shared<MyDB_TableRecIterator>(*this, tablePtr, iterateIntoMe);
+	return make_shared<MyDB_TableRecIterator>(this, tablePtr, iterateIntoMe);
 }
 
 void MyDB_TableReaderWriter ::loadFromTextFile(string fName)
@@ -64,17 +64,17 @@ void MyDB_TableReaderWriter ::loadFromTextFile(string fName)
 	//  empty out the table, and cover the table with data from text file
 	tablePtr->setLastPage(0);
 	lastPage = make_shared<MyDB_PageReaderWriter>(*this, tablePtr->lastPage());
-	lastPage->clear(); //need to clear cuz it may has previous data
+	lastPage->clear(); // need to clear cuz it may has previous data
 
 	// open text file and read it
 	ifstream ifs(fName);
-	string line;	
+	string line;
 	MyDB_RecordPtr tempRec = getEmptyRecord();
 
 	// loop through all of the lines
 	while (getline(ifs, line))
 	{
-		tempRec->fromString(line); //store the line into the record(record::values)
+		tempRec->fromString(line); // store the line into the record(record::values)
 		append(tempRec);
 	}
 	ifs.close();
