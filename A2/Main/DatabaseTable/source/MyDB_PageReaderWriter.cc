@@ -44,7 +44,7 @@ MyDB_PageType MyDB_PageReaderWriter ::getType()
 	return MyDB_PageType ::RegularPage;
 }
 
-void MyDB_PageReaderWriter ::setType(MyDB_PageType toMe){}
+void MyDB_PageReaderWriter ::setType(MyDB_PageType toMe) {}
 
 MyDB_PageReaderWriter ::MyDB_PageReaderWriter(MyDB_TableReaderWriter &myTableRW, int pageNum)
 {
