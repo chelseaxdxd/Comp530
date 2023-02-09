@@ -15,13 +15,15 @@ MyDB_TableReaderWriter :: MyDB_TableReaderWriter (MyDB_TablePtr forMeIn, MyDB_Bu
 	forMe = forMeIn;
 	myBuffer = myBufferIn;
 
-	if (forMe->lastPage () == -1) {
-		forMe->setLastPage (0);
-		lastPage = make_shared <MyDB_PageReaderWriter> (*this, forMe->lastPage ());
-		lastPage->clear ();
-	} else {
-		lastPage = make_shared <MyDB_PageReaderWriter> (*this, forMe->lastPage ());	
-	}
+	// if (forMe->lastPage () == -1) {
+	// 	forMe->setLastPage (0);
+	// 	lastPage = make_shared <MyDB_PageReaderWriter> (*this, forMe->lastPage ());
+	// 	// lastPage->clear ();
+	// } else {
+	// 	lastPage = make_shared <MyDB_PageReaderWriter> (*this, forMe->lastPage ());	
+	// }
+	if (forMe->lastPage () == -1) forMe->setLastPage (0);
+	lastPage = make_shared<MyDB_PageReaderWriter>(*this, forMe->lastPage());
 }
 
 MyDB_RecordPtr MyDB_TableReaderWriter :: getEmptyRecord () {
