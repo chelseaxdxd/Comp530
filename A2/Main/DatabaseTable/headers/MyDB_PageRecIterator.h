@@ -10,19 +10,19 @@ class MyDB_PageRecIterator : public MyDB_RecordIterator
 public:
     // put the contents of the next record in the file/page into the iterator record
     // this should be called BEFORE the iterator record is first examined
-    void getNext() override; // virtual void getNext () = 0;
+    void getNext() override;
 
     // return true iff there is another record in the file/page
     bool hasNext() override;
 
     // destructor and contructor
-    MyDB_PageRecIterator(MyDB_PageHandle myPageIn, MyDB_RecordPtr myRecIn); // new
+    MyDB_PageRecIterator(MyDB_PageHandle myPageIn, MyDB_RecordPtr myRecIn);
     ~MyDB_PageRecIterator();
 
 private:
-    int bytesConsumed;
     MyDB_PageHandle myPage;
     MyDB_RecordPtr myRec;
+    int bytesUsed;
 };
 
 #endif

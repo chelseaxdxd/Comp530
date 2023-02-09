@@ -7,7 +7,7 @@
 |supplier.lastPage|1683|
 |supplier.name.type|string|
 |supplier.nationkey.type|int|
-|supplier.numTuples|25940272|
+|supplier.numTuples|18972976|
 |supplier.phone.type|string|
 |supplier.rootLocation|-1|
 |supplier.sortAtt|none|

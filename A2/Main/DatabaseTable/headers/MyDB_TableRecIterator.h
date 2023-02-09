@@ -22,7 +22,6 @@ public:
     ~MyDB_TableRecIterator();
 
 private:
-
     MyDB_TableReaderWriter &myTableRW;
     // MyDB_TableReaderWriter * myTableRW;
     MyDB_RecordIteratorPtr myRecIter;
