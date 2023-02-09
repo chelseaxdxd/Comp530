@@ -12,25 +12,21 @@ public:
     // put the contents of the next record in the file/page into the iterator record
     // this should be called BEFORE the iterator record is first examined
     void getNext() override;
-    ; // virtual void getNext () = 0;
 
     // return true iff there is another record in the file/page
     bool hasNext() override;
-    ;
 
     // destructor and contructor
-    // MyDB_TableRecIterator(MyDB_TableReaderWriter &myParent, MyDB_TablePtr myTableIn, MyDB_RecordPtr myRecIn);
     MyDB_TableRecIterator(MyDB_TableReaderWriter &myTableRWIn, MyDB_TablePtr myTableIn, MyDB_RecordPtr myRecIn);
     // MyDB_TableRecIterator(MyDB_TableReaderWriter * myTableRWIn, MyDB_TablePtr myTableIn, MyDB_RecordPtr myRecIn);
     ~MyDB_TableRecIterator();
 
 private:
-    MyDB_RecordIteratorPtr myIter;
-    int curPage;
 
-    // MyDB_TableReaderWriter &myParent;
     MyDB_TableReaderWriter &myTableRW;
     // MyDB_TableReaderWriter * myTableRW;
+    MyDB_RecordIteratorPtr myRecIter;
+    int currPageNum;
     MyDB_TablePtr myTable;
     MyDB_RecordPtr myRec;
 };
