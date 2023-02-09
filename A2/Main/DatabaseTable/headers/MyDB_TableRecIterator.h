@@ -19,16 +19,16 @@ public:
     ;
 
     // destructor and contructor
-    MyDB_TableRecIterator(MyDB_TableReaderWriter &myParent, MyDB_TablePtr myTableIn, MyDB_RecordPtr myRecIn);
+    MyDB_TableRecIterator(MyDB_TableReaderWriter * tableReaderWriterPtrIn, MyDB_TablePtr tablePtrIn, MyDB_RecordPtr recPtrIn);
     ~MyDB_TableRecIterator();
 
 private:
-    MyDB_RecordIteratorPtr myIter;
+    MyDB_RecordIteratorPtr tableIter;
     int curPage;
 
-    MyDB_TableReaderWriter &myParent;
-    MyDB_TablePtr myTable;
-    MyDB_RecordPtr myRec;
+    MyDB_TableReaderWriter * tableReaderWriterPtr;
+    MyDB_TablePtr tablePtr;
+    MyDB_RecordPtr recPtr;
 };
 
 #endif

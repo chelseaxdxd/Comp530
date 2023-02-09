@@ -6,8 +6,6 @@
 #include "MyDB_PageRecIterator.h"
 
 #define PAGE_TYPE *((MyDB_PageType *)((char *)myPage->getBytes()))
-#define NUM_BYTES_USED *((size_t *)(((char *)myPage->getBytes()) + sizeof(size_t)))
-#define NUM_BYTES_LEFT (pageSize - NUM_BYTES_USED)
 
 MyDB_PageReaderWriter ::MyDB_PageReaderWriter(MyDB_TableReaderWriter &parent, int whichPage)
 {
@@ -19,7 +17,8 @@ MyDB_PageReaderWriter ::MyDB_PageReaderWriter(MyDB_TableReaderWriter &parent, in
 void MyDB_PageReaderWriter ::clear()
 {
 	// we only overwrite it so we do not need to clean it up, we only need to reset NUM_BYTES_USED
-	NUM_BYTES_USED = 2 * sizeof(size_t); //????
+	size_t numBytesUsed = *((size_t *)(((char *)myPage->getBytes()) + sizeof(size_t)));
+	numBytesUsed = 2 * sizeof(size_t); //????
 
 	// reset pagetype
 	PAGE_TYPE = MyDB_PageType ::RegularPage;
@@ -56,21 +55,25 @@ void MyDB_PageReaderWriter ::setType(MyDB_PageType toMe)
 
 bool MyDB_PageReaderWriter ::append(MyDB_RecordPtr appendMe)
 {
+	size_t numBytesUsed = *((size_t *)(((char *)myPage->getBytes()) + sizeof(size_t)));
+	size_t numBytesLeft = (pageSize - numBytesUsed)
+
 	size_t recSize = appendMe->getBinarySize();
-	if (recSize > NUM_BYTES_LEFT)
+	if (recSize > numBytesLeft)
 		return false;
 
 	// write at the end
 	void *address = myPage->getBytes();
-	appendMe->toBinary(NUM_BYTES_USED + (char *)address);
-	NUM_BYTES_USED += recSize;
+	appendMe->toBinary(numBytesUsed + (char *)address);
+	numBytesUsed += recSize;
 	myPage->wroteBytes();
 	return true;
 }
 
 void *MyDB_PageReaderWriter ::appendAndReturnLocation(MyDB_RecordPtr appendMe)
 {
-	void *recLocation = NUM_BYTES_USED + (char *)myPage->getBytes();
+	size_t numBytesUsed = *((size_t *)(((char *)myPage->getBytes()) + sizeof(size_t)));
+	void *recLocation = numBytesUsed + (char *)myPage->getBytes();
 	if (append(appendMe))
 		return recLocation;
 	else

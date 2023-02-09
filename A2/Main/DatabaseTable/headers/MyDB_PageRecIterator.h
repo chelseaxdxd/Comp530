@@ -16,13 +16,13 @@ public:
     bool hasNext() override;
 
     // destructor and contructor
-    MyDB_PageRecIterator(MyDB_PageHandle myPageIn, MyDB_RecordPtr myRecIn); // new
+    MyDB_PageRecIterator(MyDB_PageHandle pageHandleIn, MyDB_RecordPtr recPtrIn); // new
     ~MyDB_PageRecIterator();
 
 private:
     int bytesConsumed;
-    MyDB_PageHandle myPage;
-    MyDB_RecordPtr myRec;
+    MyDB_PageHandle pageHandle;
+    MyDB_RecordPtr recPtr;
 };
 
 #endif

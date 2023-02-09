@@ -6,31 +6,32 @@
 
 void MyDB_TableRecIterator::getNext()
 {
-	myIter->getNext();
+	tableIter->getNext();
 }
 
 // return true iff there is another record in the file/page
 bool MyDB_TableRecIterator::hasNext()
 {
-	if (myParent[curPage].getType() == MyDB_PageType ::RegularPage && myIter->hasNext())
+	if (tableIter->hasNext())
 		return true;
 
-	if (curPage == myTable->lastPage())
+	if (curPage == tablePtr->lastPage())
 		return false;
 
 	curPage++;
-	myIter = myParent[curPage].getIterator(myRec);
+	tableIter = (*tableReaderWriterPtr)[curPage].getIterator(recPtr);
 	return hasNext();
 }
 
 // destructor and contructor
-MyDB_TableRecIterator ::MyDB_TableRecIterator(MyDB_TableReaderWriter &myParent, MyDB_TablePtr myTableIn,
-											  MyDB_RecordPtr myRecIn) : myParent(myParent)
+MyDB_TableRecIterator ::MyDB_TableRecIterator(MyDB_TableReaderWriter tableReaderWriterPtrIn, MyDB_TablePtr tablePtrIn,
+											  MyDB_RecordPtr recPtrIn)
 {
-	myTable = myTableIn;
-	myRec = myRecIn;
+	tableReaderWriterPtr = tableReaderWriterPtrIn;
+	tablePtr = tablePtrIn;
+	recPtr = recPtrIn;
 	curPage = 0;
-	myIter = myParent[curPage].getIterator(myRec);
+	tableIter = (*tableReaderWriterPtr)[curPage].getIterator(recPtr);
 }
 MyDB_TableRecIterator::~MyDB_TableRecIterator(){
 

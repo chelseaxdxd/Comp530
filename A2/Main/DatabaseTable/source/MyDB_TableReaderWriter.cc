@@ -15,16 +15,15 @@ MyDB_TableReaderWriter ::MyDB_TableReaderWriter(MyDB_TablePtr tablePtrIn, MyDB_B
 	tablePtr = tablePtrIn;
 	bmPtr = bmPtrIn;
 
-	//????幫他創一個新的page為last page嗎？
-	if (tablePtr->lastPage() == -1) // initial table的last是-1
+	// assigning last page for this table reader writer
+	if (tablePtr->lastPage() == -1) // first time call the table, table last = -1
 	{
-		tablePtr->setLastPage(0); // 將last 改成0,也就是有一頁
+		tablePtr->setLastPage(0); // make this table last page index = o
 
-		// 創一個PageReaderWriter for 這個table 的這一頁, 因為是唯一的一頁所以也是last page
 		lastPage = make_shared<MyDB_PageReaderWriter>(*this, tablePtr->lastPage());
 		//@@@@lastPage->clear();
 	}
-	else
+	else//reassigning last page
 	{
 		lastPage = make_shared<MyDB_PageReaderWriter>(*this, tablePtr->lastPage());
 	}
@@ -61,28 +60,24 @@ MyDB_RecordIteratorPtr MyDB_TableReaderWriter ::getIterator(MyDB_RecordPtr itera
 void MyDB_TableReaderWriter ::loadFromTextFile(string fName)
 {
 	// cout<<endl<<5<<endl;
-	//  empty out the database file
+
+	//  empty out the table, and cover the table with data from text file
 	tablePtr->setLastPage(0);
 	lastPage = make_shared<MyDB_PageReaderWriter>(*this, tablePtr->lastPage());
-	lastPage->clear();
+	lastPage->clear(); //need to clear cuz it may has previous data
 
-	// try to open the file
-	string line;
-	ifstream myfile(fName);
-
-	// if we opened it, read the contents
+	// open text file and read it
+	ifstream ifs(fName);
+	string line;	
 	MyDB_RecordPtr tempRec = getEmptyRecord();
-	if (myfile.is_open())
-	{
 
-		// loop through all of the lines
-		while (getline(myfile, line))
-		{
-			tempRec->fromString(line);
-			append(tempRec);
-		}
-		myfile.close();
+	// loop through all of the lines
+	while (getline(ifs, line))
+	{
+		tempRec->fromString(line); //store the line into the record(record::values)
+		append(tempRec);
 	}
+	ifs.close();
 }
 
 void MyDB_TableReaderWriter ::writeIntoTextFile(string fName)

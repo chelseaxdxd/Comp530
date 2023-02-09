@@ -26,15 +26,6 @@ public:
 	// by iterateIntoMe
 	MyDB_RecordIteratorPtr getIterator(MyDB_RecordPtr iterateIntoMe);
 
-	/*
-		// gets an instance of an alternate iterator over the page... this is an
-		// iterator that has the alternate getCurrent ()/advance () interface
-		MyDB_RecordIteratorAltPtr getIteratorAlt ();
-
-		// gets an instance of an alternatie iterator over a list of pages
-		friend MyDB_RecordIteratorAltPtr getIteratorAlt (vector <MyDB_PageReaderWriter> &forUs);
-	*/
-
 	// appends a record to this page... return false is the append fails because
 	// there is not enough space on the page; otherwise, return true
 	bool append(MyDB_RecordPtr appendMe);
