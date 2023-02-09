@@ -1,17 +1,15 @@
-
 #ifndef PAGE_RW_H
 #define PAGE_RW_H
 
 #include <memory>
 #include "MyDB_PageType.h"
-#include "MyDB_RecordIterator.h"
 #include "MyDB_TableReaderWriter.h"
+#include "MyDB_RecordIterator.h"
 
 class MyDB_PageReaderWriter
 {
 
 public:
-	
 	// empties out the contents of this page, so that it has no records in it
 	// the type of the page is set to MyDB_PageType :: RegularPage
 	void clear();
@@ -34,13 +32,13 @@ public:
 
 	// ANY OTHER METHODS YOU WANT HERE
 	MyDB_PageReaderWriter(MyDB_TableReaderWriter &myTableRW, int pageNum);
-	size_t getPageSize ();
-	void *getBytes ();
+	size_t getPageSize();
+	void *getBytes();
 
 private:
 	// ANYTHING ELSE YOU WANT HERE
-	MyDB_PageHandle myPage;	
-	size_t pageSize;  // the size of this page
+	MyDB_PageHandle myPage;
+	size_t pageSize; // the size of this page
 	// size_t bytesUsed; // the bytes this page used
 };
 

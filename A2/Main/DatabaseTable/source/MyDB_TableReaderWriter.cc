@@ -5,8 +5,8 @@
 #include <fstream>
 #include <queue>
 #include "MyDB_PageReaderWriter.h"
-#include "MyDB_TableRecIterator.h"
 #include "MyDB_TableReaderWriter.h"
+#include "MyDB_TableRecIterator.h"
 
 using namespace std;
 
@@ -78,7 +78,6 @@ void MyDB_TableReaderWriter ::writeIntoTextFile(string toMe)
 
 	// write record into file
 	MyDB_RecordPtr temp = getEmptyRecord();
-	;
 	MyDB_RecordIteratorPtr ptr = getIterator(temp);
 	while (ptr->hasNext())
 	{
@@ -94,9 +93,12 @@ MyDB_PageReaderWriter &MyDB_TableReaderWriter ::operator[](size_t i)
 	{
 		exit(1);
 	}
+	else
+	{
 	// if i is valid, return
 	currPage = make_shared<MyDB_PageReaderWriter>(*this, i);
 	return *currPage;
+	}
 }
 
 MyDB_PageReaderWriter &MyDB_TableReaderWriter ::last()

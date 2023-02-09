@@ -1,4 +1,3 @@
-
 #ifndef PAGE_RW_C
 #define PAGE_RW_C
 
@@ -29,14 +28,16 @@ bool MyDB_PageReaderWriter ::append(MyDB_RecordPtr appendMe)
 	{
 		return false;
 	}
-
-	void *addr = myPage->getBytes();
-	appendMe->toBinary((char *)addr + BYTES_USED);
-	BYTES_USED += size;
-	// appendMe->toBinary((char *)addr + bytesUsed);
-	// bytesUsed += size;
-	myPage->wroteBytes();
-	return true;
+	else
+	{
+		void *addr = myPage->getBytes();
+		appendMe->toBinary((char *)addr + BYTES_USED);
+		BYTES_USED += size;
+		// appendMe->toBinary((char *)addr + bytesUsed);
+		// bytesUsed += size;
+		myPage->wroteBytes();
+		return true;
+	}
 }
 
 MyDB_PageType MyDB_PageReaderWriter ::getType()

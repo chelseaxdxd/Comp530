@@ -21,7 +21,7 @@ bool MyDB_TableRecIterator::hasNext()
 	currPageNum++;
 	myRecIter = myTableRW[currPageNum].getIterator(myRec);
 	// myRecIter = (*myTableRW)[currPageNum].getIterator(myRec);
-	return hasNext ();
+	return hasNext();
 }
 
 // destructor and contructor

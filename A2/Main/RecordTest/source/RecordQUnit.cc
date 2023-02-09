@@ -1,4 +1,3 @@
-
 #ifndef RECORD_TEST_H
 #define RECORD_TEST_H
 
@@ -141,12 +140,8 @@ int main(int argc, char *argv[]) {
 			MyDB_RecordIteratorPtr myIter = supplierTable.getIterator(temp);
 
 			cout << "count..." << flush;
-			int i = 0; // ++
 			while (myIter->hasNext()) {
-				cout << i++ << endl; // ++
 				myIter->getNext();
-				// cout << myIter << endl; // ++ 
-				// cout << "*myIter: " << myIter << endl; // ++ 
 				counter++;
 			}
 
