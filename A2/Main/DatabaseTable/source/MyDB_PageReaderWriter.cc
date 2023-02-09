@@ -5,12 +5,11 @@
 #include "MyDB_PageReaderWriter.h"
 #include "MyDB_PageRecIterator.h"
 
-#define NUM_BYTES_USED *((size_t *)(((char *)myPage->getBytes()) + sizeof(size_t)))
-#define NUM_BYTES_LEFT (pageSize - NUM_BYTES_USED)
+#define BYTES_USED *((size_t *)(((char *)myPage->getBytes()) + sizeof(size_t)))
 
 void MyDB_PageReaderWriter ::clear()
 {
-	NUM_BYTES_USED = 2 * sizeof(size_t);
+	BYTES_USED = 2 * sizeof(size_t);
 	// bytesUsed = 2 * sizeof(size_t);
 	myPage->wroteBytes();
 }
@@ -24,18 +23,17 @@ bool MyDB_PageReaderWriter ::append(MyDB_RecordPtr appendMe)
 {
 	size_t size = appendMe->getBinarySize();
 	// bytesUsed = *((size_t *)(((char *)myPage->getBytes()) + sizeof(size_t)));
-	// size_t bytesLeft = pageSize - bytesUsed;
 
-	if (size > NUM_BYTES_LEFT)
-	// if (size > bytesLeft)
+	// if (size > (pageSize - bytesUsed))
+	if (size > (pageSize - BYTES_USED))
 	{
 		return false;
 	}
 
-	void *address = myPage->getBytes();
-	appendMe->toBinary(NUM_BYTES_USED + (char *)address);
-	// appendMe->toBinary(bytesUsed + (char *)address);
-	NUM_BYTES_USED += size;
+	void *addr = myPage->getBytes();
+	appendMe->toBinary((char *)addr + BYTES_USED);
+	BYTES_USED += size;
+	// appendMe->toBinary((char *)addr + bytesUsed);
 	// bytesUsed += size;
 	myPage->wroteBytes();
 	return true;
@@ -51,11 +49,8 @@ void MyDB_PageReaderWriter ::setType(MyDB_PageType toMe){}
 MyDB_PageReaderWriter ::MyDB_PageReaderWriter(MyDB_TableReaderWriter &myTableRW, int pageNum)
 {
 
-	// get the actual page
 	myPage = myTableRW.getBufferMgr()->getPage(myTableRW.getTable(), pageNum);
 	pageSize = myTableRW.getBufferMgr()->getPageSize();
-
-	//
 	// bytesUsed = 2 * sizeof(size_t);
 }
 
