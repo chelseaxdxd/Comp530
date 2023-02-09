@@ -10,35 +10,29 @@
 
 using namespace std;
 
-MyDB_TableReaderWriter :: MyDB_TableReaderWriter (MyDB_TablePtr forMeIn, MyDB_BufferManagerPtr myBufferIn) {
-	//cout<<endl<<1<<endl;
+MyDB_TableReaderWriter :: MyDB_TableReaderWriter (MyDB_TablePtr forMeIn, MyDB_BufferManagerPtr myBufferIn) 
+{
 	forMe = forMeIn;
 	myBuffer = myBufferIn;
 
-	// if (forMe->lastPage () == -1) {
-	// 	forMe->setLastPage (0);
-	// 	lastPage = make_shared <MyDB_PageReaderWriter> (*this, forMe->lastPage ());
-	// 	// lastPage->clear ();
-	// } else {
-	// 	lastPage = make_shared <MyDB_PageReaderWriter> (*this, forMe->lastPage ());	
-	// }
+	// if lastPage has never been written, set the last page
 	if (forMe->lastPage () == -1) forMe->setLastPage (0);
 	lastPage = make_shared<MyDB_PageReaderWriter>(*this, forMe->lastPage());
 }
 
-MyDB_RecordPtr MyDB_TableReaderWriter :: getEmptyRecord () {
-	//cout<<endl<<2<<endl;
-	// use the schema to produce an empty record
+MyDB_RecordPtr MyDB_TableReaderWriter :: getEmptyRecord () 
+{
+	// create emptyRecord by schema setted
 	return make_shared <MyDB_Record> (forMe->getSchema ());
 }
 
 
-void MyDB_TableReaderWriter :: append (MyDB_RecordPtr appendMe) {
-	//cout<<endl<<3<<endl;
-	// try to append the record on the current page...
+void MyDB_TableReaderWriter :: append (MyDB_RecordPtr appendMe) 
+{
+	// append record to last page
 	if (!lastPage->append (appendMe)) {
-
-		// if we cannot, then get a new last page and append
+		// if no enough space in lastPage
+		// create a new lastPage
 		forMe->setLastPage (forMe->lastPage () + 1);
 		lastPage = make_shared <MyDB_PageReaderWriter> (*this, forMe->lastPage ());
 		lastPage->clear ();
@@ -46,92 +40,80 @@ void MyDB_TableReaderWriter :: append (MyDB_RecordPtr appendMe) {
 	}
 }
 
-MyDB_RecordIteratorPtr MyDB_TableReaderWriter :: getIterator (MyDB_RecordPtr iterateIntoMe) {
-	//cout<<endl<<4<<endl;
+MyDB_RecordIteratorPtr MyDB_TableReaderWriter :: getIterator (MyDB_RecordPtr iterateIntoMe) 
+{
 	return make_shared <MyDB_TableRecIterator> (*this, forMe, iterateIntoMe);
 }
 
-void MyDB_TableReaderWriter :: loadFromTextFile (string fName) {
-	//cout<<endl<<5<<endl;
-	// empty out the database file
+void MyDB_TableReaderWriter :: loadFromTextFile (string fromMe) 
+{
+	// clear the pages
 	forMe->setLastPage (0);
 	lastPage = make_shared <MyDB_PageReaderWriter> (*this, forMe->lastPage ());
 	lastPage->clear ();
 
-	// try to open the file
+	// open file
 	string line;
-	ifstream myfile (fName);
+	ifstream ifs (fromMe);
 
-	// if we opened it, read the contents
-	MyDB_RecordPtr tempRec = getEmptyRecord ();
-	if (myfile.is_open()) {
-
-		// loop through all of the lines
-		while (getline (myfile,line)) {
-			tempRec->fromString (line);		
-			append (tempRec);
+	// load the data
+	MyDB_RecordPtr temp = getEmptyRecord();
+	if (ifs.is_open()) {
+		while (getline (ifs,line)) {
+			temp->fromString (line);		
+			append (temp);
 		}
-		myfile.close ();
+		ifs.close();
 	}
 }
 
-void MyDB_TableReaderWriter :: writeIntoTextFile (string fName) {
-	//cout<<endl<<6<<endl;
-	// open up the output file
-	ofstream output;
-	output.open (fName);
+void MyDB_TableReaderWriter :: writeIntoTextFile (string toMe) 
+{
+	// open file
+	ofstream ofs;
+	ofs.open(toMe);
 
-	// get an empty record
-	MyDB_RecordPtr tempRec = getEmptyRecord ();;		
-
-	// and write out all of the records
-	MyDB_RecordIteratorPtr myIter = getIterator (tempRec);
-	while (myIter->hasNext ()) {
-		myIter->getNext ();
+	// write record into file
+	MyDB_RecordPtr temp = getEmptyRecord ();;		
+	MyDB_RecordIteratorPtr ptr = getIterator(temp);
+	while (ptr->hasNext())
+	{
+		ptr->getNext();
 	}
-	output.close ();
+	ofs.close();
 }
 
-MyDB_PageReaderWriter &MyDB_TableReaderWriter :: operator [] (size_t i) {
-	//cout<<endl<<7<<endl;
-	// see if we are going off of the end of the file... if so, then clear those pages
-	while (i > forMe->lastPage ()) {
-		forMe->setLastPage (forMe->lastPage () + 1);
-		lastPage = make_shared <MyDB_PageReaderWriter> (*this, forMe->lastPage ());
-		lastPage->clear ();	
+MyDB_PageReaderWriter &MyDB_TableReaderWriter :: operator [] (size_t i) 
+{
+	// check if i in range
+	if (i > forMe->lastPage ()) {
+		exit(1);
 	}
 
-	// now get the page
-	arrayAccessBuffer = make_shared <MyDB_PageReaderWriter> (*this, i);
-	return *arrayAccessBuffer;
+	// if i is valid, return
+	currPage = make_shared <MyDB_PageReaderWriter> (*this, i);
+	return *currPage;
 }
 
-MyDB_PageReaderWriter &MyDB_TableReaderWriter :: last () {
-	//cout<<endl<<8<<endl;
-	arrayAccessBuffer = make_shared <MyDB_PageReaderWriter> (*this, forMe->lastPage ());
-	return *arrayAccessBuffer;
-}
-
-int MyDB_TableReaderWriter :: getNumPages () {
-	//cout<<endl<<9<<endl;
-	return forMe->lastPage () + 1;
+MyDB_PageReaderWriter &MyDB_TableReaderWriter :: last () 
+{
+	currPage = make_shared<MyDB_PageReaderWriter>(*this, forMe->lastPage());
+	return *currPage;
 }
 
 
-MyDB_BufferManagerPtr MyDB_TableReaderWriter :: getBufferMgr () {
-	//cout<<endl<<10<<endl;
-	return myBuffer;
-}
-
-/*
-	// gets the physical file for this guy
-	string getFileName ();
-*/
-	
-MyDB_TablePtr MyDB_TableReaderWriter :: getTable () {
-	//cout<<endl<<11<<endl;
+MyDB_TablePtr MyDB_TableReaderWriter ::getTable()
+{
 	return forMe;
 }
 
+MyDB_BufferManagerPtr MyDB_TableReaderWriter :: getBufferMgr () {
+	return myBuffer;
+}
+
+int MyDB_TableReaderWriter ::getNumPages()
+{
+	return (forMe->lastPage() + 1);
+}
 
 #endif
