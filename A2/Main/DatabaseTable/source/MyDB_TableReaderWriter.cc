@@ -24,7 +24,8 @@ MyDB_TableReaderWriter ::MyDB_TableReaderWriter(MyDB_TablePtr forMeIn, MyDB_Buff
 MyDB_RecordPtr MyDB_TableReaderWriter ::getEmptyRecord()
 {
 	// create emptyRecord by schema setted
-	return make_shared<MyDB_Record>(forMe->getSchema());
+	MyDB_RecordPtr rtn = make_shared<MyDB_Record>(forMe->getSchema());
+	return rtn;
 }
 
 void MyDB_TableReaderWriter ::append(MyDB_RecordPtr appendMe)
@@ -43,7 +44,8 @@ void MyDB_TableReaderWriter ::append(MyDB_RecordPtr appendMe)
 
 MyDB_RecordIteratorPtr MyDB_TableReaderWriter ::getIterator(MyDB_RecordPtr iterateIntoMe)
 {
-	return make_shared<MyDB_TableRecIterator>(*this, forMe, iterateIntoMe);
+	MyDB_RecordIteratorPtr rtn = make_shared<MyDB_TableRecIterator>(*this, forMe, iterateIntoMe);
+	return rtn;
 }
 
 void MyDB_TableReaderWriter ::loadFromTextFile(string fromMe)
@@ -53,37 +55,32 @@ void MyDB_TableReaderWriter ::loadFromTextFile(string fromMe)
 	lastPage = make_shared<MyDB_PageReaderWriter>(*this, forMe->lastPage());
 	lastPage->clear();
 
-	// open file
-	string line;
-	ifstream ifs(fromMe);
-
 	// load the data
+	string line;
+	ifstream f(fromMe);
 	MyDB_RecordPtr temp = getEmptyRecord();
-	if (ifs.is_open())
+	if (f)
 	{
-		while (getline(ifs, line))
+		while (getline(f, line))
 		{
 			temp->fromString(line);
 			append(temp);
 		}
-		ifs.close();
+		f.close();
 	}
 }
 
 void MyDB_TableReaderWriter ::writeIntoTextFile(string toMe)
 {
-	// open file
-	ofstream ofs;
-	ofs.open(toMe);
-
-	// write record into file
+	ofstream f;
+	f.open(toMe);
 	MyDB_RecordPtr temp = getEmptyRecord();
 	MyDB_RecordIteratorPtr ptr = getIterator(temp);
 	while (ptr->hasNext())
 	{
 		ptr->getNext();
 	}
-	ofs.close();
+	f.close();
 }
 
 MyDB_PageReaderWriter &MyDB_TableReaderWriter ::operator[](size_t i)

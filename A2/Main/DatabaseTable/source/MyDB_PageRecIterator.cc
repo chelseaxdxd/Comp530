@@ -4,15 +4,19 @@
 
 void MyDB_PageRecIterator::getNext()
 {
-	void *pos = (char *)myPage->getBytes() + bytesUsed;
-	void *nextPos = myRec->fromBinary(pos);
-	bytesUsed += (((char *)nextPos) - ((char *)pos));
+	if (hasNext())
+	{
+		void *pos = (char *)myPage->getBytes() + bytesUsed;
+		void *nextPos = myRec->fromBinary(pos);
+		bytesUsed += (((char *)nextPos) - ((char *)pos));
+	}
+	
 }
 
 bool MyDB_PageRecIterator::hasNext()
 {
 	size_t bytes = *((size_t *)(((char *)myPage->getBytes()) + sizeof(size_t)));
-	return bytesUsed != bytes;
+	return bytesUsed < bytes;
 }
 
 MyDB_PageRecIterator ::MyDB_PageRecIterator(MyDB_PageHandle myPageIn, MyDB_RecordPtr myRecIn)

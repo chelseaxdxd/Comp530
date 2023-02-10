@@ -6,7 +6,8 @@
 
 void MyDB_TableRecIterator::getNext()
 {
-	myRecIter->getNext();
+	if (hasNext())
+		myRecIter->getNext();
 }
 
 // return true iff there is another record in the file/page

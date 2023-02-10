@@ -15,7 +15,8 @@ void MyDB_PageReaderWriter ::clear()
 
 MyDB_RecordIteratorPtr MyDB_PageReaderWriter ::getIterator(MyDB_RecordPtr iterateIntoMe)
 {
-	return make_shared<MyDB_PageRecIterator>(myPage, iterateIntoMe);
+	MyDB_RecordIteratorPtr rtn = make_shared<MyDB_PageRecIterator>(myPage, iterateIntoMe);
+	return rtn;
 }
 
 bool MyDB_PageReaderWriter ::append(MyDB_RecordPtr appendMe)
@@ -30,8 +31,7 @@ bool MyDB_PageReaderWriter ::append(MyDB_RecordPtr appendMe)
 	}
 	else
 	{
-		void *addr = myPage->getBytes();
-		appendMe->toBinary((char *)addr + BYTES_USED);
+		appendMe->toBinary(((char *) myPage->getBytes()) + BYTES_USED);
 		BYTES_USED += size;
 		// appendMe->toBinary((char *)addr + bytesUsed);
 		// bytesUsed += size;
