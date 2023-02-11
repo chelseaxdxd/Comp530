@@ -10,21 +10,21 @@
 
 using namespace std;
 
-MyDB_TableReaderWriter ::MyDB_TableReaderWriter(MyDB_TablePtr forMeIn, MyDB_BufferManagerPtr myBufferIn)
+MyDB_TableReaderWriter ::MyDB_TableReaderWriter(MyDB_TablePtr tablePtrIn, MyDB_BufferManagerPtr bmPtrIn)
 {
-	forMe = forMeIn;
-	myBuffer = myBufferIn;
+	tablePtr = tablePtrIn;
+	bmPtr = bmPtrIn;
 
 	// if lastPage has never been written, set the last page
-	if (forMe->lastPage() == -1)
-		forMe->setLastPage(0);
-	lastPage = make_shared<MyDB_PageReaderWriter>(*this, forMe->lastPage());
+	if (tablePtr->lastPage() == -1)
+		tablePtr->setLastPage(0);
+	lastPage = make_shared<MyDB_PageReaderWriter>(*this, tablePtr->lastPage());
 }
 
 MyDB_RecordPtr MyDB_TableReaderWriter ::getEmptyRecord()
 {
 	// create emptyRecord by schema setted
-	MyDB_RecordPtr rtn = make_shared<MyDB_Record>(forMe->getSchema());
+	MyDB_RecordPtr rtn = make_shared<MyDB_Record>(tablePtr->getSchema());
 	return rtn;
 }
 
@@ -35,8 +35,8 @@ void MyDB_TableReaderWriter ::append(MyDB_RecordPtr appendMe)
 	{
 		// if no enough space in lastPage
 		// create a new lastPage
-		forMe->setLastPage(forMe->lastPage() + 1);
-		lastPage = make_shared<MyDB_PageReaderWriter>(*this, forMe->lastPage());
+		tablePtr->setLastPage(tablePtr->lastPage() + 1);
+		lastPage = make_shared<MyDB_PageReaderWriter>(*this, tablePtr->lastPage());
 		lastPage->clear();
 		lastPage->append(appendMe);
 	}
@@ -44,15 +44,15 @@ void MyDB_TableReaderWriter ::append(MyDB_RecordPtr appendMe)
 
 MyDB_RecordIteratorPtr MyDB_TableReaderWriter ::getIterator(MyDB_RecordPtr iterateIntoMe)
 {
-	MyDB_RecordIteratorPtr rtn = make_shared<MyDB_TableRecIterator>(*this, forMe, iterateIntoMe);
+	MyDB_RecordIteratorPtr rtn = make_shared<MyDB_TableRecIterator>(*this, tablePtr, iterateIntoMe);
 	return rtn;
 }
 
 void MyDB_TableReaderWriter ::loadFromTextFile(string fromMe)
 {
 	// clear the pages
-	forMe->setLastPage(0);
-	lastPage = make_shared<MyDB_PageReaderWriter>(*this, forMe->lastPage());
+	tablePtr->setLastPage(0);
+	lastPage = make_shared<MyDB_PageReaderWriter>(*this, tablePtr->lastPage());
 	lastPage->clear();
 
 	// load the data
@@ -86,7 +86,7 @@ void MyDB_TableReaderWriter ::writeIntoTextFile(string toMe)
 MyDB_PageReaderWriter &MyDB_TableReaderWriter ::operator[](size_t i)
 {
 	// check if i in range
-	if (i > forMe->lastPage())
+	if (i > tablePtr->lastPage())
 	{
 		exit(1);
 	}
@@ -97,26 +97,25 @@ MyDB_PageReaderWriter &MyDB_TableReaderWriter ::operator[](size_t i)
 	return *currPage;
 	}
 }
-
 MyDB_PageReaderWriter &MyDB_TableReaderWriter ::last()
 {
-	currPage = make_shared<MyDB_PageReaderWriter>(*this, forMe->lastPage());
+	currPage = make_shared<MyDB_PageReaderWriter>(*this, tablePtr->lastPage());
 	return *currPage;
 }
 
 MyDB_TablePtr MyDB_TableReaderWriter ::getTable()
 {
-	return forMe;
+	return tablePtr;
 }
 
 MyDB_BufferManagerPtr MyDB_TableReaderWriter ::getBufferMgr()
 {
-	return myBuffer;
+	return bmPtr;
 }
 
 int MyDB_TableReaderWriter ::getNumPages()
 {
-	return (forMe->lastPage() + 1);
+	return (tablePtr->lastPage() + 1);
 }
 
 #endif

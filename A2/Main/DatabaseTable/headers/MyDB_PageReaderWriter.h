@@ -39,7 +39,6 @@ private:
 	// ANYTHING ELSE YOU WANT HERE
 	MyDB_PageHandle myPage;
 	size_t pageSize; // the size of this page
-	// size_t bytesUsed; // the bytes this page used
 };
 
 #endif

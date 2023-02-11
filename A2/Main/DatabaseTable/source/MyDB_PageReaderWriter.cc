@@ -4,12 +4,12 @@
 #include "MyDB_PageReaderWriter.h"
 #include "MyDB_PageRecIterator.h"
 
-#define BYTES_USED *((size_t *)(((char *)myPage->getBytes()) + sizeof(size_t)))
 
 void MyDB_PageReaderWriter ::clear()
 {
-	BYTES_USED = 2 * sizeof(size_t);
-	// bytesUsed = 2 * sizeof(size_t);
+	// we only overwrite it so we do not need to clean it up, we only need to reset numBytesUsed
+	size_t &numBytesUsed = *((size_t *)(((char *)myPage->getBytes()) + sizeof(size_t)));
+	numBytesUsed = 2 * sizeof(size_t); 
 	myPage->wroteBytes();
 }
 
@@ -22,19 +22,15 @@ MyDB_RecordIteratorPtr MyDB_PageReaderWriter ::getIterator(MyDB_RecordPtr iterat
 bool MyDB_PageReaderWriter ::append(MyDB_RecordPtr appendMe)
 {
 	size_t size = appendMe->getBinarySize();
-	// bytesUsed = *((size_t *)(((char *)myPage->getBytes()) + sizeof(size_t)));
-
-	// if (size > (pageSize - bytesUsed))
-	if (size > (pageSize - BYTES_USED))
+	size_t &numBytesUsed = *((size_t *)(((char *)myPage->getBytes()) + sizeof(size_t)));
+	if (size > (pageSize - numBytesUsed))
 	{
 		return false;
 	}
 	else
 	{
-		appendMe->toBinary(((char *) myPage->getBytes()) + BYTES_USED);
-		BYTES_USED += size;
-		// appendMe->toBinary((char *)addr + bytesUsed);
-		// bytesUsed += size;
+		appendMe->toBinary(((char *) myPage->getBytes()) + numBytesUsed);
+		numBytesUsed += size;
 		myPage->wroteBytes();
 		return true;
 	}
@@ -52,7 +48,6 @@ MyDB_PageReaderWriter ::MyDB_PageReaderWriter(MyDB_TableReaderWriter &myTableRW,
 
 	myPage = myTableRW.getBufferMgr()->getPage(myTableRW.getTable(), pageNum);
 	pageSize = myTableRW.getBufferMgr()->getPageSize();
-	// bytesUsed = 2 * sizeof(size_t);
 }
 
 size_t MyDB_PageReaderWriter ::getPageSize()

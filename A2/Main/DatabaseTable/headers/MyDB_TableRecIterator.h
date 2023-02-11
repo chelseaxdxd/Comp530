@@ -17,17 +17,15 @@ public:
     bool hasNext() override;
 
     // destructor and contructor
-    MyDB_TableRecIterator(MyDB_TableReaderWriter &myTableRWIn, MyDB_TablePtr myTableIn, MyDB_RecordPtr myRecIn);
-    // MyDB_TableRecIterator(MyDB_TableReaderWriter * myTableRWIn, MyDB_TablePtr myTableIn, MyDB_RecordPtr myRecIn);
+    MyDB_TableRecIterator(MyDB_TableReaderWriter &myTableRWIn, MyDB_TablePtr tablePtrIn, MyDB_RecordPtr recPtrIn);
     ~MyDB_TableRecIterator();
 
 private:
     MyDB_TableReaderWriter &myTableRW;
-    // MyDB_TableReaderWriter * myTableRW;
     MyDB_RecordIteratorPtr myRecIter;
     int currPageNum;
-    MyDB_TablePtr myTable;
-    MyDB_RecordPtr myRec;
+    MyDB_TablePtr tablePtr;
+    MyDB_RecordPtr recPtr;
 };
 
 #endif

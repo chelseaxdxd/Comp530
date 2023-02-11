@@ -19,7 +19,7 @@ class MyDB_TableReaderWriter
 public:
 	// create a table reader/writer for the specified table, using the specified
 	// buffer manager
-	MyDB_TableReaderWriter(MyDB_TablePtr forMe, MyDB_BufferManagerPtr myBuffer);
+	MyDB_TableReaderWriter(MyDB_TablePtr tablePtrIn, MyDB_BufferManagerPtr bmPtrIn);
 
 	// gets an empty record from this table
 	MyDB_RecordPtr getEmptyRecord();
@@ -51,8 +51,8 @@ public:
 
 private:
 	// ANYTHING YOU NEED HERE
-	MyDB_TablePtr forMe;
-	MyDB_BufferManagerPtr myBuffer;
+	MyDB_TablePtr tablePtr;
+	MyDB_BufferManagerPtr bmPtr;
 	shared_ptr<MyDB_PageReaderWriter> currPage;
 	shared_ptr<MyDB_PageReaderWriter> lastPage;
 	friend class MyDB_PageReaderWriter;

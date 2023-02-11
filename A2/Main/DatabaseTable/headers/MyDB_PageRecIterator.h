@@ -20,9 +20,9 @@ public:
     ~MyDB_PageRecIterator();
 
 private:
-    MyDB_PageHandle myPage;
-    MyDB_RecordPtr myRec;
-    int bytesUsed;
+    MyDB_PageHandle pageHandle;
+    MyDB_RecordPtr recPtr;
+    int totalBytes;
 };
 
 #endif

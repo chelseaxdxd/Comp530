@@ -10,29 +10,27 @@ void MyDB_TableRecIterator::getNext()
 		myRecIter->getNext();
 }
 
-// return true iff there is another record in the file/page
+// return true if there is another record in the file/page
 bool MyDB_TableRecIterator::hasNext()
 {
 	if (myRecIter->hasNext())
 		return true;
 
-	if (currPageNum == myTable->lastPage())
+	if (currPageNum == tablePtr->lastPage())
 		return false;
 
 	currPageNum++;
-	myRecIter = myTableRW[currPageNum].getIterator(myRec);
-	// myRecIter = (*myTableRW)[currPageNum].getIterator(myRec);
+	myRecIter = myTableRW[currPageNum].getIterator(recPtr);
 	return hasNext();
 }
 
 // destructor and contructor
-MyDB_TableRecIterator ::MyDB_TableRecIterator(MyDB_TableReaderWriter &myTableRWIn, MyDB_TablePtr myTableIn, MyDB_RecordPtr myRecIn) : myTableRW(myTableRWIn)
+MyDB_TableRecIterator ::MyDB_TableRecIterator(MyDB_TableReaderWriter &myTableRWIn, MyDB_TablePtr tablePtrIn, MyDB_RecordPtr recPtrIn) : myTableRW(myTableRWIn)
 {
-	myTable = myTableIn;
-	myRec = myRecIn;
+	tablePtr = tablePtrIn;
+	recPtr = recPtrIn;
 	currPageNum = 0;
-	myRecIter = myTableRW[currPageNum].getIterator(myRec);
-	// myRecIter = (*myTableRW)[currPageNum].getIterator(myRec);
+	myRecIter = myTableRW[currPageNum].getIterator(recPtr);
 }
 MyDB_TableRecIterator::~MyDB_TableRecIterator(){
 
